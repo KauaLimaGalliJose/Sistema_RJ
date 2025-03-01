@@ -26,8 +26,9 @@ $comPedra = isset($_POST['comPedra']) ? $_POST['comPedra'] : null;
 $estoqueFeminina = isset($_POST['estoqueFeminina']) ? $_POST['estoqueFeminina'] : null;
 $estoqueMasculina = isset($_POST['estoqueMasculina']) ? $_POST['estoqueMasculina'] : null;
 
-$numeroPedidoSplit = str_split($numeroPedido,1);
 
+$numeroPedidoSplit = str_split($numeroPedido,1);
+echo $numeroPedidoSplit[1];
 
 $idPedidos = $numeroPedido ."-". $dataEntrega;
 
@@ -53,6 +54,13 @@ if($cliente == 'Outros'){
     VALUES ('$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' )");
     
 }
+if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == "F"){
+    // passando pro banco de dados
+    $dadosp = mysqli_query($conectar, "INSERT INTO pedidosp 
+    (idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
+    VALUES ('$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' )");
+   
+}
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'G'){
     // passando pro banco de dados
     $dadosg = mysqli_query($conectar, "INSERT INTO pedidospg
@@ -67,13 +75,6 @@ if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'E'){
     (idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
     VALUES ('$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' )");
     
-   
-}
-else{
-    // passando pro banco de dados
-    $dadosp = mysqli_query($conectar, "INSERT INTO pedidosp 
-    (idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
-    VALUES ('$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' )");
    
 }
 

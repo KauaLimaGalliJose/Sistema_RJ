@@ -11,11 +11,11 @@ export function voltar(contador_P, contador_Pg, contador_Pe) {
     }
     if (pg.selected) {
         contador_Pg--;
-        document.getElementById('PG1').innerHTML = "PG" + contador_Pg;
+        document.getElementById('PG1').innerHTML = "G" + contador_Pg;
     }
     if (pe.selected) {
         contador_Pe--;
-        document.getElementById('PE1').innerHTML = "PE" + contador_Pe;
+        document.getElementById('PE1').innerHTML = "E" + contador_Pe;
     }
 
     return { contador_P, contador_Pg, contador_Pe };
@@ -30,8 +30,8 @@ export function avancar(contador_P, contador_Pg, contador_Pe) {
     if (p.selected) {
         contador_P++;
         let contadordisplayP = contador_P +1
-        document.getElementById('P1').innerHTML ='P' + contadordisplayP;
-        document.getElementById('P1').value ='P' + contador_P;
+        document.getElementById('P1').innerHTML ='PF' + contadordisplayP;
+        document.getElementById('P1').value ='PF' + contador_P;
     }
     if (pg.selected) {
         contador_Pg++;
