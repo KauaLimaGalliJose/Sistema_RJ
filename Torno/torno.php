@@ -35,25 +35,31 @@
     <?php include_once('../conexao.php');?>
     <div id="phpDiv">
         <?php 
-            $dados = "SELECT imagem ,LEFT(idpedidos,2) AS P FROM pedidos ";
-           $dadosPedidos = mysqli_query($conectar, $dados );
+            //data Atual
+            $data = date('Y-m-d');
+            $dataSplit = explode("-", $data);
 
-            if($dadosPedidos){
-                while($linha = mysqli_fetch_assoc($dadosPedidos) ){
+            $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedidos FROM pedidosp";
+            $Verificador = mysqli_query($conectar,$dadosVerificador);
+            $dadosVerificador2 = "SELECT imagem FROM pedidosp";
+            $Verificador2 = mysqli_query($conectar,$dadosVerificador2);
 
-                    if($linha['P'] == 'PE'){
-                        echo ' é PE';
+            ?><div class="pedidosImagem"><?php
+                while($dados = mysqli_fetch_assoc($Verificador)){
+                    if($dados['idpedidos'] == $dataSplit[1] .'-'. $dataSplit[2]){
+            
+                        print('Pedido do Dia :' . $dataSplit[1] .'/'. $dataSplit[2] . '</BR>');
+                        while($dados2 = mysqli_fetch_assoc($Verificador2)){
+                    
+
+                   
+                        }    
+                    }
+                    
                 }
-               elseif($linha['P'] == 'PG'){
-                    echo ' é PG';
-                }
-                else{
-                    echo $linha['P'] . '</br>';
-                    echo $linha['imagem'] . '</br>';
-                }
-            }
-            } ?>
-        
-    </div>
+
+            ?></div><?php
+                ?>
+    </div>    
 </body>
 </html>
