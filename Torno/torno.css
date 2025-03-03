@@ -61,7 +61,7 @@ main{
 }
 #pesquisa{
     display: flex;
-    margin-left: 45px;
+    margin-left: 35px;
 }
 #pesquisaInput{
     border: solid black 3px;
@@ -70,6 +70,18 @@ main{
     height: 30px;
     font-size: 120%;
     font-weight: 700;
+}
+#enviar{
+    display: flex; 
+    margin-left: 15px;
+    background-color: blanchedalmond;
+    border: none;
+}
+#enviar:hover{
+    background-color: rgb(247, 94, 94);
+    padding: 2px;
+    border-radius: 10px;
+    transition: 0.2s;
 }
 /*--------------------------------------- Pedidos ----------------------------------------*/
 #phpdiv{
@@ -104,4 +116,18 @@ main{
 .Imagem{
     height: 260px;
     width: 260px;
+}
+#formlario{
+    display: flex;
+    flex-direction: row;
+}
+.titulo_red{
+    color: red;
+    font-size: 250%;
+    font-weight: 700;
+}
+.titulo_black{
+    color: rgb(0, 0, 0);
+    font-size: 250%;
+    font-weight: 700;
 }

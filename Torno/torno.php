@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../coroa.png" type="image/x-icon">
     <link rel="stylesheet" href="torno.css">
+    <script src="torno.js" defer></script>
     <title>Torno</title>
 </head>
 <body>
+<form id="formulario" method="POST" action="torno.php">
     <div id="cabecalho">
         <div id="cabecalho_menu">
             <div id="casa">
@@ -14,7 +16,7 @@
                 <a href="../index.html"><img class="itens" src="../Escritorio/casa.png"></a>
                 </button>
             </div>
-                <select id="larguraSelect">
+                <select name="largura" id="larguraSelect">
                         <option value="todos">Todos</option>
                         <option value="2mm">2mm</option>
                         <option value="3mm">3mm</option>
@@ -30,36 +32,48 @@
                 <div id="pesquisa">
                     <input id="pesquisaInput" type="text" oninput="this.value = this.value.toUpperCase();" placeholder="Número Pedido">
                 </div>
+                <button type="submit" id="enviar"><h1>Enviar</h1></button>
         </div>
     </div>
+</form>
     <?php include_once('../conexao.php');?>
     <div id="phpDiv">
-        <?php 
-            //data Atual
-            $data = date('Y-m-d');
-            $dataSplit = explode("-", $data);
+    <?php
+        //Variaveis
+        if($_POST){
+        $largura = $_POST['largura'];
+        ?><span class="titulo_black"><?php echo 'Largura:'; ?></span><span class="titulo_red"><?php echo $largura; ?></span><?php
+        }
+        
 
-            $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedidos FROM pedidosp";
-            $Verificador = mysqli_query($conectar,$dadosVerificador);
-            $dadosVerificador2 = "SELECT imagem FROM pedidosp";
-            $Verificador2 = mysqli_query($conectar,$dadosVerificador2);
+        $data = date('Y-m-d');
+        $dataSplit = explode("-", $data);
 
-            ?><div class="pedidosImagem"><?php
-                while($dados = mysqli_fetch_assoc($Verificador)){
-                    if($dados['idpedidos'] == $dataSplit[1] .'-'. $dataSplit[2]){
-            
-                        print('Pedido do Dia :' . $dataSplit[1] .'/'. $dataSplit[2] . '</BR>');
-                        while($dados2 = mysqli_fetch_assoc($Verificador2)){
-                    
-
+        // Recupera todos os pedidos com idpedidos e imagem
+        $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, LEFT(idpedidos,4) AS idpedidos FROM pedidosp";
+        $Verificador = mysqli_query($conectar, $dadosVerificador);
+  
+        while ($dados = mysqli_fetch_assoc($Verificador)) {
+         
+            if ($dados['idpedido'] == $dataSplit[1] . '-' . $dataSplit[2]) {
+                
+                if ($dados['imagem']) {
                    
-                        }    
-                    }
                     
-                }
 
-            ?></div><?php
-                ?>
+                    ?><div class="pedidosImagem"><?php
+                    print('Pedido do Dia: ' . $dataSplit[1] . '/' . $dataSplit[2] . '</br>');
+                    print($dados['descricaoPedido'] . "<br>");
+                    print($dados['idpedidos'] . "<br>");
+                    ?><img class = "Imagem" src="<?php echo $dados['imagem'];?>" alt="Imagem do Pedido"><?php
+                }
+            
+                ?></div><?php
+            }
+        }
+        ?>
+        
     </div>    
+
 </body>
 </html>
