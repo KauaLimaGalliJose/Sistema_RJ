@@ -37,43 +37,61 @@
     </div>
 </form>
     <?php include_once('../conexao.php');?>
-    <div id="phpDiv">
-    <?php
-        //Variaveis
-        if($_POST){
-        $largura = $_POST['largura'];
-        ?><span class="titulo_black"><?php echo 'Largura:'; ?></span><span class="titulo_red"><?php echo $largura; ?></span><?php
-        }
-        
-
-        $data = date('Y-m-d');
-        $dataSplit = explode("-", $data);
-
-        // Recupera todos os pedidos com idpedidos e imagem
-        $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, LEFT(idpedidos,4) AS idpedidos FROM pedidosp";
-        $Verificador = mysqli_query($conectar, $dadosVerificador);
-  
-        while ($dados = mysqli_fetch_assoc($Verificador)) {
-         
-            if ($dados['idpedido'] == $dataSplit[1] . '-' . $dataSplit[2]) {
-                
-                if ($dados['imagem']) {
-                   
-                    
-
-                    ?><div class="pedidosImagem"><?php
-                    print('Pedido do Dia: ' . $dataSplit[1] . '/' . $dataSplit[2] . '</br>');
-                    print($dados['descricaoPedido'] . "<br>");
-                    print($dados['idpedidos'] . "<br>");
-                    ?><img class = "Imagem" src="<?php echo $dados['imagem'];?>" alt="Imagem do Pedido"><?php
-                }
-            
-                ?></div><?php
+    <div id="phpmae">
+        <div id="phpDiv">
+        <?php
+            //Variaveis
+            if($_POST){
+            $largura = $_POST['largura'];
+            ?><span class="titulo_black"><?php echo 'Largura:'; ?></span><span class="titulo_red"><?php echo $largura; ?></span><?php
             }
-        }
-        ?>
-        
-    </div>    
+            
+            $data = date('Y-m-d');
+            $dataSplit = explode("-", $data);
 
+            // Recupera todos os pedidos com idpedidos e imagem
+            $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido,idpedidos FROM pedidosp";
+            $Verificador = mysqli_query($conectar, $dadosVerificador);
+    
+            while (($dados = mysqli_fetch_assoc($Verificador))) {
+            
+                if ($dados['idpedido'] == $dataSplit[1] . '-' . $dataSplit[2]) {
+                    
+                    if ($dados['imagem']) {
+                    
+                        
+
+                        ?><div class="pedidosImagem"><?php
+                        print('Pedido do Dia: ' . $dataSplit[1] . '/' . $dataSplit[2] . '</br>');
+                        print($dados['descricaoPedido'] . "<br>");
+                        print($dados['idpedidos'] . "<br>");
+                        ?><img class = "Imagem" src="<?php echo $dados['imagem'];?>" alt="Imagem do Pedido"><?php
+                    }
+                
+                    ?></div><?php
+                }
+            }
+            
+            ?>
+            
+        </div>
+        <div id="php2">
+            <?php
+            $imagem = "SELECT DISTINCT imagem FROM pedidos";
+            $imagemConectar = mysqli_query($conectar, $imagem);
+
+            while ($dadosImagem = mysqli_fetch_assoc($imagemConectar)) {
+            
+                    
+                    ECHO "VAIIIII";            
+                        ?><img class = "Imagem" src="<?php echo $dadosImagem['imagem'];?>" alt="Imagem do Pedido"><?php
+                    
+                
+                    ?></div><?php
+                
+            }
+            ?>
+        </div>
+    </div>
 </body>
 </html>

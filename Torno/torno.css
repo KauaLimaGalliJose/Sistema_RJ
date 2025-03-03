@@ -84,7 +84,22 @@ main{
     transition: 0.2s;
 }
 /*--------------------------------------- Pedidos ----------------------------------------*/
+#phpmae{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
 #phpdiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    font-size: 90%;
+    padding: 5%;
+}
+#phpdiv2{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,6 +126,7 @@ main{
     border: solid black 5px;
     border-radius: 10px;
     height: 100%;    
+    width: 50%;
 }
 
 .Imagem{
