@@ -37,14 +37,19 @@
     </div>
 </form>
     <?php include_once('../conexao.php');?>
+    <?php
+        //Variaveis
+        if($_POST){
+            $largura = $_POST['largura'];
+            ?><div id="largura">
+            <span class="titulo_black"><?php echo 'Largura:'; ?></span><span class="titulo_red"><?php echo $largura; ?></span><?php
+            ?></div><?php
+            }
+        ?>
     <div id="phpmae">
         <div id="phpDiv">
         <?php
-            //Variaveis
-            if($_POST){
-            $largura = $_POST['largura'];
-            ?><span class="titulo_black"><?php echo 'Largura:'; ?></span><span class="titulo_red"><?php echo $largura; ?></span><?php
-            }
+            
             
             $data = date('Y-m-d');
             $dataSplit = explode("-", $data);
