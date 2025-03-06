@@ -56,40 +56,30 @@
             while (($dados = mysqli_fetch_assoc($Verificador))) {
             
                 if ($dados['idpedido'] == $dataSplit[1] . '-' . $dataSplit[2]) {
-                    
-                    if ($dados['imagem']) {
-                    
-                        
 
-                        ?><div class="pedidosImagem"><?php
-                        print('Pedido do Dia: ' . $dataSplit[1] . '/' . $dataSplit[2] . '</br>');
-                        print($dados['descricaoPedido'] . "<br>");
-                        print($dados['idpedidos'] . "<br>");
-                        ?><img class = "Imagem" src="<?php echo $dados['imagem'];?>" alt="Imagem do Pedido"><?php
-                    }
-                
+                    ?><div class="pedidostexto"><?php
+                    print('Pedido do Dia: ' . $dataSplit[1] . '/' . $dataSplit[2] . '</br>');
+                    print($dados['descricaoPedido'] . "<br>");
+                    print($dados['idpedidos'] . "<br>");
                     ?></div><?php
                 }
             }
-            
-            ?>
-            
+            ?>    
         </div>
         <div id="php2">
             <?php
-            $imagem = "SELECT DISTINCT imagem FROM pedidos";
+            $imagem = "SELECT DISTINCT imagem FROM pedidosp";
             $imagemConectar = mysqli_query($conectar, $imagem);
 
             while ($dadosImagem = mysqli_fetch_assoc($imagemConectar)) {
-            
+                       
+                ?><div class="pedidosImagem"><?php
+                ?><img class = "Imagem" src="<?php echo $dadosImagem['imagem'];?>" alt="Imagem do Pedido"><?php
+                ?></div><?php
                     
-                    ECHO "VAIIIII";            
-                        ?><img class = "Imagem" src="<?php echo $dadosImagem['imagem'];?>" alt="Imagem do Pedido"><?php
-                    
-                
-                    ?></div><?php
                 
             }
+            ?></div><?php
             ?>
         </div>
     </div>

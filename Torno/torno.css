@@ -86,16 +86,17 @@ main{
 /*--------------------------------------- Pedidos ----------------------------------------*/
 #phpmae{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    width: 100%;
 }
 #phpdiv{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
+    width: 80%;
     font-size: 90%;
     padding: 5%;
 }
@@ -104,7 +105,7 @@ main{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
+    width: 20%;
     font-size: 90%;
     padding: 5%;
 }
@@ -114,24 +115,37 @@ main{
     justify-content: center;
     flex-direction: column;
 }
-
+.pedidostexto{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-bottom: 30px;
+    font-size: 150%;
+    background-color: rgb(189, 189, 189);
+    border: solid black 5px;
+    border-radius: 10px;
+    height: 100px;    
+    width: 100%;
+}
 .pedidosImagem{
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
     flex-direction: row;
-    margin-bottom: 70px;
+    margin-bottom: 30px;
     font-size: 150%;
     background-color: rgb(189, 189, 189);
     border: solid black 5px;
     border-radius: 10px;
-    height: 100%;    
-    width: 50%;
+    height: 40%;    
+    width: 40%;
 }
 
 .Imagem{
-    height: 260px;
-    width: 260px;
+    height: 80%;
+    width: 80%;
+    margin: 10%;
 }
 #formlario{
     display: flex;
