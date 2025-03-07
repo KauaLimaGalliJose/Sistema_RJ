@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../coroa.png" type="image/x-icon">
-    <link rel="stylesheet" href="torno.css">
-    <script src="torno.js" defer></script>
-    <title>Torno</title>
+    <link rel="stylesheet" href="pedidos.css">
+    <script src="pedidos.js" defer></script>
+    <title>Pedidos</title>
 </head>
 <body>
 <form id="formulario" method="POST" action="torno.php">
@@ -13,7 +13,7 @@
         <div id="cabecalho_menu">
             <div id="casa">
                 <button type="button" value=""  class="botao" >
-                <a href="../index.html"><img class="itens" src="../Escritorio/casa.png"></a>
+                <a href="../PG2-Escritorio.html"><img class="itens" src="../casa.png"></a>
                 </button>
             </div>
                 <select name="largura" id="larguraSelect">
@@ -36,7 +36,7 @@
         </div>
     </div>
 </form>
-    <?php include_once('../conexao.php');?>
+    <?php include_once('../../conexao.php');?>
     <?php
         //Variaveis
         if($_POST){
@@ -56,7 +56,7 @@
             $dataSplit = explode("-", $data);
 
             // Recupera todos os pedidos com idpedidos e imagem
-            $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido,idpedidos FROM pedidosp ORDER BY largura ASC";
+            $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido,idpedidos FROM pedidosp ORDER BY idpedidos ASC";
             $Verificador = mysqli_query($conectar, $dadosVerificador);
     
             while (($dados = mysqli_fetch_assoc($Verificador))) {
@@ -64,9 +64,12 @@
                 if ($dados['idpedido'] == $dataSplit[1] . '-' . $dataSplit[2]) {
 
                     ?><div class="pedidostexto"><label><?php
-                    print('Pedido do Dia: '); ?><span class="font_red"><?php print($dataSplit[1] . '/' . $dataSplit[2] . "<br>");?></span><?php
-                    print($dados['descricaoPedido'] . "<br>");
-                    print($dados['idpedidos'] . "<br>");
+                    ?><div class="tituloPedido">
+                        <?php print('Pedido do Dia: '); ?><span class="font_red"><?php print($dataSplit[1] . '/' . $dataSplit[2] . "<br>");?></span>
+                    </div>
+                    <?php
+                    print("<br>" . $dados['descricaoPedido'] . "<br>");
+                    print('<br>' . $dados['idpedido'] . "<br>");
                     ?></label></div><?php
                 }
             }
@@ -74,15 +77,16 @@
         </div>
         <div id="php2">
             <?php
-            $imagem = "SELECT imagem  FROM pedidosp ORDER BY largura ASC";
+            $imagem = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem  FROM pedidosp ORDER BY idpedidos ASC";
             $imagemConectar = mysqli_query($conectar, $imagem);
 
             while ($dadosImagem = mysqli_fetch_assoc($imagemConectar)) {
-                       
-                ?><div class="pedidosImagem"><?php
-                ?><img class = "Imagem" src="<?php echo $dadosImagem['imagem'];?>" alt="Imagem do Pedido"><?php
-                ?></div><?php
-                
+                 
+                if ($dadosImagem['idpedido'] == $dataSplit[1] . '-' . $dataSplit[2]) {
+                    ?><div class="pedidosImagem"><?php
+                    ?><img class = "Imagem" src="<?php echo '../' .$dadosImagem['imagem'];?>" alt="Imagem do Pedido"><?php
+                    ?></div><?php
+                }
             }
             ?></div><?php
             ?>
