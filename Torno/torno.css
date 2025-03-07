@@ -102,11 +102,11 @@ main{
 }
 #php2{
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     flex-direction: column;
     height: 100%;
-    width: 70%;
+    width: 60%;
     font-size: 90%;
     padding-top: 2%;
     
@@ -132,7 +132,7 @@ main{
 }
 .pedidosImagem{
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-around;
     flex-direction: row;
     margin-bottom: 100px;
@@ -160,6 +160,7 @@ main{
 }
 .font_red{
     color: rgb(153, 0, 0);
+    font-size: 120%;
     font-weight: 700;
 }
 .titulo_black{
