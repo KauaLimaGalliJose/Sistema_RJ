@@ -62,11 +62,11 @@
             
                 if ($dados['idpedido'] == $dataSplit[1] . '-' . $dataSplit[2]) {
 
-                    ?><div class="pedidostexto"><?php
-                    print('Pedido do Dia: ' . $dataSplit[1] . '/' . $dataSplit[2] . '</br>');
+                    ?><div class="pedidostexto"><label><?php
+                    print('Pedido do Dia: '); ?><span class="font_red"><?php print($dataSplit[1] . '/' . $dataSplit[2] . "<br>");?></span><?php
                     print($dados['descricaoPedido'] . "<br>");
                     print($dados['idpedidos'] . "<br>");
-                    ?></div><?php
+                    ?></label></div><?php
                 }
             }
             ?>    
