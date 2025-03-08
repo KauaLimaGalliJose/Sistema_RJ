@@ -2,9 +2,8 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="../coroa.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../coroa.png" type="image/x-icon">
     <link rel="stylesheet" href="pedidos.css">
-    <script src="pedidos.js" defer></script>
     <title>Pedidos</title>
 </head>
 <body>
