@@ -12,7 +12,7 @@
 </head>
 <body>
    <main>
-    <form id="formulario" enctype="multipart/form-data" action="PG2_Escritorio1.php" method="post">
+    <form id="formulario" enctype="multipart/form-data" action="PG2-Escritorio.php" method="post">
         <div id="cabecalho">
             <div id="cabecalho_cima">
                 <div id="casa">
@@ -135,6 +135,7 @@
                                     <option id="8mm" >8mm</option>
                                     <option id="9mm" >9mm</option>
                                     <option id="10mm" >10mm</option>
+                                    
                                 </select>
                             </div>
                             <div id="grav_externa">

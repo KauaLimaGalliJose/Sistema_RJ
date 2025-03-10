@@ -7,15 +7,21 @@ export function voltar(contador_P, contador_Pg, contador_Pe) {
 
     if (p.selected) {
         contador_P--;
-        document.getElementById('P1').innerHTML = "P" + contador_P;
+        let contadordisplayP = contador_P + 1
+        document.getElementById('P1').innerHTML ='PF' + contadordisplayP;
+        document.getElementById('P1').value ='PF' + contador_P;
     }
     if (pg.selected) {
         contador_Pg--;
-        document.getElementById('PG1').innerHTML = "G" + contador_Pg;
+        let contadordisplayPg = contador_Pg + 1
+        document.getElementById('PG1').innerHTML = "PG" + contadordisplayPg;
+        document.getElementById('PG1').value ='PG' + contador_Pg;
     }
     if (pe.selected) {
         contador_Pe--;
-        document.getElementById('PE1').innerHTML = "E" + contador_Pe;
+        let contadordisplayPe = contador_Pe + 1
+        document.getElementById('PE1').innerHTML = "PE" +  contadordisplayPe;
+        document.getElementById('PE1').value ='PE' + contador_Pe;
     }
 
     return { contador_P, contador_Pg, contador_Pe };

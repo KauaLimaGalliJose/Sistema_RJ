@@ -7,45 +7,29 @@
     <title>Pedidos</title>
 </head>
 <body>
-<form id="formulario" method="POST" action="torno.php">
+<form id="formulario" method="POST" action="pedidos.php">
     <div id="cabecalho">
         <div id="cabecalho_menu">
             <div id="casa">
                 <button type="button" value=""  class="botao" >
-                <a href="../PG2-Escritorio.html"><img class="itens" src="../casa.png"></a>
+                <a href="../PG2-Escritorio.php"><img class="itens" src="../casa.png"></a>
                 </button>
             </div>
-                <select name="largura" id="larguraSelect">
-                        <option value="todos">Todos</option>
-                        <option value="2mm">2mm</option>
-                        <option value="3mm">3mm</option>
-                        <option value="4mm">4mm</option>
-                        <option value="5mm">5mm</option>
-                        <option value="6mm">6mm</option>
-                        <option value="7mm">7mm</option>
-                        <option value="8mm">8mm</option>
-                        <option value="9mm">9mm</option>
-                        <option value="10mm">10mm</option>
-                </select>
-
                 <div id="pesquisa">
                     <input id="pesquisaInput" type="text" oninput="this.value = this.value.toUpperCase();" placeholder="Número Pedido">
+                </div>
+                <div id="pedidosDiv">
+                    <input class="selecao" value="sim" name="TodosSelect" type="checkbox">Todos os Pedidos
+                    <input class="selecao" value="sim" name="pedidosAntigosSelect" type="checkbox">Pedidos Antigos
+                    <input class="selecao" value="sim" name="pfSelect" type="checkbox">PF
+                    <input class="selecao" value="sim" name="pgSelect" type="checkbox">PG
+                    <input class="selecao" value="sim" name="peSelect" type="checkbox">PE
                 </div>
                 <button type="submit" id="enviar"><h1>Enviar</h1></button>
         </div>
     </div>
 </form>
     <?php include_once('../../conexao.php');?>
-    <?php
-        //Variaveis
-        if($_POST){
-            $largura = $_POST['largura'];
-            ?><div id="largura">
-            <span class="titulo_black"><?php echo 'Largura:'; ?></span><span class="titulo_red"><?php echo $largura; ?></span><?php
-            ?></div><?php
-            
-            }
-        ?>
     <div id="phpmae">
         <div id="phpDiv">
         <?php
@@ -55,21 +39,32 @@
             $dataSplit = explode("-", $data);
 
             // Recupera todos os pedidos com idpedidos e imagem
-            $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido,idpedidos FROM pedidosp ORDER BY idpedidos ASC";
+            $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido,idpedidos,numF,numeM,gravacaoInterna FROM pedidosp ORDER BY idpedidos ASC";
             $Verificador = mysqli_query($conectar, $dadosVerificador);
     
             while (($dados = mysqli_fetch_assoc($Verificador))) {
             
                 if ($dados['idpedido'] == $dataSplit[1] . '-' . $dataSplit[2]) {
+                    $pf = explode("-" , $dados['idpedidos']);
 
                     ?><div class="pedidostexto"><label><?php
                     ?><div class="tituloPedido">
-                        <?php print('Pedido do Dia: '); ?><span class="font_red"><?php print($dataSplit[1] . '/' . $dataSplit[2] . "<br>");?></span>
+                        <h2><?php print( $pf[0].' -- '); ?><span class="font_red"><?php print($dataSplit[1] . '/' . $dataSplit[2] . "<br>");?></span></h2>
                     </div>
                     <?php
-                    print("<br>" . $dados['descricaoPedido'] . "<br>");
-                    print('<br>' . $dados['idpedido'] . "<br>");
-                    ?></label></div><?php
+                    if($dados['gravacaoInterna'] == NULL){
+                        print("<br>" . $dados['descricaoPedido'] . "<br>");
+                        print('<br> Feminina:');?><span class="font_red"><?php print($dados['numF']. "<br>"); ?></span>
+                        <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
+                        </label></div><?php
+                    }
+                    else{
+                        print("<br>" . $dados['descricaoPedido'] . "<br>");
+                        print('<br> Feminina:');?><span class="font_red"><?php print($dados['numF']. "<br>"); ?></span>
+                        <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
+                        <?php print('Gravação:' . $dados['gravacaoInterna']);?>
+                        </label></div><?php
+                    }
                 }
             }
             ?>    
@@ -88,7 +83,7 @@
                 }
             }
             ?></div><?php
-            ?>
+        ?>
         </div>
     </div>
 </body>

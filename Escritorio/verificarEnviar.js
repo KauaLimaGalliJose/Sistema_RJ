@@ -161,6 +161,10 @@ export function enviar(){
                 method: "POST",
                 body: dadosInputs
             })
+            fetch("./PG2-Escritorio.php", { 
+                method: "POST",
+                body: dadosInputs
+            })
             .then(response => response.text()) 
             .then(data => {
                 console.log("Resposta do servidor: " + data);

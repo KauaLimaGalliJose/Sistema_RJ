@@ -71,9 +71,28 @@ main{
     font-size: 120%;
     font-weight: 700;
 }
+#pedidosDiv{
+    display: flex;
+    align-items: center;
+    font-style: normal;
+    font-family: cursive;
+    font-size: 120%;
+    font-weight: 700;
+    margin: 15px;
+}
+.selecao{
+    margin-left:10px;
+    margin-right:10px;
+    border: solid black 5px;
+    border-radius: 5px;
+    height: 20px;
+    width: 20px;
+}
 #enviar{
     display: flex; 
     margin-left: 15px;
+    font-style: normal;
+    font-family: cursive;
     background-color: blanchedalmond;
     border: none;
 }
