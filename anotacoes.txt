@@ -1,3 +1,4 @@
 dar baixa na gravação automatico (sem precisar de planilha) ◄ Fazer
 colocar alert quando tiver algum pedido repetido ◄ Fazer
-colocar caixa de select para separar pedidos no pedidos.php◄ Fazer
+colocar caixa de select para separar pedidos no pedidos.php ◄ Fazer
+Pegar PF do Banco de dados e jogar com PHP no PG2-EScritorio.php ◄ Fazer

@@ -39,7 +39,7 @@
             $dataSplit = explode("-", $data);
 
             // Recupera todos os pedidos com idpedidos e imagem
-            $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido,idpedidos,numF,numeM,gravacaoInterna FROM pedidosp ORDER BY idpedidos ASC";
+            $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido,idpedidos,numF,numeM,gravacaoInterna FROM pedidosp ORDER BY id ASC";
             $Verificador = mysqli_query($conectar, $dadosVerificador);
     
             while (($dados = mysqli_fetch_assoc($Verificador))) {
@@ -71,7 +71,7 @@
         </div>
         <div id="php2">
             <?php
-            $imagem = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem  FROM pedidosp ORDER BY idpedidos ASC";
+            $imagem = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem  FROM pedidosp ORDER BY id ASC";
             $imagemConectar = mysqli_query($conectar, $imagem);
 
             while ($dadosImagem = mysqli_fetch_assoc($imagemConectar)) {
