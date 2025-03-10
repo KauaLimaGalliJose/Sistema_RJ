@@ -1,3 +1,13 @@
+<?php
+    include_once('../conexao.php');
+    $dadosVerificadorP = "SELECT * FROM pedidosp ORDER BY id DESC LIMIT 1";
+    $VerificadorP = mysqli_query($conectar, $dadosVerificadorP);
+?>
+ <?php
+    function pf($numeroPf){
+        setcookie('contador',$numeroPf, time() + 10, "/");
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -88,8 +98,19 @@
                         Número do Pedido:
                           <select id="n_p" name="numeroPedido" class="pedido" >
                                 <option value='N'  id="Nenhum" >N</option>
-    
-                                <option value='PF'  id="P1" >PF1</option>
+                                <?php
+                                while($linha = mysqli_fetch_assoc($VerificadorP)){
+                                    $pf = explode("-",$linha['idpedidos']);
+                                    $numeroPf = str_replace("PF","",$pf[0]);
+                                    $numeroPfDisplay = $numeroPf + 1;
+                                    $letraPf = preg_replace("/[^a-zA-Z]/", "", $pf[0]);
+                                    pf($numeroPf);
+                                }
+                                ?>
+                                <option value='<?php echo $letraPf . $numeroPf; ?>'  id="P1" ><?php
+                                    echo  $letraPf . $numeroPfDisplay;
+                                
+                                ?></option>
                            
                                 <option value="PG" id="PG1" >PG1</option>
                            
