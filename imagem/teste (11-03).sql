@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10/03/2025 às 14:51
+-- Tempo de geração: 11/03/2025 às 19:35
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `pedidosp` (
-  `id` int(11) NOT NULL,
+  `contadorpf` int(11) NOT NULL,
   `idpedidos` varchar(50) NOT NULL,
   `cliente` varchar(35) NOT NULL,
   `nomePedido` varchar(60) NOT NULL,
@@ -51,11 +51,13 @@ CREATE TABLE `pedidosp` (
 -- Despejando dados para a tabela `pedidosp`
 --
 
-INSERT INTO `pedidosp` (`id`, `idpedidos`, `cliente`, `nomePedido`, `numF`, `numeM`, `descricaoPedido`, `descricaoAlianca`, `largura`, `gravacaoInterna`, `gravacaoExterna`, `outrosClientes`, `imagem`, `parEstoqueF`, `parEstoqueM`, `parPedra`, `parSemPedra`) VALUES
-(1, 'PF1-2025-03-10', 'Mercado_Livre', '10', 10, 10, '10', '', '2mm', '', '', '', '../imagem/aliança com tres frisos.jpg', '', '', '', ''),
-(2, 'PF2-2025-03-10', 'Mercado_Livre', '10', 10, 10, '10', '', '2mm', '', '', '', '../imagem/aliança com tres frisos.jpg', '', '', '', ''),
-(4, 'PF3-2025-03-10', 'Mercado_Livre', '10', 10, 10, '10', '', '2mm', '', '', '', '../imagem/aliança com tres frisos.jpg', '', '', '', ''),
-(7, 'PF4-2025-03-10', 'Mercado_Livre', '.jk.jk.j', 12, 15, 'fhdfh', 'hdfhdf', '2mm', '25/01/2022\r\n\r\n', '', '', '../imagem/chanfrada.png', '', '', '', '');
+INSERT INTO `pedidosp` (`contadorpf`, `idpedidos`, `cliente`, `nomePedido`, `numF`, `numeM`, `descricaoPedido`, `descricaoAlianca`, `largura`, `gravacaoInterna`, `gravacaoExterna`, `outrosClientes`, `imagem`, `parEstoqueF`, `parEstoqueM`, `parPedra`, `parSemPedra`) VALUES
+(0, 'PF00-2025-03-11', 'teste', 'teste', 20, 20, 'teste', 'teste', '2mm', '', '', '', '../', '', '', '', ''),
+(0, 'PF1-2025-03-11', 'Mercado_Livre', 'nao sei', 10, 10, '10', '10', '2mm', '', '', '', '../imagem/aliança com tres frisos.jpg', '', '', '', ''),
+(0, 'PF2-2025-03-11', 'Mercado_Livre', 'Jade', 10, 10, '10', '10', '2mm', '', '', '', '../imagem/Jade.png', '', '', '', ''),
+(0, 'PF5-2025-03-11', 'Mercado_Livre', 'Chanfrada', 10, 10, '10', '10', '2mm', '', '', '', '../imagem/aliança com tres frisos2_ACD_0.jpg', '', '', '', ''),
+(0, 'PF6-2025-03-11', 'Mercado_Livre', 'Chanfrada', 10, 10, '10', '10', '2mm', '', '', '', '../imagem/aliança com tres frisos2_ACD_0.jpg', '', '', '', ''),
+(0, 'PF7-2025-03-11', 'Mercado_Livre', 'Chanfrada', 10, 10, '10', '10', '2mm', '', '', '', '../imagem/aliança com tres frisos2_ACD_0.jpg', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -64,7 +66,7 @@ INSERT INTO `pedidosp` (`id`, `idpedidos`, `cliente`, `nomePedido`, `numF`, `num
 --
 
 CREATE TABLE `pedidospe` (
-  `id` int(11) NOT NULL,
+  `contadorpe` int(11) NOT NULL,
   `idpedidos` varchar(50) NOT NULL,
   `cliente` varchar(35) NOT NULL,
   `nomePedido` varchar(60) NOT NULL,
@@ -90,7 +92,7 @@ CREATE TABLE `pedidospe` (
 --
 
 CREATE TABLE `pedidospg` (
-  `id` int(11) NOT NULL,
+  `contadorpg` int(11) NOT NULL,
   `idpedidos` varchar(50) NOT NULL,
   `cliente` varchar(35) NOT NULL,
   `nomePedido` varchar(60) NOT NULL,
@@ -117,44 +119,19 @@ CREATE TABLE `pedidospg` (
 -- Índices de tabela `pedidosp`
 --
 ALTER TABLE `pedidosp`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idpedidos` (`idpedidos`);
+  ADD PRIMARY KEY (`idpedidos`);
 
 --
 -- Índices de tabela `pedidospe`
 --
 ALTER TABLE `pedidospe`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idpedidos` (`idpedidos`);
+  ADD PRIMARY KEY (`idpedidos`);
 
 --
 -- Índices de tabela `pedidospg`
 --
 ALTER TABLE `pedidospg`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idpedidos` (`idpedidos`);
-
---
--- AUTO_INCREMENT para tabelas despejadas
---
-
---
--- AUTO_INCREMENT de tabela `pedidosp`
---
-ALTER TABLE `pedidosp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de tabela `pedidospe`
---
-ALTER TABLE `pedidospe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `pedidospg`
---
-ALTER TABLE `pedidospg`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  ADD PRIMARY KEY (`idpedidos`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

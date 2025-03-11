@@ -1,28 +1,39 @@
 <?php
     include_once('../conexao.php');
     $data = date('Y-m-d');
-    $dadosVerificadorP = "SELECT * FROM pedidosp WHERE idpedidos LIKE '%$data%' ORDER BY id DESC LIMIT 1";
-    $VerificadorP = mysqli_query($conectar, $dadosVerificadorP);
+    $id = $_COOKIE["Contador_JS_Pf"];
+    //Conectar com Banco de Dados
+    
+    //PF
+    $pf00 = "SELECT idpedidos FROM pedidosp WHERE idpedidos LIKE '%PF00-$data%'";
+    $conectarpf00 = mysqli_query($conectar, $pf00);
+
+    //Criando o PF0
+    if(mysqli_num_rows($conectarpf00) == 0 ){
+    mysqli_query($conectar, "INSERT INTO pedidosp 
+    (contadorpf, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
+    VALUES ('$id','PF00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
+    }
+    
 ?>
  <?php
+    // Enviando dados do Banco de Dados para o contador
     function pf($nome,$numero){
-        setcookie($nome,$numero, time() + 10000, "/");
+        setcookie($nome,$numero, time() + 10000000, "/");
     }
+
+    //Conectar com Banco de Dados
+    $dadosVerificadorP = "SELECT * FROM pedidosp WHERE idpedidos LIKE '%$data%' ORDER BY contadorpf DESC LIMIT 1";
+    $VerificadorP = mysqli_query($conectar, $dadosVerificadorP);
+
     while($linha = mysqli_fetch_assoc($VerificadorP)){
-        if(mysqli_num_rows($VerificadorP) > 0 ){
-            $pf = explode("-",$linha['idpedidos']);
-            $numeroPf = str_replace("PF","",$pf[0]);
-            $numeroPfDisplay = $numeroPf + 1;
-            $letraPf = preg_replace("/[^a-zA-Z]/", "", $pf[0]);
-            pf('contadorPf',$numeroPf);
-        }
-        else{
-            $numeroPf = 0;
-            $numeroPfDisplay = $numeroPf + 1;
-            $letraPf = "PF";
-            pf('contadorPf',$numeroPf);
-        }
+        $pf = explode("-",$linha['idpedidos']);
+        $numeroPf = str_replace("PF","",$pf[0]);
+        $numeroPfDisplay = $numeroPf + 1;
+        $letraPf = preg_replace("/[^a-zA-Z]/", "", $pf[0]);
+        pf('contadorPf',$numeroPf);
     }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
