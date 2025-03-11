@@ -9,12 +9,19 @@
         setcookie($nome,$numero, time() + 10000, "/");
     }
     while($linha = mysqli_fetch_assoc($VerificadorP)){
-
-        $pf = explode("-",$linha['idpedidos']);
-        $numeroPf = str_replace("PF","",$pf[0]);
-        $numeroPfDisplay = $numeroPf + 1;
-        $letraPf = preg_replace("/[^a-zA-Z]/", "", $pf[0]);
-        pf('contadorPf',$numeroPf);
+        if(mysqli_num_rows($VerificadorP) > 0 ){
+            $pf = explode("-",$linha['idpedidos']);
+            $numeroPf = str_replace("PF","",$pf[0]);
+            $numeroPfDisplay = $numeroPf + 1;
+            $letraPf = preg_replace("/[^a-zA-Z]/", "", $pf[0]);
+            pf('contadorPf',$numeroPf);
+        }
+        else{
+            $numeroPf = 0;
+            $numeroPfDisplay = $numeroPf + 1;
+            $letraPf = "PF";
+            pf('contadorPf',$numeroPf);
+        }
     }
 ?>
 <!DOCTYPE html>
