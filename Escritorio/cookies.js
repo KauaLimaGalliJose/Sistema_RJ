@@ -1,5 +1,5 @@
 //Variaveis PHP que está no Coockies---
-function getCookie(nome) {
+export function getCookie(nome) {
    
     let cookies = document.cookie.split("; ");
     
@@ -15,4 +15,3 @@ function getCookie(nome) {
     }
     return null; 
 }
-export let contadorPhp = getCookie("contador");

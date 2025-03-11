@@ -1,11 +1,12 @@
 <?php
     include_once('../conexao.php');
-    $dadosVerificadorP = "SELECT * FROM pedidosp ORDER BY id DESC LIMIT 1";
+    $data = date('Y-m-d');
+    $dadosVerificadorP = "SELECT * FROM pedidosp WHERE idpedidos LIKE '%$data%' ORDER BY id DESC LIMIT 1";
     $VerificadorP = mysqli_query($conectar, $dadosVerificadorP);
 ?>
  <?php
-    function pf($numeroPf){
-        setcookie('contador',$numeroPf, time() + 10, "/");
+    function pf($nome,$numero){
+        setcookie($nome,$numero, time() + 10000, "/");
     }
 ?>
 <!DOCTYPE html>
@@ -100,11 +101,12 @@
                                 <option value='N'  id="Nenhum" >N</option>
                                 <?php
                                 while($linha = mysqli_fetch_assoc($VerificadorP)){
+
                                     $pf = explode("-",$linha['idpedidos']);
                                     $numeroPf = str_replace("PF","",$pf[0]);
                                     $numeroPfDisplay = $numeroPf + 1;
                                     $letraPf = preg_replace("/[^a-zA-Z]/", "", $pf[0]);
-                                    pf($numeroPf);
+                                    pf('contadorPf',$numeroPf);
                                 }
                                 ?>
                                 <option value='<?php echo $letraPf . $numeroPf; ?>'  id="P1" ><?php
