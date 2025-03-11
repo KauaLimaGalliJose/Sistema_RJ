@@ -8,6 +8,14 @@
     function pf($nome,$numero){
         setcookie($nome,$numero, time() + 10000, "/");
     }
+    while($linha = mysqli_fetch_assoc($VerificadorP)){
+
+        $pf = explode("-",$linha['idpedidos']);
+        $numeroPf = str_replace("PF","",$pf[0]);
+        $numeroPfDisplay = $numeroPf + 1;
+        $letraPf = preg_replace("/[^a-zA-Z]/", "", $pf[0]);
+        pf('contadorPf',$numeroPf);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -99,20 +107,9 @@
                         Número do Pedido:
                           <select id="n_p" name="numeroPedido" class="pedido" >
                                 <option value='N'  id="Nenhum" >N</option>
-                                <?php
-                                while($linha = mysqli_fetch_assoc($VerificadorP)){
-
-                                    $pf = explode("-",$linha['idpedidos']);
-                                    $numeroPf = str_replace("PF","",$pf[0]);
-                                    $numeroPfDisplay = $numeroPf + 1;
-                                    $letraPf = preg_replace("/[^a-zA-Z]/", "", $pf[0]);
-                                    pf('contadorPf',$numeroPf);
-                                }
-                                ?>
-                                <option value='<?php echo $letraPf . $numeroPf; ?>'  id="P1" ><?php
-                                    echo  $letraPf . $numeroPfDisplay;
-                                
-                                ?></option>
+                                <option value='<?php echo $letraPf . $numeroPf; ?>' id="P1" >
+                                    <?php echo  $letraPf . $numeroPfDisplay;?>
+                                </option>
                            
                                 <option value="PG" id="PG1" >PG1</option>
                            
