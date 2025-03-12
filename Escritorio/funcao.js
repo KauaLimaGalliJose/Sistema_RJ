@@ -1,4 +1,4 @@
-import { alertcontador } from "./cookies.js";
+
 
 // funcao.js
 export function voltar(contador_P, contador_Pg, contador_Pe) {
@@ -73,4 +73,3 @@ export function limpar(){
     document.getElementById('modelo_rainha').style.display = 'block';
     document.getElementById('uploadimg').src = '#';
 }
-
