@@ -3,6 +3,37 @@
     include_once('../conexao.php');
     $data = date('Y-m-d');
 ?>
+<?php /////////////////////////////////////////////////////////////////////////////////////////
+    //Conectar com Banco de Dados para Criar o Pedido PF00 ,PG00 ,PE00
+    //PF
+    $pf00 = "SELECT idpedidos FROM pedidosp WHERE idpedidos LIKE '%PF00-$data%'";
+    $conectarpf00 = mysqli_query($conectar, $pf00);
+    //PG
+    $pg00 = "SELECT idpedidos FROM pedidospg WHERE idpedidos LIKE '%PG00-$data%'";
+    $conectarpg00 = mysqli_query($conectar, $pg00);
+    //PE
+    $pe00 = "SELECT idpedidos FROM pedidospe WHERE idpedidos LIKE '%PE00-$data%'";
+    $conectarpe00 = mysqli_query($conectar, $pe00);
+
+    //Criando o PF0
+    if(mysqli_num_rows($conectarpf00) == 0 ){
+        mysqli_query($conectar, "INSERT INTO pedidosp 
+        (contadorpf, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
+        VALUES (0,'PF00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
+    }
+     //Criando o PG0
+    if(mysqli_num_rows($conectarpg00) == 0 ){
+        mysqli_query($conectar, "INSERT INTO pedidospg
+        (contadorpg, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
+        VALUES (0,'PG00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
+        }
+    //Criando o PE0
+    if(mysqli_num_rows($conectarpe00) == 0 ){
+        mysqli_query($conectar, "INSERT INTO pedidospe
+        (contadorpe, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
+        VALUES (0,'PE00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
+        }
+?>
  <?php /////////////////////////////////////////////////////////////////////////////////////
     // Para Enviar Cookies 
     function CokiesP($nome,$numero){
@@ -49,37 +80,6 @@
         $idPe = $numeroPeDisplay;
         CokiesP('idPe',$idPe);
     }
-?>
-<?php /////////////////////////////////////////////////////////////////////////////////////////
-    //Conectar com Banco de Dados para Criar o Pedido PF00 ,PG00 ,PE00
-    //PF
-    $pf00 = "SELECT idpedidos FROM pedidosp WHERE idpedidos LIKE '%PF00-$data%'";
-    $conectarpf00 = mysqli_query($conectar, $pf00);
-    //PG
-    $pg00 = "SELECT idpedidos FROM pedidospg WHERE idpedidos LIKE '%PG00-$data%'";
-    $conectarpg00 = mysqli_query($conectar, $pg00);
-    //PE
-    $pe00 = "SELECT idpedidos FROM pedidospe WHERE idpedidos LIKE '%PE00-$data%'";
-    $conectarpe00 = mysqli_query($conectar, $pe00);
-
-    //Criando o PF0
-    if(mysqli_num_rows($conectarpf00) == 0 ){
-        mysqli_query($conectar, "INSERT INTO pedidosp 
-        (contadorpf, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
-        VALUES (0,'PF00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
-    }
-     //Criando o PG0
-    if(mysqli_num_rows($conectarpg00) == 0 ){
-        mysqli_query($conectar, "INSERT INTO pedidospg
-        (contadorpg, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
-        VALUES (0,'PG00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
-        }
-    //Criando o PE0
-    if(mysqli_num_rows($conectarpe00) == 0 ){
-        mysqli_query($conectar, "INSERT INTO pedidospe
-        (contadorpe, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
-        VALUES (0,'PE00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
-        }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

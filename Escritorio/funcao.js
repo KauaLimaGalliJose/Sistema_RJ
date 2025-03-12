@@ -1,3 +1,5 @@
+import { getCookie } from "./cookies.js";
+
 // funcao.js
 export function voltar(contador_P, contador_Pg, contador_Pe) {
     let numeroPedido = document.getElementById('n_p');
@@ -10,6 +12,8 @@ export function voltar(contador_P, contador_Pg, contador_Pe) {
         let contadordisplayP = contador_P + 1
         document.getElementById('P1').innerHTML ='PF' + contadordisplayP;
         document.getElementById('P1').value ='PF' + contador_P;
+        getCookie('idPf') = contadordisplayP;
+        document.cookie = "usuario=Joao; expires=Fri, 31 Dec 2025 23:59:59 GMT; path=/";
     }
     if (pg.selected) {
         contador_Pg--;
@@ -38,6 +42,7 @@ export function avancar(contador_P, contador_Pg, contador_Pe) {
         let contadordisplayP = contador_P +1
         document.getElementById('P1').innerHTML ='PF' + contadordisplayP;
         document.getElementById('P1').value ='PF' + contador_P;
+        getCookie('idPf') = contadordisplayP;;
     }
     if (pg.selected) {
         contador_Pg++;
@@ -70,3 +75,5 @@ export function limpar(){
     document.getElementById('modelo_rainha').style.display = 'block';
     document.getElementById('uploadimg').src = '#';
 }
+
+export {getCookie};
