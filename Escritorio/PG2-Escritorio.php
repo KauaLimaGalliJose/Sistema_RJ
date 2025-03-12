@@ -1,40 +1,63 @@
 <?php
+    //Variaveis Global
     include_once('../conexao.php');
     $data = date('Y-m-d');
 ?>
  <?php /////////////////////////////////////////////////////////////////////////////////////
-    // Enviando dados do Banco de Dados para o contador
-    function pf($nome,$numero){
+    // Para Enviar Cookies 
+    function CokiesP($nome,$numero){
         setcookie($nome,intval($numero), time()+ 100000, "/");
     }
 
     //Conectar com Banco de Dados
+    //PF
     $dadosVerificadorP = "SELECT * FROM pedidosp WHERE idpedidos LIKE '%$data%' ORDER BY contadorpf DESC LIMIT 1";
     $VerificadorP = mysqli_query($conectar, $dadosVerificadorP);
 
-    while($linha = mysqli_fetch_assoc($VerificadorP)){
-        $pf = explode("-",$linha['idpedidos']);
+    while($linhapf = mysqli_fetch_assoc($VerificadorP)){
+        $pf = explode("-",$linhapf['idpedidos']);
         $numeroPf = str_replace("PF","",$pf[0]);
         $numeroPfDisplay = $numeroPf + 1;
         $letraPf = preg_replace("/[^a-zA-Z]/", "", $pf[0]);
-        pf('contadorPf',$numeroPf);
-        $id = $numeroPfDisplay;
-        pf('id',$id);
+        CokiesP('contadorPf',$numeroPf);
+        $idPf = $numeroPfDisplay;
+        CokiesP('idPf',$idPf);
+    }
+    //PG
+    $dadosVerificadorPG = "SELECT * FROM pedidospg WHERE idpedidos LIKE '%$data%' ORDER BY contadorpg DESC LIMIT 1";
+    $VerificadorPG= mysqli_query($conectar, $dadosVerificadorPG);
+
+    while($linhapg = mysqli_fetch_assoc($VerificadorPG)){
+        $pg = explode("-",$linhapg['idpedidos']);
+        $numeroPg = str_replace("PG","",$pg[0]);
+        $numeroPgDisplay = $numeroPg + 1;
+        $letraPg = preg_replace("/[^a-zA-Z]/", "", $pg[0]);
+        CokiesP('contadorPg',$numeroPg);
+        $idPg = $numeroPgDisplay;
+        CokiesP('idPg',$idPg);
     }
 ?>
 <?php /////////////////////////////////////////////////////////////////////////////////////////
-    //Conectar com Banco de Dados
+    //Conectar com Banco de Dados para Criar o Pedido PF00 ,PG00 ,PE00
     //PF
     $pf00 = "SELECT idpedidos FROM pedidosp WHERE idpedidos LIKE '%PF00-$data%'";
     $conectarpf00 = mysqli_query($conectar, $pf00);
+    //PG
+    $pg00 = "SELECT idpedidos FROM pedidospg WHERE idpedidos LIKE '%PG00-$data%'";
+    $conectarpg00 = mysqli_query($conectar, $pg00);
 
     //Criando o PF0
     if(mysqli_num_rows($conectarpf00) == 0 ){
-    mysqli_query($conectar, "INSERT INTO pedidosp 
-    (contadorpf, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
-    VALUES (0,'PF00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
+        mysqli_query($conectar, "INSERT INTO pedidosp 
+        (contadorpf, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
+        VALUES (0,'PF00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
     }
-    
+     //Criando o PG0
+    if(mysqli_num_rows($conectarpg00) == 0 ){
+        mysqli_query($conectar, "INSERT INTO pedidospg
+        (contadorpg, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
+        VALUES (0,'PG00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
+        }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -130,7 +153,7 @@
                                     <?php echo  $letraPf . $numeroPfDisplay;?>
                                 </option>
                            
-                                <option value="PG" id="PG1" >PG1</option>
+                                <option value="<?php echo $letraPg . $numeroPg; ?>" id="PG1" > <?php echo  $letraPg . $numeroPgDisplay;?></option>
                            
                                 <option value="PE" id="PE1" >PE1</option>
                         </select>
