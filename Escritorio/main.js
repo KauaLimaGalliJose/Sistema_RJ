@@ -1,10 +1,10 @@
 // imports
-import { voltar, avancar, limpar } from "./funcao.js";
+import { voltar, avancar, limpar} from "./funcao.js";
 import { radioCabecalho, check_unidade, gravacaoExterna, checkboxRodape } from "./radiosChitobox.js";
 import img_modelo  from "./imagemInput.js";
 import { dataCabecalho, dataEntrega} from "./dataHora.js";
 import { enviar, naoenviar, verificar } from "./verificarEnviar.js";
-import { getCookie } from "./cookies.js";
+import { getCookie,alertP } from "./cookies.js";
 
 //Buttons
 const voltarBt = document.getElementById('seta_esquerda');

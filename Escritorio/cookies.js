@@ -16,3 +16,10 @@ export function getCookie(nome) {
     }
     return null; 
 }
+
+export function alertP(contador_P){
+
+    if(contador_P < getCookie('contadorPf')){
+        alert('Pedido PF' + contador_P + 'já está feito')
+    }
+}
