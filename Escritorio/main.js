@@ -4,7 +4,7 @@ import { radioCabecalho, check_unidade, gravacaoExterna, checkboxRodape } from "
 import img_modelo  from "./imagemInput.js";
 import { dataCabecalho, dataEntrega} from "./dataHora.js";
 import { enviar, naoenviar, verificar } from "./verificarEnviar.js";
-import { getCookie, enviarCookie } from "./cookies.js";
+import { getCookie } from "./cookies.js";
 
 //Buttons
 const voltarBt = document.getElementById('seta_esquerda');
@@ -20,12 +20,8 @@ contador_Pg:0,
 contador_Pe:0
 }
 
-//funções apenas
+contador.contador_P = getCookie('contadorPf');
 
-function contadorCookies(){
-    contador.contador_P = getCookie('contadorPf');
-    enviarCookie('Contador_JS_Pf', contador.contador_P);
-}
 
 //Funções com Buttons
 
@@ -65,4 +61,4 @@ enviarBt.addEventListener('click',function(){
 //Funções para ser iniciadas
 dataCabecalho()
 dataEntrega()
-contadorCookies()
+console.log(document.cookie);

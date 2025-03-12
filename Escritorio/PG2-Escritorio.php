@@ -5,7 +5,7 @@
  <?php /////////////////////////////////////////////////////////////////////////////////////
     // Enviando dados do Banco de Dados para o contador
     function pf($nome,$numero){
-        setcookie($nome,$numero, time() + 10000000, "/");
+        setcookie($nome,intval($numero), time()+ 100000, "/");
     }
 
     //Conectar com Banco de Dados
@@ -19,6 +19,7 @@
         $letraPf = preg_replace("/[^a-zA-Z]/", "", $pf[0]);
         pf('contadorPf',$numeroPf);
         $id = $numeroPfDisplay;
+        pf('id',$id);
     }
 ?>
 <?php /////////////////////////////////////////////////////////////////////////////////////////
@@ -31,7 +32,7 @@
     if(mysqli_num_rows($conectarpf00) == 0 ){
     mysqli_query($conectar, "INSERT INTO pedidosp 
     (contadorpf, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
-    VALUES ('0','PF00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
+    VALUES (0,'PF00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
     }
     
 ?>

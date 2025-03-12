@@ -167,7 +167,7 @@ export function enviar(){
             })
             .then(response => response.text()) 
             .then(data => {
-                console.log("Resposta do servidor: " + data);
+                console.log("Resposta do servidor: Enviado ");
                 document.getElementById('btEnviar').disabled = false; // Reativa o botão após a resposta
             })
             .catch(error => console.error("Erro:", error));

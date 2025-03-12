@@ -1,5 +1,3 @@
-//Imports
-import { dataCabecalho, dataEntrega} from "./dataHora.js";
 
 //Variaveis PHP que está no Coockies---
 export function getCookie(nome) {
@@ -17,7 +15,4 @@ export function getCookie(nome) {
         }
     }
     return null; 
-}
-export function enviarCookie(usuario, dados){
-    document.cookie = usuario +'=' + dados + ' ; path=/'
 }
