@@ -1,4 +1,3 @@
-
 //Variaveis PHP que está no Coockies---
 export function getCookie(nome) {
    
@@ -17,9 +16,12 @@ export function getCookie(nome) {
     return null; 
 }
 
-export function alertP(contador_P){
+export function alertcontador(chave){
 
-    if(contador_P < getCookie('contadorPf')){
-        alert('Pedido PF' + contador_P + 'já está feito')
+   const numeroPedido = document.getElementById('n_p').value;
+
+    if(numeroPedido.options[1].selected !== ('PF' + getCookie('contadorPf')) ){
+            alert("Pedido já feito");
+            return chave = false;
     }
 }

@@ -56,7 +56,7 @@ if($cliente == 'Outros'){
 }
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == "F"){
 
-    $idPf = $_COOKIE['idPf']; //Contador para o banco
+    $idPf = str_replace("PF","",$_POST['numeroPedido']); //Contador para o banco
     // passando pro banco de dados
     $dadosp = mysqli_query($conectar, "INSERT INTO pedidosp 
     (contadorpf,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
@@ -65,17 +65,17 @@ if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == "F"){
 }
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'G'){
 
-    $idPd = $_COOKIE['idPg'];
+    $idPg = str_replace("PG","",$_POST['numeroPedido']); 
     // passando pro banco de dados
     $dadosg = mysqli_query($conectar, "INSERT INTO pedidospg
     (contadorpg,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
-    VALUES ('$idPd','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' )");
+    VALUES ('$idPg','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' )");
     
    
 }
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'E'){
 
-    $idPe = $_COOKIE['idPe'];
+    $idPe = str_replace("PE","",$_POST['numeroPedido']);
     // passando pro banco de dados
     $dadose = mysqli_query($conectar, "INSERT INTO pedidospe
     (contadorpe,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 

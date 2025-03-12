@@ -4,7 +4,7 @@ import { radioCabecalho, check_unidade, gravacaoExterna, checkboxRodape } from "
 import img_modelo  from "./imagemInput.js";
 import { dataCabecalho, dataEntrega} from "./dataHora.js";
 import { enviar, naoenviar, verificar } from "./verificarEnviar.js";
-import { getCookie,alertP } from "./cookies.js";
+import { getCookie } from "./cookies.js";
 
 //Buttons
 const voltarBt = document.getElementById('seta_esquerda');
