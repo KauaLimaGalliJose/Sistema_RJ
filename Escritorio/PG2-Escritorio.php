@@ -36,6 +36,19 @@
         $idPg = $numeroPgDisplay;
         CokiesP('idPg',$idPg);
     }
+    //PE
+    $dadosVerificadorPE = "SELECT * FROM pedidospe WHERE idpedidos LIKE '%$data%' ORDER BY contadorpe DESC LIMIT 1";
+    $VerificadorPE= mysqli_query($conectar, $dadosVerificadorPE);
+
+    while($linhape = mysqli_fetch_assoc($VerificadorPE)){
+        $pe = explode("-",$linhape['idpedidos']);
+        $numeroPe = str_replace("PE","",$pe[0]);
+        $numeroPeDisplay = $numeroPe + 1;
+        $letraPe = preg_replace("/[^a-zA-Z]/", "", $pe[0]);
+        CokiesP('contadorPE',$numeroPe);
+        $idPe = $numeroPeDisplay;
+        CokiesP('idPe',$idPe);
+    }
 ?>
 <?php /////////////////////////////////////////////////////////////////////////////////////////
     //Conectar com Banco de Dados para Criar o Pedido PF00 ,PG00 ,PE00
@@ -45,6 +58,9 @@
     //PG
     $pg00 = "SELECT idpedidos FROM pedidospg WHERE idpedidos LIKE '%PG00-$data%'";
     $conectarpg00 = mysqli_query($conectar, $pg00);
+    //PE
+    $pe00 = "SELECT idpedidos FROM pedidospe WHERE idpedidos LIKE '%PE00-$data%'";
+    $conectarpe00 = mysqli_query($conectar, $pe00);
 
     //Criando o PF0
     if(mysqli_num_rows($conectarpf00) == 0 ){
@@ -57,6 +73,12 @@
         mysqli_query($conectar, "INSERT INTO pedidospg
         (contadorpg, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
         VALUES (0,'PG00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
+        }
+    //Criando o PE0
+    if(mysqli_num_rows($conectarpe00) == 0 ){
+        mysqli_query($conectar, "INSERT INTO pedidospe
+        (contadorpe, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
+        VALUES (0,'PE00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
         }
 ?>
 <!DOCTYPE html>

@@ -10,6 +10,7 @@ if(isset($_FILES['imagem']) && !empty($_FILES['imagem'])){
 // Puxando dados
 $idPf = $_COOKIE['idPf']; //Contador para o banco
 $idPd = $_COOKIE['idPg'];
+$idPe = $_COOKIE['idPe'];
 $numeroPedido = $_POST['numeroPedido'];
 $dataEntrega = $_POST['dataEntrega'];
 $cliente = $_POST['cliente'];
@@ -53,7 +54,7 @@ if($cliente == 'Outros'){
     // passando pro banco de dados
     $dadosp = mysqli_query($conectar, "INSERT INTO pedidosp 
     (contadorpf,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
-    VALUES (-1,'$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' )");
+    VALUES (01,'$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' )");
     
 }
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == "F"){
@@ -75,7 +76,7 @@ if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'E'){
     // passando pro banco de dados
     $dadose = mysqli_query($conectar, "INSERT INTO pedidospe
     (contadorpf,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
-    VALUES ('$contador','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' )");
+    VALUES ('$idPe','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' )");
     
    
 }
