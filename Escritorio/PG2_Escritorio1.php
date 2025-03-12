@@ -75,7 +75,7 @@ if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'G'){
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'E'){
     // passando pro banco de dados
     $dadose = mysqli_query($conectar, "INSERT INTO pedidospe
-    (contadorpf,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
+    (contadorpe,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
     VALUES ('$idPe','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' )");
     
    

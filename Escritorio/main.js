@@ -21,7 +21,8 @@ contador_Pe:0
 }
 
 contador.contador_P = getCookie('contadorPf');
-
+contador.contador_Pg = getCookie('contadorPg');
+contador.contador_Pe = getCookie('contadorPe');
 
 //Funções com Buttons
 

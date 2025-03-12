@@ -45,7 +45,7 @@
         $numeroPe = str_replace("PE","",$pe[0]);
         $numeroPeDisplay = $numeroPe + 1;
         $letraPe = preg_replace("/[^a-zA-Z]/", "", $pe[0]);
-        CokiesP('contadorPE',$numeroPe);
+        CokiesP('contadorPe',$numeroPe);
         $idPe = $numeroPeDisplay;
         CokiesP('idPe',$idPe);
     }
@@ -175,9 +175,13 @@
                                     <?php echo  $letraPf . $numeroPfDisplay;?>
                                 </option>
                            
-                                <option value="<?php echo $letraPg . $numeroPg; ?>" id="PG1" > <?php echo  $letraPg . $numeroPgDisplay;?></option>
+                                <option value="<?php echo $letraPg . $numeroPg; ?>" id="PG1" >
+                                    <?php echo  $letraPg . $numeroPgDisplay;?>
+                                </option>
                            
-                                <option value="PE" id="PE1" >PE1</option>
+                                <option value="<?php echo $letraPe . $numeroPe; ?>" id="PE1" >
+                                    <?php echo  $letraPe . $numeroPeDisplay;?> 
+                                </option>
                         </select>
                         <input type="text" id="nome_m" name="nome_m" placeholder="Pedido..." >
                         <input type="text" id="nome_p" name="nome_p" placeholder="Pedido..." >
