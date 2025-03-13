@@ -1,5 +1,5 @@
 import { diaMesAno } from "./dataHora.js";
-
+import { getCookie } from "./cookies.js";
 //Variaveis do P , PG e PE
 const select = document.getElementById('n_p');
 let  select_N = select.options[0];
@@ -137,7 +137,10 @@ export function verificar() {
     else{
         borderBlack('rodape')
     }
-
+    if(select.options[1] == getCookie('contadorPf')  ){
+        alert('erro')
+        valido = false;
+    }
     chave = valido;
 
     if(chave == true){
@@ -187,3 +190,5 @@ export function naoenviar(){
     });
 
 }
+
+export {getCookie}

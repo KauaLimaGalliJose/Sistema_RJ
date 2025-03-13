@@ -1,6 +1,7 @@
 <?php
     //Variaveis Global
     include_once('../conexao.php');
+    date_default_timezone_set('America/Sao_Paulo'); // Fuso horário de Brasília
     $data = date('Y-m-d');
 ?>
 <?php /////////////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +38,7 @@
  <?php /////////////////////////////////////////////////////////////////////////////////////
     // Para Enviar Cookies 
     function CokiesP($nome,$numero){
-        setcookie($nome,intval($numero), time()+ 100000, "/");
+        setcookie($nome,intval($numero), time() + (365 * 86400 * 1000), "/");
     }
 
     //Conectar com Banco de Dados
