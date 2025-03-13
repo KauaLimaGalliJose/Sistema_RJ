@@ -4,6 +4,11 @@
     date_default_timezone_set('America/Sao_Paulo'); // Fuso horário de Brasília
     $data = date('Y-m-d');
 ?>
+<?php /////////////////////////////////////////////////////////////////////////////////////// 
+    //Verificar PF
+    $verificarPf = "SELECT contadorpf FROM pedidosp WHERE idpedidos LIKE '%$data%'";
+    
+?>
 <?php /////////////////////////////////////////////////////////////////////////////////////////
     //Conectar com Banco de Dados para Criar o Pedido PF00 ,PG00 ,PE00
     //PF

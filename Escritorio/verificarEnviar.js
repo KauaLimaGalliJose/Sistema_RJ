@@ -53,6 +53,10 @@ export function verificar() {
 // ▲▲▲▲ Essa pate foi uma conta que eu fiz para validar a data atual e não colocar as datas anteriores no pedido ------
     let valido = true;
 
+    if(document.getElementById('P1').value == getCookie('idPf')  ){
+        alert('erro')
+        valido = false;
+    }
     if (cliente1.checked || cliente2.checked || cliente3.checked) {
         document.getElementById("cabecalho").style.borderBottomColor = 'black';
         borderBlack('tipo_pedido');
@@ -136,10 +140,6 @@ export function verificar() {
     }
     else{
         borderBlack('rodape')
-    }
-    if(select.options[1] == getCookie('contadorPf')  ){
-        alert('erro')
-        valido = false;
     }
     chave = valido;
 

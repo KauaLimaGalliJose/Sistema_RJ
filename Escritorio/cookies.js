@@ -15,13 +15,3 @@ export function getCookie(nome) {
     }
     return null; 
 }
-
-export function alertcontador(chave){
-
-   const numeroPedido = document.getElementById('n_p').value;
-
-    if(numeroPedido.options[1].selected !== ('PF' + getCookie('contadorPf')) ){
-            alert("Pedido já feito");
-            return chave = false;
-    }
-}
