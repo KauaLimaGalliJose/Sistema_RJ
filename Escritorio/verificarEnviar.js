@@ -1,5 +1,5 @@
 import { diaMesAno } from "./dataHora.js";
-import { getCookie } from "./cookies.js";
+import { CreateCookie } from "./cookies.js";
 //Variaveis do P , PG e PE
 const select = document.getElementById('n_p');
 let  select_N = select.options[0];
@@ -53,10 +53,6 @@ export function verificar() {
 // ▲▲▲▲ Essa pate foi uma conta que eu fiz para validar a data atual e não colocar as datas anteriores no pedido ------
     let valido = true;
 
-    if(document.getElementById('P1').value == getCookie('idPf')  ){
-        alert('erro')
-        valido = false;
-    }
     if (cliente1.checked || cliente2.checked || cliente3.checked) {
         document.getElementById("cabecalho").style.borderBottomColor = 'black';
         borderBlack('tipo_pedido');
@@ -191,4 +187,4 @@ export function naoenviar(){
 
 }
 
-export {getCookie}
+export {CreateCookie}

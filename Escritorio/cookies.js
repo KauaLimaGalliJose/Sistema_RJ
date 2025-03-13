@@ -15,3 +15,14 @@ export function getCookie(nome) {
     }
     return null; 
 }
+
+export function deleteCookie(nome) {
+    document.cookie = nome + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
+export function CreateCookie(nome, valor, dias) {
+    const data = new Date();
+    data.setTime(data.getTime() + (dias * 24 * 60 * 60 * 1000)); // Definindo a data de expiração
+    const expires = "expires=" + data.toUTCString();
+    document.cookie = nome + "=" + valor + "; " + expires + "; path=/";
+}
