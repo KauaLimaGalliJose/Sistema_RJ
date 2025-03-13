@@ -464,3 +464,11 @@ footer {
     border-left: solid black 5px; /* Borda esquerda de 2px */
     padding-left: 20px; /* Espaçamento interno após a borda */
 }
+#envioP{
+    margin-right: 15px;
+}
+.font_red{
+    color: rgb(255, 0, 0);
+    font-size: 120%;
+    font-weight: 700;
+}

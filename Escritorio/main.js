@@ -20,6 +20,7 @@ contador_Pg:0,
 contador_Pe:0
 }
 
+//acresentando dados do Banco de Dados
 contador.contador_P = getCookie('contadorPf');
 contador.contador_Pg = getCookie('contadorPg');
 contador.contador_Pe = getCookie('contadorPe');

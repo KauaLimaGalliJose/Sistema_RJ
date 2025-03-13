@@ -164,7 +164,7 @@
         </div>
         <div id="conteudo">
             <div id="data">
-                20/05/24
+             20/05/24
             </div>
             <div id="pedido_input">
                 <div id="direita_input">
@@ -232,9 +232,13 @@
                             </div>
                             <textarea name="gravacao_inter" id="grav_m" class="grav_input" placeholder="Gravações do Pedido..."></textarea>   
                         </div>
+                        
             </div>
         </div>
         <footer id="rodape">
+            <div id="envioP">
+                <label class="font_red">Enviado</label>
+            </div>
             <input type="checkbox" id="gravacao_externa"  name = 'gravacao_externa' class="radio" >Gravação Externa
             <div class="div_footer">
                 <input type="checkbox" id="comPedra" name = 'comPedra' class="radio">Par com pedra
