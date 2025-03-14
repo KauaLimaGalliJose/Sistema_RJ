@@ -90,7 +90,7 @@
     <link rel="shortcut icon" href="../coroa.png" type="image/x-icon">
     <link rel="stylesheet" href="PG2-Escritorio.css">
     <script src="../Importados/sistemaGoogleDocumentos.js" type="module"></script>
-    <script src="../Importados/cloud.js" type="module"></script>
+    <script src="../Importados/jquery-3.7.1.min.js"></script>
     <script src="main.js" type="module" defer></script>
     <title>Escritório</title>
 </head>
@@ -237,7 +237,9 @@
         </div>
         <footer id="rodape">
             <div id="envioP">
-                <label class="font_red">Enviado</label>
+                <label class="font_red"> <?php
+                    echo 'Carregando';
+                ?></label>
             </div>
             <input type="checkbox" id="gravacao_externa"  name = 'gravacao_externa' class="radio" >Gravação Externa
             <div class="div_footer">

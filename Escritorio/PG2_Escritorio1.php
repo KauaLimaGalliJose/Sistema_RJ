@@ -26,9 +26,7 @@ $comPedra = isset($_POST['comPedra']) ? $_POST['comPedra'] : null;
 $estoqueFeminina = isset($_POST['estoqueFeminina']) ? $_POST['estoqueFeminina'] : null;
 $estoqueMasculina = isset($_POST['estoqueMasculina']) ? $_POST['estoqueMasculina'] : null;
 
-
 $numeroPedidoSplit = str_split($numeroPedido,1);
-
 
 $idPedidos = $numeroPedido ."-". $dataEntrega;
 
@@ -57,6 +55,8 @@ if($cliente == 'Outros'){
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == "F"){
 
     $idPf = str_replace("PF","",$_POST['numeroPedido']); //Contador para o banco
+    setcookie('Pfverificador', 'PF'.$idPf + 1, time() + (365 * 86400 * 1000), "/");
+
     // passando pro banco de dados
     $dadosp = mysqli_query($conectar, "INSERT INTO pedidosp 
     (contadorpf,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 

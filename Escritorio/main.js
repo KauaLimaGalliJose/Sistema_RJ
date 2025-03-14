@@ -1,5 +1,5 @@
 // imports
-import { voltar, avancar, limpar} from "./funcao.js";
+import { voltar, avancar, limpar , atualizarDiv} from "./funcao.js";
 import { radioCabecalho, check_unidade, gravacaoExterna, checkboxRodape } from "./radiosChitobox.js";
 import img_modelo  from "./imagemInput.js";
 import { dataCabecalho, dataEntrega} from "./dataHora.js";
@@ -53,6 +53,8 @@ limparBt.addEventListener('click',function(){
 enviarBt.addEventListener('click',function(){
     if(verificar() === true){
         contador =  avancar(contador.contador_P,contador.contador_Pg,contador.contador_Pe)
+        console.log(document.cookie);
+        atualizarDiv("#envioP", 'divrodape.php');
         enviar()
     }
     else{

@@ -73,3 +73,7 @@ export function limpar(){
     document.getElementById('modelo_rainha').style.display = 'block';
     document.getElementById('uploadimg').src = '#';
 }
+
+export function atualizarDiv(div , caminho) {
+    $(div).load(caminho); // Carrega o conteúdo de um arquivo PHP
+}
