@@ -6,8 +6,8 @@
 ?>
 <?php
     $bancotodosPf = "SELECT * FROM pedidosp WHERE idpedidos LIKE '%$data%' ORDER BY contadorpf ASC";
-    $bancotodosPg = "SELECT * FROM pedidospg WHERE idpedidos LIKE '%$data%'";
-    $bancotodosPe = "SELECT * FROM pedidospe WHERE idpedidos LIKE '%$data%'";
+    $bancotodosPg = "SELECT * FROM pedidospg WHERE idpedidos LIKE '%$data%' ORDER BY contadorpg ASC";
+    $bancotodosPe = "SELECT * FROM pedidospe WHERE idpedidos LIKE '%$data%' ORDER BY contadorpe ASC";
 
     $VerificadorBancotodosPf = mysqli_query($conectar, $bancotodosPf);
     $VerificadorBancotodosPg = mysqli_query($conectar, $bancotodosPg);
@@ -15,7 +15,6 @@
     $Pverificador = $_COOKIE['Pfverificador'];    
     $PverificadorSplit =  str_split($Pverificador,1);
     $todosP;
-    $alerta = true;
 
     if(isset($Pverificador)){
         if($PverificadorSplit[1] === 'F')
@@ -26,7 +25,7 @@
 
                 if(array_search($Pverificador, $todosP) !== false){
                     $printp = 'Duplicado ' . $Pverificador;
-                     $alerta = false;
+     
                 }
                 else{
                     $printp = 'Enviado ' . $Pverificador;
@@ -41,7 +40,7 @@
 
                 if(array_search($Pverificador, $todosP) !== false){
                     $printp = 'Duplicado ' . $Pverificador;
-                    $alerta = false;
+                   
                 }
                 else{
                     $printp = 'Enviado ' . $Pverificador;
@@ -63,10 +62,7 @@
                 }
             }
         }
-        if($alerta == false){
-            ?><script> alert('Pedido Duplicado')</script><?php
-        }
-}
+    }
     
 
 ?>
