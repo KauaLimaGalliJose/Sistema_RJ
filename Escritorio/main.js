@@ -25,7 +25,6 @@ contador.contador_P = getCookie('contadorPf');
 contador.contador_Pg = getCookie('contadorPg');
 contador.contador_Pe = getCookie('contadorPe');
 
-
 //Funções com Buttons
 
 voltarBt.addEventListener('click', function(){
@@ -55,12 +54,12 @@ enviarBt.addEventListener('click',function(){
     if(verificar() === true){
         contador =  avancar(contador.contador_P,contador.contador_Pg,contador.contador_Pe)
         console.log(document.cookie);
+        atualizarDiv("#envioP", 'divrodape.php');
         enviar()
     }
     else{
         return naoenviar()
     }
-    atualizarDiv("#envioP", 'divRodapeDinamica.php');
 });
 
 //Funções para ser iniciadas
