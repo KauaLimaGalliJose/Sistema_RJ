@@ -238,7 +238,7 @@
         <footer id="rodape">
             <div id="envioP">
                 <label class="font_red"> <?php
-                    echo 'Carregando';
+                    echo 'Sem Pedido';
                 ?></label>
             </div>
             <input type="checkbox" id="gravacao_externa"  name = 'gravacao_externa' class="radio" >Gravação Externa

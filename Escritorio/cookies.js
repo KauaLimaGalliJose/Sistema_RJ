@@ -26,3 +26,10 @@ export function CreateCookie(nome, valor, dias) {
     const expires = "expires=" + data.toUTCString();
     document.cookie = nome + "=" + valor + "; " + expires + "; path=/";
 }
+
+export function deleteAllCookies() {
+    document.cookie.split(";").forEach((cookie) => {
+        let [name, _] = cookie.split("=");
+        document.cookie = `${name}=;expires=${new Date(0).toUTCString()};path=/;domain=${location.hostname}`;
+    });
+}
