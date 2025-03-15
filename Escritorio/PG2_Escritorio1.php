@@ -29,7 +29,6 @@ $estoqueMasculina = isset($_POST['estoqueMasculina']) ? $_POST['estoqueMasculina
 $numeroPedidoSplit = str_split($numeroPedido,1);
 
 $idPedidos = $numeroPedido ."-". $dataEntrega;
-
 // Outros Clientes 
 if($cliente == 'Centro_Alianca'){
     $idCentroAlianca = $cliente . '-' . $nomePedidoC;
@@ -53,9 +52,10 @@ if($cliente == 'Outros'){
     
 }
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == "F"){
+    $Pfverificadorid = $_COOKIE['idPf'];
 
     $idPf = str_replace("PF","",$_POST['numeroPedido']); //Contador para o banco
-    setcookie('Pfverificador', 'PF'.$idPf , time() + (365 * 86400 * 1000), "/");
+    setcookie('Pfverificador', 'PF'.$Pfverificadorid , time() + (365 * 86400 * 1000), "/");
 
     // passando pro banco de dados
     $dadosp = mysqli_query($conectar, "INSERT INTO pedidosp 

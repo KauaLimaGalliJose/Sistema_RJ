@@ -55,7 +55,7 @@
 
                 if(array_search($Pverificador, $todosP) !== false){
                     $printp = 'Duplicado ' . $Pverificador;
-                    $alerta = false;
+                    
                 }
                 else{
                     $printp = 'Enviado ' . $Pverificador;
