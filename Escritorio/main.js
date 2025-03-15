@@ -54,7 +54,7 @@ enviarBt.addEventListener('click',function(){
     if(verificar() === true){
         contador =  avancar(contador.contador_P,contador.contador_Pg,contador.contador_Pe)
         console.log(document.cookie);
-        atualizarDiv("#envioP", 'divrodape.php');
+        atualizarDiv("#envioP", 'divRodapeDinamica.php');
         enviar()
     }
     else{
