@@ -472,3 +472,6 @@ footer {
     font-size: 120%;
     font-weight: 700;
 }
+#banco{
+    display: none;
+}

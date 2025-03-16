@@ -125,7 +125,7 @@ main{
     justify-content: center;
     flex-direction: column;
     height: 100%;
-    width: 60%;
+    width: 40%;
     font-size: 90%;
     padding-top: 2%;
     
@@ -147,7 +147,7 @@ main{
     background-color: rgb(189, 189, 189);
     border: solid black 5px;
     border-radius: 10px;
-    height: 350px;    
+    height: 370px;    
     width: 100%;
 }
 .pedidosImagem{
@@ -160,12 +160,12 @@ main{
     background-color: rgb(189, 189, 189);
     border: solid black 5px;
     border-radius: 10px;
-    height: 350px;    
-    width: 90%;
+    height: 370px;    
+    width: 95%;
 }
 
 .Imagem{
-    height: 340px;
+    height: 360px;
     width: 100%;
     border-radius: 10px;
 }
@@ -180,6 +180,11 @@ main{
 }
 .font_red{
     color: rgb(153, 0, 0);
+    font-size: 120%;
+    font-weight: 700;
+}
+.font_blu{
+    color: rgb(27, 68, 132);
     font-size: 120%;
     font-weight: 700;
 }

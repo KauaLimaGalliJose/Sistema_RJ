@@ -1,9 +1,11 @@
+<div style="display: none;">
 <?php
     //Variaveis Global
     include_once('../conexao.php');
     date_default_timezone_set('America/Sao_Paulo'); // Fuso horário de Brasília
     $data = date('Y-m-d');
 ?>
+</div>
 <?php
     $bancotodosPf = "SELECT * FROM pedidosp WHERE idpedidos LIKE '%$data%' ORDER BY contadorpf ASC";
     $bancotodosPg = "SELECT * FROM pedidospg WHERE idpedidos LIKE '%$data%' ORDER BY contadorpg ASC";

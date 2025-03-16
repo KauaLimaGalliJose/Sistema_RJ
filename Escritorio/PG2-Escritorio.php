@@ -1,6 +1,6 @@
 <?php
     //Variaveis Global
-    include_once('../conexao.php');
+    ?><div id="banco"><?php include_once('../conexao.php'); ?></div><?php
     date_default_timezone_set('America/Sao_Paulo'); // Fuso horário de Brasília
     $data = date('Y-m-d');
 ?>

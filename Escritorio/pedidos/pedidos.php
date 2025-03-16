@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../../coroa.png" type="image/x-icon">
     <link rel="stylesheet" href="pedidos.css">
+    <script src="./pedidos.js"></script>
     <title>Pedidos</title>
 </head>
 <body>
@@ -34,12 +35,12 @@
         <div id="phpDiv">
         <?php
             
-            
+            date_default_timezone_set('America/Sao_Paulo'); // Fuso horário de Brasília
             $data = date('Y-m-d');
             $dataSplit = explode("-", $data);
 
             // Recupera todos os pedidos com idpedidos e imagem
-            $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, gravacaoInterna FROM pedidosp WHERE idpedidos != 'PF00-$data' ORDER BY contadorpf ASC";
+            $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidosp WHERE idpedidos != 'PF00-$data' ORDER BY contadorpf ASC";
             $Verificador = mysqli_query($conectar, $dadosVerificador);
     
             while (($dados = mysqli_fetch_assoc($Verificador))) {
@@ -49,20 +50,40 @@
 
                     ?><div class="pedidostexto"><label><?php
                     ?><div class="tituloPedido">
-                        <h2><?php print( $pf[0].' -- '); ?><span class="font_red"><?php print($dataSplit[1] . '/' . $dataSplit[2] . "<br>");?></span></h2>
+                        <h2><?php print( $pf[0].' -- '.$dados['nomePedido'] .' -- '); ?><span class="font_red"><?php print($dataSplit[2] . '/' . $dataSplit[1] . "<br>");?></span></h2>
                     </div>
                     <?php
-                    if($dados['gravacaoInterna'] == NULL){
+                    //Se gravação externa e interna for NULL
+                    if($dados['gravacaoInterna'] == NULL && $dados['gravacaoExterna'] == NULL){
                         print("<br>" . $dados['descricaoPedido'] . "<br>");
+                        print('<br>Largura:' . $dados['largura']);
                         print('<br> Feminina:');?><span class="font_red"><?php print($dados['numF']. "<br>"); ?></span>
                         <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
                         </label></div><?php
                     }
-                    else{
+                    elseif($dados['gravacaoExterna'] !== NULL && $dados['gravacaoInterna'] !== NULL){
                         print("<br>" . $dados['descricaoPedido'] . "<br>");
+                        print('<br>Largura:' . $dados['largura']);
                         print('<br> Feminina:');?><span class="font_red"><?php print($dados['numF']. "<br>"); ?></span>
                         <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
-                        <?php print('Gravação:' . $dados['gravacaoInterna']);?>
+                        <span class="font_blu"> <?php print('Gravação:');?></span><?php echo $dados['gravacaoInterna']. "<br>"?>
+                        <span class="font_red"> <?php print('Gravação Externa:');?></span><?php echo $dados['gravacaoExterna'];?>
+                        </label></div><?php
+                    }
+                    elseif($dados['gravacaoInterna'] !== NULL){
+                        print("<br>" . $dados['descricaoPedido'] . "<br>");
+                        print('<br>Largura:' . $dados['largura']);
+                        print('<br> Feminina:');?><span class="font_red"><?php print($dados['numF']. "<br>"); ?></span>
+                        <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
+                        <span class="font_blu"> <?php print('Gravação:');?></span><?php echo $dados['gravacaoInterna'];?>
+                        </label></div><?php
+                    }
+                    elseif($dados['gravacaoExterna'] !== NULL){
+                        print("<br>" . $dados['descricaoPedido'] . "<br>");
+                        print('<br>Largura:' . $dados['largura']);
+                        print('<br> Feminina:');?><span class="font_red"><?php print($dados['numF']. "<br>"); ?></span>
+                        <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
+                        <span class="font_red"> <?php print('Gravação Externa:');?></span><?php echo $dados['gravacaoExterna'];?>
                         </label></div><?php
                     }
                 }
