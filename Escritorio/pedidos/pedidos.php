@@ -26,7 +26,7 @@
                     <input class="selecao" value="sim" name="pgSelect" type="checkbox">PG
                     <input class="selecao" value="sim" name="peSelect" type="checkbox">PE
                 </div>
-                <button type="submit" id="enviar"><h1>Enviar</h1></button>
+                <button type="submit" id="enviar"><h1>Pesquisar</h1></button>
         </div>
     </div>
 </form>
@@ -50,19 +50,19 @@
 
                     ?><div class="pedidostexto"><label><?php
                     ?><div class="tituloPedido">
-                        <h2><?php print( $pf[0].' -- '.$dados['nomePedido'] .' -- '); ?><span class="font_red"><?php print($dataSplit[2] . '/' . $dataSplit[1] . "<br>");?></span></h2>
+                        <h2><?php print( $pf[0].' -- '.$dados['nomePedido'] .' -- '); ?><span class="font_red"><?php print($dataSplit[2] . '/' . $dataSplit[1] );?></span></h2>
                     </div>
                     <?php
                     //Se gravação externa e interna for NULL
                     if($dados['gravacaoInterna'] == NULL && $dados['gravacaoExterna'] == NULL){
-                        print("<br>" . $dados['descricaoPedido'] . "<br>");
+                        print($dados['descricaoPedido'] . "<br>");
                         print('<br>Largura:' . $dados['largura']);
                         print('<br> Feminina:');?><span class="font_red"><?php print($dados['numF']. "<br>"); ?></span>
                         <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
                         </label></div><?php
                     }
                     elseif($dados['gravacaoExterna'] !== NULL && $dados['gravacaoInterna'] !== NULL){
-                        print("<br>" . $dados['descricaoPedido'] . "<br>");
+                        print($dados['descricaoPedido'] . "<br>");
                         print('<br>Largura:' . $dados['largura']);
                         print('<br> Feminina:');?><span class="font_red"><?php print($dados['numF']. "<br>"); ?></span>
                         <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
@@ -71,7 +71,7 @@
                         </label></div><?php
                     }
                     elseif($dados['gravacaoInterna'] !== NULL){
-                        print("<br>" . $dados['descricaoPedido'] . "<br>");
+                        print($dados['descricaoPedido'] . "<br>");
                         print('<br>Largura:' . $dados['largura']);
                         print('<br> Feminina:');?><span class="font_red"><?php print($dados['numF']. "<br>"); ?></span>
                         <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
@@ -79,7 +79,7 @@
                         </label></div><?php
                     }
                     elseif($dados['gravacaoExterna'] !== NULL){
-                        print("<br>" . $dados['descricaoPedido'] . "<br>");
+                        print($dados['descricaoPedido'] . "<br>");
                         print('<br>Largura:' . $dados['largura']);
                         print('<br> Feminina:');?><span class="font_red"><?php print($dados['numF']. "<br>"); ?></span>
                         <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
@@ -101,6 +101,7 @@
                     ?><div class="pedidosImagem"><?php
                     ?><img class = "Imagem" src="<?php echo '../' .$dadosImagem['imagem'];?>" alt="Imagem do Pedido"><?php
                     ?></div><?php
+                    ?><button class = 'Pdf' type="button">PDF</button><?php
                 }
             }
             ?></div><?php

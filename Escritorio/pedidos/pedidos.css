@@ -147,7 +147,7 @@ main{
     background-color: rgb(189, 189, 189);
     border: solid black 5px;
     border-radius: 10px;
-    height: 370px;    
+    height: 410px;    
     width: 100%;
 }
 .pedidosImagem{
@@ -155,17 +155,17 @@ main{
     align-items: center;
     justify-content: space-around;
     flex-direction: row;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
     font-size: 150%;
     background-color: rgb(189, 189, 189);
     border: solid black 5px;
     border-radius: 10px;
-    height: 370px;    
+    height: 410px;    
     width: 95%;
 }
 
 .Imagem{
-    height: 360px;
+    height: 400px;
     width: 100%;
     border-radius: 10px;
 }
@@ -197,4 +197,16 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.Pdf{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-bottom: 60px;
+    font-size: 150%;
+    border: solid black 2px;
+    border-radius: 10px;
+    height: 30px; 
+    width: 35%;   
 }
