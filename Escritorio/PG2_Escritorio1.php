@@ -52,11 +52,8 @@ if($cliente == 'Outros'){
     
 }
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == "F"){
-    $Pfverificadorid = $_COOKIE['idPf'];
-
+    
     $idPf = str_replace("PF","",$_POST['numeroPedido']); //Contador para o banco
-    setcookie('Pfverificador', 'PF'.$Pfverificadorid , time() + (365 * 86400 * 1000), "/");
-
     // passando pro banco de dados
     $dadosp = mysqli_query($conectar, "INSERT INTO pedidosp 
     (contadorpf,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
@@ -66,8 +63,6 @@ if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == "F"){
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'G'){
 
     $idPg = str_replace("PG","",$_POST['numeroPedido']); 
-    setcookie('Pfverificador', 'PG'.$idPg , time() + (365 * 86400 * 1000), "/");
-
     // passando pro banco de dados
     $dadosg = mysqli_query($conectar, "INSERT INTO pedidospg
     (contadorpg,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
@@ -77,8 +72,6 @@ if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'G'){
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'E'){
 
     $idPe = str_replace("PE","",$_POST['numeroPedido']);
-    setcookie('Pfverificador', 'PE'.$idPe , time() + (365 * 86400 * 1000), "/");
-    
     // passando pro banco de dados
     $dadose = mysqli_query($conectar, "INSERT INTO pedidospe
     (contadorpe,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 

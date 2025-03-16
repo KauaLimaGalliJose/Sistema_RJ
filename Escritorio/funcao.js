@@ -1,3 +1,5 @@
+//import
+import { CreateCookie } from './cookies.js';
 
 
 // funcao.js
@@ -40,19 +42,25 @@ export function avancar(contador_P, contador_Pg, contador_Pe) {
         let contadordisplayP = contador_P +1
         document.getElementById('P1').innerHTML ='PF' + contadordisplayP;
         document.getElementById('P1').value ='PF' + contador_P;
-    
+
+        //Criando verificação para ver se existe o pedido no Banco
+        CreateCookie('Pfverificador','PF' + contador_P,365);
     }
     if (pg.selected) {
         contador_Pg++;
         let contadordisplayPg = contador_Pg +1
         document.getElementById('PG1').innerHTML = "PG" + contadordisplayPg ;
         document.getElementById('PG1').value ='PG' + contador_Pg;
+        //PG
+        CreateCookie('Pfverificador','PG' + contador_Pg,365);
     }
     if (pe.selected) {
         contador_Pe++;
         let contadordisplayPe = contador_Pe +1
         document.getElementById('PE1').innerHTML = "PE" +  contadordisplayPe;
         document.getElementById('PE1').value ='PE' + contador_Pe;
+        //PE
+        CreateCookie('Pfverificador','PE' + contador_Pe,365);
     }
 
     return { contador_P, contador_Pg, contador_Pe };
@@ -77,3 +85,5 @@ export function limpar(){
 export function atualizarDiv(div , caminho) {
     $(div).load(caminho); // Carrega o conteúdo de um arquivo PHP
 }
+
+export{CreateCookie}

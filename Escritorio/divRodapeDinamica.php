@@ -12,9 +12,11 @@
     $VerificadorBancotodosPf = mysqli_query($conectar, $bancotodosPf);
     $VerificadorBancotodosPg = mysqli_query($conectar, $bancotodosPg);
     $VerificadorBancotodosPe = mysqli_query($conectar, $bancotodosPe);
+    //Pegando o Cookie para verificar se o pedido existe
     $Pverificador = $_COOKIE['Pfverificador'];    
     $PverificadorSplit =  str_split($Pverificador,1);
     $todosP;
+    $alerta = true;
 
     if(isset($Pverificador)){
         if($PverificadorSplit[1] === 'F')
@@ -25,6 +27,7 @@
 
                 if(array_search($Pverificador, $todosP) !== false){
                     $printp = 'Duplicado ' . $Pverificador;
+                    $alerta = false;
      
                 }
                 else{
@@ -40,6 +43,7 @@
 
                 if(array_search($Pverificador, $todosP) !== false){
                     $printp = 'Duplicado ' . $Pverificador;
+                    $alerta = false;
                    
                 }
                 else{
@@ -55,12 +59,16 @@
 
                 if(array_search($Pverificador, $todosP) !== false){
                     $printp = 'Duplicado ' . $Pverificador;
+                    $alerta = false;
                     
                 }
                 else{
                     $printp = 'Enviado ' . $Pverificador;
                 }
             }
+        }
+        if($alerta == false){
+            ?><script>alert('Pedido Duplicado')</script><?php
         }
     }
     
