@@ -155,9 +155,9 @@
             </div>
             <div id="cabecalho_baixo">
                 <div id="tipo_pedido">
-                        <input type="radio" onchange="" id="c1" value="Mercado_Livre" name = 'cliente' class="radio">Mercado Livre
-                        <input type="radio" onchange="" id="c2" value="Centro_Alianca" name = 'cliente' class="radio">Centro das Alianças
-                        <input type="radio" value="Outros"  id="c3" name = 'cliente' class="radio" >Outros: 
+                        <input type="radio" onchange="" id="c1" value="Mercado_Livre" name = 'cliente' class="radio"><label for="c1">Mercado Livre</label> 
+                        <input type="radio" onchange="" id="c2" value="Centro_Alianca" name = 'cliente' class="radio"><label for="c2">Centro das Alianças</label> 
+                        <input type="radio" value="Outros"  id="c3" name = 'cliente' class="radio" ><label for="c3">Outros:</label>  
                         <input type="text" id="outros"  name="txtcliente"  placeholder="Cliente...">
                 </div>
             </div>
@@ -192,7 +192,7 @@
                         F:<input type="number" id="numeracao_f" value='' name="f"  placeholder="F" >
                        </div>
                     <div id="unidade">
-                        Unidade: <input type="checkbox" id="checkboxFeminina"  name = 'pé' class="radio" >
+                       <label for="checkboxFeminina">Unidade:</label><input type="checkbox" id="checkboxFeminina"  name = 'pé' class="radio" >
                     </div>
                     <div id="descricao_div">
                         <textarea id="descricao_Pedido" name="descricao_Pedido" class="descricao" placeholder="Descrição do Pedido..."  ></textarea>
@@ -241,7 +241,7 @@
                     echo 'Sem Pedido';
                 ?></label>
             </div>
-            <input type="checkbox" id="gravacao_externa"  name = 'gravacao_externa' class="radio" >Gravação Externa
+            <input type="checkbox" id="gravacao_externa"  name = 'gravacao_externa' class="radio">Gravação Externa
             <div class="div_footer">
                 <input type="checkbox" id="comPedra" name = 'comPedra' class="radio">Par com pedra
                 <input type="checkbox" id="semPedra" name = 'semPedra' class="radio" >Sem Pedra 

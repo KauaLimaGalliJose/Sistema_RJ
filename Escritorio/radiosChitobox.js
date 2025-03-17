@@ -40,6 +40,7 @@ export function check_unidade(){
     } 
     else{
         document.getElementById('numeracao_f').style.visibility = 'visible';
+        document.getElementById('numeracao_f').value = null;
     }
 }
 

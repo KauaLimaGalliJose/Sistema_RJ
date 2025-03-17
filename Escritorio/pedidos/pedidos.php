@@ -53,18 +53,26 @@
                         <h2><?php print( $pf[0].' -- '.$dados['nomePedido'] .' -- '); ?><span class="font_red"><?php print($dataSplit[2] . '/' . $dataSplit[1] );?></span></h2>
                     </div>
                     <?php
+                    //Verificando Numeração Feminina
+                    if($dados['numF'] == 40){
+                        $numeroFeminino = ' não tem';
+                    }
+                    else{
+                        $numeroFeminino = $dados['numF'];
+                    }
+
                     //Se gravação externa e interna for NULL
                     if($dados['gravacaoInterna'] == NULL && $dados['gravacaoExterna'] == NULL){
                         print($dados['descricaoPedido'] . "<br>");
                         print('<br>Largura:' . $dados['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($dados['numF']. "<br>"); ?></span>
+                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
                         <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
                         </label></div><?php
                     }
                     elseif($dados['gravacaoExterna'] !== NULL && $dados['gravacaoInterna'] !== NULL){
                         print($dados['descricaoPedido'] . "<br>");
                         print('<br>Largura:' . $dados['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($dados['numF']. "<br>"); ?></span>
+                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
                         <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
                         <span class="font_blu"> <?php print('Gravação:');?></span><?php echo $dados['gravacaoInterna']. "<br>"?>
                         <span class="font_red"> <?php print('Gravação Externa:');?></span><?php echo $dados['gravacaoExterna'];?>
@@ -73,7 +81,7 @@
                     elseif($dados['gravacaoInterna'] !== NULL){
                         print($dados['descricaoPedido'] . "<br>");
                         print('<br>Largura:' . $dados['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($dados['numF']. "<br>"); ?></span>
+                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
                         <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
                         <span class="font_blu"> <?php print('Gravação:');?></span><?php echo $dados['gravacaoInterna'];?>
                         </label></div><?php
@@ -81,7 +89,7 @@
                     elseif($dados['gravacaoExterna'] !== NULL){
                         print($dados['descricaoPedido'] . "<br>");
                         print('<br>Largura:' . $dados['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($dados['numF']. "<br>"); ?></span>
+                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
                         <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
                         <span class="font_red"> <?php print('Gravação Externa:');?></span><?php echo $dados['gravacaoExterna'];?>
                         </label></div><?php

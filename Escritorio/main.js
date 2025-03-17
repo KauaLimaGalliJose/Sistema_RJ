@@ -12,6 +12,7 @@ const avancarBt = document.getElementById('seta_direita');
 const limparBt = document.getElementById('limpar');
 const imagemBt = document.getElementById('uploadimg');
 const enviarBt = document.getElementById('btEnviar');
+const unidadeCheck = document.getElementById('checkboxFeminina');
 
 //Global Variaveis
 export let contador = { 
@@ -38,10 +39,13 @@ avancarBt.addEventListener('click', function(){
 
 addEventListener('change', function(){
     radioCabecalho()
-    check_unidade()
-    gravacaoExterna()
     checkboxRodape()
+    gravacaoExterna()
 }); 
+
+unidadeCheck.addEventListener('click',function(){
+    check_unidade()
+});
 
 imagemBt.addEventListener('click', function(){
     img_modelo()
