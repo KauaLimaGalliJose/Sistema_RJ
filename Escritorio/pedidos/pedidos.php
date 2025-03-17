@@ -48,7 +48,7 @@
             $data = date('Y-m-d');
             $dataSplit = explode("-", $data);
 
-            // Recupera todos os pedidos com idpedidos e imagem *Select PF*
+            // Recupera todos os pedidos com idpedidos e imagem *Select PF* //////////////
         if($pfSelect == 'sim'){
 
             $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidosp WHERE idpedidos != 'PF00-$data' ORDER BY contadorpf ASC";
@@ -70,7 +70,7 @@
                         $numeroFeminino = ' não tem';
                     }
                     else{
-
+                        
                         $numeroFeminino = $dados['numF'];
                     }
 
@@ -133,7 +133,7 @@
                 }
             }
         }
-        //PG
+        //PG ////////////////////////////////
         elseif($pgSelect == 'sim'){
 
             $dadosVerificadorPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospg WHERE idpedidos != 'PG00-$data' ORDER BY contadorpg ASC";
@@ -218,10 +218,95 @@
                     }
                 } 
             }
+            //PE /////////////////////////
+            elseif($peSelect == 'sim'){
+
+                $dadosVerificadorPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospe WHERE idpedidos != 'PE00-$data' ORDER BY contadorpe ASC";
+                $VerificadorPe = mysqli_query($conectar, $dadosVerificadorPe);
+    
+                while (($dadosPe = mysqli_fetch_assoc($VerificadorPe))) {
+                
+                    if ($dadosPe['idpedido'] == $dataSplit[1] . '-' . $dataSplit[2]) {
+    
+                        $pg = explode("-" , $dadosPe['idpedidos']);
+    
+                        ?><div class="pedidostexto"><label><?php
+                        ?><div class="tituloPedido">
+                            <h2><?php print( $pg[0].' -- '.$dadosPe['nomePedido'].' -- '); ?><span class="font_red"><?php print($dataSplit[2] . '/' . $dataSplit[1] );?></span></h2>
+                        </div>
+                        <?php
+                        //Verificando Numeração Feminina
+                        if($dadosPe['numF'] == 40){
+    
+                            $numeroFeminino = ' não tem';
+                        }
+                        else{
+    
+                            $numeroFeminino = $dadosPe['numF'];
+                        }
+    
+                        //Se gravação externa e interna for NULL
+                        if($dadosPe['gravacaoInterna'] == NULL && $dadosPe['gravacaoExterna'] == NULL){
+    
+                            print($dadosPe['descricaoPedido'] . "<br>");
+                            print('<br>Largura:' . $dadosPe['largura']);
+                            print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
+                            <?php print('Masculina:');?><span class="font_red"><?php print($dadosPe['numeM']. "<br>"); ?></span>
+                            </label></div><?php
+                        }
+                        elseif($dadosPe['gravacaoExterna'] !== NULL && $dadosPe['gravacaoInterna'] !== NULL){
+    
+                            print($dadosPe['descricaoPedido'] . "<br>");
+                            print('<br>Largura:' . $dadosPe['largura']);
+                            print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
+                            <?php print('Masculina:');?><span class="font_red"><?php print($dadosPe['numeM']. "<br>"); ?></span>
+                            <span class="font_blu"> <?php print('Gravação:');?></span><?php echo $dadosPe['gravacaoInterna']. "<br>"?>
+                            <span class="font_red"> <?php print('Gravação Externa:');?></span><?php echo $dadosPe['gravacaoExterna'];?>
+                            </label></div><?php
+                        }
+                        elseif($dadosPe['gravacaoInterna'] !== NULL){
+    
+                            print($dadosPe['descricaoPedido'] . "<br>");
+                            print('<br>Largura:' . $dadosPe['largura']);
+                            print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
+                            <?php print('Masculina:');?><span class="font_red"><?php print($dadosPe['numeM']. "<br>"); ?></span>
+                            <span class="font_blu"> <?php print('Gravação:');?></span><?php echo $dadosPe['gravacaoInterna'];?>
+                            </label></div><?php
+                        }
+                        elseif($dadosPe['gravacaoExterna'] !== NULL){
+    
+                            print($dadosPe['descricaoPedido'] . "<br>");
+                            print('<br>Largura:' . $dadosPe['largura']);
+                            print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
+                            <?php print('Masculina:');?><span class="font_red"><?php print($dadosPe['numeM']. "<br>"); ?></span>
+                            <span class="font_red"> <?php print('Gravação Externa:');?></span><?php echo $dadosPe['gravacaoExterna'];?>
+                            </label></div><?php
+                        }
+                    }  
+                }
+                ?>    
+                </div>
+                <div id="php2">
+                    <?php
+    
+                    $imagemPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem FROM pedidospe WHERE idpedidos != 'PE00-$data' ORDER BY contadorpe ASC";
+                    $imagemConectarPe = mysqli_query($conectar, $imagemPe);
+            
+                    while ($dadosImagemPe = mysqli_fetch_assoc($imagemConectarPe)) {
+                             
+                        if ($dadosImagemPe['idpedido'] == $dataSplit[1] . '-' . $dataSplit[2]) {
+    
+                            ?><div class="pedidosImagem"><?php
+                            ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPe['imagem'];?>" alt="Imagem do Pedido"><?php
+                            ?></div><?php
+                            ?><button class = 'Pdf' type="button">PDF</button><?php
+                        }
+                    } 
         
-        else{
-            ?><h1><span class="font_red"><?php print('Nenhum Pedido Encontrado');?></span></h1><?php
-        }
+                }
+            else{
+                ?><h1><span class="font_red"><?php print('Nenhum Pedido Encontrado');?></span></h1><?php
+            }
             ?></div><?php
         ?>
         </div>

@@ -46,6 +46,13 @@
             ?></div><?php
             
             }
+        include('../php/bibliotecas/Criar_pdf186');
+
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', 'B', 16);
+        $pdf->Cell(40, 10, 'Criando um PDF com FPDF!');
+        $pdf->Output();
         ?>
     <div id="phpmae">
         <div id="phpDiv">
