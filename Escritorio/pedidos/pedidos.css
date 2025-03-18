@@ -222,3 +222,13 @@ main{
     align-items: center;
     margin-left: 50px;
 }
+#bancoDeDados{
+    display: none;
+}
+#pedidonaoEncontrado{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: aqua;
+}
