@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../../coroa.png" type="image/x-icon">
     <link rel="stylesheet" href="pedidos.css">
-    <script src="./pedidos.js"></script>
+    <script src="./js/pedidos.js" type="module"></script>
     <title>Pedidos</title>
 </head>
 <body>
@@ -26,7 +26,12 @@
                     <input class="selecao" value="sim" name="pgSelect" type="checkbox">PG
                     <input class="selecao" value="sim" name="peSelect" type="checkbox">PE
                 </div>
-                <button type="submit" id="enviar"><h1>Pesquisar</h1></button>
+                <button type="submit" id="enviar">
+                    <h1>Pesquisar</h1>
+                </button>
+                <button type='button' id="imprimir" class="botao">
+                    <img class="itens" src="./imagemPedido/impressora-50.png">
+                </button>
         </div>
     </div>
 </form>
