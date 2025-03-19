@@ -65,6 +65,7 @@ function selectPf($conectar,$dataSplit,$data){
                     <span class="font_red"> <?php print('Gravação Externa:');?></span><?php echo $dados['gravacaoExterna'];?>
                     </label></div><?php
                 }
+                
             }
         }
 }
@@ -136,6 +137,7 @@ function selectPg($conectar,$dataSplit,$data){
                 <span class="font_red"> <?php print('Gravação Externa:');?></span><?php echo $dadosPg['gravacaoExterna'];?>
                 </label></div><?php
             }
+
         }  
     }   
 }

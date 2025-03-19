@@ -59,7 +59,7 @@
         </div>
         <?php
         //PF ////////////////////////////////
-        if(isset($pSelect) == 'sim'){
+        if(isset($pfSelect) == 'sim'){
             selectPf($conectar,$dataSplit,$data);
         }
         //PG ////////////////////////////////
@@ -75,7 +75,7 @@
         <div id="php2">
         <?php 
         //PF ////////////////////////////////
-        if(isset($pSelect) == 'sim'){
+        if(isset($pfSelect) == 'sim'){
             selectImagePF($conectar,$dataSplit,$data);
         } 
         //PG ////////////////////////////////
@@ -94,7 +94,7 @@
     </div>
     <div id="pedidonaoEncontrado">
         <?php 
-            echo $pedidoNaoEncontrado;
+            echo '<h1>' .$pedidoNaoEncontrado .'</h1>';
         ?>
     </div>
 </body>
