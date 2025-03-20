@@ -518,7 +518,6 @@ function selectPg($conectar,$dataSplit,$data){
                 ?></div>
                 <div class="btPedidos">
                 <button class = 'Pdf' type="button">PDF</button>
-                <button class = 'Pdf' type="button">Editar</button>
                 </div>
                 <?php
             }
@@ -533,7 +532,6 @@ function selectPg($conectar,$dataSplit,$data){
                 ?></div>
                 <div class="btPedidos">
                 <button class = 'Pdf' type="button">PDF</button>
-                <button class = 'Pdf' type="button">Editar</button>
                 </div>
                 <?php
             }
@@ -546,8 +544,7 @@ function selectPg($conectar,$dataSplit,$data){
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPe['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button">PDF</button>
-                <button class = 'Pdf' type="button">Editar</button>
+                <button class = 'Pdf' type="button">PDF</button> 
                 </div>
                 <?php
             }
