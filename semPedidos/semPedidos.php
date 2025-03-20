@@ -1,13 +1,354 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="semPedidos.js" defer></script>
-    <link rel="stylesheet" href="semPedidos.css">
+    <script defer>
+        var monkeySVG = Snap("#monkey_404");
+
+var tail = monkeySVG.select("#tail");
+
+var numberZero = monkeySVG.select("#number_0");
+
+/*tail.path('M142.4,520c3.5-24.3-36.8-21.1-34.6,7.7c2.7,35.7,39,35.4,68,14.6c17.3-12.5,24.5-2.9,30.6,1.8c3.7,2.7,10.7,5.3,17.6-4.8');*/
+
+var revert = function () {
+  tail.animate(
+    {
+      d:
+        "M89,315c2.2-15.2-23-13.2-21.6,4.8c1.7,22.3,24.4,22.1,42.5,9.1c10.8-7.8,15.3-1.8,19.1,1.1 c2.3,1.7,6.7,3.3,11-3"
+    },
+    1,
+    mina.easeinout
+  );
+};
+
+setInterval(function () {
+  tail.animate(
+    {
+      d:
+        "M81,310c-8.8-6.5-20.8,6.5-15,18c7.4,14.5,22.5,10.8,31,3c9.8-9,18.9-5.6,22-2 c5.8,6.8,16.7,4.3,21-2"
+    },
+    1600,
+    mina.easeinout,
+    revert
+  );
+}, 3200);
+
+    </script>
     <title>Document</title>
+    <style>
+        
+#semPedidos{
+    font-family: cursive;
+    font-size: 3rem; /* Mantém um tamanho proporcional */
+    position: fixed;
+    top: 55%;
+    left: 52%;
+    transform: translateX(-50%);
+    font-weight: 800;
+}  
+#monkey_404 {
+    width: 800px;
+    height: 580px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -400px;
+    margin-top: -240px;
+  
+    .st0 {
+      fill: #e8ebed;
+    }
+    .st1 {
+      fill: #ffffff;
+    }
+    .st2 {
+      fill: none;
+      stroke: #89949b;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+    }
+    .st3 {
+      fill: #e8ebed;
+      stroke: #89949b;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+    }
+    .st4 {
+      fill: #ffffff;
+      stroke: #89949b;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+    }
+    .st5 {
+      fill: none;
+      stroke: #89949b;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+    }
+    .st6 {
+      fill: none;
+      stroke: #89949b;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+    }
+    .st7 {
+      fill: #ffffff;
+      stroke: #89949b;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+    }
+    .st8 {
+      fill: #89949b;
+    }
+    .st9 {
+      fill: #89949b;
+    }
+    .st10 {
+      fill: none;
+      stroke: #89949b;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+    }
+    .st11 {
+      fill: #ffffff;
+    }
+    .st12 {
+      fill: #ffffff;
+      stroke: #8894a0;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+    }
+    .st13 {
+      fill: #ffffff;
+      stroke: #89949b;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+    }
+    .st14 {
+      fill: none;
+      stroke: #89949b;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+    }
+    .st15 {
+      fill: none;
+      stroke: #89949b;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+    }
+  
+    #arm {
+      transform-origin: 155px 292px;
+      transform: rotateZ(-2deg);
+    }
+  
+    #monkey {
+      animation: monkey-breathe 3s infinite ease-in-out;
+    }
+  
+    #zelda,
+    #tetris,
+    #moon,
+    #star_a,
+    #star_b,
+    #star_c,
+    #star_d,
+    #number_4,
+    #number_4_2,
+    #number_0,
+    #sword {
+      animation: levitate 3s infinite ease-in-out;
+    }
+  
+    #zelda {
+      animation-delay: 0s;
+      animation-duration: 3s;
+    }
+  
+    #tetris {
+      animation-delay: 1s;
+      animation-duration: 3s;
+    }
+  
+    #moon {
+      animation-delay: 0.5s;
+      animation-duration: 3s;
+    }
+  
+    #star_a {
+      animation-delay: 0s;
+      animation-duration: 3s;
+    }
+  
+    #star_b {
+      animation-delay: 0.5s;
+      animation-duration: 3s;
+    }
+  
+    #star_c {
+      animation-delay: 1s;
+      animation-duration: 3s;
+    }
+  
+    #star_d {
+      animation-delay: 1.5s;
+      animation-duration: 3s;
+    }
+  
+    #number_4 {
+      animation-delay: 0s;
+      animation-duration: 3s;
+    }
+  
+    #number_4_2 {
+      animation-delay: 1s;
+      animation-duration: 3s;
+    }
+  
+    #number_0 {
+      animation-delay: 0.5s;
+      animation-duration: 3s;
+    }
+  
+    #sword {
+      animation-delay: 1.5s;
+      animation-duration: 3s;
+    }
+  
+    #eye_left {
+      transform-origin: 191px 257px;
+      animation: blink-l 12s infinite ease-in-out;
+    }
+  
+    #eye_right {
+      transform-origin: 205px 256px;
+      animation: blink-r 12s infinite ease-in-out;
+    }
+  }
+  
+  @keyframes arm-rotate {
+    0% {
+      transform: rotateZ(-3deg);
+    }
+    50% {
+      transform: rotateZ(6deg);
+    }
+  }
+  
+  @keyframes monkey-breathe {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, 1px, 0);
+    }
+  }
+  
+  @keyframes levitate {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, 5px, 0);
+    }
+  }
+  
+  @keyframes star {
+    0% {
+      transform: translate3d(0, 0, 0) rotateZ(0deg);
+    }
+    50% {
+      transform: translate3d(0, 5px, 0) rotateZ(180deg);
+    }
+  }
+  
+  @keyframes blink-l {
+    0% {
+      transform: rotateX(0deg);
+    }
+    2% {
+      transform: rotateX(80deg);
+    }
+    4%,
+    20% {
+      transform: rotateX(0deg);
+    }
+    22% {
+      transform: rotateX(80deg);
+    }
+    24%,
+    30% {
+      transform: rotateX(0deg);
+    }
+    32% {
+      transform: rotateX(80deg);
+    }
+    34%,
+    70% {
+      transform: rotateX(0deg);
+    }
+    72% {
+      transform: rotateX(80deg);
+    }
+    74%,
+    100% {
+      transform: rotateX(0deg);
+    }
+  }
+  
+  @keyframes blink-r {
+    0% {
+      transform: rotateX(0deg);
+    }
+    2% {
+      transform: rotateX(80deg);
+    }
+    4%,
+    30% {
+      transform: rotateX(0deg);
+    }
+    32% {
+      transform: rotateX(80deg);
+    }
+    34%,
+    50% {
+      transform: rotateX(0deg);
+    }
+    52% {
+      transform: rotateX(80deg);
+    }
+    54%,
+    100% {
+      transform: rotateX(0deg);
+    }
+  }
+
+    </style>
 </head>
 <body>
+<div id="phpmae">
     <svg id="monkey_404" viewBox="0 0 800 480">
         <style type="text/css">
         </style>
@@ -155,6 +496,6 @@
         <div id="semPedidos">
             Sem Pedidos
         </div>
-      
+</div>     
 </body>
 </html>

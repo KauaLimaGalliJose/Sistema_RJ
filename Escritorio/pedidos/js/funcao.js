@@ -7,3 +7,6 @@ export function imprimirDiv(id) {
     window.document.close();
     window.print();
 }
+export function atualizarDiv(div , caminho) {
+    $(div).load(caminho); // Carrega o conteúdo de um arquivo PHP
+}

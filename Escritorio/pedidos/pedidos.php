@@ -20,7 +20,6 @@
                     <input id="pesquisaInput" type="text" oninput="this.value = this.value.toUpperCase();" placeholder="Número Pedido">
                 </div>
                 <div id="pedidosDiv">
-                    <input class="selecao" value="sim" name="TodosSelect" type="checkbox">Todos os Pedidos
                     <input class="selecao" value="sim" name="pedidosAntigosSelect" type="checkbox">Pedidos Antigos
                     <input class="selecao" value="sim" name="pfSelect" type="checkbox">PF
                     <input class="selecao" value="sim" name="pgSelect" type="checkbox">PG
@@ -86,16 +85,12 @@
         if(isset($peSelect) == 'sim'){
             selectImagePE($conectar,$dataSplit,$data);
         }
-        else{
-            $pedidoNaoEncontrado = 'Pedido Não Encontrado';
-        } 
+        
         ?>
         </div>
     </div>
     <div id="pedidonaoEncontrado">
-        <?php 
-            echo '<h1>' .$pedidoNaoEncontrado .'</h1>';
-        ?>
+
     </div>
 </body>
 </html>

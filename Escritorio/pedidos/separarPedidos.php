@@ -68,6 +68,9 @@ function selectPf($conectar,$dataSplit,$data){
                 
             }
         }
+        if(mysqli_fetch_row($Verificador) == 0){
+                    include('../../semPedidos/semPedidos.php');
+                }
 }
 ?>
 
