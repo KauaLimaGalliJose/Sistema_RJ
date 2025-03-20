@@ -21,7 +21,7 @@
                 </div>
                 <div id="pedidosDiv">
                     <input class="selecao" value="sim" name="pedidosAntigosSelect" type="checkbox">Outros Dias
-                    <input class="selecao" value="sim" name="pedidosAntigosSelect" type="checkbox">Para Amanhã
+                    <input class="selecao" value="sim" name="pedidosAmanhaSelect" type="checkbox">Para Amanhã
                     <input class="selecao" value="sim" name="pfSelect" type="checkbox">PF
                     <input class="selecao" value="sim" name="pgSelect" type="checkbox">PG
                     <input class="selecao" value="sim" name="peSelect" type="checkbox">PE
