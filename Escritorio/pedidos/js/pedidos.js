@@ -1,5 +1,4 @@
 //Imports
-import { atualizarDiv } from "./funcao.js";
 
 // Atualiza a página
 setInterval(function() {
@@ -20,4 +19,3 @@ buttonImprimir.addEventListener('click',function(){
 })
 // 34 escala
   
-atualizarDiv('#phpmae' , "../../../semPedidos/semPedidos.php");

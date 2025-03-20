@@ -20,7 +20,8 @@
                     <input id="pesquisaInput" type="text" oninput="this.value = this.value.toUpperCase();" placeholder="Número Pedido">
                 </div>
                 <div id="pedidosDiv">
-                    <input class="selecao" value="sim" name="pedidosAntigosSelect" type="checkbox">Pedidos Antigos
+                    <input class="selecao" value="sim" name="pedidosAntigosSelect" type="checkbox">Outros Dias
+                    <input class="selecao" value="sim" name="pedidosAntigosSelect" type="checkbox">Para Amanhã
                     <input class="selecao" value="sim" name="pfSelect" type="checkbox">PF
                     <input class="selecao" value="sim" name="pgSelect" type="checkbox">PG
                     <input class="selecao" value="sim" name="peSelect" type="checkbox">PE
@@ -68,6 +69,9 @@
         //PE ///////////////////////////////
         if(isset($peSelect) == 'sim'){
             selectPe($conectar,$dataSplit,$data);
+        }
+        if(isset($pedidosAntigosSelect) == 'sim'){
+            pedidosAntigos($conectar,$dataSplit);
         }   
             ?></div><?php
         ?>
@@ -84,6 +88,9 @@
         //PE ///////////////////////////////
         if(isset($peSelect) == 'sim'){
             selectImagePE($conectar,$dataSplit,$data);
+        }
+        if(isset($pedidosAntigosSelect) == 'sim'){
+            pedidosAntigosImagem($conectar,$dataSplit);
         }
         
         ?>

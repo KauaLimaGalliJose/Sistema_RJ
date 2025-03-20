@@ -41,7 +41,7 @@
         setcookie($nome,intval($numero), time() + (365 * 86400 * 1000), "/");
     }
 
-    //Conectar com Banco de Dados
+    //Conectar com Banco de Dados para Atualizar pagina com pedido Atual
     //PF
     $dadosVerificadorP = "SELECT * FROM pedidosp WHERE idpedidos LIKE '%$data%' ORDER BY contadorpf DESC LIMIT 1";
     $VerificadorP = mysqli_query($conectar, $dadosVerificadorP);
@@ -216,7 +216,7 @@
                                 </div>Largura
                                 <select  name="largura" id="horaPedido">
                                     <option id="2mm">2mm</option>
-                                    <option id="3mm" >3mm</option>
+                                    <option id="3mm" selected >3mm</option>
                                     <option id="4mm" >4mm</option>
                                     <option id="5mm" >5mm</option>
                                     <option id="6mm" >6mm</option>
