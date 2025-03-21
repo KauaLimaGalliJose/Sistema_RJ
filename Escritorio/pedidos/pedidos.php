@@ -17,7 +17,7 @@
                 </button>
             </div>
                 <div id="pesquisa">
-                    <input id="pesquisaInput" type="text" oninput="this.value = this.value.toUpperCase();" placeholder="Número Pedido">
+                    <input id="pesquisaInput" value='' name="pesquisa" type="text" oninput="this.value = this.value.toUpperCase();" placeholder="Número Pedido">
                 </div>
                 <div id="pedidosDiv">
                     <input class="selecao" value="sim" name="pedidosAntigosSelect" type="checkbox">Outros Dias
@@ -35,7 +35,9 @@
         </div>
     </div>
 </form>
-    <?php include_once('./separarPedidos.php');?>
+    <?php include_once('./phpScripts/separarPedidos.php');?>
+    <?php include_once('./phpScripts/pedidosAntigos.php');?>
+    <?php include_once('./phpScripts/pesquisa.php');?>
     <div id="phpmae">
         <?php
             // Função para relogio
@@ -45,12 +47,11 @@
             //////////////////////////////////////////////////////////////////////////
 
             if($_GET){
-
-                $TodosSelect = $_GET['TodosSelect'] ?? null;
                 $pedidosAntigosSelect = $_GET['pedidosAntigosSelect'] ?? null;
                 $pfSelect = $_GET['pfSelect'] ?? null;
                 $pgSelect = $_GET['pgSelect'] ?? null;
                 $peSelect = $_GET['peSelect'] ?? null;
+                $pesquisa = $_GET['pesquisa'];
             }
         ?>
         <div id="phpDiv">
@@ -59,8 +60,9 @@
         </div>
         <?php
         //PF ////////////////////////////////
-        if(isset($pfSelect) == 'sim'){
+        if(isset($fpSelect) == 'sim'){
             selectPf($conectar,$dataSplit,$data);
+            
         }
         //PG ////////////////////////////////
         if(isset($pgSelect) == 'sim'){
@@ -70,9 +72,17 @@
         if(isset($peSelect) == 'sim'){
             selectPe($conectar,$dataSplit,$data);
         }
+        //PedidosAntigos ///////////////////////////////
         if(isset($pedidosAntigosSelect) == 'sim'){
             pedidosAntigos($conectar,$dataSplit);
-        }   
+        }
+        //elseif(isset($pedidosAntigosSelect) == 'sim' && isset($pesquisa)){
+            //pesquisaPedidosAntigos($pesquisa,$conectar,$data,$dataSplit);
+        //}
+        //Pesquisa /////////////////////////
+        if(isset($pesquisa) !== ''){
+            pesquisa($pesquisa,$conectar,$data,$dataSplit);
+        }
             ?></div><?php
         ?>
         <div id="php2">
@@ -80,6 +90,7 @@
         //PF ////////////////////////////////
         if(isset($pfSelect) == 'sim'){
             selectImagePF($conectar,$dataSplit,$data);
+            
         } 
         //PG ////////////////////////////////
         if(isset($pgSelect) == 'sim'){
@@ -89,10 +100,14 @@
         if(isset($peSelect) == 'sim'){
             selectImagePE($conectar,$dataSplit,$data);
         }
+        //PedidosAntigos ///////////////////////////////
         if(isset($pedidosAntigosSelect) == 'sim'){
             pedidosAntigosImagem($conectar,$dataSplit);
         }
-        
+         //Pesquisa /////////////////////////
+        if(isset($pesquisa) !== ''){
+            pesquisaImagem($pesquisa,$conectar,$data,$dataSplit);
+        }
         ?>
         </div>
     </div>
