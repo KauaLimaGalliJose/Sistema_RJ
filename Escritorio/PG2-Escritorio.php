@@ -128,7 +128,7 @@
                         <a href="Estoque/Estoque_Pagina_Inicial.html"><img class="itens" src="aliancas-de-casamento.png"></a>
                     </button>
         
-                    <button type="reset" id="limpar" value="" class="botao">
+                    <button type="button" id="limpar" value="" class="botao">
                         <img class="itens" src="lixeira.png">
                     </button>
                 </div>
@@ -201,9 +201,12 @@
                     </div>
                 </div>
                     <div id="imagem_p" >
+                        <div id="pdfSalvo">
+                            PDF Salvo
+                        </div>
                         <div id="PDF">
                             <label id="PdfBT">
-                                <input id="inputPDF" class="fileBt" name="pdf" accept="application/pdf" type="file" src="#"><img class="botaoPDF" id="imagemPdf" src="./pedidos/imagemPedido/pdf.png">
+                                <input id="inputPDF" class="fileBt" name="pdf" accept="application/pdf"  type="file" src="#"><img class="botaoPDF" id="imagemPdf" src="./pedidos/imagemPedido/pdf.png">
                             </label>
                         </div>
                         <label class="botaoImg">

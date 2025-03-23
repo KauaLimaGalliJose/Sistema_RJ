@@ -11,6 +11,7 @@ const voltarBt = document.getElementById('seta_esquerda');
 const avancarBt = document.getElementById('seta_direita');
 const limparBt = document.getElementById('limpar');
 const imagemBt = document.getElementById('uploadimg');
+const pdfBt = document.getElementById('inputPDF');
 const enviarBt = document.getElementById('btEnviar');
 const unidadeCheck = document.getElementById('checkboxFeminina');
 
@@ -51,6 +52,10 @@ imagemBt.addEventListener('click', function(){
     img_modelo()
 });
 
+pdfBt.addEventListener('click', function(){
+    mudaPDF()
+});
+
 limparBt.addEventListener('click',function(){
     limpar()
 });
@@ -69,7 +74,6 @@ enviarBt.addEventListener('click',function(){
 });
 
 //Funções para ser iniciadas
-mudaPDF();
 dataCabecalho();
 dataEntrega();
 console.log(document.cookie);

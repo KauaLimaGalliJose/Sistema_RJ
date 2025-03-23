@@ -499,3 +499,10 @@ footer {
     transform: scale(120%);
     border-radius: 10%;
 }
+#pdfSalvo{
+    display: flex;
+    visibility: hidden;
+    font-size: 80%;
+    color: brown;
+    margin-bottom: 10px;
+}

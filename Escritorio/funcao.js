@@ -71,7 +71,6 @@ export function limpar(){
     document.getElementById('numeracao_m').value = '';
     document.getElementById('numeracao_f').value = '';
     document.getElementById('descricao_Pedido').value = '';
-    document.getElementById('entrega').value = '';
     document.getElementById('grav_externaInput').value = '';
     document.getElementById('descricao_Alianca').value = '';
     document.getElementById('grav_internaInput').value = '';
@@ -80,6 +79,7 @@ export function limpar(){
     document.getElementById('modelo2').style.display = 'none';
     document.getElementById('modelo_rainha').style.display = 'block';
     document.getElementById('modelo2').src = '';
+    document.getElementById("inputPDF").src = "1";
 }
 
 export function atualizarDiv(div , caminho) {
@@ -105,13 +105,18 @@ export function selectN(){
 export function mudaPDF(){
 
     let pdfInput = document.getElementById("inputPDF").src;
-    let imagemPdf = document.getElementById('imagemPdf').src;
+    let imagemPdf = document.getElementById("imagemPdf");
 
-    if(pdfInput !== null){
-        imagemPdf = './pedidos/imagemPedido/pdfAzul.png';
+    if (pdfInput == "#") {
+        imagemPdf.src = './pedidos/imagemPedido/pdf.png';
+        document.getElementById('pdfSalvo').style.visibility = 'hidden' ;
     }
-}
+    else{
+        imagemPdf.src = './pedidos/imagemPedido/pdfAzul.png';
+        document.getElementById('pdfSalvo').style.visibility = 'visible';
+    }
 
+}
 
 
 export{CreateCookie}
