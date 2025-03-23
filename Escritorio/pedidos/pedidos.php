@@ -21,7 +21,6 @@
                 </div>
                 <div id="pedidosDiv">
                     <input class="selecao" value="sim" name="pedidosAntigosSelect" type="checkbox">Outros Dias
-                    <input class="selecao" value="sim" name="pedidosAmanhaSelect" type="checkbox">Para Amanhã
                     <input class="selecao" value="sim" name="pfSelect" type="checkbox">PF
                     <input class="selecao" value="sim" name="pgSelect" type="checkbox">PG
                     <input class="selecao" value="sim" name="peSelect" type="checkbox">PE
@@ -35,23 +34,25 @@
         </div>
     </div>
 </form>
-    <?php include_once('./phpScripts/separarPedidos.php');?>
-    <?php include_once('./phpScripts/pedidosAntigos.php');?>
-    <?php include_once('./phpScripts/pesquisa.php');?>
     <div id="phpmae">
+        <?php include_once('./phpScripts/separarPedidos.php');?>
+        <?php include_once('./phpScripts/pedidosAntigos.php');?>
+        <?php include_once('./phpScripts/pesquisa.php');?>
         <?php
             // Função para relogio
             date_default_timezone_set('America/Sao_Paulo'); // Fuso horário de Brasília
             $data = date('Y-m-d');
             $dataSplit = explode("-", $data);
             //////////////////////////////////////////////////////////////////////////
+            //Variaveis
+            $pesquisa = ''; // Valor padrão
 
             if($_GET){
                 $pedidosAntigosSelect = $_GET['pedidosAntigosSelect'] ?? null;
                 $pfSelect = $_GET['pfSelect'] ?? null;
                 $pgSelect = $_GET['pgSelect'] ?? null;
                 $peSelect = $_GET['peSelect'] ?? null;
-                $pesquisa = $_GET['pesquisa'];
+                $pesquisa = $_GET['pesquisa'] ?? '';
             }
         ?>
         <div id="phpDiv">
@@ -59,55 +60,62 @@
             <?php include_once('../../conexao.php');?>
         </div>
         <?php
+
         //PF ////////////////////////////////
-        if(isset($fpSelect) == 'sim'){
+        if(isset($pfSelect) == 'sim'){
             selectPf($conectar,$dataSplit,$data);
             
         }
+
         //PG ////////////////////////////////
         if(isset($pgSelect) == 'sim'){
             selectPg($conectar,$dataSplit,$data);
         }
+
         //PE ///////////////////////////////
         if(isset($peSelect) == 'sim'){
             selectPe($conectar,$dataSplit,$data);
         }
-        //PedidosAntigos ///////////////////////////////
-        if(isset($pedidosAntigosSelect) == 'sim'){
-            pedidosAntigos($conectar,$dataSplit);
-        }
-        //elseif(isset($pedidosAntigosSelect) == 'sim' && isset($pesquisa)){
-            //pesquisaPedidosAntigos($pesquisa,$conectar,$data,$dataSplit);
-        //}
-        //Pesquisa /////////////////////////
-        if(isset($pesquisa) !== ''){
+
+        //pesquisa
+        if($pesquisa !== '' && $pedidosAntigosSelect !== 'sim'){
             pesquisa($pesquisa,$conectar,$data,$dataSplit);
         }
+        //PedidosAntigos e pesquisa ///////////////////////////////
+        if(isset($pedidosAntigosSelect) == 'sim'){
+                pedidosAntigos($conectar,$dataSplit,$pesquisa);
+        }
+
+
             ?></div><?php
         ?>
         <div id="php2">
         <?php 
+
         //PF ////////////////////////////////
         if(isset($pfSelect) == 'sim'){
-            selectImagePF($conectar,$dataSplit,$data);
-            
+            selectImagePF($conectar,$dataSplit,$data);   
         } 
+
         //PG ////////////////////////////////
         if(isset($pgSelect) == 'sim'){
             selectImagePG($conectar,$dataSplit,$data);
         } 
+
         //PE ///////////////////////////////
         if(isset($peSelect) == 'sim'){
             selectImagePE($conectar,$dataSplit,$data);
         }
-        //PedidosAntigos ///////////////////////////////
-        if(isset($pedidosAntigosSelect) == 'sim'){
-            pedidosAntigosImagem($conectar,$dataSplit);
-        }
-         //Pesquisa /////////////////////////
-        if(isset($pesquisa) !== ''){
+
+        //Pesquisa
+        if($pesquisa !== '' && $pedidosAntigosSelect !== 'sim'){
             pesquisaImagem($pesquisa,$conectar,$data,$dataSplit);
         }
+        //PedidosAntigos e pesquisa ///////////////////////////////
+        if(isset($pedidosAntigosSelect) == 'sim'){
+                pedidosAntigosImagem($conectar,$dataSplit,$pesquisa);
+        }
+         
         ?>
         </div>
     </div>

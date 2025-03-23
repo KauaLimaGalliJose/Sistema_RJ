@@ -1,6 +1,7 @@
 <?php
     //Variaveis Global
     ?><div id="banco"><?php include_once('../conexao.php'); ?></div><?php
+
     date_default_timezone_set('America/Sao_Paulo'); // Fuso horário de Brasília
     $data = date('Y-m-d');
 ?>
@@ -20,19 +21,19 @@
     if(mysqli_num_rows($conectarpf00) == 0 ){
         mysqli_query($conectar, "INSERT INTO pedidosp 
         (contadorpf, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
-        VALUES (0,'PF00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
+        VALUES (0,'PF00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '', '','../','','','','')");
     }
      //Criando o PG0
     if(mysqli_num_rows($conectarpg00) == 0 ){
         mysqli_query($conectar, "INSERT INTO pedidospg
         (contadorpg, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
-        VALUES (0,'PG00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
+        VALUES (0,'PG00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '', '','../','','','','')");
         }
     //Criando o PE0
     if(mysqli_num_rows($conectarpe00) == 0 ){
         mysqli_query($conectar, "INSERT INTO pedidospe
         (contadorpe, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
-        VALUES (0,'PE00-$data','teste', 'teste', 20, 20, 'teste', 'teste','2mm', '', '', '','../','','','','')");
+        VALUES (0,'PE00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '', '','../','','','','')");
         }
 ?>
  <?php /////////////////////////////////////////////////////////////////////////////////////
@@ -156,7 +157,7 @@
             <div id="cabecalho_baixo">
                 <div id="tipo_pedido">
                         <input type="radio" onchange="" id="c1" value="Mercado_Livre" name = 'cliente' class="radio"><label for="c1">Mercado Livre</label> 
-                        <input type="radio" onchange="" id="c2" value="Centro_Alianca" name = 'cliente' class="radio"><label for="c2">Centro das Alianças</label> 
+                        <input type="radio" onchange="" id="c2" value="showroom" name = 'cliente' class="radio"><label for="c2">Showroom</label> 
                         <input type="radio" value="Outros"  id="c3" name = 'cliente' class="radio" ><label for="c3">Outros:</label>  
                         <input type="text" id="outros"  name="txtcliente"  placeholder="Cliente...">
                 </div>
@@ -200,8 +201,13 @@
                     </div>
                 </div>
                     <div id="imagem_p" >
+                        <div id="PDF">
+                            <label id="PdfBT">
+                                <input id="inputPDF" class="fileBt" name="pdf" accept="application/pdf" type="file" src="#"><img class="botaoPDF" id="imagemPdf" src="./pedidos/imagemPedido/pdf.png">
+                            </label>
+                        </div>
                         <label class="botaoImg">
-                        <input type="file" src="#" class="fileBt" name="imagem" id="uploadimg" accept="imagem/*">
+                        <input type="file" src="#" class="fileBt" name="imagem" id="uploadimg" accept="image/png, image/jpeg, image/jpg">
                             Enviar Imagem
                         </label>
                         <div id="modelo">
@@ -230,7 +236,7 @@
                             <div id="grav_externa">
                                 <textarea name="gravacao_exter" class="grav_input" id="grav_externaInput" placeholder="Gravações Externa..."></textarea>   
                             </div>
-                            <textarea name="gravacao_inter" id="grav_m" class="grav_input" placeholder="Gravações do Pedido..."></textarea>   
+                            <textarea name="gravacao_inter" id="grav_internaInput" class="grav_input" placeholder="Gravações do Pedido..."></textarea>   
                         </div>
                         
             </div>

@@ -56,7 +56,8 @@ export function verificar() {
     if (cliente1.checked || cliente2.checked || cliente3.checked) {
         document.getElementById("cabecalho").style.borderBottomColor = 'black';
         borderBlack('tipo_pedido');
-    } else {
+    } 
+    else {
         document.getElementById("cabecalho").style.borderBottomColor = 'red';
         borderRed("tipo_pedido");
         valido = false;
@@ -177,7 +178,6 @@ export function enviar(){
         }
         document.getElementById('btEnviar').disabled = false; 
     });
-    
 }
 
 export function naoenviar(){

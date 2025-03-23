@@ -475,3 +475,27 @@ footer {
 #banco{
     display: none;
 }
+#PDF{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+#inputPDF{
+    display: none;
+}
+#PdfBT{
+    display: flex;
+    width: 90px;
+    height: 100px;
+}
+.botaoPDF{
+    background-color: azure;
+    border: 0px;
+    padding: 2px;
+}
+.botaoPDF:hover{
+    transition: 0.5s;
+    transform: scale(120%);
+    border-radius: 10%;
+}

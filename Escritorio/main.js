@@ -1,5 +1,5 @@
 // imports
-import { voltar, avancar, limpar , atualizarDiv} from "./funcao.js";
+import { voltar, avancar, limpar , atualizarDiv, selectN , mudaPDF} from "./funcao.js";
 import { radioCabecalho, check_unidade, gravacaoExterna, checkboxRodape } from "./radiosChitobox.js";
 import img_modelo  from "./imagemInput.js";
 import { dataCabecalho, dataEntrega} from "./dataHora.js";
@@ -57,6 +57,7 @@ limparBt.addEventListener('click',function(){
 
 enviarBt.addEventListener('click',function(){
     if(verificar() === true){
+        selectN();
         contador =  avancar(contador.contador_P,contador.contador_Pg,contador.contador_Pe)
         console.log(document.cookie);
         enviar()
@@ -68,6 +69,7 @@ enviarBt.addEventListener('click',function(){
 });
 
 //Funções para ser iniciadas
-dataCabecalho()
-dataEntrega()
+mudaPDF();
+dataCabecalho();
+dataEntrega();
 console.log(document.cookie);

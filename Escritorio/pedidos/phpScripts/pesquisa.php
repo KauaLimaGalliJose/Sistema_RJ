@@ -13,7 +13,7 @@
             $pesquisaDadosPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospe WHERE idpedidos != 'PE00-$data' AND idpedidos LIKE '%$resultado%' ORDER BY contadorpe ASC";
             $pesquisaVerificadorPe = mysqli_query($conectar,$pesquisaDadosPe);
 
-
+            //PF
             while (($dados = mysqli_fetch_assoc($pesquisaVerificador))) {
         
                 if ($dados['idpedido'] == $dataSplit[1] . '-' . $dataSplit[2]) {
@@ -74,7 +74,7 @@
                     }  
                 }
             }
-
+            //PG
             while (($dadosPg = mysqli_fetch_assoc($pesquisaVerificadorPg))) {
         
                 if ($dadosPg['idpedido'] == $dataSplit[1] . '-' . $dataSplit[2]) {
@@ -135,7 +135,7 @@
                     }  
                 }
             }
-
+            //PE
             while (($dadosPe = mysqli_fetch_assoc($pesquisaVerificadorPe))) {
         
                 if ($dadosPe['idpedido'] == $dataSplit[1] . '-' . $dataSplit[2]) {
@@ -202,13 +202,17 @@
 ?>
 <?php ////////////////////////////////////////////////////////////////////-- Pesquisa Imagem Do Dia  --////////////////////////////////////////////////////////////////////////?>
 <?php 
-    function pesquisaImagem($resultado,$conectar,$data,$dataSplit) {
+    function pesquisaImagem($resultado,$conectar,$data,$dataSplit){
 
         $imagem = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidosp WHERE idpedidos != 'PF00-$data' AND idpedidos LIKE '%$resultado%' ORDER BY contadorpf ASC";
         $imagemConectar = mysqli_query($conectar, $imagem);
 
         $imagemPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospg WHERE idpedidos != 'PG00-$data' AND idpedidos LIKE '%$resultado%' ORDER BY contadorpg ASC";
         $imagemConectarPg = mysqli_query($conectar, $imagemPg);
+
+        $imagemPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospe WHERE idpedidos != 'PE00-$data' AND idpedidos LIKE '%$resultado%' ORDER BY contadorpe ASC";
+        $imagemConectarPe = mysqli_query($conectar, $imagemPe);
+
 
         while ($dadosImagem = mysqli_fetch_assoc($imagemConectar)) {
             
@@ -238,7 +242,7 @@
                 <?php
             }
         }
-        while ($dadosImagemPe = mysqli_fetch_assoc($imagemConectarPg)) {
+        while ($dadosImagemPe = mysqli_fetch_assoc($imagemConectarPe)) {
             
             if ($dadosImagemPe['idpedido'] == $dataSplit[1] . '-' . $dataSplit[2]) {
 
@@ -253,9 +257,4 @@
             }
         }
     }
-?>
-
-<?php ////////////////////////////////////////////////////////////////////-- Pesquisa PEDIDOS ANTIGOS --////////////////////////////////////////////////////////////////////////?>
-<?php
-
 ?>

@@ -10,3 +10,10 @@ export function imprimirDiv(id) {
 export function atualizarDiv(div , caminho) {
     $(div).load(caminho); // Carrega o conteúdo de um arquivo PHP
 }
+
+function imprimirPDF() {
+    var win = window.open('documento.pdf', '_blank');
+    win.onload = function() {
+        win.print();
+    };
+}

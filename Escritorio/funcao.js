@@ -44,7 +44,7 @@ export function avancar(contador_P, contador_Pg, contador_Pe) {
         document.getElementById('P1').value ='PF' + contador_P;
 
         //Criando verificação para ver se existe o pedido no Banco
-        CreateCookie('Pfverificador','PF' + contador_P,365);
+        CreateCookie('Pfverificador','PF' + contador_P,0.5);
     }
     if (pg.selected) {
         contador_Pg++;
@@ -52,7 +52,7 @@ export function avancar(contador_P, contador_Pg, contador_Pe) {
         document.getElementById('PG1').innerHTML = "PG" + contadordisplayPg ;
         document.getElementById('PG1').value ='PG' + contador_Pg;
         //PG
-        CreateCookie('Pfverificador','PG' + contador_Pg,365);
+        CreateCookie('Pfverificador','PG' + contador_Pg,0.5);
     }
     if (pe.selected) {
         contador_Pe++;
@@ -60,7 +60,7 @@ export function avancar(contador_P, contador_Pg, contador_Pe) {
         document.getElementById('PE1').innerHTML = "PE" +  contadordisplayPe;
         document.getElementById('PE1').value ='PE' + contador_Pe;
         //PE
-        CreateCookie('Pfverificador','PE' + contador_Pe,365);
+        CreateCookie('Pfverificador','PE' + contador_Pe,0.5);
     }
 
     return { contador_P, contador_Pg, contador_Pe };
@@ -74,16 +74,44 @@ export function limpar(){
     document.getElementById('entrega').value = '';
     document.getElementById('grav_externaInput').value = '';
     document.getElementById('descricao_Alianca').value = '';
-    document.getElementById('grav_m').value = '';
+    document.getElementById('grav_internaInput').value = '';
     document.getElementById("outros").value = '';
     document.getElementById('nome_p').value = '';  
     document.getElementById('modelo2').style.display = 'none';
     document.getElementById('modelo_rainha').style.display = 'block';
-    document.getElementById('uploadimg').src = '#';
+    document.getElementById('modelo2').src = '';
 }
 
 export function atualizarDiv(div , caminho) {
     $(div).load(caminho); // Carrega o conteúdo de um arquivo PHP
 }
+
+export function selectN(){
+    //Variaveis
+    const cliente2 = document.getElementById('c2');
+    const cliente3 = document.getElementById('c3');
+    const select = document.getElementById('n_p');
+    
+    if(cliente3.checked ){
+            select.value = 'N';
+            CreateCookie('Pfverificador','outros');
+    }
+    if(cliente2.checked ){
+        select.value = 'N';
+        CreateCookie('Pfverificador','showroom');
+    }
+}
+
+export function mudaPDF(){
+
+    let pdfInput = document.getElementById("inputPDF").src;
+    let imagemPdf = document.getElementById('imagemPdf').src;
+
+    if(pdfInput !== null){
+        imagemPdf = './pedidos/imagemPedido/pdfAzul.png';
+    }
+}
+
+
 
 export{CreateCookie}

@@ -3,7 +3,7 @@
 // Atualiza a página
 setInterval(function() {
     location.reload();
-  }, 5400000); //1:30H
+  }, 1200000); //20 minutos
 
 //Buttons 
 const buttonImprimir =  document.getElementById('imprimir');
