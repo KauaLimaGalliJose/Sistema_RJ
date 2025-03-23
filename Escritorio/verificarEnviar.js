@@ -24,6 +24,9 @@ function borderBlack(id) {
 
 // Função para verificar os inputs
 export function verificar() {
+    let pdfInput = document.getElementById("inputPDF");
+    let imagemPdf = document.getElementById("imagemPdf");
+    let pdfHtml = document.getElementById('pdfSalvo');
     let preview = document.getElementById('modelo2');
     let pedido_mercado = document.getElementById('nome_m').value;
     let pedido_outros = document.getElementById('nome_p').value;
@@ -137,6 +140,19 @@ export function verificar() {
     }
     else{
         borderBlack('rodape')
+    }
+    // --------------------------------------------------------Validação do PDF
+    if (pdfInput.files.length > 0 || (cliente2.checked || cliente3.checked)) {
+        imagemPdf.src = './pedidos/imagemPedido/pdfAzul.png';
+        pdfHtml.style.visibility = 'visible';
+        pdfHtml.innerHTML = 'PDF Salvo'
+    }
+    else{
+
+        imagemPdf.src = './pedidos/imagemPedido/pdf.png';
+        pdfHtml.style.visibility = 'visible';
+        pdfHtml.innerHTML = 'Adicione o PDF'
+        valido = false
     }
     chave = valido;
 

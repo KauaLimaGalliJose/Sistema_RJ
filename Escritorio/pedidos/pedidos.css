@@ -207,6 +207,7 @@ main{
     font-size: 150%;
     font-weight: 700;
     border: solid black 2px;
+    color: black;
     border-radius: 10px;
     height: 30px; 
     width: 35%;   
@@ -216,6 +217,13 @@ main{
     background-color: rgb(255, 0, 0);
     color: aliceblue;
     
+}
+.PdfAncora{
+    color: black;
+}
+.PdfAncora:hover{
+    transition: 0.3s;
+    color: rgb(255, 255, 255);
 }
 #imprimir{
     display: flex; 

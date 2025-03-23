@@ -52,7 +52,7 @@ imagemBt.addEventListener('click', function(){
     img_modelo()
 });
 
-pdfBt.addEventListener('click', function(){
+pdfBt.addEventListener('change', function(){
     mudaPDF()
 });
 
@@ -70,6 +70,8 @@ enviarBt.addEventListener('click',function(){
     else{
         return naoenviar()
     }
+    document.getElementById("imagemPdf").src = './pedidos/imagemPedido/pdf.png';
+    document.getElementById('pdfSalvo').style.visibility = 'hidden' ;
     atualizarDiv("#envioP", 'divRodapeDinamica.php');
 });
 

@@ -202,12 +202,13 @@
                 </div>
                     <div id="imagem_p" >
                         <div id="pdfSalvo">
-                            PDF Salvo
                         </div>
                         <div id="PDF">
-                            <label id="PdfBT">
-                                <input id="inputPDF" class="fileBt" name="pdf" accept="application/pdf"  type="file" src="#"><img class="botaoPDF" id="imagemPdf" src="./pedidos/imagemPedido/pdf.png">
+                            <label id="PdfBT" for="inputPDF">
+                                <img class="botaoPDF" id="imagemPdf" src="./pedidos/imagemPedido/pdf.png">
                             </label>
+                            <input id="inputPDF" class="fileBt" name="pdf" accept="application/pdf"  type="file" >
+                            
                         </div>
                         <label class="botaoImg">
                         <input type="file" src="#" class="fileBt" name="imagem" id="uploadimg" accept="image/png, image/jpeg, image/jpg">

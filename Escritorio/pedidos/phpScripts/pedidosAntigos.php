@@ -216,13 +216,13 @@
         $dataOntem = (int)$dataSplit[2] - 1;
 
 
-        $imagem = "SELECT RIGHT(idpedidos,2) AS idpedido, imagem FROM pedidosp WHERE contadorpf != 0 AND idpedidos LIKE '%$resultado%' ORDER BY contadorpf ASC";
+        $imagem = "SELECT RIGHT(idpedidos,2) AS idpedido, imagem, pdfp FROM pedidosp WHERE contadorpf != 0 AND idpedidos LIKE '%$resultado%' ORDER BY contadorpf ASC";
         $imagemConectar = mysqli_query($conectar, $imagem);
 
-        $imagemPg = "SELECT RIGHT(idpedidos,2) AS idpedido, imagem FROM pedidospg WHERE  contadorpg != 0 AND  idpedidos LIKE '%$resultado%' ORDER BY contadorpg ASC";
+        $imagemPg = "SELECT RIGHT(idpedidos,2) AS idpedido, imagem, pdfpg FROM pedidospg WHERE  contadorpg != 0 AND  idpedidos LIKE '%$resultado%' ORDER BY contadorpg ASC";
         $imagemConectarPg = mysqli_query($conectar, $imagemPg);
 
-        $imagemPe = "SELECT RIGHT(idpedidos,2) AS idpedido, imagem FROM pedidospe WHERE contadorpe != 0 AND idpedidos LIKE '%$resultado%' ORDER BY contadorpe ASC";
+        $imagemPe = "SELECT RIGHT(idpedidos,2) AS idpedido, imagem, pdfpe FROM pedidospe WHERE contadorpe != 0 AND idpedidos LIKE '%$resultado%' ORDER BY contadorpe ASC";
         $imagemConectarPe = mysqli_query($conectar, $imagemPe);
 
         if(isset($resultado) !== ''){
@@ -236,7 +236,7 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagem['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button">PDF</button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagem['pdfp']?>">PDF</a></button>
                 </div>
                 <?php
             }
@@ -249,7 +249,7 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPg['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button">PDF</button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPg['pdfpg']?>">PDF</a></button>
                 </div>
                 <?php
             }
@@ -262,7 +262,7 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPe['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button">PDF</button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPe['pdfpe']?>">PDF</a></button>
                 </div>
                 <?php
             }
@@ -511,13 +511,13 @@
     }
     else{
         //Variaveis para sincronizar com Banco de Dados
-        $imagemPf = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem FROM pedidosp WHERE contadorpf != 0 ORDER BY contadorpf ASC";
+        $imagemPf = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, pdfp FROM pedidosp WHERE contadorpf != 0 ORDER BY contadorpf ASC";
         $imagemConectarPf = mysqli_query($conectar, $imagemPf);
 
-        $imagemPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem FROM pedidospg WHERE contadorpg != 0 ORDER BY contadorpg ASC";
+        $imagemPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, pdfpg FROM pedidospg WHERE contadorpg != 0 ORDER BY contadorpg ASC";
         $imagemConectarPg = mysqli_query($conectar, $imagemPg);
 
-        $imagemPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem FROM pedidospe WHERE contadorpe != 0 ORDER BY contadorpe ASC";
+        $imagemPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, pdfpe FROM pedidospe WHERE contadorpe != 0 ORDER BY contadorpe ASC";
         $imagemConectarPe = mysqli_query($conectar, $imagemPe);
 
         //PF-----------------------------------------------------------
@@ -529,7 +529,7 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPf['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button">PDF</button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPf['pdfp']?>">PDF</a></button>
                 </div>
                 <?php
             }
@@ -543,7 +543,7 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPg['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button">PDF</button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPg['pdfpg']?>">PDF</a></button>
                 </div>
                 <?php
             }
@@ -556,7 +556,7 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPe['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button">PDF</button> 
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPe['pdfpe']?>">PDF</a></button> 
                 </div>
                 <?php
             }

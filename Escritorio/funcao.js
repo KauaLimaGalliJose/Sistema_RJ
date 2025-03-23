@@ -103,17 +103,20 @@ export function selectN(){
 }
 
 export function mudaPDF(){
-
-    let pdfInput = document.getElementById("inputPDF").src;
+    const cliente2 = document.getElementById('c2');
+    const cliente3 = document.getElementById('c3');
+    let pdfInput = document.getElementById("inputPDF");
     let imagemPdf = document.getElementById("imagemPdf");
 
-    if (pdfInput == "#") {
-        imagemPdf.src = './pedidos/imagemPedido/pdf.png';
-        document.getElementById('pdfSalvo').style.visibility = 'hidden' ;
-    }
-    else{
+    if (pdfInput.files.length > 0 || (cliente2.checked || cliente3.checked)) {
         imagemPdf.src = './pedidos/imagemPedido/pdfAzul.png';
         document.getElementById('pdfSalvo').style.visibility = 'visible';
+        document.getElementById('pdfSalvo').innerHTML= 'PDF Salvo';
+    }
+    else{
+        imagemPdf.src = './pedidos/imagemPedido/pdf.png';
+        document.getElementById('pdfSalvo').style.visibility = 'visible' ;
+        document.getElementById('pdfSalvo').innerHTML= 'Adicione o PDF';
     }
 
 }

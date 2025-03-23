@@ -479,10 +479,13 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
+    flex-direction: column;
+    margin-bottom: 0px;
+    width: 100%;
 }
 #inputPDF{
-    display: none;
+    display: flex;
+    opacity: 0%;
 }
 #PdfBT{
     display: flex;
@@ -491,6 +494,7 @@ footer {
 }
 .botaoPDF{
     background-color: azure;
+    width: 100%;
     border: 0px;
     padding: 2px;
 }
