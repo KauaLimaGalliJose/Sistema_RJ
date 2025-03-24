@@ -34,6 +34,7 @@
         </div>
     </div>
 </form>
+<main>
     <div id="phpmae">
         <?php include_once('./phpScripts/separarPedidos.php');?>
         <?php include_once('./phpScripts/pedidosAntigos.php');?>
@@ -122,5 +123,6 @@
     <div id="pedidonaoEncontrado">
 
     </div>
+</main>
 </body>
 </html>

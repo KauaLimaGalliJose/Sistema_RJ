@@ -64,7 +64,6 @@ limparBt.addEventListener('click',function(){
 enviarBt.addEventListener('click',function(){
     if(verificar() === true){
         selectN();
-        contador =  avancar(contador.contador_P,contador.contador_Pg,contador.contador_Pe)
         console.log(document.cookie);
         enviar()
     }

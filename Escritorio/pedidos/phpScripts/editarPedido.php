@@ -14,10 +14,43 @@
 
     if(!empty($_GET['idpedidos'])){
 
-        $dados = "SELECT * FROM pedidosp ";
+        $p = $_GET['idpedidos'];
+        $pPrint = explode("-", $p);
+        $pSplit = str_split($p,1);
 
-        $letraPf = $_GET['idpedidos'];
+        if($pSplit[1] === "F"){
+            
+            $dados = "SELECT * FROM pedidosp WHERE idpedidos = '$p' ";
+            $dadosConectar = mysqli_query($conectar,$dados);
+
+            while($linhaDados = mysqli_fetch_assoc($dadosConectar)){
+
+            }
+
+        }
+        elseif($pSplit[1] === "G"){
+
+            $dadosPg = "SELECT * FROM pedidospg WHERE idpedidos = $p ";
+            $dadosConectarPg = mysqli_query($conectar,$dadosPg);
+
+            while($linhaDadosPg = mysqli_fetch_assoc( $dadosConectarPg)){
+
+            }
+
+        }
+        elseif($pSplit[1] === "E"){
+
+            $dadosPe = "SELECT * FROM pedidospe WHERE idpedidos = $p ";
+            $dadosConectarPe = mysqli_query($conectar,$dadosPe);
+
+            while($linhaDadosPe = mysqli_fetch_assoc( $dadosConectarPe)){
+
+            }
+
+        }
+
     }
+
 
 ?>
 
@@ -102,7 +135,7 @@
         </div>
         <div id="conteudo">
             <div id="data">
-             Pedido <?php echo $letraPf; ?>
+             Pedido <?php echo $pPrint[0]; ?>
             </div>
             <div id="pedido_input">
                 <div id="direita_input">
@@ -110,16 +143,16 @@
                         Número do Pedido:
                           <select id="n_p" name="numeroPedido" class="pedido" >
                                 <option value='N'  id="Nenhum" >N</option>
-                                <option value='<?php echo $letraPf  ?>' id="P1" >
-                                    <?php echo  $letraPf ?>
+                                <option value='<?php echo $pPrint[0]  ?>' id="P1" >
+                                    <?php echo  $pPrint[0] ?>
                                 </option>
                            
-                                <option value="<?php echo $letraPg . $numeroPg; ?>" id="PG1" >
-                                    <?php echo  $letraPg . $numeroPgDisplay;?>
+                                <option value="<?php echo $pPrint[0]; ?>" id="PG1" >
+                                    <?php echo  $pPrint[0];?>
                                 </option>
                            
-                                <option value="<?php echo $letraPe . $numeroPe; ?>" id="PE1" >
-                                    <?php echo  $letraPe . $numeroPeDisplay;?> 
+                                <option value="<?php echo $pPrint[0]; ?>" id="PE1" >
+                                    <?php echo  $pPrint[0];?> 
                                 </option>
                         </select>
                         <input type="text" id="nome_m" name="nome_m" placeholder="Pedido..." >
@@ -185,7 +218,7 @@
         <footer id="rodape">
             <div id="envioP">
                 <label class="font_red"> <?php
-                    echo 'Sem Pedido';
+                    echo 'Editando';
                 ?></label>
             </div>
             <input type="checkbox" id="gravacao_externa"  name = 'gravacao_externa' class="radio">Gravação Externa

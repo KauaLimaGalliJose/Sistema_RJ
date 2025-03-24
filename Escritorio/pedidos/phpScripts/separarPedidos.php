@@ -172,7 +172,7 @@ function selectPg($conectar,$dataSplit,$data){
 ///////////////////////////////-------------------PF__Imagem----------------------////////////////////////////////////////////////////////////// 
     function selectImagePF($conectar,$dataSplit,$data){
 
-        $imagem = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, pdfp FROM pedidosp WHERE idpedidos != 'PF00-$data' ORDER BY contadorpf ASC";
+        $imagem = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, pdfp, idpedidos FROM pedidosp WHERE idpedidos != 'PF00-$data' ORDER BY contadorpf ASC";
         $imagemConectar = mysqli_query($conectar, $imagem);
 
         while ($dadosImagem = mysqli_fetch_assoc($imagemConectar)) {
@@ -184,7 +184,7 @@ function selectPg($conectar,$dataSplit,$data){
                 ?></div>
                 <div class="btPedidos">
                 <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagem['pdfp']?>">PDF</a></button>
-                <button class = 'Pdf' type="button">Editar</button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagem['idpedidos'] ; ?>">Editar</a></button>
                 </div>
                 <?php
             }
@@ -193,7 +193,7 @@ function selectPg($conectar,$dataSplit,$data){
 ///////////////////////////////-------------------PG__Imagem----------------------////////////////////////////////////////////////////////////// 
     function selectImagePG($conectar,$dataSplit,$data){
 
-        $imagemPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, pdfpg FROM pedidospg WHERE idpedidos != 'PG00-$data' ORDER BY contadorpg ASC";
+        $imagemPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, pdfpg, idpedidos FROM pedidospg WHERE idpedidos != 'PG00-$data' ORDER BY contadorpg ASC";
         $imagemConectarPg = mysqli_query($conectar, $imagemPg);
 
         while ($dadosImagemPg = mysqli_fetch_assoc($imagemConectarPg)) {
@@ -205,7 +205,7 @@ function selectPg($conectar,$dataSplit,$data){
                 ?></div>
                 <div class="btPedidos">
                 <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPg['pdfpg']?>">PDF</a></button>
-                <button class = 'Pdf' type="button">Editar</button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPg['idpedidos'] ; ?>">Editar</a></button>
                 </div>
                 <?php
             }
@@ -214,7 +214,7 @@ function selectPg($conectar,$dataSplit,$data){
 ///////////////////////////////-------------------PE__Imagem----------------------////////////////////////////////////////////////////////////// 
     function selectImagePE($conectar,$dataSplit,$data){
         
-        $imagemPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, pdfpe FROM pedidospe WHERE idpedidos != 'PE00-$data' ORDER BY contadorpe ASC";
+        $imagemPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, pdfpe, idpedidos FROM pedidospe WHERE idpedidos != 'PE00-$data' ORDER BY contadorpe ASC";
             $imagemConectarPe = mysqli_query($conectar, $imagemPe);
     
             while ($dadosImagemPe = mysqli_fetch_assoc($imagemConectarPe)) {
@@ -226,7 +226,7 @@ function selectPg($conectar,$dataSplit,$data){
                     ?></div>
                     <div class="btPedidos">
                     <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPe['pdfpe']?>">PDF</a></button>
-                    <button class = 'Pdf' type="button">Editar</button>
+                    <button class = 'Pdf' type="button"><a class="PdfAncora" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPe['idpedidos'] ; ?>">Editar</a></button>
                     </div>
                     <?php
                 }
