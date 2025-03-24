@@ -20,10 +20,10 @@
                     <input id="pesquisaInput" value='' name="pesquisa" type="text" oninput="this.value = this.value.toUpperCase();" placeholder="Número Pedido">
                 </div>
                 <div id="pedidosDiv">
-                    <input class="selecao" value="sim" name="pedidosAntigosSelect" type="checkbox">Outros Dias
-                    <input class="selecao" value="sim" name="pfSelect" type="checkbox">PF
-                    <input class="selecao" value="sim" name="pgSelect" type="checkbox">PG
-                    <input class="selecao" value="sim" name="peSelect" type="checkbox">PE
+                    <input class="selecao" id="Outros Dias" value="sim" name="pedidosAntigosSelect" type="checkbox"><label for="Outros Dias">Outros Dias</label>
+                    <input class="selecao" id="PF" value="sim" name="pfSelect" type="checkbox"><label for="PF">PF</label>
+                    <input class="selecao" id="PG" value="sim" name="pgSelect" type="checkbox"><label for="PG">PG</label>
+                    <input class="selecao" id="PE" value="sim" name="peSelect" type="checkbox"><label for="PE">PE</label>
                 </div>
                 <button type="submit" id="enviar">
                     <h1>Pesquisar</h1>

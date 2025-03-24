@@ -33,7 +33,7 @@
                     <?php
                     //Verificando Numeração Feminina
                     if($dados['numF'] == 40){
-    
+
                         $numeroFeminino = ' não tem';
                     }
                     else{
@@ -41,44 +41,29 @@
                         $numeroFeminino = $dados['numF'];
                     }
     
-    
-                    //Se gravação externa e interna for NULL
-                    if($dados['gravacaoInterna'] == NULL && $dados['gravacaoExterna'] == NULL){
-    
-                        print($dados['descricaoPedido'] . "<br>");
-                        print('<br>Largura:' . $dados['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                        <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
-                        </label></div><?php
+                    // gravação interna 
+                    if(!empty($dados['gravacaoInterna'])){
+                        $gravacaoInterna = '<span class="font_blu">Gravação:</span>' . $dados['gravacaoInterna'];
                     }
-                    elseif($dados['gravacaoExterna'] !== NULL && $dados['gravacaoInterna'] !== NULL){
-    
-                        print($dados['descricaoPedido'] . "<br>");
-                        print('<br>Largura:' . $dados['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                        <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
-                        <span class="font_blu"> <?php print('Gravação:');?></span><?php echo $dados['gravacaoInterna']. "<br>"?>
-                        <span class="font_red"> <?php print('Gravação Externa:');?></span><?php echo $dados['gravacaoExterna'];?>
-                        </label></div><?php
+                    else{
+                        $gravacaoInterna = '';
                     }
-                    elseif($dados['gravacaoInterna'] !== NULL){
-    
-                        print($dados['descricaoPedido'] . "<br>");
-                        print('<br>Largura:' . $dados['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                        <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
-                        <span class="font_blu"> <?php print('Gravação:');?></span><?php echo $dados['gravacaoInterna'];?>
-                        </label></div><?php
+                    
+                    //gravação externa
+                    if(!empty($dados['gravacaoExterna'])){
+                        $gravacaoExterna = '<span class="font_blue">Gravação:</span>' . $dados['gravacaoExterna'];
                     }
-                    elseif($dados['gravacaoExterna'] !== NULL){
+                    else{
+                        $gravacaoExterna = '';
+                    }
     
                         print($dados['descricaoPedido'] . "<br>");
                         print('<br>Largura:' . $dados['largura']);
                         print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
                         <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
-                        <span class="font_red"> <?php print('Gravação Externa:');?></span><?php echo $dados['gravacaoExterna'];?>
+                        <?php echo $gravacaoInterna . "<br>"?>
+                        <?php echo $gravacaoExterna?>
                         </label></div><?php
-                    }  
                 }
             }
             //PG ------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -92,54 +77,38 @@
                         <h2><?php print( $pg[0].' -- '.$dadosPg['nomePedido'].' -- '); ?><span class="font_red"><?php print($pg[3] . '/' . $pg[2]);?></span></h2>
                     </div>
                     <?php
-                    //Verificando Numeração Feminina
-                    if($dadosPg['numF'] == 40){
-    
-                        $numeroFeminino = ' não tem';
+                   //Verificando Numeração Feminina
+                   if($dadosPg['numF'] == 40){
+
+                    $numeroFeminino = ' não tem';
                     }
                     else{
+
+                    $numeroFeminino = $dadosPg['numF'];
+                    }
+                    // gravação interna 
+                    if(!empty($dadosPg['gravacaoInterna'])){
+                        $gravacaoInterna = '<span class="font_blu">Gravação:</span>' . $dadosPg['gravacaoInterna'];
+                    }
+                    else{
+                        $gravacaoInterna = '';
+                    }
                         
-                        $numeroFeminino = $dadosPg['numF'];
+                    //gravação externa
+                    if(!empty($dadosPg['gravacaoExterna'])){
+                        $gravacaoExterna = '<span class="font_blue">Gravação:</span>' . $dadosPg['gravacaoExterna'];
                     }
-    
-    
-                    //Se gravação externa e interna for NULL
-                    if($dadosPg['gravacaoInterna'] == NULL && $dadosPg['gravacaoExterna'] == NULL){
-    
-                        print($dadosPg['descricaoPedido'] . "<br>");
-                        print('<br>Largura:' . $dadosPg['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                        <?php print('Masculina:');?><span class="font_red"><?php print($dadosPg['numeM']. "<br>"); ?></span>
-                        </label></div><?php
+                    else{
+                        $gravacaoExterna = '';
                     }
-                    elseif($dadosPg['gravacaoExterna'] !== NULL && $dadosPg['gravacaoInterna'] !== NULL){
-    
-                        print($dadosPg['descricaoPedido'] . "<br>");
-                        print('<br>Largura:' . $dadosPg['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                        <?php print('Masculina:');?><span class="font_red"><?php print($dadosPg['numeM']. "<br>"); ?></span>
-                        <span class="font_blu"> <?php print('Gravação:');?></span><?php echo $dadosPg['gravacaoInterna']. "<br>"?>
-                        <span class="font_red"> <?php print('Gravação Externa:');?></span><?php echo $dadosPg['gravacaoExterna'];?>
-                        </label></div><?php
-                    }
-                    elseif($dadosPg['gravacaoInterna'] !== NULL){
-    
-                        print($dadosPg['descricaoPedido'] . "<br>");
-                        print('<br>Largura:' . $dadosPg['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                        <?php print('Masculina:');?><span class="font_red"><?php print($dadosPg['numeM']. "<br>"); ?></span>
-                        <span class="font_blu"> <?php print('Gravação:');?></span><?php echo $dadosPg['gravacaoInterna'];?>
-                        </label></div><?php
-                    }
-                    elseif($dadosPg['gravacaoExterna'] !== NULL){
-    
-                        print($dadosPg['descricaoPedido'] . "<br>");
-                        print('<br>Largura:' . $dadosPg['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                        <?php print('Masculina:');?><span class="font_red"><?php print($dadosPg['numeM']. "<br>"); ?></span>
-                        <span class="font_red"> <?php print('Gravação Externa:');?></span><?php echo $dadosPg['gravacaoExterna'];?>
-                        </label></div><?php
-                    }  
+
+                    print($dadosPg['descricaoPedido'] . "<br>");
+                    print('<br>Largura:' . $dadosPg['largura']);
+                    print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
+                    <?php print('Masculina:');?><span class="font_red"><?php print($dadosPg['numeM']. "<br>"); ?></span>
+                    <?php echo $gravacaoInterna . "<br>"?>
+                    <?php echo $gravacaoExterna?>
+                    </label></div><?php
                 }
             }
             //PE ------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -155,52 +124,36 @@
                     <?php
                     //Verificando Numeração Feminina
                     if($dadosPe['numF'] == 40){
-    
+
                         $numeroFeminino = ' não tem';
                     }
                     else{
-                        
+
                         $numeroFeminino = $dadosPe['numF'];
                     }
-    
-    
-                    //Se gravação externa e interna for NULL
-                    if($dadosPe['gravacaoInterna'] == NULL && $dadosPe['gravacaoExterna'] == NULL){
-    
-                        print($dadosPe['descricaoPedido'] . "<br>");
-                        print('<br>Largura:' . $dadosPe['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                        <?php print('Masculina:');?><span class="font_red"><?php print($dadosPe['numeM']. "<br>"); ?></span>
-                        </label></div><?php
+                    // gravação interna 
+                    if(!empty($dadosPe['gravacaoInterna'])){
+                        $gravacaoInterna = '<span class="font_blu">Gravação:</span>' . $dadosPe['gravacaoInterna'];
                     }
-                    elseif($dadosPe['gravacaoExterna'] !== NULL && $dados['gravacaoInterna'] !== NULL){
-    
-                        print($dadosPe['descricaoPedido'] . "<br>");
-                        print('<br>Largura:' . $dadosPe['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                        <?php print('Masculina:');?><span class="font_red"><?php print($dadosPe['numeM']. "<br>"); ?></span>
-                        <span class="font_blu"> <?php print('Gravação:');?></span><?php echo $dadosPe['gravacaoInterna']. "<br>"?>
-                        <span class="font_red"> <?php print('Gravação Externa:');?></span><?php echo $dadosPe['gravacaoExterna'];?>
-                        </label></div><?php
+                    else{
+                        $gravacaoInterna = '';
                     }
-                    elseif($dadosPe['gravacaoInterna'] !== NULL){
-    
-                        print($dadosPe['descricaoPedido'] . "<br>");
-                        print('<br>Largura:' . $dadosPe['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                        <?php print('Masculina:');?><span class="font_red"><?php print($dadosPe['numeM']. "<br>"); ?></span>
-                        <span class="font_blu"> <?php print('Gravação:');?></span><?php echo $dadosPe['gravacaoInterna'];?>
-                        </label></div><?php
+                        
+                    //gravação externa
+                    if(!empty($dadosPe['gravacaoExterna'])){
+                        $gravacaoExterna = '<span class="font_blue">Gravação:</span>' . $dadosPe['gravacaoExterna'];
                     }
-                    elseif($dadosPe['gravacaoExterna'] !== NULL){
-    
-                        print($dadosPe['descricaoPedido'] . "<br>");
-                        print('<br>Largura:' . $dadosPe['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                        <?php print('Masculina:');?><span class="font_red"><?php print($dadosPe['numeM']. "<br>"); ?></span>
-                        <span class="font_red"> <?php print('Gravação Externa:');?></span><?php echo $dadosPe['gravacaoExterna'];?>
-                        </label></div><?php
-                    }  
+                    else{
+                        $gravacaoExterna = '';
+                    }
+
+                    print($dadosPe['descricaoPedido'] . "<br>");
+                    print('<br>Largura:' . $dadosPe['largura']);
+                    print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
+                    <?php print('Masculina:');?><span class="font_red"><?php print($dadosPe['numeM']. "<br>"); ?></span>
+                    <?php echo $gravacaoInterna . "<br>"?>
+                    <?php echo $gravacaoExterna?>
+                    </label></div><?php 
                 }
             }
         }

@@ -1,4 +1,4 @@
 dar baixa na gravação automatico (sem precisar de planilha) ◄ Fazer
-colocar caixa de select para separar pedidos no pedidos.php ◄ Fazer
+colocar caixa de select para separar pedidos no pedidos.php ◄ Feito
 ALTER TABLE nome_da_tabela ADD nome_do_campo TIPO_DADO;
 

@@ -188,6 +188,11 @@ main{
     font-size: 120%;
     font-weight: 700;
 }
+.font_blue{
+    color: rgb(59, 125, 230);
+    font-size: 120%;
+    font-weight: 700;
+}
 .titulo_black{
     color: rgb(0, 0, 0);
     font-size: 250%;
