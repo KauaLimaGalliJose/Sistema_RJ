@@ -223,7 +223,7 @@
                 ?></div>
                 <div class="btPedidos">
                 <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagem['pdfp']?>">PDF</a></button>
-                <button class = 'Pdf' type="button">Editar</button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagem['idpedidos'] ; ?>">Editar</a></button>
                 </div>
                 <?php
             }
@@ -237,7 +237,7 @@
                 ?></div>
                 <div class="btPedidos">
                 <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPg['pdfpg']?>">PDF</a></button>
-                <button class = 'Pdf' type="button">Editar</button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPg['idpedidos'] ; ?>">Editar</a></button>
                 </div>
                 <?php
             }
@@ -251,7 +251,7 @@
                 ?></div>
                 <div class="btPedidos">
                 <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPe['pdfpe']?>">PDF</a></button>
-                <button class = 'Pdf' type="button">Editar</button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="./phpScripts/editarPedido.php">Editar</a></button>
                 </div>
                 <?php
             }
