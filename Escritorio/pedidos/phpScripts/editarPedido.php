@@ -17,8 +17,12 @@
         $p = $_GET['idpedidos'];
         $pPrint = explode("-", $p);
         $pSplit = str_split($p,1);
+
+        //Variaveis NULL
         $mercadoLivre = null;
         $styleMercadoLivre = null;
+        $unidade = null;
+        $styleUnidade = null;
 
         if($pSplit[1] === "F"){
             
@@ -38,25 +42,47 @@
                 $descricaoAlianca = $linhaDados['descricaoAlianca'];
                 $imagem = $linhaDados['imagem'];
                 $largura = $linhaDados['largura'];
+                $largura = $linhaDados['largura'];
+
+                if($numeroF == 40){
+                    $unidade = 'checked';
+                    $styleUnidade = 'style="visibility: hidden;"';
+                }
             }
 
         }
         elseif($pSplit[1] === "G"){
 
-            $dadosPg = "SELECT * FROM pedidospg WHERE idpedidos = $p ";
+            $dadosPg = "SELECT * FROM pedidospg WHERE idpedidos = '$p' ";
             $dadosConectarPg = mysqli_query($conectar,$dadosPg);
 
-            while($linhaDadosPg = mysqli_fetch_assoc( $dadosConectarPg)){
+            while($linhaDadosPg = mysqli_fetch_assoc($dadosConectarPg)){
 
                 //Variaveis do VALUES
                 $mercadoLivre = 'checked';
                 $styleMercadoLivre = 'style="visibility: visible;"';
+                //Variaveis do VALUES
+                $mercadoLivre = 'checked';
+                $styleMercadoLivre = 'style="visibility: visible;"';
+                $nomePedido = $linhaDadosPg['nomePedido'];
+                $numeroF = $linhaDadosPg['numF'];
+                $numeroM = $linhaDadosPg['numeM'];
+                $descricaoPedido = $linhaDadosPg['descricaoPedido'];
+                $descricaoAlianca = $linhaDadosPg['descricaoAlianca'];
+                $imagem = $linhaDadosPg['imagem'];
+                $largura = $linhaDadosPg['largura'];
+                $largura = $linhaDadosPg['largura'];
+
+                if($numeroF == 40){
+                    $unidade = 'checked';
+                    $styleUnidade = 'style="visibility: hidden;"';
+                }
             }
 
         }
         elseif($pSplit[1] === "E"){
 
-            $dadosPe = "SELECT * FROM pedidospe WHERE idpedidos = $p ";
+            $dadosPe = "SELECT * FROM pedidospe WHERE idpedidos = '$p' ";
             $dadosConectarPe = mysqli_query($conectar,$dadosPe);
 
             while($linhaDadosPe = mysqli_fetch_assoc( $dadosConectarPe)){
@@ -64,6 +90,12 @@
                 //Variaveis do VALUES
                 $mercadoLivre = 'checked';
                 $styleMercadoLivre = 'style="visibility: visible;"';
+
+
+                if($numeroF == 40){
+                    $unidade = 'checked';
+                    $styleUnidade = 'style="visibility: hidden;"';
+                }
 
             }
 
@@ -180,10 +212,10 @@
                     </div>
                     <div id="numeracao">
                         Númeração M:<input type="number" id="numeracao_m" value='<?php echo $numeroM;  ?>' name="m" placeholder="M" >
-                        F:<input type="number" id="numeracao_f" value='<?php echo $numeroF; ?>' name="f"  placeholder="F" >
+                        F:<input  type="number" id="numeracao_f" value='<?php echo $numeroF; ?>' name="f"  placeholder="F"  <?php echo $styleUnidade?>>
                        </div>
                     <div id="unidade">
-                       <label for="checkboxFeminina">Unidade:</label><input type="checkbox" id="checkboxFeminina"  name = 'pé' class="radio" >
+                       <label for="checkboxFeminina">Unidade:</label><input type="checkbox" id="checkboxFeminina"  name = 'pé' class="radio" <?php echo $unidade ?> >
                     </div>
                     <div id="descricao_div">
                         <textarea id="descricao_Pedido" value = '<?php echo $descricaoPedido; ?>' name="descricao_Pedido" class="descricao" placeholder="Descrição do Pedido..."  ><?php echo $descricaoPedido; ?></textarea>

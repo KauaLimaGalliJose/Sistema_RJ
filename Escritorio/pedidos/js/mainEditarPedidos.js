@@ -1,10 +1,10 @@
 // imports
-import { voltar, avancar, limpar , atualizarDiv, selectN } from "../../funcao.js";
+import { voltar, avancar, limpar , selectN } from "../../funcao.js";
 import { mudaPDF } from "./funcao.js";
 import { radioCabecalho, check_unidade, gravacaoExterna, checkboxRodape } from "../../radiosChitobox.js";
 import img_modelo  from "../../imagemInput.js";
 import { dataEntrega} from "../../dataHora.js";
-import { enviar, naoenviar, verificar } from "../../verificarEnviar.js";
+import { enviar, naoenviar, verificar } from "./verificarEnviar.js";
 import { getCookie } from "../../cookies.js";
 
 //Buttons
@@ -72,7 +72,7 @@ enviarBt.addEventListener('click',function(){
     }
     document.getElementById("imagemPdf").src = '../imagemPedido/pdf.png';
     document.getElementById('pdfSalvo').style.visibility = 'hidden' ;
-    atualizarDiv("#envioP", '../../divRodapeDinamica.php');
+    alert('Editado Com Sucesso !!');
     window.location.href = "../pedidos.php";
 });
 
