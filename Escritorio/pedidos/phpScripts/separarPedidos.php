@@ -4,7 +4,7 @@
 <?php
 function selectPf($conectar,$dataSplit,$data){
 
-        $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidosp WHERE idpedidos != 'PF00-$data' ORDER BY contadorpf ASC";
+        $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidosp WHERE idpedidos != 'PF00-$data' ORDER BY contadorpf ASC";
         $Verificador = mysqli_query($conectar, $dadosVerificador);
 
         while (($dados = mysqli_fetch_assoc($Verificador))) {
@@ -17,6 +17,11 @@ function selectPf($conectar,$dataSplit,$data){
                     <h2><?php print( $pf[0].' -- '.$dados['nomePedido'].' -- '); ?><span class="font_red"><?php print($dataSplit[2] . '/' . $dataSplit[1] );?></span></h2>
                 </div>
                 <?php
+                //Variaveis Null
+                $estoqueF = null;
+                $estoqueM = null;
+
+
                 //Verificando Numeração Feminina
                 if($dados['numF'] == 40){
 
@@ -43,10 +48,20 @@ function selectPf($conectar,$dataSplit,$data){
                     $gravacaoExterna = '';
                 }
 
+                //Verificando Estoque 
+                if(!empty($dados['parEstoqueF'])){
+
+                    $estoqueF = '<span class="font_estoque"> Estoque</span>' ;
+                }
+                if(!empty($dados['parEstoqueM'])){
+
+                    $estoqueM = '<span class="font_estoque"> Estoque</span>' ;
+                }
+
                     print($dados['descricaoPedido'] . "<br>");
                     print('<br>Largura:' . $dados['largura']);
-                    print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                    <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. "<br>"); ?></span>
+                    print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino . $estoqueF . "<br>"); ?></span>
+                    <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM'] . $estoqueM . "<br>"); ?></span>
                     <?php echo $gravacaoInterna . "<br>"?>
                     <?php echo $gravacaoExterna?>
                     </label></div><?php
@@ -62,7 +77,7 @@ function selectPf($conectar,$dataSplit,$data){
 <?php 
 function selectPg($conectar,$dataSplit,$data){
     
-    $dadosVerificadorPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospg WHERE idpedidos != 'PG00-$data' ORDER BY contadorpg ASC";
+    $dadosVerificadorPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospg WHERE idpedidos != 'PG00-$data' ORDER BY contadorpg ASC";
     $VerificadorPg = mysqli_query($conectar, $dadosVerificadorPg);
 
     while (($dadosPg = mysqli_fetch_assoc($VerificadorPg))) {
@@ -76,6 +91,10 @@ function selectPg($conectar,$dataSplit,$data){
                 <h2><?php print( $pg[0].' -- '.$dadosPg['nomePedido'].' -- '); ?><span class="font_red"><?php print($dataSplit[2] . '/' . $dataSplit[1] );?></span></h2>
             </div>
             <?php
+            //Variaveis Null
+            $estoqueF = null;
+            $estoqueM = null;
+
             //Verificando Numeração Feminina
             if($dadosPg['numF'] == 40){
 
@@ -101,10 +120,20 @@ function selectPg($conectar,$dataSplit,$data){
                 $gravacaoExterna = '';
             }
 
+            //Verificando Estoque 
+            if(!empty($dadosPg['parEstoqueF'])){
+
+                $estoqueF = '<span class="font_estoque"> Estoque</span>' ;
+            }
+            if(!empty($dadosPg['parEstoqueM'])){
+
+                $estoqueM = '<span class="font_estoque"> Estoque</span>' ;
+            }
+
                     print($dadosPg['descricaoPedido'] . "<br>");
                     print('<br>Largura:' . $dadosPg['largura']);
-                    print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                    <?php print('Masculina:');?><span class="font_red"><?php print($dadosPg['numeM']. "<br>"); ?></span>
+                    print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino . $estoqueF . "<br>"); ?></span>
+                    <?php print('Masculina:');?><span class="font_red"><?php print($dadosPg['numeM'] . $estoqueM . "<br>"); ?></span>
                     <?php echo $gravacaoInterna . "<br>"?>
                     <?php echo $gravacaoExterna?>
                     </label></div><?php
@@ -118,7 +147,7 @@ function selectPg($conectar,$dataSplit,$data){
 <?php 
     function selectPe($conectar,$dataSplit,$data){
 
-        $dadosVerificadorPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospe WHERE idpedidos != 'PE00-$data' ORDER BY contadorpe ASC";
+        $dadosVerificadorPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospe WHERE idpedidos != 'PE00-$data' ORDER BY contadorpe ASC";
         $VerificadorPe = mysqli_query($conectar, $dadosVerificadorPe);
 
         while (($dadosPe = mysqli_fetch_assoc($VerificadorPe))) {
@@ -132,6 +161,10 @@ function selectPg($conectar,$dataSplit,$data){
                     <h2><?php print( $pg[0].' -- '.$dadosPe['nomePedido'].' -- '); ?><span class="font_red"><?php print($dataSplit[2] . '/' . $dataSplit[1] );?></span></h2>
                 </div>
                 <?php
+                //Variaveis Null
+                $estoqueF = null;
+                $estoqueM = null;
+
                 //Verificando Numeração Feminina
             if($dadosPe['numF'] == 40){
 
@@ -157,10 +190,20 @@ function selectPg($conectar,$dataSplit,$data){
                 $gravacaoExterna = '';
             }
 
+            //Verificando Estoque 
+            if(!empty($dadosPe['parEstoqueF'])){
+
+                $estoqueF = '<span class="font_estoque"> Estoque</span>' ;
+            }
+            if(!empty($dadosPe['parEstoqueM'])){
+
+                $estoqueM = '<span class="font_estoque"> Estoque</span>' ;
+            }
+
                     print($dadosPe['descricaoPedido'] . "<br>");
                     print('<br>Largura:' . $dadosPe['largura']);
-                    print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                    <?php print('Masculina:');?><span class="font_red"><?php print($dadosPe['numeM']. "<br>"); ?></span>
+                    print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino . $estoqueF . "<br>"); ?></span>
+                    <?php print('Masculina:');?><span class="font_red"><?php print($dadosPe['numeM'] . $estoqueM . "<br>"); ?></span>
                     <?php echo $gravacaoInterna . "<br>"?>
                     <?php echo $gravacaoExterna?>
                     </label></div><?php

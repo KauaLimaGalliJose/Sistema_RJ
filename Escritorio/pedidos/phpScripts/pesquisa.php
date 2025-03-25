@@ -7,10 +7,10 @@
             $pesquisaDados = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidosp WHERE idpedidos != 'PF00-$data' AND idpedidos LIKE '%$resultado%' ORDER BY contadorpf ASC";
             $pesquisaVerificador = mysqli_query($conectar,$pesquisaDados);
 
-            $pesquisaDadosPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospg WHERE idpedidos != 'PG00-$data' AND idpedidos LIKE '%$resultado%' ORDER BY contadorpg ASC";
+            $pesquisaDadosPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospg WHERE idpedidos != 'PG00-$data' AND idpedidos LIKE '%$resultado%' ORDER BY contadorpg ASC";
             $pesquisaVerificadorPg = mysqli_query($conectar,$pesquisaDadosPg);
 
-            $pesquisaDadosPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospe WHERE idpedidos != 'PE00-$data' AND idpedidos LIKE '%$resultado%' ORDER BY contadorpe ASC";
+            $pesquisaDadosPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospe WHERE idpedidos != 'PE00-$data' AND idpedidos LIKE '%$resultado%' ORDER BY contadorpe ASC";
             $pesquisaVerificadorPe = mysqli_query($conectar,$pesquisaDadosPe);
 
             //PF
@@ -24,6 +24,10 @@
                         <h2><?php print( $pf[0].' -- '.$dados['nomePedido'].' -- '); ?><span class="font_red"><?php print($dataSplit[2] . '/' . $dataSplit[1] );?></span></h2>
                     </div>
                     <?php
+                    //Variaveis Null
+                    $estoqueF = null;
+                    $estoqueM = null;
+
                     //Verificando Numeração Feminina
                     if($dados['numF'] == 40){
 
@@ -35,7 +39,7 @@
                     }
     
                     // gravação interna 
-                    if(!empty($dados['parEstoqueM'])){
+                    if(!empty($dados['gravacaoInterna'])){
                         $gravacaoInterna = '<span class="font_blu">Gravação:</span>' . $dados['gravacaoInterna'];
                     }
                     else{
@@ -51,19 +55,19 @@
                     }
 
                     //Verificando Estoque 
-                    if(!empty($dados['parEstoqueM']) && !empty($dados['parEstoqueM'])){
-                        $estoque = '<span class="font_blu"></span>' ;
+                    if(!empty($dados['parEstoqueF'])){
+
+                        $estoqueF = '<span class="font_estoque"> Estoque</span>' ;
                     }
-                    else{
-                        $estoque = '';
+                    if(!empty($dados['parEstoqueM'])){
+
+                        $estoqueM = '<span class="font_estoque"> Estoque</span>' ;
                     }
                     
-
-    
                         print($dados['descricaoPedido'] . "<br>");
                         print('<br>Largura:' . $dados['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                        <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM']. " " . $estoque . "<br>"); ?></span>
+                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino .  $estoqueF . "<br>"); ?></span>
+                        <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM'] . $estoqueM . "<br>"); ?></span>
                         <?php echo $gravacaoInterna . "<br>"?>
                         <?php echo $gravacaoExterna?>
                         </label></div><?php
@@ -80,6 +84,10 @@
                         <h2><?php print( $pf[0].' -- '.$dadosPg['nomePedido'].' -- '); ?><span class="font_red"><?php print($dataSplit[2] . '/' . $dataSplit[1] );?></span></h2>
                     </div>
                     <?php
+                        //Variaveis Null
+                            $estoqueF = null;
+                            $estoqueM = null;
+
                       //Verificando Numeração Feminina
                     if($dadosPg['numF'] == 40){
 
@@ -105,10 +113,20 @@
                         $gravacaoExterna = '';
                     }
 
+                    //Verificando Estoque 
+                    if(!empty($dadosPg['parEstoqueF'])){
+
+                        $estoqueF = '<span class="font_estoque"> Estoque</span>' ;
+                    }
+                    if(!empty($dadosPg['parEstoqueM'])){
+
+                        $estoqueM = '<span class="font_estoque"> Estoque</span>' ;
+                    }
+
                     print($dadosPg['descricaoPedido'] . "<br>");
                     print('<br>Largura:' . $dadosPg['largura']);
-                    print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                    <?php print('Masculina:');?><span class="font_red"><?php print($dadosPg['numeM']. "<br>"); ?></span>
+                    print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. $estoqueF ."<br>"); ?></span>
+                    <?php print('Masculina:');?><span class="font_red"><?php print($dadosPg['numeM']. $estoqueM . "<br>"); ?></span>
                     <?php echo $gravacaoInterna . "<br>"?>
                     <?php echo $gravacaoExterna?>
                     </label></div><?php
@@ -127,6 +145,10 @@
                         <h2><?php print( $pf[0].' -- '.$dadosPe['nomePedido'].' -- '); ?><span class="font_red"><?php print($dataSplit[2] . '/' . $dataSplit[1] );?></span></h2>
                     </div>
                     <?php
+                        //Variaveis Null
+                        $estoqueF = null;
+                        $estoqueM = null;
+
                        //Verificando Numeração Feminina
                     if($dadosPe['numF'] == 40){
 
@@ -152,10 +174,20 @@
                         $gravacaoExterna = '';
                     }
 
+                    //Verificando Estoque 
+                    if(!empty($dadosPe['parEstoqueF'])){
+
+                        $estoqueF = '<span class="font_estoque"> Estoque</span>' ;
+                    }
+                    if(!empty($dadosPe['parEstoqueM'])){
+
+                        $estoqueM = '<span class="font_estoque"> Estoque</span>' ;
+                    }
+
                     print($dadosPe['descricaoPedido'] . "<br>");
                     print('<br>Largura:' . $dadosPe['largura']);
-                    print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. "<br>"); ?></span>
-                    <?php print('Masculina:');?><span class="font_red"><?php print($dadosPe['numeM']. "<br>"); ?></span>
+                    print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. $estoqueF . "<br>"); ?></span>
+                    <?php print('Masculina:');?><span class="font_red"><?php print($dadosPe['numeM']. $estoqueM . "<br>"); ?></span>
                     <?php echo $gravacaoInterna . "<br>"?>
                     <?php echo $gravacaoExterna?>
                     </label></div><?php 

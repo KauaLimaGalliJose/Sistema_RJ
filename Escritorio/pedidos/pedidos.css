@@ -245,3 +245,8 @@ main{
     align-items: center;
     width: 95%
 }
+.font_estoque{
+    font-size: 100%;
+    color: rgb(143, 19, 19);
+    font-weight: 800;
+}
