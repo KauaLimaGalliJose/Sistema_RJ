@@ -3,7 +3,7 @@ import { voltar, avancar, limpar , atualizarDiv, selectN } from "../../funcao.js
 import { mudaPDF } from "./funcao.js";
 import { radioCabecalho, check_unidade, gravacaoExterna, checkboxRodape } from "../../radiosChitobox.js";
 import img_modelo  from "../../imagemInput.js";
-import { dataCabecalho, dataEntrega} from "../../dataHora.js";
+import { dataEntrega} from "../../dataHora.js";
 import { enviar, naoenviar, verificar } from "../../verificarEnviar.js";
 import { getCookie } from "../../cookies.js";
 
@@ -70,7 +70,7 @@ enviarBt.addEventListener('click',function(){
     else{
         return naoenviar()
     }
-    document.getElementById("imagemPdf").src = './pedidos/imagemPedido/pdf.png';
+    document.getElementById("imagemPdf").src = '../imagemPedido/pdf.png';
     document.getElementById('pdfSalvo').style.visibility = 'hidden' ;
     atualizarDiv("#envioP", '../../divRodapeDinamica.php');
     window.location.href = "../pedidos.php";

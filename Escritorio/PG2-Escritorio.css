@@ -502,11 +502,26 @@ footer {
     transition: 0.5s;
     transform: scale(120%);
     border-radius: 10%;
+    animation: fly-2 0.6s ease-in-out infinite alternate;
 }
+@keyframes fly-2 {
+    from {
+      transform: translateY(0.1em);
+    }
+  
+    to {
+      transform: translateY(-0.1em);
+    }
+  }
+
 #pdfSalvo{
     display: flex;
     visibility: hidden;
     font-size: 80%;
     color: brown;
     margin-bottom: 10px;
+}
+.spanRed{
+    color: #d31818;
+    font-weight: 900;
 }

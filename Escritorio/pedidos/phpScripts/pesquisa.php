@@ -15,7 +15,7 @@
 
             //PF
             while (($dados = mysqli_fetch_assoc($pesquisaVerificador))) {
-        
+                
                 if ($dados['idpedido'] == $dataSplit[1] . '-' . $dataSplit[2]) {
                     $pf = explode("-" , $dados['idpedidos']);
     
@@ -102,7 +102,9 @@
                     <?php echo $gravacaoInterna . "<br>"?>
                     <?php echo $gravacaoExterna?>
                     </label></div><?php
+
                 }
+                
             }
             //PE
             while (($dadosPe = mysqli_fetch_assoc($pesquisaVerificadorPe))) {
@@ -149,6 +151,7 @@
                     </label></div><?php 
                 }
             }
+            
         }
     }
 

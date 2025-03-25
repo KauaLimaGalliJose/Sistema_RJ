@@ -17,6 +17,8 @@
         $p = $_GET['idpedidos'];
         $pPrint = explode("-", $p);
         $pSplit = str_split($p,1);
+        $mercadoLivre = null;
+        $styleMercadoLivre = null;
 
         if($pSplit[1] === "F"){
             
@@ -25,6 +27,17 @@
 
             while($linhaDados = mysqli_fetch_assoc($dadosConectar)){
 
+
+                //Variaveis do VALUES
+                $mercadoLivre = 'checked';
+                $styleMercadoLivre = 'style="visibility: visible;"';
+                $nomePedido = $linhaDados['nomePedido'];
+                $numeroF = $linhaDados['numF'];
+                $numeroM = $linhaDados['numeM'];
+                $descricaoPedido = $linhaDados['descricaoPedido'];
+                $descricaoAlianca = $linhaDados['descricaoAlianca'];
+                $imagem = $linhaDados['imagem'];
+                $largura = $linhaDados['largura'];
             }
 
         }
@@ -35,6 +48,9 @@
 
             while($linhaDadosPg = mysqli_fetch_assoc( $dadosConectarPg)){
 
+                //Variaveis do VALUES
+                $mercadoLivre = 'checked';
+                $styleMercadoLivre = 'style="visibility: visible;"';
             }
 
         }
@@ -44,6 +60,10 @@
             $dadosConectarPe = mysqli_query($conectar,$dadosPe);
 
             while($linhaDadosPe = mysqli_fetch_assoc( $dadosConectarPe)){
+
+                //Variaveis do VALUES
+                $mercadoLivre = 'checked';
+                $styleMercadoLivre = 'style="visibility: visible;"';
 
             }
 
@@ -67,7 +87,7 @@
 </head>
 <body>
    <main>
-    <form id="formulario" enctype="multipart/form-data" action="PG2-Escritorio.php" method="post">
+    <form id="formulario"  enctype="multipart/form-data" action="PG2-Escritorio.php" method="post">
         <div id="cabecalho">
             <div id="cabecalho_cima">
                 <div id="casa">
@@ -126,8 +146,8 @@
             </div>
             <div id="cabecalho_baixo">
                 <div id="tipo_pedido">
-                        <input type="radio" onchange="" id="c1" value="Mercado_Livre" name = 'cliente' class="radio"><label for="c1">Mercado Livre</label> 
-                        <input type="radio" onchange="" id="c2" value="showroom" name = 'cliente' class="radio"><label for="c2">Showroom</label> 
+                        <input type="radio" id="c1" value="Mercado_Livre" name = 'cliente' class="radio" <?php echo $mercadoLivre ?>><label for="c1">Mercado Livre</label> 
+                        <input type="radio" id="c2" value="showroom" name = 'cliente' class="radio"><label for="c2">Showroom</label> 
                         <input type="radio" value="Outros"  id="c3" name = 'cliente' class="radio" ><label for="c3">Outros:</label>  
                         <input type="text" id="outros"  name="txtcliente"  placeholder="Cliente...">
                 </div>
@@ -141,9 +161,9 @@
                 <div id="direita_input">
                     <div id="numeracao_div">
                         Número do Pedido:
-                          <select id="n_p" name="numeroPedido" class="pedido" >
+                          <select id="n_p" <?php echo $styleMercadoLivre; ?> name="numeroPedido" class="pedido" >
                                 <option value='N'  id="Nenhum" >N</option>
-                                <option value='<?php echo $pPrint[0]  ?>' id="P1" >
+                                <option value='<?php echo $pPrint[0]  ?>' id="P1" selected >
                                     <?php echo  $pPrint[0] ?>
                                 </option>
                            
@@ -155,19 +175,19 @@
                                     <?php echo  $pPrint[0];?> 
                                 </option>
                         </select>
-                        <input type="text" id="nome_m" name="nome_m" placeholder="Pedido..." >
+                        <input type="text" <?php echo $styleMercadoLivre; ?> value="<?php echo $nomePedido; ?>" id="nome_m" name="nome_m" placeholder="Pedido..." >
                         <input type="text" id="nome_p" name="nome_p" placeholder="Pedido..." >
                     </div>
                     <div id="numeracao">
-                        Númeração M:<input type="number" id="numeracao_m" value='' name="m" placeholder="M" >
-                        F:<input type="number" id="numeracao_f" value='' name="f"  placeholder="F" >
+                        Númeração M:<input type="number" id="numeracao_m" value='<?php echo $numeroM;  ?>' name="m" placeholder="M" >
+                        F:<input type="number" id="numeracao_f" value='<?php echo $numeroF; ?>' name="f"  placeholder="F" >
                        </div>
                     <div id="unidade">
                        <label for="checkboxFeminina">Unidade:</label><input type="checkbox" id="checkboxFeminina"  name = 'pé' class="radio" >
                     </div>
                     <div id="descricao_div">
-                        <textarea id="descricao_Pedido" name="descricao_Pedido" class="descricao" placeholder="Descrição do Pedido..."  ></textarea>
-                        <textarea id="descricao_Alianca" name="descricao_Alianca" class="descricao" placeholder="Descrição da Alianças..."  ></textarea>
+                        <textarea id="descricao_Pedido" value = '<?php echo $descricaoPedido; ?>' name="descricao_Pedido" class="descricao" placeholder="Descrição do Pedido..."  ><?php echo $descricaoPedido; ?></textarea>
+                        <textarea id="descricao_Alianca" value = '<?php echo $descricaoAlianca; ?>' name="descricao_Alianca" class="descricao" placeholder="Descrição da Alianças..."  ><?php echo $descricaoAlianca; ?></textarea>
                     </div>
                 </div>
                     <div id="imagem_p" >
@@ -181,12 +201,12 @@
                             
                         </div>
                         <label class="botaoImg">
-                        <input type="file" src="#" class="fileBt" name="imagem" id="uploadimg" accept="image/png, image/jpeg, image/jpg">
+                        <input type="file" src="../../<?php echo $imagem ; ?>" class="fileBt" name="imagem" id="uploadimg" accept="image/png, image/jpeg, image/jpg">
                             Enviar Imagem
                         </label>
                         <div id="modelo">
-                        <img id="modelo_rainha" src="../../rj.png.webp" alt="rainha">
-                        <img id="modelo2" src="#" alt="Pré-visualização da Imagem" style="display: none;">
+                        <img id="modelo_rainha" src="../../rj.png.webp" alt="rainha" style="display: none;">
+                        <img id="modelo2" src="../../<?php echo $imagem ; ?>" alt="Pré-visualização da Imagem" style="display: block;">
                         </div>
                     </div>
                         <div id="esquerda_input">
@@ -194,9 +214,10 @@
                                 <div id="Div_entrega">
                                     Entrega:<input id="entrega" name="dataEntrega" type="date">
                                 </div>Largura
-                                <select  name="largura" id="horaPedido">
+                                <select name="largura" id="horaPedido">
+                                    <option id="<?php echo $largura; ?>" class="spanRed" selected ><?php echo $largura ;?></option>
                                     <option id="2mm">2mm</option>
-                                    <option id="3mm" selected >3mm</option>
+                                    <option id="3mm" >3mm</option>
                                     <option id="4mm" >4mm</option>
                                     <option id="5mm" >5mm</option>
                                     <option id="6mm" >6mm</option>
