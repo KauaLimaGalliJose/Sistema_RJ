@@ -4,13 +4,13 @@
     function pesquisa($resultado,$conectar,$data,$dataSplit){
         if(isset($resultado) !== ''){
 
-            $pesquisaDados = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidosp WHERE idpedidos != 'PF00-$data' AND idpedidos LIKE '%$resultado%' ORDER BY contadorpf ASC";
+            $pesquisaDados = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, parSemPedra, parpedra, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidosp WHERE idpedidos != 'PF00-$data' AND idpedidos LIKE '%$resultado%' ORDER BY contadorpf ASC";
             $pesquisaVerificador = mysqli_query($conectar,$pesquisaDados);
 
-            $pesquisaDadosPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospg WHERE idpedidos != 'PG00-$data' AND idpedidos LIKE '%$resultado%' ORDER BY contadorpg ASC";
+            $pesquisaDadosPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, parSemPedra, parpedra, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospg WHERE idpedidos != 'PG00-$data' AND idpedidos LIKE '%$resultado%' ORDER BY contadorpg ASC";
             $pesquisaVerificadorPg = mysqli_query($conectar,$pesquisaDadosPg);
 
-            $pesquisaDadosPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospe WHERE idpedidos != 'PE00-$data' AND idpedidos LIKE '%$resultado%' ORDER BY contadorpe ASC";
+            $pesquisaDadosPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, parSemPedra, parpedra, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospe WHERE idpedidos != 'PE00-$data' AND idpedidos LIKE '%$resultado%' ORDER BY contadorpe ASC";
             $pesquisaVerificadorPe = mysqli_query($conectar,$pesquisaDadosPe);
 
             //PF
@@ -148,6 +148,7 @@
                         //Variaveis Null
                         $estoqueF = null;
                         $estoqueM = null;
+                        $pedra = null;
 
                        //Verificando Numeração Feminina
                     if($dadosPe['numF'] == 40){
@@ -184,8 +185,18 @@
                         $estoqueM = '<span class="font_estoque"> Estoque</span>' ;
                     }
 
+                    //Verificando Pedra
+                    if(!empty($dadosPe['parpedra'])){
+
+                        $pedra = '<span class="font_blue">  Par com pedra</span>' ;
+                    }
+                    if(!empty($dadosPe['parSemPedra'])){
+
+                        $pedra = '<span class="font_blue">  Sem pedra</span>' ;
+                    }
+
                     print($dadosPe['descricaoPedido'] . "<br>");
-                    print('<br>Largura:' . $dadosPe['largura']);
+                    print('<br>Largura:' . $dadosPe['largura'] . $pedra);
                     print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. $estoqueF . "<br>"); ?></span>
                     <?php print('Masculina:');?><span class="font_red"><?php print($dadosPe['numeM']. $estoqueM . "<br>"); ?></span>
                     <?php echo $gravacaoInterna . "<br>"?>
@@ -249,7 +260,7 @@
                 ?></div>
                 <div class="btPedidos">
                 <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPe['pdfpe']?>">PDF</a></button>
-                <button class = 'Pdf' type="button"><a class="PdfAncora" href="./phpScripts/editarPedido.php">Editar</a></button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPe['idpedidos'] ; ?>">Editar</a></button>
                 </div>
                 <?php
             }

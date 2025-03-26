@@ -35,6 +35,7 @@
                 //Variaveis do VALUES
                 $mercadoLivre = 'checked';
                 $styleMercadoLivre = 'style="visibility: visible;"';
+
                 $nomePedido = $linhaDados['nomePedido'];
                 $numeroF = $linhaDados['numF'];
                 $numeroM = $linhaDados['numeM'];
@@ -42,7 +43,7 @@
                 $descricaoAlianca = $linhaDados['descricaoAlianca'];
                 $imagem = $linhaDados['imagem'];
                 $largura = $linhaDados['largura'];
-                $largura = $linhaDados['largura'];
+               
 
                 if($numeroF == 40){
                     $unidade = 'checked';
@@ -61,7 +62,7 @@
                 //Variaveis do VALUES
                 $mercadoLivre = 'checked';
                 $styleMercadoLivre = 'style="visibility: visible;"';
-                //Variaveis do VALUES
+                
                 $mercadoLivre = 'checked';
                 $styleMercadoLivre = 'style="visibility: visible;"';
                 $nomePedido = $linhaDadosPg['nomePedido'];
@@ -71,7 +72,7 @@
                 $descricaoAlianca = $linhaDadosPg['descricaoAlianca'];
                 $imagem = $linhaDadosPg['imagem'];
                 $largura = $linhaDadosPg['largura'];
-                $largura = $linhaDadosPg['largura'];
+                
 
                 if($numeroF == 40){
                     $unidade = 'checked';
@@ -90,6 +91,16 @@
                 //Variaveis do VALUES
                 $mercadoLivre = 'checked';
                 $styleMercadoLivre = 'style="visibility: visible;"';
+
+                $nomePedido = $linhaDadosPe['nomePedido'];
+                $numeroF = $linhaDadosPe['numF'];
+                $numeroM = $linhaDadosPe['numeM'];
+                $descricaoPedido = $linhaDadosPe['descricaoPedido'];
+                $descricaoAlianca = $linhaDadosPe['descricaoAlianca'];
+                $imagem = $linhaDadosPe['imagem'];
+                $largura = $linhaDadosPe['largura'];
+                
+                
 
 
                 if($numeroF == 40){
