@@ -23,6 +23,9 @@
         $styleMercadoLivre = null;
         $unidade = null;
         $styleUnidade = null;
+        $gravInterna = null;
+        $gravExterna = null;
+
 
         if($pSplit[1] === "F"){
             
@@ -39,16 +42,26 @@
                 $nomePedido = $linhaDados['nomePedido'];
                 $numeroF = $linhaDados['numF'];
                 $numeroM = $linhaDados['numeM'];
+                $pdf = $linhaDados['pdfp'];
                 $descricaoPedido = $linhaDados['descricaoPedido'];
                 $descricaoAlianca = $linhaDados['descricaoAlianca'];
                 $imagem = $linhaDados['imagem'];
                 $largura = $linhaDados['largura'];
-               
+
+
+                if(!empty($linhaDados['gravacaoInterna'])){
+                    $gravInterna = $linhaDados['gravacaoInterna'];
+
+                }
+                if(!empty($linhaDados['gravacaoExterna'])){
+                    $gravExterna = $linhaDados['gravacaoExterna'];
+                }
 
                 if($numeroF == 40){
                     $unidade = 'checked';
                     $styleUnidade = 'style="visibility: hidden;"';
                 }
+
             }
 
         }
@@ -63,8 +76,7 @@
                 $mercadoLivre = 'checked';
                 $styleMercadoLivre = 'style="visibility: visible;"';
                 
-                $mercadoLivre = 'checked';
-                $styleMercadoLivre = 'style="visibility: visible;"';
+                $pdf = $linhaDadosPg['pdfpg'];
                 $nomePedido = $linhaDadosPg['nomePedido'];
                 $numeroF = $linhaDadosPg['numF'];
                 $numeroM = $linhaDadosPg['numeM'];
@@ -73,6 +85,14 @@
                 $imagem = $linhaDadosPg['imagem'];
                 $largura = $linhaDadosPg['largura'];
                 
+
+                if(!empty($linhaDadosPg['gravacaoInterna'])){
+                    $gravInterna = $linhaDadosPg['gravacaoInterna'];
+
+                }
+                if(!empty($linhaDadosPg['gravacaoExterna'])){
+                    $gravExterna = $linhaDadosPg['gravacaoExterna'];
+                }
 
                 if($numeroF == 40){
                     $unidade = 'checked';
@@ -92,6 +112,7 @@
                 $mercadoLivre = 'checked';
                 $styleMercadoLivre = 'style="visibility: visible;"';
 
+                $pdf = $linhaDadosPe['pdfpe'];
                 $nomePedido = $linhaDadosPe['nomePedido'];
                 $numeroF = $linhaDadosPe['numF'];
                 $numeroM = $linhaDadosPe['numeM'];
@@ -100,8 +121,13 @@
                 $imagem = $linhaDadosPe['imagem'];
                 $largura = $linhaDadosPe['largura'];
                 
-                
+                if(!empty($linhaDadosPe['gravacaoInterna'])){
+                    $gravInterna = $linhaDadosPe['gravacaoInterna'];
 
+                }
+                if(!empty($linhaDadosPe['gravacaoExterna'])){
+                    $gravExterna = $linhaDadosPe['gravacaoExterna'];
+                }
 
                 if($numeroF == 40){
                     $unidade = 'checked';
@@ -240,7 +266,7 @@
                             <label id="PdfBT" for="inputPDF">
                                 <img class="botaoPDF" id="imagemPdf" src="../imagemPedido/pdf.png">
                             </label>
-                            <input id="inputPDF" class="fileBt" name="pdf" accept="application/pdf"  type="file" >
+                            <input id="inputPDF" class="fileBt" name="pdf" accept="application/pdf"  src="../../<?php echo $pdf ; ?>" type="file" >
                             
                         </div>
                         <label class="botaoImg">
@@ -272,9 +298,9 @@
                                 </select>
                             </div>
                             <div id="grav_externa">
-                                <textarea name="gravacao_exter" class="grav_input" id="grav_externaInput" placeholder="Gravações Externa..."></textarea>   
+                                <textarea name="gravacao_exter" class="grav_input" id="grav_externaInput" placeholder="Gravações Externa..."><?php echo $gravExterna; ?></textarea>   
                             </div>
-                            <textarea name="gravacao_inter" id="grav_internaInput" class="grav_input" placeholder="Gravações do Pedido..."></textarea>   
+                            <textarea name="gravacao_inter" id="grav_internaInput" class="grav_input" placeholder="Gravações do Pedido..."><?php echo $gravInterna; ?></textarea>   
                         </div>
                         
             </div>
