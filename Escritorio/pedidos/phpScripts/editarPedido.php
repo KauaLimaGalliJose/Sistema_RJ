@@ -25,6 +25,9 @@
         $styleUnidade = null;
         $gravInterna = null;
         $gravExterna = null;
+        $gravExternaCheck = null;
+        $styleGraveExterna = null;
+
 
 
         if($pSplit[1] === "F"){
@@ -55,6 +58,9 @@
                 }
                 if(!empty($linhaDados['gravacaoExterna'])){
                     $gravExterna = $linhaDados['gravacaoExterna'];
+                    $gravExternaCheck = 'checked';
+                    $styleGraveExterna = 'style="visibility: visible;"';
+
                 }
 
                 if($numeroF == 40){
@@ -298,7 +304,7 @@
                                 </select>
                             </div>
                             <div id="grav_externa">
-                                <textarea name="gravacao_exter" class="grav_input" id="grav_externaInput" placeholder="Gravações Externa..."><?php echo $gravExterna; ?></textarea>   
+                                <textarea name="gravacao_exter" class="grav_input" id="grav_externaInput" placeholder="Gravações Externa..." <?php echo $styleGraveExterna; ?>><?php echo $gravExterna; ?></textarea>   
                             </div>
                             <textarea name="gravacao_inter" id="grav_internaInput" class="grav_input" placeholder="Gravações do Pedido..."><?php echo $gravInterna; ?></textarea>   
                         </div>
@@ -311,14 +317,14 @@
                     echo 'Editando';
                 ?></label>
             </div>
-            <input type="checkbox" id="gravacao_externa"  name = 'gravacao_externa' class="radio">Gravação Externa
+            <input type="checkbox" id="gravacao_externa"  name = 'gravacao_externa' class="radio" <?php echo $gravExternaCheck ?>><label for="gravacao_externa">Gravação Externa</label>
             <div class="div_footer">
-                <input type="checkbox" id="comPedra" name = 'comPedra' class="radio">Par com pedra
-                <input type="checkbox" id="semPedra" name = 'semPedra' class="radio" >Sem Pedra 
+                <input type="checkbox" id="comPedra" name = 'comPedra' class="radio" ><label for="comPedra">Feminina pedra</label>
+                <input type="checkbox" id="semPedra" name = 'semPedra' class="radio"  ><label for="semPedra">Mascolina Pedra</label>
             </div>
             <div class="div_footer">
-                <input type="checkbox" value="" id="estoqueFeminina"  name = 'estoqueFeminina' class="radio" >Feminina Estoque
-                <input type="checkbox" value="" id="estoqueMasculina"  name = 'estoqueMasculina' class="radio" >Masculina Estoque
+                <input type="checkbox" value="" id="estoqueFeminina"  name = 'estoqueFeminina' class="radio"  <?php // echo  ?>><label for="estoqueFeminina">Feminina Estoque</label>
+                <input type="checkbox" value="" id="estoqueMasculina"  name = 'estoqueMasculina' class="radio" <?php // echo  ?>><label for="estoqueMasculina">Masculina Estoque</label>
             </div>
         </footer>
     </form>

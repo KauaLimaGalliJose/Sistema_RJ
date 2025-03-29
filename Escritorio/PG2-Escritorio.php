@@ -20,20 +20,20 @@
     //Criando o PF0
     if(mysqli_num_rows($conectarpf00) == 0 ){
         mysqli_query($conectar, "INSERT INTO pedidosp 
-        (contadorpf, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
-        VALUES (0,'PF00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '', '','../','','','','')");
+        (contadorpf, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM) 
+        VALUES (0,'PF00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '','../','','','','')");
     }
      //Criando o PG0
     if(mysqli_num_rows($conectarpg00) == 0 ){
         mysqli_query($conectar, "INSERT INTO pedidospg
-        (contadorpg, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
-        VALUES (0,'PG00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '', '','../','','','','')");
+        (contadorpg, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM) 
+        VALUES (0,'PG00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '','../','','','','')");
         }
     //Criando o PE0
     if(mysqli_num_rows($conectarpe00) == 0 ){
         mysqli_query($conectar, "INSERT INTO pedidospe
-        (contadorpe, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,parPedra,parSemPedra) 
-        VALUES (0,'PE00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '', '','../','','','','')");
+        (contadorpe, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM) 
+        VALUES (0,'PE00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '','../','','','','')");
         }
 ?>
  <?php /////////////////////////////////////////////////////////////////////////////////////
@@ -86,9 +86,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="../coroa.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="PG2-Escritorio.css">
     <script src="../Importados/sistemaGoogleDocumentos.js" type="module"></script>
     <script src="../Importados/jquery-3.7.1.min.js"></script>
@@ -251,14 +250,13 @@
                     echo 'Sem Pedido';
                 ?></label>
             </div>
-            <input type="checkbox" id="gravacao_externa"  name = 'gravacao_externa' class="radio">Gravação Externa
+            <input type="checkbox" id="gravacao_externa"  name = 'gravacao_externa' class="radio"><label for="gravacao_externa">Gravação Externa</label>
             <div class="div_footer">
-                <input type="checkbox" id="comPedra" name = 'comPedra' class="radio">Par com pedra
-                <input type="checkbox" id="semPedra" name = 'semPedra' class="radio" >Sem Pedra 
-            </div>
+            <input type="checkbox" id="comPedra" name = 'comPedra' class="radio" ><label for="comPedra">Feminina pedra</label>
+            <input type="checkbox" id="semPedra" name = 'semPedra' class="radio" ><label for="semPedra">Masculina Pedra</label>
             <div class="div_footer">
-                <input type="checkbox" value="" id="estoqueFeminina"  name = 'estoqueFeminina' class="radio" >Feminina Estoque
-                <input type="checkbox" value="" id="estoqueMasculina"  name = 'estoqueMasculina' class="radio" >Masculina Estoque
+            <input type="checkbox" value="" id="estoqueFeminina"  name = 'estoqueFeminina' class="radio"><label for="estoqueFeminina">Feminina Estoque</label>
+            <input type="checkbox" value="" id="estoqueMasculina"  name = 'estoqueMasculina' class="radio"><label for="estoqueMasculina">Masculina Estoque</label>
             </div>
         </footer>
     </form>

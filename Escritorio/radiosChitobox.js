@@ -66,14 +66,10 @@ export function checkboxRodape(){
  
 //--------------------------------------------verificando Pedra
     if(semPedra.checked){
-        comPedra.checked = false;
         semPedra.value = true;
-        comPedra.value = false;
     }
     if(comPedra.checked){
-        semPedra.checked = false;
         comPedra.value = true;
-        semPedra.value = false;
         
     }
     if(!comPedra.checked && !semPedra.checked){
