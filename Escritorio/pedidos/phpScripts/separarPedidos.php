@@ -88,7 +88,7 @@ function selectPf($conectar,$dataSplit,$data){
 <?php 
 function selectPg($conectar,$dataSplit,$data){
     
-    $dadosVerificadorPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospg WHERE idpedidos != 'PG00-$data' ORDER BY contadorpg ASC";
+    $dadosVerificadorPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM,parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospg WHERE idpedidos != 'PG00-$data' ORDER BY contadorpg ASC";
     $VerificadorPg = mysqli_query($conectar, $dadosVerificadorPg);
 
     while (($dadosPg = mysqli_fetch_assoc($VerificadorPg))) {
@@ -170,7 +170,7 @@ function selectPg($conectar,$dataSplit,$data){
 <?php 
     function selectPe($conectar,$dataSplit,$data){
 
-        $dadosVerificadorPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospe WHERE idpedidos != 'PE00-$data' ORDER BY contadorpe ASC";
+        $dadosVerificadorPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM,parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospe WHERE idpedidos != 'PE00-$data' ORDER BY contadorpe ASC";
         $VerificadorPe = mysqli_query($conectar, $dadosVerificadorPe);
 
         while (($dadosPe = mysqli_fetch_assoc($VerificadorPe))) {

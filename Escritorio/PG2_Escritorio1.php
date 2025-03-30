@@ -82,7 +82,7 @@ if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'G'){
     // passando pro banco de dados
     $dadosg = mysqli_query($conectar, "INSERT INTO pedidospg
     (contadorpg,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM, pdfpg) 
-    VALUES ('$idPg','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , '$pdf' )");
+    VALUES ('$idPg','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , '$pdf' )");
      
 }
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'E'){

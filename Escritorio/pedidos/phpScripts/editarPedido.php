@@ -27,8 +27,10 @@
         $gravExterna = null;
         $gravExternaCheck = null;
         $styleGraveExterna = null;
-
-
+        $PedraF = null;
+        $PedraM = null;
+        $parEstoqueF = null;
+        $parEstoqueM = null;
 
         if($pSplit[1] === "F"){
             
@@ -63,11 +65,29 @@
 
                 }
 
+
                 if($numeroF == 40){
                     $unidade = 'checked';
                     $styleUnidade = 'style="visibility: hidden;"';
                 }
 
+
+                if($linhaDados['PedraF'] == true){
+                    $PedraF = 'checked';
+                }
+                if($linhaDados['PedraM'] == true){
+
+                    $PedraM = 'checked';
+                }
+
+
+                if($linhaDados['parEstoqueF'] == true){
+                    $parEstoqueF = 'checked';
+                }
+                if($linhaDados['parEstoqueM'] == true){
+
+                    $parEstoqueM = 'checked';
+                }
             }
 
         }
@@ -100,9 +120,27 @@
                     $gravExterna = $linhaDadosPg['gravacaoExterna'];
                 }
 
+
                 if($numeroF == 40){
                     $unidade = 'checked';
                     $styleUnidade = 'style="visibility: hidden;"';
+                }
+
+
+                if($linhaDadosPg['PedraF'] == true){
+                    $PedraF = 'checked';
+                }
+                if($linhaDadosPg['PedraM'] == true){
+                    $PedraM = 'checked';
+                }
+
+                
+                if($linhaDadosPg['parEstoqueF'] == true){
+                    $parEstoqueF = 'checked';
+                }
+                if($linhaDadosPg['parEstoqueM'] == true){
+
+                    $parEstoqueM = 'checked';
                 }
             }
 
@@ -129,15 +167,31 @@
                 
                 if(!empty($linhaDadosPe['gravacaoInterna'])){
                     $gravInterna = $linhaDadosPe['gravacaoInterna'];
-
                 }
                 if(!empty($linhaDadosPe['gravacaoExterna'])){
                     $gravExterna = $linhaDadosPe['gravacaoExterna'];
                 }
 
+
                 if($numeroF == 40){
                     $unidade = 'checked';
                     $styleUnidade = 'style="visibility: hidden;"';
+                }
+
+
+                if($linhaDadosPe['PedraF'] == true){
+                    $PedraF = 'checked';
+                }
+                if($linhaDadosPe['PedraM'] == true){
+                    $PedraM = 'checked';
+                }
+
+
+                if($linhaDadosPe['parEstoqueF'] == true){
+                    $parEstoqueF = 'checked';
+                }
+                if($linhaDadosPe['parEstoqueM'] == true){
+                    $parEstoqueM = 'checked';
                 }
 
             }
@@ -319,12 +373,12 @@
             </div>
             <input type="checkbox" id="gravacao_externa"  name = 'gravacao_externa' class="radio" <?php echo $gravExternaCheck ?>><label for="gravacao_externa">Gravação Externa</label>
             <div class="div_footer">
-                <input type="checkbox" id="comPedra" name = 'comPedra' class="radio" ><label for="comPedra">Feminina pedra</label>
-                <input type="checkbox" id="semPedra" name = 'semPedra' class="radio"  ><label for="semPedra">Mascolina Pedra</label>
+                <input type="checkbox" id="comPedra" name = 'comPedra' <?php echo $PedraF; ?> class="radio" ><label for="comPedra">Feminina pedra</label>
+                <input type="checkbox" id="semPedra" name = 'semPedra' <?php echo $PedraM; ?> class="radio"  ><label for="semPedra">Mascolina Pedra</label>
             </div>
             <div class="div_footer">
-                <input type="checkbox" value="" id="estoqueFeminina"  name = 'estoqueFeminina' class="radio"  <?php // echo  ?>><label for="estoqueFeminina">Feminina Estoque</label>
-                <input type="checkbox" value="" id="estoqueMasculina"  name = 'estoqueMasculina' class="radio" <?php // echo  ?>><label for="estoqueMasculina">Masculina Estoque</label>
+                <input type="checkbox" value="" id="estoqueFeminina"  name = 'estoqueFeminina' class="radio"  <?php echo $parEstoqueF  ?>><label for="estoqueFeminina">Feminina Estoque</label>
+                <input type="checkbox" value="" id="estoqueMasculina"  name = 'estoqueMasculina' class="radio" <?php echo $parEstoqueM ?>><label for="estoqueMasculina">Masculina Estoque</label>
             </div>
         </footer>
     </form>
