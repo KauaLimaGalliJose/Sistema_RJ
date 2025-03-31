@@ -31,13 +31,6 @@ contador.contador_Pe = getCookie('contadorPe');
 
 //Funções com Buttons
 
-voltarBt.addEventListener('click', function(){
-   contador =  voltar(contador.contador_P,contador.contador_Pg,contador.contador_Pe)
-});
-
-avancarBt.addEventListener('click', function(){
-   contador =  avancar(contador.contador_P,contador.contador_Pg,contador.contador_Pe)
-});
 
 addEventListener('change', function(){
     radioCabecalho()
@@ -73,7 +66,7 @@ enviarBt.addEventListener('click',function(){
     document.getElementById("imagemPdf").src = '../imagemPedido/pdf.png';
     document.getElementById('pdfSalvo').style.visibility = 'hidden' ;
     alert('Editado Com Sucesso !!');
-    window.location.href = "../pedidos.php";
+    window.location.href = "../phpScripts/salvar.php";
 });
 
 //Funções para ser iniciadas

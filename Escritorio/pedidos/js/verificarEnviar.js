@@ -130,14 +130,6 @@ export function verificar() {
     else{
         borderBlack('entrega')
     }
-    // --------------------------------------------------------Verificação Rodapé
-    if(estoqueFeminina.checked && estoqueMasculina.checked && select_P.selected){
-        valido = false;
-        borderRed('rodape')
-    }
-    else{
-        borderBlack('rodape')
-    }
     chave = valido;
 
     if(chave == true){
@@ -157,17 +149,13 @@ export function enviar(){
             document.getElementById('btEnviar').disabled = true;
             const dadosInputs = new FormData(this);
 
-            fetch("./PG2_Escritorio1.php", { 
-                method: "POST",
-                body: dadosInputs
-            })
-            fetch("./PG2-Escritorio.php", { 
+            fetch("../phpScripts/salvar.php", { 
                 method: "POST",
                 body: dadosInputs
             })
             .then(response => response.text()) 
             .then(data => {
-                console.log("Resposta do servidor: Enviado ");
+                console.log("Resposta do servidor: Enviado " );
                 document.getElementById('btEnviar').disabled = false; // Reativa o botão após a resposta
             })
             .catch(error => console.error("Erro:", error));

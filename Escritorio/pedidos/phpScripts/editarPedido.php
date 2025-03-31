@@ -216,7 +216,7 @@
 </head>
 <body>
    <main>
-    <form id="formulario"  enctype="multipart/form-data" action="PG2-Escritorio.php" method="post">
+    <form id="formulario"  enctype="multipart/form-data" action="salvar.php" method="post">
         <div id="cabecalho">
             <div id="cabecalho_cima">
                 <div id="casa">
@@ -224,27 +224,10 @@
                     <a href="../../../index.html"><img class="itens" src="../../casa.png"></a>
                     </button>
         
-                    <button type="button" id="seta_esquerda" value="" class="botao" >
-                        <img class="seta" src="../../angulo-esquerdo.png">
-                    </button>
-        
-                    <button type="button" id="seta_direita" value="" class="botao" >
-                        <img class="seta" src="../../angulo-direito.png">
-                    </button>
                 </div>
                 <div id="ferramentas">
                     <button type="button" id="editar" value="" class="botao">
                     <a href="../pedidos.php"><img class="itens" src="../../editar.png"></a>
-                    </button>
-        
-                    <button type="button" id="pasta_aberta" value="" class="botao">
-                    <img class="itens" src="../../pasta-aberta.png">
-                    </button>
-                    <img class="itens" src="../../upload-de-pasta.png">
-                    <img class="itens" src="../../download-de-pasta.png">
-        
-                    <button type="button" value="" class="botao">
-                        <a href="Estoque/Estoque_Pagina_Inicial.html"><img class="itens" src="../../aliancas-de-casamento.png"></a>
                     </button>
         
                     <button type="button" id="limpar" value="" class="botao">
@@ -295,14 +278,7 @@
                                 <option value='<?php echo $pPrint[0]  ?>' id="P1" selected >
                                     <?php echo  $pPrint[0] ?>
                                 </option>
-                           
-                                <option value="<?php echo $pPrint[0]; ?>" id="PG1" >
-                                    <?php echo  $pPrint[0];?>
-                                </option>
-                           
-                                <option value="<?php echo $pPrint[0]; ?>" id="PE1" >
-                                    <?php echo  $pPrint[0];?> 
-                                </option>
+                    
                         </select>
                         <input type="text" <?php echo $styleMercadoLivre; ?> value="<?php echo $nomePedido; ?>" id="nome_m" name="nome_m" placeholder="Pedido..." >
                         <input type="text" id="nome_p" name="nome_p" placeholder="Pedido..." >
