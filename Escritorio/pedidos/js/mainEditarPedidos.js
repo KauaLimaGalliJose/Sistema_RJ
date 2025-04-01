@@ -66,7 +66,7 @@ enviarBt.addEventListener('click',function(){
     document.getElementById("imagemPdf").src = '../imagemPedido/pdf.png';
     document.getElementById('pdfSalvo').style.visibility = 'hidden' ;
     alert('Editado Com Sucesso !!');
-    window.location.href = "../phpScripts/salvar.php";
+    window.location.href = "../pedidos.php";
 });
 
 //Funções para ser iniciadas
