@@ -66,6 +66,7 @@ enviarBt.addEventListener('click',function(){
         contador =  avancar(contador.contador_P,contador.contador_Pg,contador.contador_Pe)
         console.log(document.cookie);
         enviar()
+        window.location.href = "./pedidoEnviado.php"
     }
     else{
         return naoenviar()

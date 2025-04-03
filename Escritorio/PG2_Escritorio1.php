@@ -37,7 +37,6 @@ $idPedidos = $numeroPedido ."-". $dataEntrega;
 
 // Quardando PDF 
 if(isset($_FILES['pdf']) && !empty($_FILES['pdf'])){
-    include('./pedidos/PDF/');
     $pdf = "./pedidos/PDF/" . $idPedidos . '.pdf';
     move_uploaded_file($_FILES['pdf']['tmp_name'], "./pedidos/PDF/" . $idPedidos . '.pdf' );
 }

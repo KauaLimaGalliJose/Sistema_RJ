@@ -96,7 +96,7 @@
 </head>
 <body>
    <main>
-    <form id="formulario" enctype="multipart/form-data" action="PG2-Escritorio.php" method="post">
+    <form id="formulario" enctype="multipart/form-data" action="PG2_Escritorio1.php" method="post">
         <div id="cabecalho">
             <div id="cabecalho_cima">
                 <div id="casa">
@@ -171,7 +171,7 @@
                     <div id="numeracao_div">
                         Número do Pedido:
                           <select id="n_p" name="numeroPedido" class="pedido" >
-                                <option value='N'  id="Nenhum" >N</option>
+                                <option value='N'  id="Nenhum" >Escolha</option>
                                 <option value='<?php echo $letraPf . $numeroPf; ?>' id="P1" >
                                     <?php echo  $letraPf . $numeroPfDisplay;?>
                                 </option>

@@ -41,20 +41,20 @@ if($_POST){
 
     if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == "F"){
         
-        $sql_update = "UPDATE pedidosp SET nomePedido = ?, numF = ?, numeM = ?, descricaoPedido = ?, descricaoAlianca = ?,largura = ?, gravacaoInterna = ?, gravacaoExterna = ? ,parEstoqueF = ?,parEstoqueM = ?, PedraF = ?,PedraM = ?,pdfp = ? WHERE idpedidos = ?";
+        $sql_update = "UPDATE pedidosp SET nomePedido = ?, numF = ?, numeM = ?, descricaoPedido = ?, descricaoAlianca = ?,largura = ?, gravacaoInterna = ?, gravacaoExterna = ? ,parEstoqueF = ?,parEstoqueM = ?, PedraF = ?,PedraM = ? WHERE idpedidos = ?";
 
         $stmt = $conectar->prepare($sql_update);
-        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra , $pdf, $idPedidos);
+        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra , $idPedidos);
         $stmt->execute();
         $stmt->close();
     }
 
     if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'G'){
 
-        $sql_update = "UPDATE pedidospg SET nomePedido = ?, numF = ?, numeM = ?, descricaoPedido = ?, descricaoAlianca = ?,largura = ?, gravacaoInterna = ?, gravacaoExterna = ? ,parEstoqueF = ?,parEstoqueM = ?, PedraF = ?,PedraM = ?,pdfpg = ? WHERE idpedidos = ?";
+        $sql_update = "UPDATE pedidospg SET nomePedido = ?, numF = ?, numeM = ?, descricaoPedido = ?, descricaoAlianca = ?,largura = ?, gravacaoInterna = ?, gravacaoExterna = ? ,parEstoqueF = ?,parEstoqueM = ?, PedraF = ?,PedraM = ? WHERE idpedidos = ?";
 
         $stmt = $conectar->prepare($sql_update);
-        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra , $pdf, $idPedidos);
+        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra , $idPedidos);
         $stmt->execute();
         $stmt->close();
         
@@ -62,10 +62,10 @@ if($_POST){
 
     if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'E'){
 
-        $sql_update = "UPDATE pedidospe SET nomePedido = ?, numF = ?, numeM = ?, descricaoPedido = ?, descricaoAlianca = ?,largura = ?, gravacaoInterna = ?, gravacaoExterna = ? ,parEstoqueF = ?,parEstoqueM = ?, PedraF = ?,PedraM = ?,pdfpe = ? WHERE idpedidos = ?";
+        $sql_update = "UPDATE pedidospe SET nomePedido = ?, numF = ?, numeM = ?, descricaoPedido = ?, descricaoAlianca = ?,largura = ?, gravacaoInterna = ?, gravacaoExterna = ? ,parEstoqueF = ?,parEstoqueM = ?, PedraF = ?,PedraM = ? WHERE idpedidos = ?";
 
         $stmt = $conectar->prepare($sql_update);
-        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra , $pdf, $idPedidos);
+        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra , $idPedidos);
         $stmt->execute();
         $stmt->close();
     
