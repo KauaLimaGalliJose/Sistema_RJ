@@ -121,5 +121,10 @@ export function mudaPDF(){
 
 }
 
+export function recarregarPagina(){
+
+    alert('pedido Enviado')
+    
+}
 
 export{CreateCookie}

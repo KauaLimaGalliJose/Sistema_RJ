@@ -1,5 +1,5 @@
 // imports
-import { voltar, avancar, limpar , atualizarDiv, selectN , mudaPDF} from "./funcao.js";
+import { voltar, avancar, limpar , atualizarDiv, selectN , mudaPDF, recarregarPagina} from "./funcao.js";
 import { radioCabecalho, check_unidade, gravacaoExterna, checkboxRodape } from "./radiosChitobox.js";
 import img_modelo  from "./imagemInput.js";
 import { dataCabecalho, dataEntrega} from "./dataHora.js";
@@ -66,7 +66,7 @@ enviarBt.addEventListener('click',function(){
         contador =  avancar(contador.contador_P,contador.contador_Pg,contador.contador_Pe)
         console.log(document.cookie);
         enviar()
-        window.location.href = "./pedidoEnviado.php"
+        recarregarPagina()
     }
     else{
         return naoenviar()
