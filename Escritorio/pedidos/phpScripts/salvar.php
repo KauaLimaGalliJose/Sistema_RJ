@@ -3,7 +3,7 @@ include_once('../../../conexao.php');
 
 //imagem 
 if(isset($_FILES['imagem']) && !empty($_FILES['imagem'])){
-    $imagem = "../imagem/". $_FILES['imagem']['name'];
+    $imagem = "../../../imagem/". $_FILES['imagem']['name'];
     move_uploaded_file($_FILES['imagem']['tmp_name'], "../imagem/".$_FILES['imagem']['name'] );
 }
 
@@ -34,8 +34,7 @@ if($_POST){
     // Quardando PDF 
     if(isset($_FILES['pdf']) && !empty($_FILES['pdf'])){
         include('./pedidos/PDF/');
-        $pdf = "./pedidos/PDF/" . $idPedidos . '.pdf';
-        move_uploaded_file($_FILES['pdf']['tmp_name'], "./pedidos/PDF/" . $idPedidos . '.pdf' );
+        move_uploaded_file($_FILES['pdf']['tmp_name'], "../PDF/" . $idPedidos . '.pdf' );
     }
 
 
@@ -44,7 +43,7 @@ if($_POST){
         $sql_update = "UPDATE pedidosp SET nomePedido = ?, numF = ?, numeM = ?, descricaoPedido = ?, descricaoAlianca = ?,largura = ?, gravacaoInterna = ?, gravacaoExterna = ? ,parEstoqueF = ?,parEstoqueM = ?, PedraF = ?,PedraM = ? WHERE idpedidos = ?";
 
         $stmt = $conectar->prepare($sql_update);
-        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra , $idPedidos);
+        $stmt->bind_param("siissssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra , $idPedidos);
         $stmt->execute();
         $stmt->close();
     }

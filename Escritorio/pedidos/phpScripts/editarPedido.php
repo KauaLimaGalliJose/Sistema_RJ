@@ -302,16 +302,16 @@
                             <label id="PdfBT" for="inputPDF">
                                 <img class="botaoPDF" id="imagemPdf" src="../imagemPedido/pdf.png">
                             </label>
-                            <input id="inputPDF" class="fileBt" name="pdf" accept="application/pdf"  src="../../<?php echo $pdf ; ?>" type="file" >
+                            <input id="inputPDF" class="fileBt" name="pdf" accept="application/pdf"  src="#" type="file" >
                             
                         </div>
                         <label class="botaoImg">
-                        <input type="file" src="../../<?php echo $imagem ; ?>" class="fileBt" name="imagem" id="uploadimg" accept="image/png, image/jpeg, image/jpg">
+                        <input type="file" src="#" class="fileBt" name="imagem" id="uploadimg" accept="image/png, image/jpeg, image/jpg">
                             Enviar Imagem
                         </label>
                         <div id="modelo">
                         <img id="modelo_rainha" src="../../rj.png.webp" alt="rainha" style="display: none;">
-                        <img id="modelo2" src="../../<?php echo $imagem ; ?>" alt="Pré-visualização da Imagem" style="display: block;">
+                        <img id="modelo2" src="../../<?php echo $imagem ; ?>" alt="Falha ao carregar imagem" style="display: block;">
                         </div>
                     </div>
                         <div id="esquerda_input">

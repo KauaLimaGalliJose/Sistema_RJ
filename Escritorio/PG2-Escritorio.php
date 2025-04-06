@@ -6,7 +6,7 @@
     $data = date('Y-m-d');
 ?>
 <?php /////////////////////////////////////////////////////////////////////////////////////////
-    //Conectar com Banco de Dados para Criar o Pedido PF00 ,PG00 ,PE00
+    //Conectar com Banco de Dados para Criar o Pedido PF00 ,PG00 ,PE00  ////  Bom se vc estiver lendo isso eu acho que criei isso para não ter pedido duplicado ou arrumar o contador , mas ná real não sei porque eu fiz isso kkkkkk
     //PF
     $pf00 = "SELECT idpedidos FROM pedidosp WHERE idpedidos LIKE '%PF00-$data%'";
     $conectarpf00 = mysqli_query($conectar, $pf00);

@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 11/03/2025 às 19:35
+-- Host: 127.0.0.1:3316
+-- Tempo de geração: 26/02/2025 às 20:57
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -28,7 +28,6 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `pedidosp` (
-  `contadorpf` int(11) NOT NULL,
   `idpedidos` varchar(50) NOT NULL,
   `cliente` varchar(35) NOT NULL,
   `nomePedido` varchar(60) NOT NULL,
@@ -47,18 +46,6 @@ CREATE TABLE `pedidosp` (
   `parSemPedra` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `pedidosp`
---
-
-INSERT INTO `pedidosp` (`contadorpf`, `idpedidos`, `cliente`, `nomePedido`, `numF`, `numeM`, `descricaoPedido`, `descricaoAlianca`, `largura`, `gravacaoInterna`, `gravacaoExterna`, `outrosClientes`, `imagem`, `parEstoqueF`, `parEstoqueM`, `parPedra`, `parSemPedra`) VALUES
-(0, 'PF00-2025-03-11', 'teste', 'teste', 20, 20, 'teste', 'teste', '2mm', '', '', '', '../', '', '', '', ''),
-(0, 'PF1-2025-03-11', 'Mercado_Livre', 'nao sei', 10, 10, '10', '10', '2mm', '', '', '', '../imagem/aliança com tres frisos.jpg', '', '', '', ''),
-(0, 'PF2-2025-03-11', 'Mercado_Livre', 'Jade', 10, 10, '10', '10', '2mm', '', '', '', '../imagem/Jade.png', '', '', '', ''),
-(0, 'PF5-2025-03-11', 'Mercado_Livre', 'Chanfrada', 10, 10, '10', '10', '2mm', '', '', '', '../imagem/aliança com tres frisos2_ACD_0.jpg', '', '', '', ''),
-(0, 'PF6-2025-03-11', 'Mercado_Livre', 'Chanfrada', 10, 10, '10', '10', '2mm', '', '', '', '../imagem/aliança com tres frisos2_ACD_0.jpg', '', '', '', ''),
-(0, 'PF7-2025-03-11', 'Mercado_Livre', 'Chanfrada', 10, 10, '10', '10', '2mm', '', '', '', '../imagem/aliança com tres frisos2_ACD_0.jpg', '', '', '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -66,7 +53,6 @@ INSERT INTO `pedidosp` (`contadorpf`, `idpedidos`, `cliente`, `nomePedido`, `num
 --
 
 CREATE TABLE `pedidospe` (
-  `contadorpe` int(11) NOT NULL,
   `idpedidos` varchar(50) NOT NULL,
   `cliente` varchar(35) NOT NULL,
   `nomePedido` varchar(60) NOT NULL,
@@ -92,7 +78,6 @@ CREATE TABLE `pedidospe` (
 --
 
 CREATE TABLE `pedidospg` (
-  `contadorpg` int(11) NOT NULL,
   `idpedidos` varchar(50) NOT NULL,
   `cliente` varchar(35) NOT NULL,
   `nomePedido` varchar(60) NOT NULL,

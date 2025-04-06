@@ -17,7 +17,7 @@
                 </button>
             </div>
                 <div id="pesquisa">
-                    <input id="pesquisaInput" value='' name="pesquisa" type="text" oninput="this.value = this.value.toUpperCase();" placeholder="Número Pedido">
+                    <input id="pesquisaInput" value='' name="pesquisa" type="text" oninput="this.value = this.value.toUpperCase();" placeholder="Titulo Pedido">
                 </div>
                 <div id="pedidosDiv">
                     <input class="selecao" id="Outros Dias" value="sim" name="pedidosAntigosSelect" type="checkbox"><label for="Outros Dias">Outros Dias</label>
