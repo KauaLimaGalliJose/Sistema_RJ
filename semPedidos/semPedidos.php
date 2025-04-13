@@ -42,11 +42,12 @@ setInterval(function () {
 #semPedidos{
     font-family: cursive;
     font-size: 3rem; /* Mantém um tamanho proporcional */
-    position: fixed;
+    position: absolute;
     top: 55%;
     left: 52%;
     transform: translateX(-50%);
     font-weight: 800;
+    
 }  
 #monkey_404 {
     width: 800px;
@@ -494,7 +495,7 @@ setInterval(function () {
         </g>
       </svg>
         <div id="semPedidos">
-            Sem Pedidos
+            Pesquise
         </div>
 </div>     
 </body>

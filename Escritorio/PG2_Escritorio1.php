@@ -6,11 +6,6 @@ function CokiesP($nome,$numero){
     setcookie($nome,$numero, time() + (365 * 86400 * 1000), "/");
 }
 
-//imagem 
-if(isset($_FILES['imagem']) && !empty($_FILES['imagem'])){
-    $imagem = "../imagem/". $_FILES['imagem']['name'];
-    move_uploaded_file($_FILES['imagem']['tmp_name'], "../imagem/".$_FILES['imagem']['name'] );
-}
 
 // Puxando dados
 $numeroPedido = $_POST['numeroPedido'];
@@ -35,6 +30,12 @@ $numeroPedidoSplit = str_split($numeroPedido,1);
 
 $idPedidos = $numeroPedido ."-". $dataEntrega;
 
+//imagem 
+if(isset($_FILES['imagem']) && !empty($_FILES['imagem'])){
+    $imagem = "../imagem/". $idPedidos . $_FILES['imagem']['name'];
+    move_uploaded_file($_FILES['imagem']['tmp_name'], "../imagem/". $idPedidos . $_FILES['imagem']['name']);
+}
+
 // Quardando PDF 
 if(isset($_FILES['pdf']) && !empty($_FILES['pdf'])){
     $pdf = "./pedidos/PDF/" . $idPedidos . '.pdf';
@@ -50,8 +51,8 @@ if($cliente == 'showroom'){
 
     // passando pro banco de dados
     $dadosp = mysqli_query($conectar, "INSERT INTO pedidos 
-    (idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,pdf) 
-    VALUES ('$idPedidos', '$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , 'naoTemPdf' )");
+    (idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,pdf,data_digitada) 
+    VALUES ('$idPedidos', '$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , 'naoTemPdf' , '$dataEntrega' )");
 
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -62,8 +63,8 @@ if($cliente == 'Outros'){
 
     // passando pro banco de dados
     $dadosp = mysqli_query($conectar, "INSERT INTO pedidos 
-    (idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,pdf) 
-    VALUES ('$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , 'naoTemPdf' )");
+    (idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,pdf,data_digitada) 
+    VALUES ('$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , 'naoTemPdf' , '$dataEntrega')");
     
 }
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == "F"){
@@ -71,8 +72,8 @@ if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == "F"){
     $idPf = str_replace("PF","",$_POST['numeroPedido']); //Contador para o banco
     // passando pro banco de dados
     $dadosp = mysqli_query($conectar, "INSERT INTO pedidosp 
-    (contadorpf,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna ,imagem,parEstoqueF,parEstoqueM, PedraF,PedraM,pdfp) 
-    VALUES ($idPf,'$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter' ,'$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , '$pdf' )");
+    (contadorpf,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna ,imagem,parEstoqueF,parEstoqueM, PedraF,PedraM,pdfp,data_digitada) 
+    VALUES ($idPf,'$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter' ,'$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , '$pdf' , '$dataEntrega' )");
     
 }
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'G'){
@@ -80,8 +81,8 @@ if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'G'){
     $idPg = str_replace("PG","",$_POST['numeroPedido']); 
     // passando pro banco de dados
     $dadosg = mysqli_query($conectar, "INSERT INTO pedidospg
-    (contadorpg,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM, pdfpg) 
-    VALUES ('$idPg','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , '$pdf' )");
+    (contadorpg,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM, pdfpg,data_digitada) 
+    VALUES ('$idPg','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , '$pdf' , '$dataEntrega' )");
      
 }
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'E'){
@@ -89,8 +90,8 @@ if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'E'){
     $idPe = str_replace("PE","",$_POST['numeroPedido']);
     // passando pro banco de dados
     $dadose = mysqli_query($conectar, "INSERT INTO pedidospe
-    (contadorpe,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,pdfpe) 
-    VALUES ('$idPe','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , '$pdf' )");
+    (contadorpe,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,pdfpe,data_digitada) 
+    VALUES ('$idPe','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , '$pdf' , '$dataEntrega' )");
     
 }
 

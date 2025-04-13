@@ -20,20 +20,20 @@
     //Criando o PF0
     if(mysqli_num_rows($conectarpf00) == 0 ){
         mysqli_query($conectar, "INSERT INTO pedidosp 
-        (contadorpf, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM) 
-        VALUES (0,'PF00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '','../','','','','')");
+        (contadorpf, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,data_digitada) 
+        VALUES (0,'PF00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '','../','','','','','$data')");
     }
      //Criando o PG0
     if(mysqli_num_rows($conectarpg00) == 0 ){
         mysqli_query($conectar, "INSERT INTO pedidospg
-        (contadorpg, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM) 
-        VALUES (0,'PG00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '','../','','','','')");
+        (contadorpg, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,data_digitada) 
+        VALUES (0,'PG00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '','../','','','','','$data')");
         }
     //Criando o PE0
     if(mysqli_num_rows($conectarpe00) == 0 ){
         mysqli_query($conectar, "INSERT INTO pedidospe
-        (contadorpe, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM) 
-        VALUES (0,'PE00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '','../','','','','')");
+        (contadorpe, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,data_digitada) 
+        VALUES (0,'PE00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '','../','','','','','$data')");
         }
 ?>
  <?php /////////////////////////////////////////////////////////////////////////////////////

@@ -20,7 +20,7 @@
                     <input id="pesquisaInput" value='' name="pesquisa" type="text" oninput="this.value = this.value.toUpperCase();" placeholder="Titulo Pedido">
                 </div>
                 <div id="pedidosDiv">
-                    <input class="selecao" id="Outros Dias" value="sim" name="pedidosAntigosSelect" type="checkbox"><label for="Outros Dias">Outros Dias</label>
+                    <input class="data" id="dataInput" name="dataInput" type="date">
                     <input class="selecao" id="PF" value="sim" name="pfSelect" type="checkbox"><label for="PF">PF</label>
                     <input class="selecao" id="PG" value="sim" name="pgSelect" type="checkbox"><label for="PG">PG</label>
                     <input class="selecao" id="PE" value="sim" name="peSelect" type="checkbox"><label for="PE">PE</label>
@@ -37,7 +37,7 @@
 <main>
     <div id="phpmae">
         <?php include_once('./phpScripts/separarPedidos.php');?>
-        <?php include_once('./phpScripts/pedidosAntigos.php');?>
+        <?php include_once('./phpScripts/dataPesquisa.php');?>
         <?php include_once('./phpScripts/pesquisa.php');?>
         <?php
             // Função para relogio
@@ -47,9 +47,10 @@
             //////////////////////////////////////////////////////////////////////////
             //Variaveis
             $pesquisa = ''; // Valor padrão
+            $semPedido = null;
 
             if($_GET){
-                $pedidosAntigosSelect = $_GET['pedidosAntigosSelect'] ?? null;
+                $dataInput = $_GET['dataInput'] ?? null;
                 $pfSelect = $_GET['pfSelect'] ?? null;
                 $pgSelect = $_GET['pgSelect'] ?? null;
                 $peSelect = $_GET['peSelect'] ?? null;
@@ -79,12 +80,12 @@
         }
 
         //pesquisa
-        if($pesquisa !== '' && $pedidosAntigosSelect !== 'sim'){
+        if($pesquisa !== '' && $dataInput == null ){
             pesquisa($pesquisa,$conectar,$data,$dataSplit);
         }
         //PedidosAntigos e pesquisa ///////////////////////////////
-        if(isset($pedidosAntigosSelect) == 'sim'){
-                pedidosAntigos($conectar,$dataSplit,$pesquisa);
+        if(isset($dataInput)){
+            pedidosData($conectar,$dataInput,$pesquisa);
         }
 
 
@@ -109,19 +110,24 @@
         }
 
         //Pesquisa
-        if($pesquisa !== '' && $pedidosAntigosSelect !== 'sim'){
+        if($pesquisa !== '' && $dataInput == null ){
             pesquisaImagem($pesquisa,$conectar,$data,$dataSplit);
         }
         //PedidosAntigos e pesquisa ///////////////////////////////
-        if(isset($pedidosAntigosSelect) == 'sim'){
-                pedidosAntigosImagem($conectar,$dataSplit,$pesquisa);
+        if(isset($dataInput)){
+            pedidosDataImagem($conectar,$dataInput,$pesquisa);
+        }
+
+        //Se não Pesquisar nada 
+        if($pesquisa == '' && empty($dataInput) && isset($pfSelect) == null && isset($pgSelect) == null && isset($peSelect) == null){
+            $semPedido =  include_once('../../semPedidos/semPedidos.php');
         }
          
         ?>
         </div>
     </div>
     <div id="pedidonaoEncontrado">
-
+       <?php echo $semPedido; ?>
     </div>
 </main>
 </body>
