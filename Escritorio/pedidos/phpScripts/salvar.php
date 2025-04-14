@@ -1,12 +1,6 @@
 <?php 
 include_once('../../../conexao.php');
 
-//imagem 
-if(isset($_FILES['imagem']) && !empty($_FILES['imagem'])){
-    $imagem = "../../../imagem/". $_FILES['imagem']['name'];
-    move_uploaded_file($_FILES['imagem']['tmp_name'], "../imagem/".$_FILES['imagem']['name'] );
-}
-
 // Puxando dados
 if($_POST){
     $numeroPedido = $_POST['numeroPedido'];
@@ -31,6 +25,12 @@ if($_POST){
 
     $idPedidos = $numeroPedido ."-". $dataEntrega;
 
+    //imagem 
+    if(isset($_FILES['imagem']) && !empty($_FILES['imagem'])){
+        $imagem = "../imagem/". $idPedidos . $_FILES['imagem']['name'];
+        move_uploaded_file($_FILES['imagem']['tmp_name'], "../../../imagem/". $idPedidos . $_FILES['imagem']['name']);
+    }
+
     // Quardando PDF 
     if(isset($_FILES['pdf']) && !empty($_FILES['pdf'])){
         include('./pedidos/PDF/');
@@ -40,20 +40,20 @@ if($_POST){
 
     if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == "F"){
         
-        $sql_update = "UPDATE pedidosp SET nomePedido = ?, numF = ?, numeM = ?, descricaoPedido = ?, descricaoAlianca = ?,largura = ?, gravacaoInterna = ?, gravacaoExterna = ? ,parEstoqueF = ?,parEstoqueM = ?, PedraF = ?,PedraM = ? WHERE idpedidos = ?";
+        $sql_update = "UPDATE pedidosp SET nomePedido = ?, numF = ?, numeM = ?, descricaoPedido = ?, descricaoAlianca = ?,largura = ?, gravacaoInterna = ?, gravacaoExterna = ? ,parEstoqueF = ?,parEstoqueM = ?, PedraF = ?,PedraM = ?, imagem = ? WHERE idpedidos = ?";
 
         $stmt = $conectar->prepare($sql_update);
-        $stmt->bind_param("siissssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra , $idPedidos);
+        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra , $imagem , $idPedidos);
         $stmt->execute();
         $stmt->close();
     }
 
     if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'G'){
 
-        $sql_update = "UPDATE pedidospg SET nomePedido = ?, numF = ?, numeM = ?, descricaoPedido = ?, descricaoAlianca = ?,largura = ?, gravacaoInterna = ?, gravacaoExterna = ? ,parEstoqueF = ?,parEstoqueM = ?, PedraF = ?,PedraM = ? WHERE idpedidos = ?";
+        $sql_update = "UPDATE pedidospg SET nomePedido = ?, numF = ?, numeM = ?, descricaoPedido = ?, descricaoAlianca = ?,largura = ?, gravacaoInterna = ?, gravacaoExterna = ? ,parEstoqueF = ?,parEstoqueM = ?, PedraF = ?,PedraM = ?, imagem = ? WHERE idpedidos = ?";
 
         $stmt = $conectar->prepare($sql_update);
-        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra , $idPedidos);
+        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra, $imagem  , $idPedidos);
         $stmt->execute();
         $stmt->close();
         
@@ -61,10 +61,10 @@ if($_POST){
 
     if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'E'){
 
-        $sql_update = "UPDATE pedidospe SET nomePedido = ?, numF = ?, numeM = ?, descricaoPedido = ?, descricaoAlianca = ?,largura = ?, gravacaoInterna = ?, gravacaoExterna = ? ,parEstoqueF = ?,parEstoqueM = ?, PedraF = ?,PedraM = ? WHERE idpedidos = ?";
+        $sql_update = "UPDATE pedidospe SET nomePedido = ?, numF = ?, numeM = ?, descricaoPedido = ?, descricaoAlianca = ?,largura = ?, gravacaoInterna = ?, gravacaoExterna = ? ,parEstoqueF = ?,parEstoqueM = ?, PedraF = ?,PedraM = ?, imagem = ? WHERE idpedidos = ?";
 
         $stmt = $conectar->prepare($sql_update);
-        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra , $idPedidos);
+        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra, $imagem  , $idPedidos);
         $stmt->execute();
         $stmt->close();
     

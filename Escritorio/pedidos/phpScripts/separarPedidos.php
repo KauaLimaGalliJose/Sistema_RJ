@@ -43,7 +43,7 @@ function selectPf($conectar,$dataSplit,$data){
                 
                 //gravação externa
                 if(!empty($dados['gravacaoExterna'])){
-                    $gravacaoExterna = '<span class="font_blue">Gravação:</span>' . $dados['gravacaoExterna'];
+                    $gravacaoExterna = '<span class="font_blue">Gravação Externa:</span>' . $dados['gravacaoExterna'];
                 }
                 else{
                     $gravacaoExterna = '';
@@ -62,11 +62,11 @@ function selectPf($conectar,$dataSplit,$data){
                 //Verificando Pedra 
                 if($dados['PedraF'] == true){
 
-                    $PedraF = '<span class="font_blue"> com Pedra</span>' ;
+                    $PedraF = '&#128142;' ;
                 }
                 if( $dados['PedraM'] == true){
 
-                    $PedraM = '<span class="font_blue"> com Pedra</span>' ;
+                    $PedraM = '&#128142;' ;
                 }
 
                     print($dados['descricaoPedido'] . "<br>");
@@ -127,7 +127,7 @@ function selectPg($conectar,$dataSplit,$data){
                 
             //gravação externa
             if(!empty($dadosPg['gravacaoExterna'])){
-                $gravacaoExterna = '<span class="font_blue">Gravação:</span>' . $dadosPg['gravacaoExterna'];
+                $gravacaoExterna = '<span class="font_blue">Gravação Externa:</span>' . $dadosPg['gravacaoExterna'];
             }
             else{
                 $gravacaoExterna = '';
@@ -146,11 +146,11 @@ function selectPg($conectar,$dataSplit,$data){
             //Verificando Pedra 
             if($dadosPg['PedraF'] == true){
 
-                $PedraF = '<span class="font_blue"> com Pedra</span>' ;
+                $PedraF = '&#128142;' ;
             }
             if( $dadosPg['PedraM'] == true){
 
-                $PedraM = '<span class="font_blue"> com Pedra</span>' ;
+                $PedraM = '&#128142;' ;
             }
 
                     print($dadosPg['descricaoPedido'] . "<br>");
@@ -209,7 +209,7 @@ function selectPg($conectar,$dataSplit,$data){
                 
             //gravação externa
             if(!empty($dadosPe['gravacaoExterna'])){
-                $gravacaoExterna = '<span class="font_blue">Gravação:</span>' . $dadosPe['gravacaoExterna'];
+                $gravacaoExterna = '<span class="font_blue">Gravação Externa:</span>' . $dadosPe['gravacaoExterna'];
             }
             else{
                 $gravacaoExterna = '';
@@ -228,11 +228,11 @@ function selectPg($conectar,$dataSplit,$data){
             //Verificando Pedra 
             if($dadosPe['PedraF'] == true){
 
-                $PedraF = '<span class="font_blue"> com Pedra</span>' ;
+                $PedraF = '&#128142;' ;
             }
             if( $dadosPe['PedraM'] == true){
 
-                $PedraM = '<span class="font_blue"> com Pedra</span>' ;
+                $PedraM = '&#128142;' ;
             }
 
                     print($dadosPe['descricaoPedido'] . "<br>");
@@ -262,7 +262,7 @@ function selectPg($conectar,$dataSplit,$data){
                 ?></div>
                 <div class="btPedidos">
                 <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagem['pdfp']?>">PDF</a></button>
-                <button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagem['idpedidos'] ; ?>">Editar</a></button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagem['idpedidos'] ; ?>">Editar</a></button>
                 </div>
                 <?php
             }
@@ -283,7 +283,7 @@ function selectPg($conectar,$dataSplit,$data){
                 ?></div>
                 <div class="btPedidos">
                 <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPg['pdfpg']?>">PDF</a></button>
-                <button class = 'Pdf' type="button"><a class="PdfAncora" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPg['idpedidos'] ; ?>">Editar</a></button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPg['idpedidos'] ; ?>">Editar</a></button>
                 </div>
                 <?php
             }
@@ -304,7 +304,7 @@ function selectPg($conectar,$dataSplit,$data){
                     ?></div>
                     <div class="btPedidos">
                     <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPe['pdfpe']?>">PDF</a></button>
-                    <button class = 'Pdf' type="button"><a class="PdfAncora" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPe['idpedidos'] ; ?>">Editar</a></button>
+                    <button class = 'Pdf' type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPe['idpedidos'] ; ?>">Editar</a></button>
                     </div>
                     <?php
                 }

@@ -6,7 +6,7 @@ setInterval(function() {
       document.getElementById('formulario').submit();
     };
     location.reload();
-  }, 20000); //20 minutos
+  }, 15000); //10 segundos
 
 //Buttons 
 const buttonImprimir =  document.getElementById('imprimir');
