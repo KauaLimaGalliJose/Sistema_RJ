@@ -71,7 +71,7 @@ header{
     padding: 2px;
 }
 .botao:hover{
-    transition: 0.5s;
+    transition: 0.3s;
     transform: scale(110%);
     background-color: rgb(247, 94, 94);
     border-radius: 10%;

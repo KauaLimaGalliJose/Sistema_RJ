@@ -18,6 +18,7 @@
     $conectarpe00 = mysqli_query($conectar, $pe00);
 
     //Criando o PF0
+    /*
     if(mysqli_num_rows($conectarpf00) == 0 ){
         mysqli_query($conectar, "INSERT INTO pedidosp 
         (contadorpf, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,data_digitada) 
@@ -35,6 +36,7 @@
         (contadorpe, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,data_digitada) 
         VALUES (0,'PE00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '','../','','','','','$data')");
         }
+        */
 ?>
  <?php /////////////////////////////////////////////////////////////////////////////////////
     // Para Enviar Cookies 
@@ -100,20 +102,20 @@
         <div id="cabecalho">
             <div id="cabecalho_cima">
                 <div id="casa">
-                    <button type="button" value=""  class="botao" >
+                    <button title="Voltar Menu" type="button" value=""  class="botao" >
                     <a href="../index.html"><img class="itens" src="casa.png"></a>
                     </button>
         
-                    <button type="button" id="seta_esquerda" value="" class="botao" >
+                    <button title="Voltar Pedido" type="button" id="seta_esquerda" value="" class="botao" >
                         <img class="seta" src="angulo-esquerdo.png">
                     </button>
         
-                    <button type="button" id="seta_direita" value="" class="botao" >
+                    <button type="button" title="Avançar Pedido" id="seta_direita" value="" class="botao" >
                         <img class="seta" src="angulo-direito.png">
                     </button>
                 </div>
                 <div id="ferramentas">
-                    <button type="button" id="editar" value="" class="botao">
+                    <button type="button" title="Ver Pedidos" id="editar" value="" class="botao">
                     <a href="pedidos/pedidos.php"><img class="itens" src="editar.png"></a>
                     </button>
         
@@ -123,11 +125,11 @@
                     <img class="itens" src="upload-de-pasta.png">
                     <img class="itens" src="download-de-pasta.png">
         
-                    <button type="button" value="" class="botao">
+                    <button type="button" value="" title="Estoque" class="botao">
                         <a href="Estoque/Estoque_Pagina_Inicial.html"><img class="itens" src="aliancas-de-casamento.png"></a>
                     </button>
         
-                    <button type="button" id="limpar" value="" class="botao">
+                    <button type="button"  title="Limpar Pedido" id="limpar" value="" class="botao">
                         <img class="itens" src="lixeira.png">
                     </button>
                 </div>
