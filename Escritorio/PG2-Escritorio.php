@@ -18,7 +18,7 @@
     $conectarpe00 = mysqli_query($conectar, $pe00);
 
     //Criando o PF0
-    /*
+    
     if(mysqli_num_rows($conectarpf00) == 0 ){
         mysqli_query($conectar, "INSERT INTO pedidosp 
         (contadorpf, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,data_digitada) 
@@ -36,7 +36,7 @@
         (contadorpe, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,data_digitada) 
         VALUES (0,'PE00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '','../','','','','','$data')");
         }
-        */
+        
 ?>
  <?php /////////////////////////////////////////////////////////////////////////////////////
     // Para Enviar Cookies 
@@ -119,7 +119,7 @@
                     <a href="pedidos/pedidos.php"><img class="itens" src="editar.png"></a>
                     </button>
         
-                    <button type="button" id="pasta_aberta" value="" class="botao">
+                    <button type="button" title="Abrir Pasta" id="pasta_aberta" value="" class="botao">
                     <img class="itens" src="pasta-aberta.png">
                     </button>
                     <img class="itens" src="upload-de-pasta.png">
@@ -156,7 +156,7 @@
                 </div>
             </div>
             <div id="cabecalho_baixo">
-                <div id="tipo_pedido">
+                <div id="tipo_pedido" >
                         <input type="radio" onchange="" id="c1" value="Mercado_Livre" name = 'cliente' class="radio"><label for="c1">Mercado Livre</label> 
                         <input type="radio" onchange="" id="c2" value="showroom" name = 'cliente' class="radio"><label for="c2">Showroom</label> 
                         <input type="radio" value="Outros"  id="c3" name = 'cliente' class="radio" ><label for="c3">Outros:</label>  
@@ -170,31 +170,31 @@
             </div>
             <div id="pedido_input">
                 <div id="direita_input">
-                    <div id="numeracao_div">
+                    <div id="numeracao_div" >
                         Número do Pedido:
-                          <select id="n_p" name="numeroPedido" class="pedido" >
+                          <select id="n_p" name="numeroPedido" class="pedido" title="Selecione um Pedido" >
                                 <option value='N'  id="Nenhum" >Escolha</option>
-                                <option value='<?php echo $letraPf . $numeroPf; ?>' id="P1" >
+                                <option value='<?php echo $letraPf . $numeroPf; ?>' title="Pedido para Fabricação" id="P1" >
                                     <?php echo  $letraPf . $numeroPfDisplay;?>
                                 </option>
                            
-                                <option value="<?php echo $letraPg . $numeroPg; ?>" id="PG1" >
+                                <option value="<?php echo $letraPg . $numeroPg; ?>" title="Pedido para Gravação" id="PG1" >
                                     <?php echo  $letraPg . $numeroPgDisplay;?>
                                 </option>
                            
-                                <option value="<?php echo $letraPe . $numeroPe; ?>" id="PE1" >
+                                <option value="<?php echo $letraPe . $numeroPe; ?>" title="Pedido do Estoque" id="PE1" >
                                     <?php echo  $letraPe . $numeroPeDisplay;?> 
                                 </option>
                         </select>
-                        <input type="text" id="nome_m" name="nome_m" placeholder="Pedido..." >
-                        <input type="text" id="nome_p" name="nome_p" placeholder="Pedido..." >
+                        <input type="text" id="nome_m" title="Exemplo 'CONTA 001'" name="nome_m" placeholder="Pedido..." >
+                        <input type="text" id="nome_p" name="nome_p" title="Nome do Pedido" placeholder="Pedido..." >
                     </div>
                     <div id="numeracao">
-                        Númeração M:<input type="number" id="numeracao_m" value='' name="m" placeholder="M" >
-                        F:<input type="number" id="numeracao_f" value='' name="f"  placeholder="F" >
+                        Númeração M:<input type="number" title="Numeração Masculina" id="numeracao_m" value='' name="m" placeholder="M" >
+                        F:<input type="number" title="Numeração Feminina" id="numeracao_f" value='' name="f"  placeholder="F" >
                        </div>
                     <div id="unidade">
-                       <label for="checkboxFeminina">Unidade:</label><input type="checkbox" id="checkboxFeminina"  name = 'pé' class="radio" >
+                       <label for="checkboxFeminina" title="Para deixar apenas 1pé" >Unidade:</label><input type="checkbox" title="Para deixar apenas 1pé" id="checkboxFeminina"  name = 'pé' class="radio" >
                     </div>
                     <div id="descricao_div">
                         <textarea id="descricao_Pedido" name="descricao_Pedido" class="descricao" placeholder="Descrição do Pedido..."  ></textarea>
@@ -223,7 +223,7 @@
                         <div id="esquerda_input">
                             <div id="dia_horas">
                                 <div id="Div_entrega">
-                                    Entrega:<input id="entrega" name="dataEntrega" type="date">
+                                    Entrega:<input id="entrega" title="Dia de entrega do pedido" name="dataEntrega" type="date">
                                 </div>Largura
                                 <select  name="largura" id="horaPedido">
                                     <option id="2mm">2mm</option>
