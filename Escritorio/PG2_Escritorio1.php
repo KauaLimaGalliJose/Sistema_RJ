@@ -32,8 +32,8 @@ $idPedidos = $numeroPedido ."-". $dataEntrega;
 
 //imagem 
 if(isset($_FILES['imagem']) && !empty($_FILES['imagem'])){
-    $imagem = "../imagem/". $idPedidos . $_FILES['imagem']['name'];
-    move_uploaded_file($_FILES['imagem']['tmp_name'], "../imagem/". $idPedidos . $_FILES['imagem']['name']);
+    $imagem = "../imagem/". $idPedidos ;
+    move_uploaded_file($_FILES['imagem']['tmp_name'], "../imagem/". $idPedidos );
 }
 
 // Quardando PDF 

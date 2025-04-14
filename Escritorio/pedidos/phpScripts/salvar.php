@@ -27,8 +27,8 @@ if($_POST){
 
     //imagem 
     if(isset($_FILES['imagem']) && !empty($_FILES['imagem'])){
-        $imagem = "../imagem/". $idPedidos . $_FILES['imagem']['name'];
-        move_uploaded_file($_FILES['imagem']['tmp_name'], "../../../imagem/". $idPedidos . $_FILES['imagem']['name']);
+        $imagem = "../imagem/". $idPedidos ;
+        move_uploaded_file($_FILES['imagem']['tmp_name'], "../../../imagem/". $idPedidos );
     }
 
     // Quardando PDF 
@@ -43,7 +43,7 @@ if($_POST){
         $sql_update = "UPDATE pedidosp SET nomePedido = ?, numF = ?, numeM = ?, descricaoPedido = ?, descricaoAlianca = ?,largura = ?, gravacaoInterna = ?, gravacaoExterna = ? ,parEstoqueF = ?,parEstoqueM = ?, PedraF = ?,PedraM = ?, imagem = ? WHERE idpedidos = ?";
 
         $stmt = $conectar->prepare($sql_update);
-        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra , $imagem , $idPedidos);
+        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $comPedra ,$semPedra , $imagem , $idPedidos);
         $stmt->execute();
         $stmt->close();
     }
@@ -53,7 +53,7 @@ if($_POST){
         $sql_update = "UPDATE pedidospg SET nomePedido = ?, numF = ?, numeM = ?, descricaoPedido = ?, descricaoAlianca = ?,largura = ?, gravacaoInterna = ?, gravacaoExterna = ? ,parEstoqueF = ?,parEstoqueM = ?, PedraF = ?,PedraM = ?, imagem = ? WHERE idpedidos = ?";
 
         $stmt = $conectar->prepare($sql_update);
-        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra, $imagem  , $idPedidos);
+        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $comPedra ,$semPedra , $imagem  , $idPedidos);
         $stmt->execute();
         $stmt->close();
         
@@ -64,7 +64,7 @@ if($_POST){
         $sql_update = "UPDATE pedidospe SET nomePedido = ?, numF = ?, numeM = ?, descricaoPedido = ?, descricaoAlianca = ?,largura = ?, gravacaoInterna = ?, gravacaoExterna = ? ,parEstoqueF = ?,parEstoqueM = ?, PedraF = ?,PedraM = ?, imagem = ? WHERE idpedidos = ?";
 
         $stmt = $conectar->prepare($sql_update);
-        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $semPedra , $comPedra, $imagem  , $idPedidos);
+        $stmt->bind_param("siisssssssssss", $nomePedido, $f, $m, $descricao_Pedido, $descricaoAlianca,$largura, $gravacao_inter, $gravacao_exter , $estoqueFeminina ,$estoqueMasculina, $comPedra ,$semPedra , $imagem  , $idPedidos);
         $stmt->execute();
         $stmt->close();
     

@@ -306,7 +306,7 @@
                             
                         </div>
                         <label class="botaoImg">
-                        <input type="file" src="#" class="fileBt" name="imagem" id="uploadimg" accept="image/png, image/jpeg, image/jpg">
+                        <input type="file" src="../../<?php echo $imagem ; ?>" class="fileBt" name="imagem" id="uploadimg" accept="image/png, image/jpeg, image/jpg">
                             Enviar Imagem
                         </label>
                         <div id="modelo">
