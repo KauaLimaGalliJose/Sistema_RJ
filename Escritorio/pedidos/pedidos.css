@@ -71,6 +71,15 @@ main{
     font-size: 120%;
     font-weight: 700;
 }
+#quemRecebeInput{
+    border: solid black 3px;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    margin-left: 15px;
+    font-size: 120%;
+    font-weight: 700;
+}
 #pedidosDiv{
     display: flex;
     align-items: center;

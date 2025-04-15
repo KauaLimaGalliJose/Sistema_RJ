@@ -91,7 +91,6 @@
     <link rel="shortcut icon" href="../coroa.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="PG2-Escritorio.css">
-    <script src="../Importados/sistemaGoogleDocumentos.js" type="module"></script>
     <script src="../Importados/jquery-3.7.1.min.js"></script>
     <script src="main.js" type="module" defer></script>
     <title>Escritório</title>

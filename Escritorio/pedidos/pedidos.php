@@ -18,6 +18,7 @@
             </div>
                 <div id="pesquisa">
                     <input id="pesquisaInput" value='' name="pesquisa" type="text" oninput="this.value = this.value.toUpperCase();" placeholder="Titulo Pedido">
+                    <input id="quemRecebeInput" value='' name="quemRecebe" type="text" oninput="this.value = this.value.toUpperCase();" placeholder="Quem Recebe">
                 </div>
                 <div id="pedidosDiv">
                     <input class="data" id="dataInput" name="dataInput" type="date">
@@ -39,6 +40,7 @@
         <?php include_once('./phpScripts/separarPedidos.php');?>
         <?php include_once('./phpScripts/dataPesquisa.php');?>
         <?php include_once('./phpScripts/pesquisa.php');?>
+        <?php include_once('./phpScripts/quemRecebe.php');?>
         <?php
             // Função para relogio
             date_default_timezone_set('America/Sao_Paulo'); // Fuso horário de Brasília
