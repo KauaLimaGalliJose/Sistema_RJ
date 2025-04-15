@@ -122,9 +122,15 @@
                     <button type="button" title="Abrir Pasta" id="pasta_aberta" value="" class="botao">
                     <img class="itens" src="pasta-aberta.png">
                     </button>
-                    <img class="itens" src="upload-de-pasta.png">
-                    <img class="itens" src="download-de-pasta.png">
-        
+
+                    <button type="button" value="" class="botao">
+                        <img class="itens" title="Exportar Pedidos" src="upload-de-pasta.png">
+                    </button>
+
+                    <button type="button" value="" class="botao">
+                        <img class="itens" title="Importar Pedidos"  src="download-de-pasta.png">
+                    <button>
+
                     <button type="button" value="" title="Estoque" class="botao">
                         <a href="Estoque/Estoque_Pagina_Inicial.html"><img class="itens" src="aliancas-de-casamento.png"></a>
                     </button>
