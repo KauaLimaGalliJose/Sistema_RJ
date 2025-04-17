@@ -195,8 +195,8 @@
                         <input type="text" id="nome_p" name="nome_p" title="Nome do Pedido" placeholder="Pedido..." >
                     </div>
                     <div id="numeracao">
-                        Númeração M:<input type="number" title="Numeração Masculina" id="numeracao_m" value='' name="m" placeholder="M" >
-                        F:<input type="number" title="Numeração Feminina" id="numeracao_f" value='' name="f"  placeholder="F" >
+                        Númeração M:<input type="number" min="0" title="Numeração Masculina" id="numeracao_m" value='' name="m" placeholder="M" >
+                        F:<input type="number" min="0" title="Numeração Feminina" id="numeracao_f" value='' name="f"  placeholder="F" >
                        </div>
                     <div id="unidade">
                        <label for="checkboxFeminina" title="Para deixar apenas 1pé" >Unidade:</label><input type="checkbox" title="Para deixar apenas 1pé" id="checkboxFeminina"  name = 'pé' class="radio" >

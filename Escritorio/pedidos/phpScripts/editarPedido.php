@@ -47,7 +47,7 @@
                 $nomePedido = $linhaDados['nomePedido'];
                 $numeroF = $linhaDados['numF'];
                 $numeroM = $linhaDados['numeM'];
-                $pdf = $linhaDados['pdfp'];
+                $pdf = $linhaDados['pdf'];
                 $descricaoPedido = $linhaDados['descricaoPedido'];
                 $descricaoAlianca = $linhaDados['descricaoAlianca'];
                 $imagem = $linhaDados['imagem'];
@@ -102,7 +102,7 @@
                 $mercadoLivre = 'checked';
                 $styleMercadoLivre = 'style="visibility: visible;"';
                 
-                $pdf = $linhaDadosPg['pdfpg'];
+                $pdf = $linhaDadosPg['pdf'];
                 $nomePedido = $linhaDadosPg['nomePedido'];
                 $numeroF = $linhaDadosPg['numF'];
                 $numeroM = $linhaDadosPg['numeM'];
@@ -156,7 +156,7 @@
                 $mercadoLivre = 'checked';
                 $styleMercadoLivre = 'style="visibility: visible;"';
 
-                $pdf = $linhaDadosPe['pdfpe'];
+                $pdf = $linhaDadosPe['pdf'];
                 $nomePedido = $linhaDadosPe['nomePedido'];
                 $numeroF = $linhaDadosPe['numF'];
                 $numeroM = $linhaDadosPe['numeM'];
@@ -284,8 +284,8 @@
                         <input type="text" id="nome_p" name="nome_p" placeholder="Pedido..." >
                     </div>
                     <div id="numeracao">
-                        Númeração M:<input type="number" id="numeracao_m" value='<?php echo $numeroM;  ?>' name="m" placeholder="M" >
-                        F:<input  type="number" id="numeracao_f" value='<?php echo $numeroF; ?>' name="f"  placeholder="F"  <?php echo $styleUnidade?>>
+                        Númeração M:<input min="0" type="number" id="numeracao_m" value='<?php echo $numeroM;  ?>' name="m" placeholder="M" >
+                        F:<input min="0" type="number" id="numeracao_f" value='<?php echo $numeroF; ?>' name="f"  placeholder="F"  <?php echo $styleUnidade?>>
                        </div>
                     <div id="unidade">
                        <label for="checkboxFeminina">Unidade:</label><input type="checkbox" id="checkboxFeminina"  name = 'pé' class="radio" <?php echo $unidade ?> >

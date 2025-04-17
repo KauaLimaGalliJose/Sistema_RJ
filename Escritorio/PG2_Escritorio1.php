@@ -32,8 +32,8 @@ $idPedidos = $numeroPedido ."-". $dataEntrega;
 
 //imagem 
 if(isset($_FILES['imagem']) && !empty($_FILES['imagem'])){
-    $imagem = "../imagem/". $idPedidos ;
-    move_uploaded_file($_FILES['imagem']['tmp_name'], "../imagem/". $idPedidos );
+    $imagem = "../imagem/". $idPedidos . '.png' ;
+    move_uploaded_file($_FILES['imagem']['tmp_name'], "../imagem/". $idPedidos . '.png');
 }
 
 // Quardando PDF 
@@ -52,7 +52,7 @@ if($cliente == 'showroom'){
     // passando pro banco de dados
     $dadosp = mysqli_query($conectar, "INSERT INTO pedidos 
     (idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,pdf,data_digitada) 
-    VALUES ('$idPedidos', '$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , 'naoTemPdf' , '$dataEntrega' )");
+    VALUES ('$idPedidos', '$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$comPedra' , '$semPedra' , 'naoTemPdf' , '$dataEntrega' )");
 
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,7 +64,7 @@ if($cliente == 'Outros'){
     // passando pro banco de dados
     $dadosp = mysqli_query($conectar, "INSERT INTO pedidos 
     (idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,outrosClientes,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,pdf,data_digitada) 
-    VALUES ('$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , 'naoTemPdf' , '$dataEntrega')");
+    VALUES ('$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$outrosClientes','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$comPedra' , '$semPedra' , 'naoTemPdf' , '$dataEntrega')");
     
 }
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == "F"){
@@ -72,8 +72,8 @@ if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == "F"){
     $idPf = str_replace("PF","",$_POST['numeroPedido']); //Contador para o banco
     // passando pro banco de dados
     $dadosp = mysqli_query($conectar, "INSERT INTO pedidosp 
-    (contadorpf,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna ,imagem,parEstoqueF,parEstoqueM, PedraF,PedraM,pdfp,data_digitada) 
-    VALUES ($idPf,'$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter' ,'$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , '$pdf' , '$dataEntrega' )");
+    (contadorpf,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna ,imagem,parEstoqueF,parEstoqueM, PedraF,PedraM,pdf,data_digitada) 
+    VALUES ($idPf,'$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter' ,'$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$comPedra' , '$semPedra' , '$pdf' , '$dataEntrega' )");
     
 }
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'G'){
@@ -81,8 +81,8 @@ if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'G'){
     $idPg = str_replace("PG","",$_POST['numeroPedido']); 
     // passando pro banco de dados
     $dadosg = mysqli_query($conectar, "INSERT INTO pedidospg
-    (contadorpg,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM, pdfpg,data_digitada) 
-    VALUES ('$idPg','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , '$pdf' , '$dataEntrega' )");
+    (contadorpg,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM, pdf,data_digitada) 
+    VALUES ('$idPg','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$comPedra' , '$semPedra' , '$pdf' , '$dataEntrega' )");
      
 }
 if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'E'){
@@ -90,8 +90,8 @@ if($cliente == 'Mercado_Livre' && $numeroPedidoSplit[1] == 'E'){
     $idPe = str_replace("PE","",$_POST['numeroPedido']);
     // passando pro banco de dados
     $dadose = mysqli_query($conectar, "INSERT INTO pedidospe
-    (contadorpe,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,pdfpe,data_digitada) 
-    VALUES ('$idPe','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$semPedra' , '$comPedra' , '$pdf' , '$dataEntrega' )");
+    (contadorpe,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,pdf,data_digitada) 
+    VALUES ('$idPe','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter', '$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$comPedra' , '$semPedra' , '$pdf' , '$dataEntrega' )");
     
 }
 

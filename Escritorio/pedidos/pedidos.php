@@ -32,10 +32,33 @@
                 <button type='button' id="imprimir" class="botao">
                     <img class="itens" src="./imagemPedido/impressora-50.png">
                 </button>
+                <button type='button' id="pdfImprimir" class="botao">
+                    <img class="itens" src="./imagemPedido/pdfPreto.png">
+                </button>
         </div>
     </div>
 </form>
-<main>
+<main id="main">
+    <div id="PdfDivMae">
+        <div id="PdfDiv">
+            <div id="TituloPdf">
+                <label >-- Qual imprimir --</label>
+            </div>
+            <div id="checkboxPdf">
+                <label class="checkboxFont"><input class="selecao" type="checkbox">Todos os PF</label>
+                <label class="checkboxFont"><input class="selecao" type="checkbox">Todos os PG</label>
+                <label class="checkboxFont"><input class="selecao" type="checkbox">Todos os PE</label>
+            </div>
+            <div>
+                <label > Escolha </label> 
+            </div>
+        </div>
+        <div id="PdfDiv2">
+            <button type='button'  id="buttonPdf">
+                <label>OK</label>
+            </button>    
+        </div>
+    </div>
     <div id="phpmae">
         <?php include_once('./phpScripts/separarPedidos.php');?>
         <?php include_once('./phpScripts/dataPesquisa.php');?>
@@ -49,6 +72,7 @@
             //////////////////////////////////////////////////////////////////////////
             //Variaveis
             $pesquisa = ''; // Valor padrão
+            $quemRecebe = '';
             $semPedido = null;
 
             if($_GET){
@@ -57,6 +81,7 @@
                 $pgSelect = $_GET['pgSelect'] ?? null;
                 $peSelect = $_GET['peSelect'] ?? null;
                 $pesquisa = $_GET['pesquisa'] ?? '';
+                $quemRecebe = $_GET['quemRecebe'] ?? '';
             }
         ?>
         <div id="phpDiv">
@@ -86,11 +111,13 @@
             pesquisa($pesquisa,$conectar,$data,$dataSplit);
         }
         //PedidosAntigos e pesquisa ///////////////////////////////
-        if(isset($dataInput)){
+        if(isset($dataInput) && $quemRecebe == ''){
             pedidosData($conectar,$dataInput,$pesquisa);
         }
-
-
+        //Quem Recebe e Data /////////////////////////////////////
+        if($quemRecebe !== ''){
+            quemRecebe($conectar,$quemRecebe,$dataInput);
+        }
             ?></div><?php
         ?>
         <div id="php2">
@@ -116,12 +143,16 @@
             pesquisaImagem($pesquisa,$conectar,$data,$dataSplit);
         }
         //PedidosAntigos e pesquisa ///////////////////////////////
-        if(isset($dataInput)){
+        if(isset($dataInput) && $quemRecebe == ''){
             pedidosDataImagem($conectar,$dataInput,$pesquisa);
+        }
+        //Quem Recebe e Data /////////////////////////////////////
+        if($quemRecebe !== ''){
+            quemRecebeImagem($conectar,$quemRecebe,$dataInput);
         }
 
         //Se não Pesquisar nada 
-        if($pesquisa == '' && empty($dataInput) && isset($pfSelect) == null && isset($pgSelect) == null && isset($peSelect) == null){
+        if($pesquisa == '' && $quemRecebe == '' && empty($dataInput) && isset($pfSelect) == null && isset($pgSelect) == null && isset($peSelect) == null){
             $semPedido =  include_once('../../semPedidos/semPedidos.php');
         }
          

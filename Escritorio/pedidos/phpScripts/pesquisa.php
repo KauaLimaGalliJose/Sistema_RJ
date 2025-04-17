@@ -238,13 +238,13 @@
 <?php 
     function pesquisaImagem($resultado,$conectar,$data,$dataSplit){
 
-        $imagem = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido, pdfp FROM pedidosp WHERE idpedidos != 'PF00-$data' AND idpedidos LIKE '%$resultado%' OR nomePedido LIKE '%$resultado%' ORDER BY contadorpf ASC";
+        $imagem = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido, pdf FROM pedidosp WHERE idpedidos != 'PF00-$data' AND idpedidos LIKE '%$resultado%' OR nomePedido LIKE '%$resultado%' ORDER BY contadorpf ASC";
         $imagemConectar = mysqli_query($conectar, $imagem);
 
-        $imagemPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido , pdfpg FROM pedidospg WHERE idpedidos != 'PG00-$data' AND idpedidos LIKE '%$resultado%' OR nomePedido LIKE '%$resultado%' ORDER BY contadorpg ASC";
+        $imagemPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido , pdf FROM pedidospg WHERE idpedidos != 'PG00-$data' AND idpedidos LIKE '%$resultado%' OR nomePedido LIKE '%$resultado%' ORDER BY contadorpg ASC";
         $imagemConectarPg = mysqli_query($conectar, $imagemPg);
 
-        $imagemPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido , pdfpe FROM pedidospe WHERE idpedidos != 'PE00-$data' AND idpedidos LIKE '%$resultado%' OR nomePedido LIKE '%$resultado%' ORDER BY contadorpe ASC";
+        $imagemPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido , pdf FROM pedidospe WHERE idpedidos != 'PE00-$data' AND idpedidos LIKE '%$resultado%' OR nomePedido LIKE '%$resultado%' ORDER BY contadorpe ASC";
         $imagemConectarPe = mysqli_query($conectar, $imagemPe);
 
 
@@ -256,7 +256,7 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagem['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button"><a class="PdfAncora"  href="../<?php echo $dadosImagem['pdfp']?>">PDF</a></button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora"  href="../<?php echo $dadosImagem['pdf']?>">PDF</a></button>
                 <button class = 'Pdf' type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagem['idpedidos'] ; ?>">Editar</a></button>
                 </div>
                 <?php
@@ -270,7 +270,7 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPg['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPg['pdfpg']?>">PDF</a></button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPg['pdf']?>">PDF</a></button>
                 <button class = 'Pdf' type="button"><a class="PdfAncora" target="_blank"  href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPg['idpedidos'] ; ?>">Editar</a></button>
                 </div>
                 <?php
@@ -284,7 +284,7 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPe['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button"><a class="PdfAncora"  href="../<?php echo $dadosImagemPe['pdfpe']?>">PDF</a></button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora"  href="../<?php echo $dadosImagemPe['pdf']?>">PDF</a></button>
                 <button class = 'Pdf' type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPe['idpedidos'] ; ?>">Editar</a></button>
                 </div>
                 <?php

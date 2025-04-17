@@ -9,7 +9,10 @@
             "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido
             FROM pedidosp 
             WHERE contadorpf <> 0 
-            AND nomePedido LIKE '%$resultado%'  
+            AND nomePedido LIKE '%$resultado%'
+            AND data_digitada LIKE '$dataDigitada'
+ 
+            OR idpedidos LIKE '%$resultado%'
             AND data_digitada LIKE '$dataDigitada'
 
             ORDER BY contadorpf ASC";
@@ -19,7 +22,10 @@
             $pesquisaDadosPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido
             FROM pedidospg 
             WHERE contadorpg <> 0 
-            AND nomePedido LIKE '%$resultado%' 
+            AND nomePedido LIKE '%$resultado%'
+            AND data_digitada LIKE '$dataDigitada'
+ 
+            OR idpedidos LIKE '%$resultado%'
             AND data_digitada LIKE '$dataDigitada'
 
             ORDER BY contadorpg ASC";
@@ -29,7 +35,10 @@
             $pesquisaDadosPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido
             FROM pedidospe
             WHERE contadorpe <> 0 
-            AND nomePedido LIKE '%$resultado%' 
+            AND nomePedido LIKE '%$resultado%'
+            AND data_digitada LIKE '$dataDigitada'
+ 
+            OR idpedidos LIKE '%$resultado%'
             AND data_digitada LIKE '$dataDigitada'
 
             ORDER BY contadorpe ASC";
@@ -247,37 +256,46 @@
             }
         }
 ?>
-<?php ////////////////////////////////////////////////////////////////////-- Pesquisa PEDIDOS ANTIGOS IMAGEM --////////////////////////////////////////////////////////////////////////?>
+<?php ////////////////////////////////////////////////////////////////////-- Pesquisa PEDIDOS DATA IMAGEM --////////////////////////////////////////////////////////////////////////?>
 <?php 
     function pesquisaPedidosDataImagem($resultado,$conectar,$dataDigitada) {
 
         date_default_timezone_set('America/Sao_Paulo'); // Fuso horário de Brasília
         $data = date('Y-m-d');
  
-        $imagem = "SELECT RIGHT(idpedidos,2) AS idpedido,idpedidos, imagem, pdfp 
+        $imagem = "SELECT RIGHT(idpedidos,2) AS idpedido,idpedidos, imagem, pdf 
         FROM pedidosp
         WHERE contadorpf <> 0 
-        AND nomePedido LIKE '%$resultado%' 
+        AND nomePedido LIKE '%$resultado%'
+        AND data_digitada LIKE '$dataDigitada'
+ 
+        OR idpedidos LIKE '%$resultado%'
         AND data_digitada LIKE '$dataDigitada'
 
         ORDER BY contadorpf ASC";
         $imagemConectar = mysqli_query($conectar, $imagem);
 
-        $imagemPg = "SELECT RIGHT(idpedidos,2) AS idpedido,idpedidos, imagem, pdfpg 
+        $imagemPg = "SELECT RIGHT(idpedidos,2) AS idpedido,idpedidos, imagem, pdf 
 
         FROM pedidospg 
         WHERE contadorpg <> 0 
-        AND nomePedido LIKE '%$resultado%' 
+        AND nomePedido LIKE '%$resultado%'
+        AND data_digitada LIKE '$dataDigitada'
+ 
+        OR idpedidos LIKE '%$resultado%'
         AND data_digitada LIKE '$dataDigitada'
 
         ORDER BY contadorpg ASC";
         $imagemConectarPg = mysqli_query($conectar, $imagemPg);
 
-        $imagemPe = "SELECT RIGHT(idpedidos,2) AS idpedido,idpedidos, imagem, pdfpe 
+        $imagemPe = "SELECT RIGHT(idpedidos,2) AS idpedido,idpedidos, imagem, pdf 
 
         FROM pedidospe 
         WHERE contadorpe <> 0 
-        AND nomePedido LIKE '%$resultado%' 
+        AND nomePedido LIKE '%$resultado%'
+        AND data_digitada LIKE '$dataDigitada'
+ 
+        OR idpedidos LIKE '%$resultado%'
         AND data_digitada LIKE '$dataDigitada'
 
         ORDER BY contadorpe ASC";
@@ -291,7 +309,7 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagem['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagem['pdfp']?>">PDF</a></button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagem['pdf']?>">PDF</a></button>
                 <?php 
                     if($dataDigitada == $data){
                         ?><button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagem['idpedidos'] ; ?>">Editar</a></button><?php
@@ -308,7 +326,7 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPg['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPg['pdfpg']?>">PDF</a></button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPg['pdf']?>">PDF</a></button>
                 <?php 
                     if($dataDigitada == $data){
                         ?><button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPg['idpedidos'] ; ?>">Editar</a></button><?php
@@ -325,7 +343,7 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPe['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPe['pdfpe']?>">PDF</a></button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPe['pdf']?>">PDF</a></button>
                 <?php 
                     if($dataDigitada == $data){
                         ?><button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPe['idpedidos'] ; ?>">Editar</a></button><?php
@@ -598,13 +616,13 @@
     else{
 
         //Variaveis para sincronizar com Banco de Dados
-        $imagemPf = "SELECT RIGHT(idpedidos,5) AS idpedido,idpedidos, imagem, pdfp FROM pedidosp WHERE contadorpf != 0 AND data_digitada = '$resultado' ORDER BY contadorpf ASC";
+        $imagemPf = "SELECT RIGHT(idpedidos,5) AS idpedido,idpedidos, imagem, pdf FROM pedidosp WHERE contadorpf != 0 AND data_digitada = '$resultado' ORDER BY contadorpf ASC";
         $imagemConectarPf = mysqli_query($conectar, $imagemPf);
 
-        $imagemPg = "SELECT RIGHT(idpedidos,5) AS idpedido,idpedidos, imagem, pdfpg FROM pedidospg WHERE contadorpg != 0 AND data_digitada = '$resultado' ORDER BY contadorpg ASC";
+        $imagemPg = "SELECT RIGHT(idpedidos,5) AS idpedido,idpedidos, imagem, pdf FROM pedidospg WHERE contadorpg != 0 AND data_digitada = '$resultado' ORDER BY contadorpg ASC";
         $imagemConectarPg = mysqli_query($conectar, $imagemPg);
 
-        $imagemPe = "SELECT RIGHT(idpedidos,5) AS idpedido,idpedidos, imagem, pdfpe FROM pedidospe WHERE contadorpe != 0 AND data_digitada = '$resultado' ORDER BY contadorpe ASC";
+        $imagemPe = "SELECT RIGHT(idpedidos,5) AS idpedido,idpedidos, imagem, pdf FROM pedidospe WHERE contadorpe != 0 AND data_digitada = '$resultado' ORDER BY contadorpe ASC";
         $imagemConectarPe = mysqli_query($conectar, $imagemPe);
 
         //PF-----------------------------------------------------------
@@ -616,7 +634,7 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPf['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPf['pdfp']?>">PDF</a></button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPf['pdf']?>">PDF</a></button>
                 <?php 
                     if($resultado == date('Y-m-d')){
                         ?><button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPf['idpedidos'] ; ?>">Editar</a></button><?php
@@ -635,7 +653,7 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPg['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPg['pdfpg']?>">PDF</a></button>
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPg['pdf']?>">PDF</a></button>
                 <?php 
                     if($resultado == date('Y-m-d')){
                         ?><button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPg['idpedidos'] ; ?>">Editar</a></button><?php
@@ -653,7 +671,7 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPe['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPe['pdfpe']?>">PDF</a></button> 
+                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPe['pdf']?>">PDF</a></button> 
                 <?php 
                     if($resultado == date('Y-m-d')){
                         ?><button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPe['idpedidos'] ; ?>">Editar</a></button><?php
