@@ -14,6 +14,10 @@ const imagemBt = document.getElementById('uploadimg');
 const pdfBt = document.getElementById('inputPDF');
 const enviarBt = document.getElementById('btEnviar');
 const unidadeCheck = document.getElementById('checkboxFeminina');
+const buttonPdf = document.getElementById('exportar');
+const buttonPdfDiv = document.getElementById('buttonPdf');
+const buttonPdfImportar = document.getElementById('importar');
+const buttonPdfDivImportar = document.getElementById('buttonPdfImportar');
 
 //Global Variaveis
 export let contador = { 
@@ -60,6 +64,72 @@ limparBt.addEventListener('click',function(){
     limpar()
 });
 
+//DIV EXPORTAR Tinha pego do pedidos.php 
+buttonPdf.addEventListener('click',function(){
+    const pdfDiv =  document.getElementById('PdfDivMae');
+  
+    if(pdfDiv.style.visibility == 'hidden'){
+      pdfDiv.style.visibility = 'visible';
+  
+      document.getElementById('formulario').style.filter = 'brightness(0.65) contrast(0.85) blur(2px)';
+      document.getElementById('conteudo').style.filter = 'brightness(0.75) contrast(0.95) blur(2px)';
+      document.querySelector('footer').style.visibility = 'hidden';
+      
+    }
+    else{
+      pdfDiv.style.visibility = 'hidden';
+  
+      document.getElementById('conteudo').style.filter = '';
+      document.getElementById('formulario').style.filter = '';
+      document.querySelector('footer').style.visibility = 'visible';
+    }
+  })
+  
+buttonPdfDiv.addEventListener('click', function(){
+    const pdfDiv =  document.getElementById('PdfDivMae');
+  
+    pdfDiv.style.visibility = 'hidden';
+  
+    document.getElementById('conteudo').style.filter = '';
+    document.getElementById('formulario').style.filter = '';
+    document.querySelector('footer').style.visibility = 'visible';
+    
+  })
+// --------------------------------------
+
+//DIV IMPORTAR 
+buttonPdfImportar.addEventListener('click',function(){
+    const pdfDiv =  document.getElementById('PdfDivMaeImportar');
+  
+    if(pdfDiv.style.visibility == 'hidden'){
+      pdfDiv.style.visibility = 'visible';
+  
+      document.getElementById('formulario').style.filter = 'brightness(0.65) contrast(0.85) blur(2px)';
+      document.getElementById('conteudo').style.filter = 'brightness(0.75) contrast(0.95) blur(2px)';
+      document.querySelector('footer').style.visibility = 'hidden';
+      
+    }
+    else{
+      pdfDiv.style.visibility = 'hidden';
+  
+      document.getElementById('conteudo').style.filter = '';
+      document.getElementById('formulario').style.filter = '';
+      document.querySelector('footer').style.visibility = 'visible';
+    }
+  })
+  
+buttonPdfDivImportar.addEventListener('click', function(){
+    const pdfDiv =  document.getElementById('PdfDivMaeImportar');
+  
+    pdfDiv.style.visibility = 'hidden';
+  
+    document.getElementById('conteudo').style.filter = '';
+    document.getElementById('formulario').style.filter = '';
+    document.querySelector('footer').style.visibility = 'visible';
+    
+  })
+// --------------------------------------
+
 enviarBt.addEventListener('click',function(){
     if(verificar() === true){
         selectN();
@@ -75,6 +145,7 @@ enviarBt.addEventListener('click',function(){
     document.getElementById('pdfSalvo').style.visibility = 'hidden' ;
     atualizarDiv("#envioP", 'divRodapeDinamica.php');
 });
+
 
 //Funções para ser iniciadas
 dataCabecalho();

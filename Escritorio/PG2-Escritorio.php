@@ -97,6 +97,70 @@
 </head>
 <body>
    <main>
+        <!-- DIV EXPORTAR Tinha pego do pedidos.php -->
+    <form id="exportarFormulario" action="./ExportarImportar/exportar.php" method="post">
+        <div id="PdfDivMae">
+            <div id="PdfDiv">
+                <div id="TituloPdf">
+                    <label >-- Exportar --</label>
+                </div>
+                <div id="dataExportar">
+                    <label id="escolhaTXT"> Escolha </label> 
+                    <input id="dataExportarInput" name="data" type="date">
+                </div>
+                <div id="checkboxPdf">
+                    <label class="checkboxFont"><input class="selecao" id="PF" name="PF" value="PF" type="checkbox">Todos os PF</label>
+                    <label class="checkboxFont"><input class="selecao" id="PG" name="PG" value="PG" type="checkbox">Todos os PG</label>
+                    <label class="checkboxFont"><input class="selecao" id="PE" name="PE" value="PE" type="checkbox">Todos os PE</label>
+                </div>
+            </div>
+            <div id="PdfDiv2">
+                <button type='button'  id="buttonPdf" class="buttonPdf">
+                    <label>Voltar</label>
+                </button>
+                <button type='submit' id="submitExportar" class="buttonPdf">
+                    <label>Baixar</label>
+                </button>    
+            </div>
+        </div>
+    </form>
+<!-- -------------------------------------------------------------------------------------------------------------------------- -->
+     <!-- DIV Importar Tinha pego do pedidos.php -->
+     <form id="importarFormulario" action="./ExportarImportar/importar.php" method="post">
+     <div id="PdfDivMaeImportar">
+            <div id="PdfDivImportar">
+                <div id="TituloPdfImportar">
+                    <label >-- Importar --</label>
+                </div>
+                <div id="fileImportar">
+                    <button type="button" class="importBtt" id="importBtt">
+                        <label id="dadosImportLabel" for="dadosImport">Escolha o Arquivo</label>
+                    </button>
+
+                    <button type="button" class="importBtt" id="importBttImagem">
+                        <label id="dadosImportLabel" for="dadosImportImagem">Escolha as Imagens</label>
+                    </button>
+
+                    <button type="button" class="importBtt" id="importBttPDF">
+                        <label id="dadosImportLabel" for="dadosImportPDF">Escolha os PDFs</label>
+                    </button>
+
+                    <input type="file" class="dadosImport" id="dadosImport" name="dadosImport">
+                    <input type="file" class="dadosImport" id="dadosImportImagem" name="dadosImportImagem">
+                    <input type="file" class="dadosImport" id="dadosImportPDF" name="dadosImportPDF">
+                </div>
+            </div>
+            <div id="PdfDiv2">
+                <button type='button'  id="buttonPdfImportar" class="buttonPdf">
+                    <label>Voltar</label>
+                </button>
+                <button type='submit' id="submitImportar" class="buttonPdf">
+                    <label>Enviar</label>
+                </button>    
+            </div>
+        </div>
+     </form>
+<!-- -------------------------------------------------------------------------------------------------------------------------- -->
     <form id="formulario" enctype="multipart/form-data" action="PG2_Escritorio1.php" method="post">
         <div id="cabecalho">
             <div id="cabecalho_cima">
@@ -122,11 +186,11 @@
                     <img class="itens" src="pasta-aberta.png">
                     </button>
 
-                    <button type="button" value="" class="botao">
+                    <button type="button" id="exportar" value="" class="botao">
                         <img class="itens" title="Exportar Pedidos" src="upload-de-pasta.png">
                     </button>
 
-                    <button type="button" value="" class="botao">
+                    <button type="button" id="importar" value="" class="botao">
                         <img class="itens" title="Importar Pedidos"  src="download-de-pasta.png">
                     <button>
 
@@ -261,6 +325,7 @@
             <div class="div_footer">
             <input type="checkbox" id="comPedra" name = 'comPedra' class="radio" ><label for="comPedra">Feminina pedra</label>
             <input type="checkbox" id="semPedra" name = 'semPedra' class="radio" ><label for="semPedra">Masculina Pedra</label>
+            </div>
             <div class="div_footer">
             <input type="checkbox" value="" id="estoqueFeminina"  name = 'estoqueFeminina' class="radio"><label for="estoqueFeminina">Feminina Estoque</label>
             <input type="checkbox" value="" id="estoqueMasculina"  name = 'estoqueMasculina' class="radio"><label for="estoqueMasculina">Masculina Estoque</label>

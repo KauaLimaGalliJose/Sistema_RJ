@@ -37,54 +37,150 @@
     </div>
 </form>
     <?php include_once('../conexao.php');?>
-    <?php
-        //Variaveis
-        if($_POST){
-            $largura = $_POST['largura'];
-            ?><div id="largura">
-            <span class="titulo_black"><?php echo 'Largura:'; ?></span><span class="titulo_red"><?php echo $largura; ?></span><?php
-            ?></div><?php
-            }
-        ?>
     <div id="phpmae">
-        <div id="phpDiv">
-        <?php
-            
-            
-            $data = date('Y-m-d');
-            $dataSplit = explode("-", $data);
-
-            // Recupera todos os pedidos com idpedidos e imagem
-            $dadosVerificador = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, descricaoPedido,idpedidos FROM pedidosp ORDER BY largura ASC";
-            $Verificador = mysqli_query($conectar, $dadosVerificador);
-    
-            while (($dados = mysqli_fetch_assoc($Verificador))) {
-            
-                if ($dados['idpedido'] == $dataSplit[1] . '-' . $dataSplit[2]) {
-
-                    ?><div class="pedidostexto"><label><?php
-                    print('Pedido do Dia: '); ?><span class="font_red"><?php print($dataSplit[1] . '/' . $dataSplit[2] . "<br>");?></span><?php
-                    print($dados['descricaoPedido'] . "<br>");
-                    print($dados['idpedidos'] . "<br>");
-                    ?></label></div><?php
-                }
-            }
-            ?>    
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Nueração</label>
+            </div>
         </div>
-        <div id="php2">
-            <?php
-            $imagem = "SELECT imagem  FROM pedidosp ORDER BY largura ASC";
-            $imagemConectar = mysqli_query($conectar, $imagem);
-
-            while ($dadosImagem = mysqli_fetch_assoc($imagemConectar)) {
-                       
-                ?><div class="pedidosImagem"><?php
-                ?><img class = "Imagem" src="<?php echo $dadosImagem['imagem'];?>" alt="Imagem do Pedido"><?php
-                ?></div><?php
-                
-            }
-            ?></div><?php
-            ?>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Nueração</label>
+            </div>
+        </div>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Numeração</label>
+            </div>
+        </div>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Numeração</label>
+            </div>
+        </div>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Numeração</label>
+            </div>
+        </div>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Numeração</label>
+            </div>
+        </div>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Numeração</label>
+            </div>
+        </div>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Numeração</label>
+            </div>
+        </div>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Numeração</label>
+            </div>
+        </div>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Numeração</label>
+            </div>
+        </div>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Numeração</label>
+            </div>
+        </div>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Numeração</label>
+            </div>
+        </div>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Numeração</label>
+            </div>
+        </div>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Numeração</label>
+            </div>
+        </div>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Numeração</label>
+            </div>
+        </div>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Numeração</label>
+            </div>
+        </div>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Numeração</label>
+            </div>
+        </div>
+        <div class="carrossel">
+            <div class="carrosselSuperior">
+                <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
+            </div>
+            <div class="carrosselInferior">
+                <label>Numeração</label>
+            </div>
         </div>
     </div>
 </body>
