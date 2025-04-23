@@ -1,0 +1,2 @@
+contadorpg,idpedidos,cliente,nomePedido,numF,numeM,descricaoPedido,descricaoAlianca,largura,gravacaoInterna,gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,pdf,data_digitada
+1,PG1-2025-04-23,Mercado_Livre,"kaua 001",20,20,"Quem Recebe: Izabella Souza","Par Polida",3mm,,,../imagem/PG1-2025-04-23.png,,true,true,,./pedidos/PDF/PG1-2025-04-23.pdf,2025-04-23

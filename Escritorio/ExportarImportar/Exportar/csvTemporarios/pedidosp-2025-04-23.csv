@@ -1,0 +1,4 @@
+contadorpf,idpedidos,cliente,nomePedido,numF,numeM,descricaoPedido,descricaoAlianca,largura,gravacaoInterna,gravacaoExterna,imagem,PedraF,PedraM,parEstoqueF,parEstoqueM,pdf,data_digitada
+1,PF1-2025-04-23,Mercado_Livre,"kaua 001",20,20,"Quem Recebe: Maria Eduarda","Par Polida",3mm,,,../imagem/PF1-2025-04-23.png,1,,,1,./pedidos/PDF/PF1-2025-04-23.pdf,2025-04-23
+2,PF2-2025-04-23,Mercado_Livre,"kaua 002",20,20,"Quem Recebe: Izabella Souza","Par Polida",3mm,,,../imagem/PF2-2025-04-23.png,true,,,true,./pedidos/PDF/PF2-2025-04-23.pdf,2025-04-23
+3,PF3-2025-04-23,Mercado_Livre,"kaua 025",20,20,"Quem Recebe: Izabella Souza","Par Polida",3mm,,,../imagem/PF3-2025-04-23.png,true,,,true,./pedidos/PDF/PF3-2025-04-23.pdf,2025-04-23

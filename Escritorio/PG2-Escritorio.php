@@ -98,7 +98,7 @@
 <body>
    <main>
         <!-- DIV EXPORTAR Tinha pego do pedidos.php -->
-    <form id="exportarFormulario" action="./ExportarImportar/exportar.php" method="post">
+    <form id="exportarFormulario" action="./ExportarImportar/Exportar/exportar.php" method="post">
         <div id="PdfDivMae">
             <div id="PdfDiv">
                 <div id="TituloPdf">
@@ -126,7 +126,7 @@
     </form>
 <!-- -------------------------------------------------------------------------------------------------------------------------- -->
      <!-- DIV Importar Tinha pego do pedidos.php -->
-     <form id="importarFormulario" action="./ExportarImportar/importar.php" method="post">
+     <form id="importarFormulario" action="./ExportarImportar/Importar/importar.php" method="post">
      <div id="PdfDivMaeImportar">
             <div id="PdfDivImportar">
                 <div id="TituloPdfImportar">
