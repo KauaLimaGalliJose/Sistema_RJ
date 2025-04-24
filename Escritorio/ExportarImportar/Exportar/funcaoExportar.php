@@ -60,7 +60,7 @@ function htmlErro(){
     </head>
     <body>
         <div id="tituloDiv">
-            <Label class="titulo">Preencha Todos os campos !!</Label>
+            <Label class="titulo">Preencha Corretamente Todos os campos !!</Label>
         </div>
         <div id="textoDiv">
             Ops! Você precisa preencher todos os campos antes de fazer o download. Por favor, revise os Campos.
@@ -76,7 +76,7 @@ function htmlErro(){
     </body>
     </html>
 <?php 
-    } 
+} 
 
     //Cria Um Documento .csv
 function criarCsv($conectar, $data_Digitada, $tabela , $contador){
@@ -91,9 +91,11 @@ function criarCsv($conectar, $data_Digitada, $tabela , $contador){
          ORDER BY `$contador` ASC"
            );
     
-    if ($result) {
+    if ($result->num_rows !== 0) {
         $colunas = array_keys($result->fetch_assoc());
         fputcsv($enviarDados, $colunas);
+    }else{
+         htmlErro();
     }
     
     // Busca e escreve os dados Busca todos os Pedidos
@@ -111,10 +113,34 @@ function criarCsv($conectar, $data_Digitada, $tabela , $contador){
     fclose($enviarDados);
 }
 
-function zipar($data_Digitada){
+function zipar($data_Digitada,$pf,$pg,$pe){
 
-    $titulo = 'Pedidos'. $data_Digitada .'.zip';
+    $titulo = './zipTemporarios/Pedidos-'. $data_Digitada .'.zip';
     $zip = new ZipArchive;
 
     $zip->open($titulo, ZipArchive::CREATE);
+
+    //Verificando arquivo csv
+    if($pf !== NULL){
+        $zip->addFile('./csvTemporarios/pedidosp-'. $data_Digitada . '.csv','PF.csv');
+    }   
+    if($pg !== NULL){
+        $zip->addFile('./csvTemporarios/pedidospg-'. $data_Digitada . '.csv','PG.csv');
+    }
+    if($pe !== NULL){
+        $zip->addFile('./csvTemporarios/pedidospe-'. $data_Digitada . '.csv','PE.csv');
+    }
+    
+    $zip->close();
+
+    $arquivo = './zipTemporarios/Pedidos-'. $data_Digitada .'.zip';
+    if (file_exists($arquivo)) {
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="' . basename($arquivo) . '"');
+        header('Content-Length: ' . filesize($arquivo));
+        flush(); // limpa o buffer
+        readfile($arquivo); // envia o conteúdo do arquivo
+        exit;
+    } 
+    
 }

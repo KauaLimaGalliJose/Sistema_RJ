@@ -51,7 +51,7 @@
                 <img class="carrosselImg" src="../imagem/PF1-2025-04-21.png" alt="">
             </div>
             <div class="carrosselInferior">
-                <label>Nueração</label>
+                <label>Numeração</label>
             </div>
         </div>
         <div class="carrossel">

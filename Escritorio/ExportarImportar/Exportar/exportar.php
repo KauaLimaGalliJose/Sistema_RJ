@@ -22,8 +22,8 @@ if($data_Digitada !== '' ){
             criarCsv($conectar, $data_Digitada, 'pedidospe' , 'contadorpe');
         }
         
+        zipar($data_Digitada,$PF,$PG,$PE);
 
-    header('Location: ../../PG2-Escritorio.php');
     }
     else{
         htmlErro();

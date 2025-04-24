@@ -18,6 +18,7 @@ const buttonPdf = document.getElementById('exportar');
 const buttonPdfDiv = document.getElementById('buttonPdf');
 const buttonPdfImportar = document.getElementById('importar');
 const buttonPdfDivImportar = document.getElementById('buttonPdfImportar');
+const enviarExportar = document.getElementById('buttonPdfImportar');
 
 //Global Variaveis
 export let contador = { 
@@ -95,6 +96,10 @@ buttonPdfDiv.addEventListener('click', function(){
     document.querySelector('footer').style.visibility = 'visible';
     
   })
+
+enviarExportar.addEventListener('click',function(){
+  verificarExportar()
+})
 // --------------------------------------
 
 //DIV IMPORTAR 

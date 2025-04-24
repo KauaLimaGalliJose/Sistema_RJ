@@ -202,5 +202,4 @@ export function naoenviar(){
     });
 
 }
-
 export {CreateCookie}
