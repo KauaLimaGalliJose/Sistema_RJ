@@ -22,8 +22,8 @@ if($data_Digitada !== '' ){
             criarCsv($conectar, $data_Digitada, 'pedidospe' , 'contadorpe');
         }
         
-        zipar($data_Digitada,$PF,$PG,$PE);
-
+        zipar($data_Digitada,$PF,$PG,$PE,$conectar);
+        
     }
     else{
         htmlErro();

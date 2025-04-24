@@ -1,4 +1,7 @@
 <?php
+include('./subFuncao.php');
+?>
+<?php
 function htmlErro(){
 ?>
     <!DOCTYPE html>
@@ -71,7 +74,9 @@ function htmlErro(){
         <div id="dadosPost">
             
             <?php // Ative Caso Precise!!
-             var_dump($_POST); ?>
+             var_dump($_POST); 
+             ?>
+             
         </div>
     </body>
     </html>
@@ -111,9 +116,10 @@ function criarCsv($conectar, $data_Digitada, $tabela , $contador){
     }
 
     fclose($enviarDados);
+
 }
 
-function zipar($data_Digitada,$pf,$pg,$pe){
+function zipar($data_Digitada,$pf,$pg,$pe,$conectar){
 
     $titulo = './zipTemporarios/Pedidos-'. $data_Digitada .'.zip';
     $zip = new ZipArchive;
@@ -121,18 +127,61 @@ function zipar($data_Digitada,$pf,$pg,$pe){
     $zip->open($titulo, ZipArchive::CREATE);
 
     //Verificando arquivo csv
-    if($pf !== NULL){
-        $zip->addFile('./csvTemporarios/pedidosp-'. $data_Digitada . '.csv','PF.csv');
+    if($pf === 'PF'){
+        $zip->addFile('./csvTemporarios/pedidosp-'. $data_Digitada . '.csv');
+
+        //Imagens PF
+        $imagem = $conectar->query(
+            "SELECT imagem
+             FROM `pedidosp` WHERE `contadorpf` <> 0 
+             AND data_digitada LIKE '$data_Digitada'
+             ORDER BY `contadorpf` ASC"
+                );
+    
+        $zip->addEmptyDir('imagensPF');
+        while($dados = mysqli_fetch_assoc($imagem)){
+
+            $img = '../imagem/PF1-2025-04-23.png';
+
+            $zip->addFile('../../../imagem/PF1-2025-04-23.png','imagensPF/'),;
+            //echo $dados['imagem'];
+            
+        }
+        
     }   
-    if($pg !== NULL){
-        $zip->addFile('./csvTemporarios/pedidospg-'. $data_Digitada . '.csv','PG.csv');
+    if($pg === 'PG'){
+        $zip->addFile('./csvTemporarios/pedidospg-'. $data_Digitada . '.csv');
+
+        //Imagens
+        $imagem = $conectar->query(
+            "SELECT imagem
+             FROM `pedidospg` WHERE `contadorpg` <> 0 
+             AND data_digitada LIKE '$data_Digitada'
+             ORDER BY `contadorpg` ASC"
+                );
+     
+        $zip->addEmptyDir('imagensPG');
+        
     }
-    if($pe !== NULL){
-        $zip->addFile('./csvTemporarios/pedidospe-'. $data_Digitada . '.csv','PE.csv');
+    if($pe === 'PE'){
+        $zip->addFile('./csvTemporarios/pedidospe-'. $data_Digitada . '.csv');
+        
+        //Imagens
+        $imagem = $conectar->query(
+            "SELECT imagem
+             FROM `pedidospe` WHERE `contadorpe` <> 0 
+             AND data_digitada LIKE '$data_Digitada'
+             ORDER BY `contadorpe` ASC"
+                );
+        
+        $zip->addEmptyDir('imagensPE');
+        
     }
+    
     
     $zip->close();
 
+    //Baixando Zip ---------------------------------------------------------------------
     $arquivo = './zipTemporarios/Pedidos-'. $data_Digitada .'.zip';
     if (file_exists($arquivo)) {
         header('Content-Type: application/octet-stream');
@@ -140,6 +189,18 @@ function zipar($data_Digitada,$pf,$pg,$pe){
         header('Content-Length: ' . filesize($arquivo));
         flush(); // limpa o buffer
         readfile($arquivo); // envia o conteúdo do arquivo
+        unlink($arquivo);// exclui
+
+        //Excluindo Arquivos Csv ----------------------------------------------------------
+        //PF 
+        $arquivo = './csvTemporarios/pedidosp-'. $data_Digitada .'.csv';
+        unlink($arquivo);
+        //PG
+        $arquivo = './csvTemporarios/pedidospg-'. $data_Digitada .'.csv';
+        unlink($arquivo);
+        //PE
+        $arquivo = './csvTemporarios/pedidospe-'. $data_Digitada .'.csv';
+        unlink($arquivo);
         exit;
     } 
     

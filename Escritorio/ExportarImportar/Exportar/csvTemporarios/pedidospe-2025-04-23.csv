@@ -1,7 +1,0 @@
-contadorpe,idpedidos,cliente,nomePedido,numF,numeM,descricaoPedido,descricaoAlianca,largura,gravacaoInterna,gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,pdf,data_digitada
-1,PE1-2025-04-23,Mercado_Livre,"CONTA 15",19,18,"QUEM RECEBE: Gisele Bezerra Alves ","Par Banhada
-Anel 15",3mm,"Gustavo
-Gisele",,../imagem/PE1-2025-04-23.png,true,true,true,,./pedidos/PDF/PE1-2025-04-23.pdf,2025-04-23
-2,PE2-2025-04-23,Mercado_Livre,"CONTA 15",19,18,"QUEM RECEBE: Gisele Bezerra Alves ","Par Banhada
-Anel 15",3mm,"Gustavo
-Gisele",,../imagem/PE2-2025-04-23.png,true,true,true,,./pedidos/PDF/PE2-2025-04-23.pdf,2025-04-23
