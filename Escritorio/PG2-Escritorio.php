@@ -88,8 +88,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="shortcut icon" href="../coroa.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="./coroa.ico" type="image/x-icon">
     <link rel="stylesheet" href="PG2-Escritorio.css">
     <script src="../Importados/jquery-3.7.1.min.js"></script>
     <script src="main.js" type="module" defer></script>
@@ -135,14 +135,6 @@
                 <div id="fileImportar">
                     <button type="button" class="importBtt" id="importBtt">
                         <label id="dadosImportLabel" for="dadosImport">Escolha o Arquivo</label>
-                    </button>
-
-                    <button type="button" class="importBtt" id="importBttImagem">
-                        <label id="dadosImportLabel" for="dadosImportImagem">Escolha as Imagens</label>
-                    </button>
-
-                    <button type="button" class="importBtt" id="importBttPDF">
-                        <label id="dadosImportLabel" for="dadosImportPDF">Escolha os PDFs</label>
                     </button>
 
                     <input type="file" class="dadosImport" id="dadosImport" name="dadosImport">

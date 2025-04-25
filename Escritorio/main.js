@@ -16,9 +16,9 @@ const enviarBt = document.getElementById('btEnviar');
 const unidadeCheck = document.getElementById('checkboxFeminina');
 const buttonPdf = document.getElementById('exportar');
 const buttonPdfDiv = document.getElementById('buttonPdf');
+const enviarExportar = document.getElementById('exportarFormulario');
 const buttonPdfImportar = document.getElementById('importar');
 const buttonPdfDivImportar = document.getElementById('buttonPdfImportar');
-const enviarExportar = document.getElementById('buttonPdfImportar');
 
 //Global Variaveis
 export let contador = { 
@@ -97,8 +97,27 @@ buttonPdfDiv.addEventListener('click', function(){
     
   })
 
-enviarExportar.addEventListener('click',function(){
-  verificarExportar()
+enviarExportar.addEventListener('submit',function(event){
+  // Variavel
+   const pf = document.getElementById('PF');
+   const pg = document.getElementById('PG');
+   const pe = document.getElementById('PE');
+
+  // DATA INPUT ---------------------------------------------
+  if(document.getElementById('dataExportarInput').value.trim() === ''){
+    event.preventDefault();
+    alert('Coloque a Data!!')
+    document.getElementById('dataExportarInput').style.borderColor = 'red';
+  }
+  else{
+    document.getElementById('dataExportarInput').style.borderColor = 'black';
+  // checked INPUT ---------------------------------------------
+  }
+  if(!pf.checked && !pg.checked && !pe.checked){
+    event.preventDefault();
+    alert('Marque um Pedido (PF,PG,PE)');
+  }
+
 })
 // --------------------------------------
 

@@ -1,13 +1,11 @@
 <?php
-include('./subFuncao.php');
-?>
-<?php
 function htmlErro(){
 ?>
     <!DOCTYPE html>
     <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
+        <link rel="shortcut icon" href="../../coroa.ico" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Algo deu Errado</title>
         <style>
@@ -74,7 +72,7 @@ function htmlErro(){
         <div id="dadosPost">
             
             <?php // Ative Caso Precise!!
-             var_dump($_POST); 
+             //var_dump($_POST); 
              ?>
              
         </div>
@@ -130,51 +128,69 @@ function zipar($data_Digitada,$pf,$pg,$pe,$conectar){
     if($pf === 'PF'){
         $zip->addFile('./csvTemporarios/pedidosp-'. $data_Digitada . '.csv');
 
-        //Imagens PF
+        //Imagens e PDF  Para Zipar PF
         $imagem = $conectar->query(
-            "SELECT imagem
+            "SELECT imagem,pdf
              FROM `pedidosp` WHERE `contadorpf` <> 0 
              AND data_digitada LIKE '$data_Digitada'
              ORDER BY `contadorpf` ASC"
                 );
     
         $zip->addEmptyDir('imagensPF');
+        $zip->addEmptyDir('pdfs-PF');
         while($dados = mysqli_fetch_assoc($imagem)){
 
-            $img = '../imagem/PF1-2025-04-23.png';
-
-            $zip->addFile('../../../imagem/PF1-2025-04-23.png','imagensPF/'),;
-            //echo $dados['imagem'];
+            $img = $dados['imagem'];
+            $zip->addFile('../../' . $img ,'imagensPF/' . $img);
             
+            $pdf = $dados['pdf'];
+            $zip->addFile('../../' . $pdf ,'pdfs-PF/' . $pdf);
         }
         
     }   
     if($pg === 'PG'){
         $zip->addFile('./csvTemporarios/pedidospg-'. $data_Digitada . '.csv');
 
-        //Imagens
+        //Imagens e PDF  Para Zipar PG
         $imagem = $conectar->query(
-            "SELECT imagem
+            "SELECT imagem,pdf
              FROM `pedidospg` WHERE `contadorpg` <> 0 
              AND data_digitada LIKE '$data_Digitada'
              ORDER BY `contadorpg` ASC"
                 );
      
         $zip->addEmptyDir('imagensPG');
-        
+        $zip->addEmptyDir('pdfs-PG');
+        while($dados = mysqli_fetch_assoc($imagem)){
+
+            $img = $dados['imagem'];
+            $zip->addFile('../../' . $img ,'imagensPG/' . $img);
+
+            $pdf = $dados['pdf'];
+            $zip->addFile('../../' . $pdf ,'pdfs-PG/' . $pdf);   
+        }
     }
     if($pe === 'PE'){
         $zip->addFile('./csvTemporarios/pedidospe-'. $data_Digitada . '.csv');
         
-        //Imagens
+        //Imagens e PDF Para Zipar PE
         $imagem = $conectar->query(
-            "SELECT imagem
+            "SELECT imagem,pdf
              FROM `pedidospe` WHERE `contadorpe` <> 0 
              AND data_digitada LIKE '$data_Digitada'
              ORDER BY `contadorpe` ASC"
                 );
         
         $zip->addEmptyDir('imagensPE');
+        $zip->addEmptyDir('pdfs-PE');
+        while($dados = mysqli_fetch_assoc($imagem)){
+
+            $img = $dados['imagem'];
+            $zip->addFile('../../' . $img ,'imagensPE/' . $img);
+
+            $pdf = $dados['pdf'];
+            $zip->addFile('../../' . $pdf ,'pdfs-PE/' . $pdf);
+        }
         
     }
     
