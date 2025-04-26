@@ -84,7 +84,7 @@ function htmlErro(){
     //Cria Um Documento .csv
 function criarCsv($conectar, $data_Digitada, $tabela , $contador){
     
-    $enviarDados = fopen('./csvTemporarios/' . $tabela . '-' . $data_Digitada. '.csv', 'w+');
+    $enviarDados = fopen('./csvTemporarios/' . $tabela . '-' . $data_Digitada. '.csv', 'w');
 
      //Cria um cabecalho para indentificar cada dado
     $result = $conectar->query(
@@ -94,7 +94,7 @@ function criarCsv($conectar, $data_Digitada, $tabela , $contador){
          ORDER BY `$contador` ASC"
            );
     
-    if ($result->num_rows !== 0) {
+    if ( $result->num_rows !== 0) {
         $colunas = array_keys($result->fetch_assoc());
         fputcsv($enviarDados, $colunas);
     }else{
@@ -123,10 +123,12 @@ function zipar($data_Digitada,$pf,$pg,$pe,$conectar){
     $zip = new ZipArchive;
 
     $zip->open($titulo, ZipArchive::CREATE);
+    $zip->addEmptyDir('csv');
 
     //Verificando arquivo csv
     if($pf === 'PF'){
-        $zip->addFile('./csvTemporarios/pedidosp-'. $data_Digitada . '.csv');
+        $csv = './csvTemporarios/pedidosp-'. $data_Digitada . '.csv';
+        $zip->addFile($csv, 'csv/' . basename($csv));
 
         //Imagens e PDF  Para Zipar PF
         $imagem = $conectar->query(
@@ -141,15 +143,16 @@ function zipar($data_Digitada,$pf,$pg,$pe,$conectar){
         while($dados = mysqli_fetch_assoc($imagem)){
 
             $img = $dados['imagem'];
-            $zip->addFile('../../' . $img ,'imagensPF/' . $img);
+            $zip->addFile('../../' . $img ,'imagensPF/' . basename($img));
             
             $pdf = $dados['pdf'];
-            $zip->addFile('../../' . $pdf ,'pdfs-PF/' . $pdf);
+            $zip->addFile('../../' . $pdf ,'pdfs-PF/' . basename($pdf)); //esse basename serve para não deixar ir todo o caminho mais sim apenas o nome do arquivo , Não tira se não , não pega!!
         }
         
     }   
     if($pg === 'PG'){
-        $zip->addFile('./csvTemporarios/pedidospg-'. $data_Digitada . '.csv');
+        $csv = './csvTemporarios/pedidospg-'. $data_Digitada . '.csv';
+        $zip->addFile($csv, 'csv/' . basename($csv));
 
         //Imagens e PDF  Para Zipar PG
         $imagem = $conectar->query(
@@ -164,14 +167,15 @@ function zipar($data_Digitada,$pf,$pg,$pe,$conectar){
         while($dados = mysqli_fetch_assoc($imagem)){
 
             $img = $dados['imagem'];
-            $zip->addFile('../../' . $img ,'imagensPG/' . $img);
+            $zip->addFile('../../' . $img ,'imagensPG/' . basename($img));
 
             $pdf = $dados['pdf'];
-            $zip->addFile('../../' . $pdf ,'pdfs-PG/' . $pdf);   
+            $zip->addFile('../../' . $pdf ,'pdfs-PG/' .  basename($pdf));   
         }
     }
     if($pe === 'PE'){
-        $zip->addFile('./csvTemporarios/pedidospe-'. $data_Digitada . '.csv');
+        $csv = './csvTemporarios/pedidospe-'. $data_Digitada . '.csv';
+        $zip->addFile($csv, 'csv/' . basename($csv));
         
         //Imagens e PDF Para Zipar PE
         $imagem = $conectar->query(
@@ -186,10 +190,10 @@ function zipar($data_Digitada,$pf,$pg,$pe,$conectar){
         while($dados = mysqli_fetch_assoc($imagem)){
 
             $img = $dados['imagem'];
-            $zip->addFile('../../' . $img ,'imagensPE/' . $img);
+            $zip->addFile('../../' . $img ,'imagensPE/' .basename($img));
 
             $pdf = $dados['pdf'];
-            $zip->addFile('../../' . $pdf ,'pdfs-PE/' . $pdf);
+            $zip->addFile('../../' . $pdf ,'pdfs-PE/' . basename($pdf));
         }
         
     }
