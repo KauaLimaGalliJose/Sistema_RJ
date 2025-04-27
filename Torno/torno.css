@@ -2,7 +2,31 @@ body{
     background-color: azure;
     
 }
+
+ /* Estilo da barra de rolagem */
+ ::-webkit-scrollbar {
+    width: 16px; /* aumenta a largura da barra vertical */
+    height: 50px; /* aumenta a altura da barra horizontal */
+  }
+   /* Parte do fundo da barra */
+   ::-webkit-scrollbar-track {
+    background: #797979;
+  }
+
+  /* Parte do "botão" (o que arrasta) */
+  ::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border: solid black 5px;
+    border-radius: 5px;
+  }
+
+  /* Quando passar o mouse em cima */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a82e2e;
+  }
+
 *{
+    
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -60,17 +84,13 @@ main{
     font-size: 120%;
     font-weight: 700;
 }
-#pesquisa{
-    display: flex;
-    margin-left: 35px;
-}
-#pesquisaInput{
+.data{
+    margin-left:10px;
+    margin-right:10px;
     border: solid black 3px;
     border-radius: 5px;
-    width: 150px;
-    height: 30px;
     font-size: 120%;
-    font-weight: 700;
+    height: 30px;
 }
 #enviar{
     display: flex; 
@@ -83,6 +103,10 @@ main{
     padding: 2px;
     border-radius: 10px;
     transition: 0.2s;
+}
+#macarico{
+    display: flex;
+    margin-left: 20px;
 }
 /*--------------------------------------- Pedidos Carrossel----------------------------------------*/
 #phpmae{
@@ -124,12 +148,87 @@ main{
     height: 100%;
     border-radius: 20px;
 }
+#pedido{
+    position: absolute;
+    margin-top: 16%;
+
+}
 
 .carrosselInferior{
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: 50%;
     background-color: rgb(184, 184, 184);
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+}
+#numeracao{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 26%;
+    width: 100%;
+    padding-left: 5px;
+    margin-top: 2%;
+}
+.divsNumeracaoF{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.divsNumeracaoM{
+    width: 100%;
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+#descricao{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 13%;
+    padding-left: 5px;
+    margin-top: 10%;
+}
+
+/* -------------  Titulos classes  --------------  */
+.tituloPreto{
+    color: #000000;
+    font-size: 180%;
+    font-weight: 550;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.numeracaoFont{
+    font-size: 180%;
+    color: 	#FFB627;
+    padding: 2%;
+    margin-left: 3%;
+    border-radius: 30px;
+    font-weight: 600;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(0, 109, 119);
+}
+.descricaoFont{
+    color: #000000;
+    font-size: 180%;
+    font-weight: 550;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.fontPedido{
+    color: #000000;
+    background-color: rgb(127, 231, 231);
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 30px;
+    font-size: 140%;
+    font-weight: 550;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.diamante{
+    font-size: 200%;
+    padding-bottom: 10px;
 }

@@ -1,5 +1,5 @@
 // imports
-import { voltar, avancar, limpar , selectN } from "../../funcao.js";
+import { limpar , selectN } from "../../funcao.js";
 import { mudaPDF } from "./funcao.js";
 import { radioCabecalho, check_unidade, gravacaoExterna, checkboxRodape } from "../../radiosChitobox.js";
 import img_modelo  from "../../imagemInput.js";

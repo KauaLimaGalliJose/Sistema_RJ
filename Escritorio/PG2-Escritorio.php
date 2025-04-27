@@ -138,8 +138,6 @@
                     </button>
 
                     <input type="file" class="dadosImport" id="dadosImport" name="dadosImport">
-                    <input type="file" class="dadosImport" id="dadosImportImagem" name="dadosImportImagem">
-                    <input type="file" class="dadosImport" id="dadosImportPDF" name="dadosImportPDF">
                 </div>
             </div>
             <div id="PdfDiv2">
