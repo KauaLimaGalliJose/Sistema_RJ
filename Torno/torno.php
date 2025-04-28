@@ -33,7 +33,7 @@
                 <button type="submit" id="enviar"><h1>Pesquisar</h1></button>
 
                 <button  type="button" value="" id="macarico"  class="botao">
-                    <a href="./scriptsphp/funcaoTorno.php"><img class="itens" src="./imagem/macarico.png"></a>
+                    <a href="./scriptsphp/larguraFundecao.php"><img class="itens" src="./imagem/macarico.png"></a>
                 </button>
         </div>
     </div>

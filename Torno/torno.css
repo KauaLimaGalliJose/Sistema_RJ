@@ -89,7 +89,8 @@ main{
     margin-right:10px;
     border: solid black 3px;
     border-radius: 5px;
-    font-size: 120%;
+    font-size: 150%;
+    font-weight: 600;
     height: 30px;
 }
 #enviar{
@@ -149,9 +150,10 @@ main{
     border-radius: 20px;
 }
 #pedido{
+    margin-left: 11%;
+    width: 20%;
     position: absolute;
-    margin-top: 16%;
-
+    margin-top: 16%
 }
 
 .carrosselInferior{
