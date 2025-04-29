@@ -5,3 +5,5 @@ setInterval(function() {
     };
     location.reload();
   }, 40000); //40 segundos
+
+  
