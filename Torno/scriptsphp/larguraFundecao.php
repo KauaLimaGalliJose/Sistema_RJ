@@ -1,3 +1,41 @@
+<?php 
+//Funções 
+function largura($larguraAlianca,$conectar,$data){
+
+    $dados = "SELECT * FROM `pedidosp` WHERE `contadorpf` <> 0
+    AND data_digitada = '$data'
+    ORDER BY `contadorpf` ASC";
+   
+    $resultadoDados = mysqli_query($conectar,$dados);
+
+    ?>
+    <div class="numeracoes">
+                <?php
+                    while($linha = mysqli_fetch_assoc($resultadoDados)){
+                        $largura = $linha['largura'];
+                        $numeracaoF = $linha['numF'];
+                        $numeracaoM = $linha['numeM'];
+
+                        
+                        if($largura == $larguraAlianca){
+                            ?>
+                            <div class="numercao">
+                                <?php 
+                                    if($numeracaoF !== '40'){
+                                        echo $numeracaoF . ',';
+                                    }
+                                    echo $numeracaoM;
+                                ?>
+                            </div>
+                            <?php
+                        }
+                    }
+                ?>
+            </div>
+            <?php 
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -35,126 +73,104 @@
     <div id="phpmae">
         <div id="largura">
             <?php
-            if(isset($data)){
-                $dados = "SELECT * FROM `pedidosp` WHERE `contadorpf` <> 0
-                AND data_digitada = '$data'
-                ORDER BY `contadorpf` ASC";
-               
-                $resultadoDados = mysqli_query($conectar,$dados);
-                $resultadoDados3mm = mysqli_query($conectar,$dados);
-            
+            if(isset($data)){         
             ?>
+
             <div id="superior">
+
                 <div id="2mm" class="larguras">
                     <div class="tituloLargura">
                         <label >-- 2MM --</label>
                     </div>
-                    <?php
-                        while($linha = mysqli_fetch_assoc($resultadoDados)){
-                        
-                            
-                            if($linha['largura'] == '2mm'){
-                                ?>
-                                    
-                                <?php
-                            }
-                        }
-                    ?>
+                       <?php 
+                            largura('2mm',$conectar,$data);
+                       ?>
                 </div>
+                
                 <div id="3mm" class="larguras">
                     <div class="tituloLargura">
                         <label>-- 3MM --</label>
                     </div>
-                        <div class="numeracoes">
-                            <?php
-                                while($linha = mysqli_fetch_assoc($resultadoDados3mm)){
-                                    $largura = $linha['largura'];
-                                    
-                                    if($largura == '3mm'){
-                                        ?>
-                                        <div class="numercao">
-                                        <?php 
-                                            echo $linha['numF'];
-                                        ?>
-                                        </div>
-                                        <?php
-                                    }
-                                }
-                            ?>
-                    </div>
+                    <?php 
+                            largura('3mm',$conectar,$data);
+                       ?> 
                 </div>
+
                 <div id="4mm" class="larguras">
                     <div class="tituloLargura">
                         <label>-- 4MM --</label>
                     </div>
-                    <?php
-
-                    ?>
+                    <?php 
+                            largura('4mm',$conectar,$data);
+                       ?>
                 </div>
+
                 <div id="5mm" class="larguras">
                     <div class="tituloLargura">
                         <label>-- 5MM --</label>
                     </div>
-                    <?php
-
-                    ?>
+                        <?php 
+                            largura('5mm',$conectar,$data);
+                       ?>
                 </div>
+
                 <div id="6mm" class="larguras">
                     <div class="tituloLargura">
                         <label>-- 6MM --</label>
                     </div>
-                    <?php
-
-                    ?>
+                        <?php 
+                            largura('6mm',$conectar,$data);
+                       ?>
                 </div>
+
             </div>
             <div id="inferior">
+
                 <div id="7mm" class="larguras">
                     <div class="tituloLargura">
                         <label>-- 7MM --</label>
                     </div>
-                    <?php
-
-                    ?>
+                        <?php 
+                            largura('7mm',$conectar,$data);
+                       ?>
                 </div>
+
                 <div id="8mm" class="larguras">
                     <div class="tituloLargura">
                         <label>-- 8MM --</label>
                     </div>
-                    <?php
-
-                    ?>
+                    <?php 
+                            largura('8mm',$conectar,$data);
+                       ?>
                 </div>
+
                 <div id="9mm" class="larguras">
                     <div class="tituloLargura">
                         <label>-- 9MM  --</label>
                     </div>
-                    <?php
-
-                    ?>
+                       <?php 
+                            largura('9mm',$conectar,$data);
+                       ?>
                 </div>
+
                 <div id="10mm" class="larguras">
                     <div class="tituloLargura">
                         <label>-- 10MM --</label>
                     </div>
-                    <?php
-
-                    ?>
+                        <?php 
+                            largura('10mm',$conectar,$data);
+                       ?>
                 </div>
+
                 <div id="Dia" class="larguras">
                     <div class="tituloLargura">
                         <label>Anotações</label>
                     </div>
-                    <?php
-
-                    ?>
-                </div>
+                </div>      
             </div>
-            <div class="pesquise">
-                <?php
-                    }
-                   ?>
-            </div>
+            <?php
+                }
+            ?>
         </div>
     </div>
 </body>

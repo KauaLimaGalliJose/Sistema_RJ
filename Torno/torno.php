@@ -29,7 +29,7 @@
                         <option value="9mm">9mm</option>
                         <option value="10mm">10mm</option>
                 </select>
-                <input class="data" id="dataInput" name="dataInput" type="date">
+                <input class="data" id="dataInput" value="<?php echo $_POST['dataInput']?? date('Y-m-d');?>" name="dataInput" type="date">
                 <button type="submit" id="enviar"><h1>Pesquisar</h1></button>
 
                 <button  type="button" value="" id="macarico"  class="botao">

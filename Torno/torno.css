@@ -230,6 +230,10 @@ main{
     font-weight: 550;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
+.fontRed{
+    color: red;
+    font-weight: 700;
+}
 .diamante{
     font-size: 200%;
     padding-bottom: 10px;

@@ -164,7 +164,7 @@ main{
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    width: 35px;
+    width: 70px;
     height: 35px;
     font-size: 150%;
     color: 	#000000;
@@ -175,4 +175,5 @@ main{
     font-weight: 600;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: rgb(8, 220, 240);
+    border: solid rgb(8, 220, 240) 2px;
 }
