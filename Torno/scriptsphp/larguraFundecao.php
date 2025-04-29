@@ -54,7 +54,7 @@ function largura($larguraAlianca,$conectar,$data){
                 <a href="../torno.php"><img class="itens" src="../../Escritorio/casa.png"></a>
                 </button>
             </div>
-                <input class="data" id="dataInput" name="dataInput" type="date">
+                <input class="data" value="<?php echo $_POST['dataInput']?? date('Y-m-d'); ?>" id="dataInput" name="dataInput" type="date">
                 <button type="submit" id="enviar"><h1>Pesquisar</h1></button>
 
                 <button type='button' id="imprimir" class="botao">

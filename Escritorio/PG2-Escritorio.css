@@ -148,7 +148,7 @@ header{
 }
 .radio{
     margin: 10px;
-     width: 20px; /* Aumente aqui para mudar o tamanho da bolinha */
+    width: 20px; /* Aumente aqui para mudar o tamanho da bolinha */
     height: 20px; /* Aumente aqui para mudar o tamanho da bolinha */
     border: 2px solid #000; /* Borda da bolinha */
     border-radius: 50%; /* Faz a bolinha ser circular */

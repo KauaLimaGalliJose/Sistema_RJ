@@ -1,3 +1,35 @@
+<?php
+    function checkboxp($name){
+
+        $pSelect = $_GET[$name] ?? '';
+        if($pSelect !== ''){
+            return 'checked';
+        }
+        else{
+            return '';
+        }
+    }
+    function checkboxpg($name){
+
+        $pSelect = $_GET[$name] ?? '';
+        if($pSelect !== ''){
+            return 'checked';
+        }
+        else{
+            return '';
+        }
+    }
+    function checkboxpe($name){
+
+        $pSelect = $_GET[$name] ?? '';
+        if($pSelect !== ''){
+            return 'checked';
+        }
+        else{
+            return '';
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,7 +40,7 @@
     <title>Pedidos</title>
 </head>
 <body>
-<form id="formulario" method="GET" action="pedidos.php">
+<form id="formulario" method="$_GET" action="pedidos.php">
     <div id="cabecalho">
         <div id="cabecalho_menu">
             <div id="casa">
@@ -17,14 +49,14 @@
                 </button>
             </div>
                 <div id="pesquisa">
-                    <input id="pesquisaInput" value='' name="pesquisa" type="text" oninput="this.value = this.value.toUpperCase();" placeholder="Titulo Pedido">
-                    <input id="quemRecebeInput" value='' name="quemRecebe" type="text" oninput="this.value = this.value.toUpperCase();" placeholder="Quem Recebe">
+                    <input id="pesquisaInput" value='<?php echo $_GET['pesquisa'] ?? ''; ?>' name="pesquisa" type="text" oninput="this.value = this.value.toUpperCase();" placeholder="Titulo Pedido">
+                    <input id="quemRecebeInput" value='<?php echo $_GET['quemRecebe'] ?? ''; ?>' name="quemRecebe" type="text" oninput="this.value = this.value.toUpperCase();" placeholder="Quem Recebe">
                 </div>
                 <div id="pedidosDiv">
-                    <input class="data" id="dataInput" name="dataInput" type="date">
-                    <input class="selecao" id="PF" value="sim" name="pfSelect" type="checkbox"><label for="PF">PF</label>
-                    <input class="selecao" id="PG" value="sim" name="pgSelect" type="checkbox"><label for="PG">PG</label>
-                    <input class="selecao" id="PE" value="sim" name="peSelect" type="checkbox"><label for="PE">PE</label>
+                    <input class="data" id="dataInput" value="<?php echo $_GET['dataInput'] ?? date('Y-m-d'); ?>" name="dataInput" type="date">
+                    <input class="selecao" id="PF" value="sim" name="pfSelect" type="checkbox" <?php echo checkboxp('pfSelect'); ?>><label for="PF">PF</label>
+                    <input class="selecao" id="PG" value="sim" name="pgSelect" type="checkbox" <?php echo checkboxpg('pgSelect'); ?>><label for="PG">PG</label>
+                    <input class="selecao" id="PE" value="sim" name="peSelect" type="checkbox" <?php echo checkboxpe('peSelect'); ?>><label for="PE">PE</label>
                 </div>
                 <button type="submit" id="enviar">
                     <h1>Pesquisar</h1>
@@ -93,17 +125,19 @@
         //PF ////////////////////////////////
         if(isset($pfSelect) == 'sim'){
             selectPf($conectar,$dataSplit,$data);
-            
+            $dataInput = '';
         }
 
         //PG ////////////////////////////////
         if(isset($pgSelect) == 'sim'){
             selectPg($conectar,$dataSplit,$data);
+            $dataInput = '';
         }
 
         //PE ///////////////////////////////
         if(isset($peSelect) == 'sim'){
             selectPe($conectar,$dataSplit,$data);
+            $dataInput = '';
         }
 
         //pesquisa
