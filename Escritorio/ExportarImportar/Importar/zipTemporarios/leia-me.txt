@@ -1,3 +1,4 @@
-SELECT * FROM pedidosp WHERE contadorpf <> 0
-    AND data_digitada LIKE `2025-04-25` 
-    ORDER BY contadorpf ASC
+Anotações
+ $dadosg = mysqli_query($conectar, "INSERT INTO pedidospg
+    (contadorpg,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM, pdf,data_digitada) 
+    VALUES ('$idPg','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$comPedra' , '$semPedra' , '$pdf' , '$dataEntrega' )");

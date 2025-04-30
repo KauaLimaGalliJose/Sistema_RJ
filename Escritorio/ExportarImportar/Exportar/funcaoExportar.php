@@ -84,7 +84,7 @@ function htmlErro(){
     //Cria Um Documento .csv
 function criarCsv($conectar, $data_Digitada, $tabela , $contador){
     
-    $enviarDados = fopen('./csvTemporarios/' . $tabela . '-' . $data_Digitada. '.csv', 'w');
+    $enviarDados = fopen('./csvTemporarios/' . $tabela . '.csv', 'w');
 
      //Cria um cabecalho para indentificar cada dado
     $result = $conectar->query(
@@ -124,7 +124,7 @@ function zipar($data_Digitada,$pf,$pg,$pe,$conectar){
 
     //Verificando arquivo csv
     if($pf === 'PF'){
-        $csv = './csvTemporarios/pedidosp-'. $data_Digitada . '.csv';
+        $csv = './csvTemporarios/pedidosp' . '.csv';
         $zip->addFile($csv, 'csv/' . basename($csv));
 
         //Imagens e PDF  Para Zipar PF
@@ -148,7 +148,7 @@ function zipar($data_Digitada,$pf,$pg,$pe,$conectar){
         
     }   
     if($pg === 'PG'){
-        $csv = './csvTemporarios/pedidospg-'. $data_Digitada . '.csv';
+        $csv = './csvTemporarios/pedidospg' . '.csv';
         $zip->addFile($csv, 'csv/' . basename($csv));
 
         //Imagens e PDF  Para Zipar PG
@@ -171,7 +171,7 @@ function zipar($data_Digitada,$pf,$pg,$pe,$conectar){
         }
     }
     if($pe === 'PE'){
-        $csv = './csvTemporarios/pedidospe-'. $data_Digitada . '.csv';
+        $csv = './csvTemporarios/pedidospe' . '.csv';
         $zip->addFile($csv, 'csv/' . basename($csv));
         
         //Imagens e PDF Para Zipar PE
@@ -210,13 +210,13 @@ function zipar($data_Digitada,$pf,$pg,$pe,$conectar){
 
         //Excluindo Arquivos Csv ----------------------------------------------------------
         //PF 
-        $arquivo = './csvTemporarios/pedidosp-'. $data_Digitada .'.csv';
+        $arquivo = './csvTemporarios/pedidosp' .'.csv';
         unlink($arquivo);
         //PG
-        $arquivo = './csvTemporarios/pedidospg-'. $data_Digitada .'.csv';
+        $arquivo = './csvTemporarios/pedidospg' .'.csv';
         unlink($arquivo);
         //PE
-        $arquivo = './csvTemporarios/pedidospe-'. $data_Digitada .'.csv';
+        $arquivo = './csvTemporarios/pedidospe' .'.csv';
         unlink($arquivo);
         exit;
     } 
