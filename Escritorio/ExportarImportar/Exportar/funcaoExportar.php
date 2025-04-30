@@ -97,10 +97,7 @@ function criarCsv($conectar, $data_Digitada, $tabela , $contador){
     if ( $result->num_rows !== 0) {
         $colunas = array_keys($result->fetch_assoc());
         fputcsv($enviarDados, $colunas);
-    }else{
-         htmlErro();
     }
-    
     // Busca e escreve os dados Busca todos os Pedidos
     $result = $conectar->query(
         "SELECT *

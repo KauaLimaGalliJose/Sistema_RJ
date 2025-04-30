@@ -126,7 +126,7 @@
     </form>
 <!-- -------------------------------------------------------------------------------------------------------------------------- -->
      <!-- DIV Importar Tinha pego do pedidos.php -->
-     <form id="importarFormulario" action="./ExportarImportar/Importar/importar.php" method="post">
+     <form id="importarFormulario" action="./ExportarImportar/Importar/importar.php" enctype="multipart/form-data" method="post">
      <div id="PdfDivMaeImportar">
             <div id="PdfDivImportar">
                 <div id="TituloPdfImportar">
@@ -137,7 +137,7 @@
                         <label id="dadosImportLabel" for="dadosImport">Escolha o Arquivo</label>
                     </button>
 
-                    <input type="file" class="dadosImport" id="dadosImport" name="dadosImport">
+                    <input type="file" id="dadosImport" name="dadosImport">
                 </div>
             </div>
             <div id="PdfDiv2">

@@ -1,11 +1,23 @@
 <?php 
-  $arquivo = $_FILES['dadosImport'];
+if (isset($_FILES['dadosImport']) && $_FILES['dadosImport']['error'] === UPLOAD_ERR_OK) {
+  $arquivoTmp = $_FILES['dadosImport']['tmp_name'];
 
-  move_uploaded_file($_FILES['dadosImport']['tmp_name'],'./zipTemporarios/');
-  
-  header('Content-Type: application/octet-stream');
-  header('Content-Disposition: attachment; filename="' . basename($arquivo) . '"');
-  header('Content-Length: ' . filesize($arquivo));
-  flush(); // limpa o buffer
+  move_uploaded_file($arquivoTmp,'./zipTemporarios/zipTemporario.zip');
+  echo 'Enviado';
+
+  $zip = new ZipArchive;
+
+  if($zip->open('./zipTemporarios/zipTemporario.zip') === TRUE){
+    echo ' Aberto Com sucesso';
+
+    $extractTo = './zipTemporarios/pastas/';
+    $zip->extractTo($extractTo);
+    $zip->close();
+    echo "Arquivos extraídos com sucesso!";
+  }
+
+} else {
+  echo 'Arquivo não enviado ou ocorreu um erro no upload.';
+}
 
 ?>
