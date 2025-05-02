@@ -377,15 +377,15 @@
             else{
                 // VAriaveis para se concetar com Banco de Dados
                 //PF
-                $pedidosAntigosPf = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidosp WHERE contadorpf != 0 AND data_digitada = '$resultado' ORDER BY contadorpf ASC";
+                $pedidosAntigosPf = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidosp WHERE contadorpf <> 0 AND data_digitada = '$resultado' ORDER BY contadorpf ASC";
                 $pedidosAntigosDadosPf = mysqli_query($conectar, $pedidosAntigosPf);
 
                 //PG
-                $pedidosAntigosPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospg WHERE contadorpg != 0 AND data_digitada = '$resultado' ORDER BY contadorpg ASC";
+                $pedidosAntigosPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospg WHERE contadorpg <> 0 AND data_digitada = '$resultado' ORDER BY contadorpg ASC";
                 $pedidosAntigosDadosPg = mysqli_query($conectar, $pedidosAntigosPg);
 
                 //PE
-                $pedidosAntigosPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospe WHERE contadorpe != 0 AND data_digitada = '$resultado' ORDER BY contadorpe ASC";
+                $pedidosAntigosPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospe WHERE contadorpe <> 0 AND data_digitada = '$resultado' ORDER BY contadorpe ASC";
                 $pedidosAntigosDadosPe = mysqli_query($conectar, $pedidosAntigosPe);
 
                 //PF -------------------------------------------------------------------

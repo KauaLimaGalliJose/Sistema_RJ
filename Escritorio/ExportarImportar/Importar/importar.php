@@ -99,7 +99,7 @@ main{
             $zip->extractTo($extractTo);
             $zip->close();
 
-            echo "Arquivos extraídos com sucesso!";?><br><?php
+            echo "&#9989;Arquivos extraídos com sucesso!";?><br><?php
             unlink('./zipTemporarios/zipTemporario.zip');
           }
 
@@ -108,7 +108,7 @@ main{
           ler_Salvar_csv('pedidospe',$conectar);
 
         } else {
-          echo  'Ocorreu um erro no upload.'; ?><br><?php
+          echo  '&#10060;Ocorreu um erro no upload.'; ?><br><?php
         }
 
         ?>

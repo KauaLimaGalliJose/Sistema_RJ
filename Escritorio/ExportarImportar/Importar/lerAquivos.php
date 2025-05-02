@@ -2,11 +2,10 @@
 
 function ler_Salvar_csv($tabela,$conectar){
 
+    //variaveis
+    $contador = 0;
     $arquivo = './zipTemporarios/pastas/csv/' . $tabela . '.csv';
 
-    //Carcacter do Pedido
-    $caracter = $tabela;
-    $caractereMaiusculo = strtoupper($caracter[0]); // 'strtoupper' Pega o primeiro caractere e transforma em maiúsculo
 
     if (file_exists($arquivo)) {
 
@@ -34,37 +33,39 @@ function ler_Salvar_csv($tabela,$conectar){
                  ORDER BY `$cabecalho[0]` ASC"
                 );
 
-            if($result->num_rows !== 0){
 
-                while($verificador = mysqli_fetch_assoc($result)){
+            while($verificador = mysqli_fetch_assoc($result)){
 
-                    if($verificador['idpedidos'] !== $linha[1]){
+                $verificar[] = $verificador['idpedidos'];
+                
+            }
+            if($repetidos = mysqli_fetch_assoc($result)){
+                $repetidos = $repetidos['idpedidos'];
+            }
 
-                        print_r($linha[1]);
-
-                        mysqli_query($conectar, "INSERT INTO `$tabela`
-                        (`$cabecalho[0]`,`$cabecalho[1]`,`$cabecalho[2]`, `$cabecalho[3]`, `$cabecalho[4]`, `$cabecalho[5]`, `$cabecalho[6]`, `$cabecalho[7]`,`$cabecalho[8]`, `$cabecalho[9]`, `$cabecalho[10]`,`$cabecalho[11]`,`$cabecalho[12]`,`$cabecalho[13]`,`$cabecalho[14]`,`$cabecalho[15]`, `$cabecalho[16]`,`$cabecalho[17]`) 
-                        VALUES ('$linha[0]','$linha[1]','$linha[2]', '$linha[3]', '$linha[4]', '$linha[5]', '$linha[6]', '$linha[7]','$linha[8]', '$linha[9]', '$linha[10]','$linha[11]' , '$linha[12]' ,'$linha[13]', '$linha[14]' , '$linha[15]' , '$linha[16]' , '$datacsv' )");
+            mysqli_query($conectar, "INSERT IGNORE INTO `$tabela`
+            (`$cabecalho[0]`,`$cabecalho[1]`,`$cabecalho[2]`, `$cabecalho[3]`, `$cabecalho[4]`, `$cabecalho[5]`, `$cabecalho[6]`, `$cabecalho[7]`,`$cabecalho[8]`, `$cabecalho[9]`, `$cabecalho[10]`,`$cabecalho[11]`,`$cabecalho[12]`,`$cabecalho[13]`,`$cabecalho[14]`,`$cabecalho[15]`, `$cabecalho[16]`,`$cabecalho[17]`) 
+            VALUES ('$linha[0]','$linha[1]','$linha[2]', '$linha[3]', '$linha[4]', '$linha[5]', '$linha[6]', '$linha[7]','$linha[8]', '$linha[9]', '$linha[10]','$linha[11]' , '$linha[12]' ,'$linha[13]', '$linha[14]' , '$linha[15]' , '$linha[16]' , '$datacsv' )");
+            
+    
+            $contador++;
+            if($contador === 1){
+                echo substr($verifica, 0, 2) . " Duplicados:<br>";
+            }
+            for ($i = 0; $i < count($verificar); $i++) {
+                if($verificar[$i] == $linha[1]){
+                    print('&#10060;' . substr($verifica, 0, 3) . '<br>' );
                     
-                    }
-                    else{
-                        echo 'Já tem pedidos existentes';?><br><?php
-                        break;
-                    }
                 }
             }
-            else{
-                echo ' Erro não há pedidos';?><br><?php
-                break;
-            }
-            print('Arquivo Salvo com Sucesso!!');?><br><?php
-            break;
         }
 
-        unlink('./zipTemporarios/pastas/csv/' . $tabela . '.csv');
+        unlink($arquivo);
+        return;
     }
     else{
-        echo 'Falha sem pedidos ou arquivo danificado'; ?><br><?php
+        echo '&#10060; Falha sem pedidos ou arquivo danificado'; ?><br><?php
+        return;
     }
 }
 ?>
