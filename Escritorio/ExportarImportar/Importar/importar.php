@@ -65,8 +65,42 @@ main{
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 80vb;
+  height: 88vb;
   background-color: azure ;
+}
+#mensagem{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: azure ;
+  font-size: 300%;
+}
+#pedidosPai{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  flex-direction: row;
+  margin-top: 30px;
+
+}
+.pedidos{
+  height: 100%;
+  width: 33%;
+  font-size: 70%;
+  font-weight: 700;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-left:15px;
+  margin-right:15px ;
+  padding: 20px;
+  border: solid black 10px;
+  border-radius: 30px;
+  background-color: rgb(157, 188, 228);
 }
 </style>
 <body>
@@ -103,9 +137,19 @@ main{
             unlink('./zipTemporarios/zipTemporario.zip');
           }
 
-          ler_Salvar_csv('pedidosp',$conectar);
-          ler_Salvar_csv('pedidospg',$conectar);
-          ler_Salvar_csv('pedidospe',$conectar);
+          ?><div id="pedidosPai"><?php
+              ?><div class="pedidos"><?php
+                  ler_Salvar('pedidosp',$conectar);
+              ?></div><?php
+
+              ?><div class="pedidos"><?php
+                  ler_Salvar('pedidospg',$conectar);
+              ?></div><?php
+
+              ?><div class="pedidos"><?php
+                  ler_Salvar('pedidospe',$conectar);
+              ?></div><?php
+          ?></div><?php
 
         } else {
           echo  '&#10060;Ocorreu um erro no upload.'; ?><br><?php
