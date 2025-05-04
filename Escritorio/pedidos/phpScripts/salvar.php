@@ -28,7 +28,7 @@ if($_POST){
     //imagem 
     if(isset($_FILES['imagem']) && !empty($_FILES['imagem'])){
         $imagem = "../imagem/". $idPedidos . 'png';
-        move_uploaded_file($_FILES['imagem']['tmp_name'], "../../../imagem/". $idPedidos . 'png');
+        move_uploaded_file($_FILES['imagem']['tmp_name'], "../../../imagem/". $idPedidos . '.png');
     }
 
     // Quardando PDF 
