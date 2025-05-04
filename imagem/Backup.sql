@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1deb3
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Tempo de geração: 04/05/2025 às 03:28
--- Versão do servidor: 10.11.11-MariaDB-0ubuntu0.24.04.2
--- Versão do PHP: 8.3.6
+-- Host: 127.0.0.1
+-- Tempo de geração: 26/04/2025 às 04:03
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -70,7 +70,7 @@ CREATE TABLE `pedidosp` (
   `PedraM` varchar(30) DEFAULT NULL,
   `parEstoqueF` varchar(30) DEFAULT NULL,
   `parEstoqueM` varchar(30) DEFAULT NULL,
-  `pdf` varchar(250) DEFAULT NULL,
+  `pdf` varchar(250) NOT NULL,
   `data_digitada` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -79,8 +79,7 @@ CREATE TABLE `pedidosp` (
 --
 
 INSERT INTO `pedidosp` (`contadorpf`, `idpedidos`, `cliente`, `nomePedido`, `numF`, `numeM`, `descricaoPedido`, `descricaoAlianca`, `largura`, `gravacaoInterna`, `gravacaoExterna`, `imagem`, `PedraF`, `PedraM`, `parEstoqueF`, `parEstoqueM`, `pdf`, `data_digitada`) VALUES
-(0, 'PF00-2025-04-25', 'teste', 'teste', 0, 0, 'teste', 'teste', '2mm', '', '', '../', '', '', '', '', '', '2025-04-25'),
-(0, 'PF00-2025-05-04', 'teste', 'teste', 0, 0, 'teste', 'teste', '2mm', '', '', '../', '', '', '', '', NULL, '2025-05-04');
+(0, 'PF00-2025-04-25', 'teste', 'teste', 0, 0, 'teste', 'teste', '2mm', '', '', '../', '', '', '', '', '', '2025-04-25');
 
 -- --------------------------------------------------------
 
@@ -105,7 +104,7 @@ CREATE TABLE `pedidospe` (
   `parEstoqueM` varchar(30) DEFAULT NULL,
   `PedraF` varchar(30) DEFAULT NULL,
   `PedraM` varchar(30) DEFAULT NULL,
-  `pdf` varchar(250) DEFAULT NULL,
+  `pdf` varchar(250) NOT NULL,
   `data_digitada` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -114,8 +113,7 @@ CREATE TABLE `pedidospe` (
 --
 
 INSERT INTO `pedidospe` (`contadorpe`, `idpedidos`, `cliente`, `nomePedido`, `numF`, `numeM`, `descricaoPedido`, `descricaoAlianca`, `largura`, `gravacaoInterna`, `gravacaoExterna`, `imagem`, `parEstoqueF`, `parEstoqueM`, `PedraF`, `PedraM`, `pdf`, `data_digitada`) VALUES
-(0, 'PE00-2025-04-25', 'teste', 'teste', 0, 0, 'teste', 'teste', '2mm', '', '', '../', '', '', '', '', '', '2025-04-25'),
-(0, 'PE00-2025-05-04', 'teste', 'teste', 0, 0, 'teste', 'teste', '2mm', '', '', '../', '', '', '', '', NULL, '2025-05-04');
+(0, 'PE00-2025-04-25', 'teste', 'teste', 0, 0, 'teste', 'teste', '2mm', '', '', '../', '', '', '', '', '', '2025-04-25');
 
 -- --------------------------------------------------------
 
@@ -140,7 +138,7 @@ CREATE TABLE `pedidospg` (
   `parEstoqueM` varchar(30) DEFAULT NULL,
   `PedraF` varchar(30) DEFAULT NULL,
   `PedraM` varchar(30) DEFAULT NULL,
-  `pdf` varchar(250) DEFAULT NULL,
+  `pdf` varchar(250) NOT NULL,
   `data_digitada` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -149,8 +147,7 @@ CREATE TABLE `pedidospg` (
 --
 
 INSERT INTO `pedidospg` (`contadorpg`, `idpedidos`, `cliente`, `nomePedido`, `numF`, `numeM`, `descricaoPedido`, `descricaoAlianca`, `largura`, `gravacaoInterna`, `gravacaoExterna`, `imagem`, `parEstoqueF`, `parEstoqueM`, `PedraF`, `PedraM`, `pdf`, `data_digitada`) VALUES
-(0, 'PG00-2025-04-25', 'teste', 'teste', 0, 0, 'teste', 'teste', '2mm', '', '', '../', '', '', '', '', '', '2025-04-25'),
-(0, 'PG00-2025-05-04', 'teste', 'teste', 0, 0, 'teste', 'teste', '2mm', '', '', '../', '', '', '', '', NULL, '2025-05-04');
+(0, 'PG00-2025-04-25', 'teste', 'teste', 0, 0, 'teste', 'teste', '2mm', '', '', '../', '', '', '', '', '', '2025-04-25');
 
 --
 -- Índices para tabelas despejadas
