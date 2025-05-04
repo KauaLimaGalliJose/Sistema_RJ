@@ -1,5 +1,6 @@
 <?php 
-function ler_Salvar($tabela,$conectar){
+include_once('./salvarArquivos.php');
+function ler_Salvar($tabela,$imagem,$pdfs,$conectar){
 
     //variaveis
     $contador = 0;
@@ -42,6 +43,7 @@ function ler_Salvar($tabela,$conectar){
             while($verificador = mysqli_fetch_assoc($result)){
 
                 $verificar[] = $verificador['idpedidos'];
+                $verificarImagem[] = $verificador['imagem'];
                 $verificarExpode = explode("-",$verificador['idpedidos']);
                 $PedidosRepetidos[] = $verificarExpode[0];
                 
@@ -57,35 +59,54 @@ function ler_Salvar($tabela,$conectar){
             VALUES ('$linha[0]','$linha[1]','$linha[2]', '$linha[3]', '$linha[4]', '$linha[5]', '$linha[6]', '$linha[7]','$linha[8]', '$linha[9]', '$linha[10]','$linha[11]' , '$linha[12]' ,'$linha[13]', '$linha[14]' , '$linha[15]' , '$linha[16]' , '$datacsv' )");
             
             //Verifica os Duplicados -------------------------------
-        if ($result->num_rows !== 0) {
-            if($contador === 1){
-                echo substr($repetidosV, 0, 2) . " Duplicados:<br>";
-            }
-            while ($i < count($verificar)) {
-
-                if($verificar[$i] == $linha[1]){
-
-                    print('&#10060;' .$PedidosRepetidos[$i] . '<br>' );
-                    
-                    $PedidosGuardados[] = $PedidosRepetidos[$i];
+            if ($result->num_rows !== 0) {
+                // Verifica as Informações do Banco de Dados
+                if($contador === 1){
+                    echo substr($repetidosV, 0, 2) . " Não Enviados (Duplicados):<br>";
                 }
-                $i++;
+                while ($i < count($verificar)) {
+
+                    if($verificar[$i] == $linha[1]){
+
+                        print('&#10060;' .$PedidosRepetidos[$i] . '<br>' );     
+                    }
+                    else{
+
+                        
+                    }
+                    $i++;
+                }
             }
-        }
-        else{
-            if($contador === 1){
-                echo "&#9989; Todos pedidos enviados<br>";
+            else{
+                if($contador === 1){
+                    echo "&#9989; Todos pedidos enviados<br>";
+                }
             }
+           //-----------------------------------------------------------
         }
-            //-----------------------------------------------------------
-        }
+        //Imagens ------------------------------------------------------
+        $origem = './zipTemporarios/pastas/' . $imagem . '/' ;
+        $destino = '../../../imagem/';
+
+        moverArquivos($origem, $destino);
+
+        //PDFs ------------------------------------------------------
+        $origemPdf = './zipTemporarios/pastas/' . $pdfs . '/' ;
+        $destinoPdf = '../../pedidos/PDF/';
+
+        moverArquivos($origemPdf, $destinoPdf);
+            
         unlink($arquivo);
+        apagarDiretorio('./zipTemporarios/pastas/'. $imagem );
+        apagarDiretorio('./zipTemporarios/pastas/'. $pdfs );
         return;
     }
     else{
         echo '&#10060; Falha sem pedidos ou arquivo danificado'; ?><br><?php
         return;
     }
+     // Enviando Imagens
+     
 }
 
 ?>

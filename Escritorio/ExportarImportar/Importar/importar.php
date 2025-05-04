@@ -139,15 +139,15 @@ main{
 
           ?><div id="pedidosPai"><?php
               ?><div class="pedidos"><?php
-                  ler_Salvar('pedidosp',$conectar);
+                  ler_Salvar('pedidosp','imagensPF','pdfs-PF',$conectar);
               ?></div><?php
 
               ?><div class="pedidos"><?php
-                  ler_Salvar('pedidospg',$conectar);
+                  ler_Salvar('pedidospg','imagensPG','pdfs-PG',$conectar);
               ?></div><?php
 
               ?><div class="pedidos"><?php
-                  ler_Salvar('pedidospe',$conectar);
+                  ler_Salvar('pedidospe','imagensPE','pdfs-PE',$conectar);
               ?></div><?php
           ?></div><?php
 
