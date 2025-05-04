@@ -1,5 +1,3 @@
-//Imports
-
 // Atualiza a página
 setInterval(function() {
     window.onload = function() {
@@ -7,4 +5,5 @@ setInterval(function() {
     };
     location.reload();
   }, 40000); //40 segundos
+
   

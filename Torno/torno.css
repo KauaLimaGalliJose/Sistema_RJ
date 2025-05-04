@@ -147,7 +147,7 @@ main{
 .carrosselImg{
     width: 100%;
     height: 100%;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 #pedido{
     margin-left: 11%;
@@ -155,7 +155,15 @@ main{
     position: absolute;
     margin-top: 16%
 }
-
+.caixaSelecao{
+    position: absolute;
+    margin-top: -15%;
+    margin-left: 20%;
+}
+.tamanhoCaixaSelecao{
+    width: 20px;
+    height: 20px;
+}
 .carrosselInferior{
     display: flex;
     flex-direction: column;

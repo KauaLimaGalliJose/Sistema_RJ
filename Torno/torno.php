@@ -45,6 +45,7 @@
     if($_POST){
        $largura =  $_POST['largura'];
        $data =  $_POST['dataInput']?? null;
+       $checkbox = $_POST['marcado']?? 'sim';
     }
     if($_POST['largura'] == 'Todos'){
         $largura = '%mm';

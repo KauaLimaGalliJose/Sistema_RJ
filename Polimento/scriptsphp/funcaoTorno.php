@@ -2,9 +2,6 @@
 
 function pedidosPf($conectar,$largura,$tabela,$contador,$data){
 
-    //Variavel -----------------------------------------------
-
-
     $dados = "SELECT * FROM `$tabela` WHERE `$contador` <> 0
     AND data_digitada = '$data'
     AND largura LIKE '$largura'
@@ -44,17 +41,13 @@ function pedidosPf($conectar,$largura,$tabela,$contador,$data){
             $PedraM = '&#128142;' ;
         }
 
-        $checkboxId = 'check_' . $linha['idpedidos'];
+
         ?>
         <div class="carrossel">
             <div class="carrosselSuperior">
                 <img class="carrosselImg" src="<?php echo $linha['imagem']; ?>" alt="ERRO">
                 <div id="pedido">
                 <label class="fontPedido"><?php echo $pedido[0] . ' ' . $pedido[3] . '/' . $pedido[2] ?></label>
-                </div>
-                <div class="caixaSelecao">
-                        <input name="marcado" value="sim" id="<?php echo $checkboxId; ?>"onchange="salvarEstadoCheckbox(this)" class="tamanhoCaixaSelecao" type="checkbox" >
-
                 </div>
             </div>
             <div class="carrosselInferior">
@@ -69,10 +62,13 @@ function pedidosPf($conectar,$largura,$tabela,$contador,$data){
                     </div>
                 </div>
                 <div id="descricao">
-                    <label class="descricaoFont">Descrição: <?php echo $linha['descricaoAlianca'] ?></label>
+                <label class="descricaoFont">Descrição: <?php echo $linha['descricaoAlianca'] ?></label>
+                </div>
+                <div>
+
                 </div>
             </div>
-        </div>
+            </div>
         <?php
     }
 
