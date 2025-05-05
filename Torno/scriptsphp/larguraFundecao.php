@@ -15,12 +15,21 @@ function largura($larguraAlianca,$conectar,$data){
                         $largura = $linha['largura'];
                         $numeracaoF = $linha['numF'];
                         $numeracaoM = $linha['numeM'];
+                        $estoqueFeminina = $linha['parEstoqueF'];
+                        $estoqueMasculina = $linha['parEstoqueM'];
 
                         
                         if($largura == $larguraAlianca){
                             ?>
                             <div class="numercao">
-                                <?php 
+                                <?php
+                                    if($estoqueFeminina !== null){
+                                        $numeracaoF = '';
+                                    }
+                                    if($estoqueMasculina !== null){
+                                        $numeracaoM = '';
+                                    }
+
                                     if($numeracaoF !== '40'){
                                         echo $numeracaoF . ',';
                                     }
