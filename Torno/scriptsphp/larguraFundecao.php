@@ -23,10 +23,10 @@ function largura($larguraAlianca,$conectar,$data){
                             ?>
                             <div class="numercao">
                                 <?php
-                                    if($estoqueFeminina !== null){
+                                    if($estoqueFeminina != null){
                                         $numeracaoF = '';
                                     }
-                                    if($estoqueMasculina !== null){
+                                    if($estoqueMasculina != null){
                                         $numeracaoM = '';
                                     }
 
