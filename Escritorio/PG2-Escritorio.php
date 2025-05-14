@@ -156,7 +156,7 @@
             <div id="cabecalho_cima">
                 <div id="casa">
                     <button title="Voltar Menu" type="button" value=""  class="botao" >
-                    <a href="../index.html"><img class="itens" src="casa.png"></a>
+                    <a href="../menu/index.html"><img class="itens" src="casa.png"></a>
                     </button>
         
                     <button title="Voltar Pedido" type="button" id="seta_esquerda" value="" class="botao" >

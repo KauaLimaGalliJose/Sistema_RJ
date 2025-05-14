@@ -13,7 +13,7 @@
         <div id="cabecalho_menu">
             <div id="casa">
                 <button type="button" value=""  class="botao" >
-                <a href="../index.html"><img class="itens" src="../Escritorio/casa.png"></a>
+                <a href="../menu/index.html"><img class="itens" src="../Escritorio/casa.png"></a>
                 </button>
             </div>
                 <select name="largura" id="larguraSelect">
