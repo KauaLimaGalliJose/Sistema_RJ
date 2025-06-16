@@ -42,29 +42,16 @@ buttonImprimir.addEventListener('click',function(){
 })
 // 35 escala
   
-buttonPdf.addEventListener('click',function(){
-  const pdfDiv =  document.getElementById('PdfDivMae');
+// Parte do Scroll---------------------------------------------------------------------------------
 
-  if(pdfDiv.style.visibility == 'hidden'){
-    pdfDiv.style.visibility = 'visible';
+window.addEventListener('wheel', function(e) {
+    e.preventDefault(); // Impede o scroll padrão do navegador
 
-    document.getElementById('phpmae').style.filter = 'brightness(0.65) contrast(0.85) blur(2px)';
-    document.getElementById('formulario').style.filter = 'brightness(0.75) contrast(0.95) blur(2px)';
-    
-  }
-  else{
-    pdfDiv.style.visibility = 'hidden';
+    const scrollAmount = 500; // define a "passada"
+    const direction = e.deltaY > 0 ? 1 : -1;
 
-    document.getElementById('phpmae').style.filter = '';
-    document.getElementById('formulario').style.filter = '';
-  }
-})
-
-buttonPdfDiv.addEventListener('click', function(){
-  const pdfDiv =  document.getElementById('PdfDivMae');
-
-  pdfDiv.style.visibility = 'hidden';
-
-  document.getElementById('phpmae').style.filter = '';
-  document.getElementById('formulario').style.filter = '';
-})
+    window.scrollBy({
+      top: scrollAmount * direction,
+      behavior: 'auto' 
+    });
+  }, { passive: false }); // 'passive: false' é necessário para usar e.preventDefault

@@ -7,97 +7,99 @@
 ?>
 </div>
 <?php
-    $bancotodosPf = "SELECT * FROM pedidosp WHERE idpedidos LIKE '%$data%' ORDER BY contadorpf ASC";
-    $bancotodosPg = "SELECT * FROM pedidospg WHERE idpedidos LIKE '%$data%' ORDER BY contadorpg ASC";
-    $bancotodosPe = "SELECT * FROM pedidospe WHERE idpedidos LIKE '%$data%' ORDER BY contadorpe ASC";
+    //Variaveis 
+     $Pverificador = $_COOKIE['Pfverificador'];       
+
+    $bancotodosPf = "SELECT COUNT(*) AS quantidade FROM pedidosp WHERE idpedidos LIKE '%$Pverificador%' ORDER BY contadorpf ASC";
+    $bancotodosPg = "SELECT COUNT(*) AS quantidade FROM pedidospg WHERE idpedidos LIKE '%$Pverificador%' ORDER BY contadorpg ASC";
+    $bancotodosPe = "SELECT COUNT(*) AS quantidade FROM pedidospe WHERE idpedidos LIKE '%$Pverificador%' ORDER BY contadorpe ASC";
 
     $VerificadorBancotodosPf = mysqli_query($conectar, $bancotodosPf);
     $VerificadorBancotodosPg = mysqli_query($conectar, $bancotodosPg);
     $VerificadorBancotodosPe = mysqli_query($conectar, $bancotodosPe);
+
     //Pegando o Cookie para verificar se o pedido existe
-    $Pverificador = $_COOKIE['Pfverificador'];       
     $PverificadorSplit =  str_split($Pverificador,1);
+    $PverificadorExplode = explode('-',$Pverificador);
     $todosP;
     $alerta = true;
 
     if(isset($Pverificador)){
 
-        if($PverificadorSplit[1] === 'F' )
-            while($bdPf = mysqli_fetch_assoc($VerificadorBancotodosPf)){
+        if($PverificadorSplit[1] === 'F' ){
+            if($dados = mysqli_fetch_assoc($VerificadorBancotodosPf)){
 
-                $todos = explode("-",$bdPf['idpedidos']);
-                $todosP[] = $todos[0];
-
-                if(array_search($Pverificador, $todosP) !== false){
-                    $printp = 'Duplicado ' . $Pverificador;
+                if($dados['quantidade'] != 0){
+                    $mensagem = 'Duplicado ' . $PverificadorExplode[0];
                     $alerta = false;
-     
-                }
-                else{
-                    $printp = 'Enviado ' . $Pverificador;
-                }
-            }
-
-        elseif($PverificadorSplit[1] === 'G'){
-            while($bdPg = mysqli_fetch_assoc($VerificadorBancotodosPg)){
-
-                $todos = explode("-",$bdPg['idpedidos']);
-                $todosP[] = $todos[0];
-
-                if(array_search($Pverificador, $todosP) !== false){
-                    $printp = 'Duplicado ' . $Pverificador;
-                    $alerta = false;
-                   
-                }
-                else{
-                    $printp = 'Enviado ' . $Pverificador;
-                }
-            }
-        }
-        elseif($PverificadorSplit[1] === 'E'){
-            while($bdPe = mysqli_fetch_assoc($VerificadorBancotodosPe)){
-
-                $todos = explode("-",$bdPe['idpedidos']);
-                $todosP[] = $todos[0];
-
-                if(array_search($Pverificador, $todosP) !== false){
-                    $printp = 'Duplicado ' . $Pverificador;
-                    $alerta = false;
-                    
-                }
-                else{
-                    $printp = 'Enviado ' . $Pverificador;
-                }
-            }
-        }
-        else{
-            $alerta = true;
-            $printp = 'Enviado ' . $Pverificador;
-        }
         
-        if($Pverificador)
-            if($alerta == false){
-                ?><script>alert('Pedido Duplicado')</script><?php
+                }
+                else{
+                    $mensagem = 'Enviado ' .  $PverificadorExplode[0];
+                    echo "<script> alert('✅ Enviado👉 =$PverificadorExplode[0]= ' )</script>";
+                }
+
+            }
+        }
+        elseif($PverificadorSplit[1] === 'G' ){
+            if($dados = mysqli_fetch_assoc($VerificadorBancotodosPg)){
+
+                if($dados['quantidade'] != 0){
+                    $mensagem = 'Duplicado ' . $PverificadorExplode[0];
+                    $alerta = false;
+        
+                }
+                else{
+                    $mensagem = 'Enviado ' .  $PverificadorExplode[0];
+                    echo "<script> alert('✅ Enviado👉 =$PverificadorExplode[0]= ' )</script>";
+                }
+
+            }
+        }
+        elseif($PverificadorSplit[1] === 'E' ){
+            if($dados = mysqli_fetch_assoc($VerificadorBancotodosPe)){
+
+                if($dados['quantidade'] != 0){
+                    $mensagem = 'Duplicado ' . $PverificadorExplode[0];
+                    $alerta = false;
+        
+                }
+                else{
+                    $mensagem = 'Enviado ' .  $PverificadorExplode[0];
+                    echo "<script> alert('✅ Enviado👉 =$PverificadorExplode[0]= ' )</script>";
+                }
+
+            }
+        }
+        if($alerta == false){
+
+            $mensagem = 'Duplicado ' .  $PverificadorExplode[0];
+            echo "<script> alert('🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥 \\n \\n   DUPLICADO  == $PverificadorExplode[0] == \\n \\n 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥' )</script>";
         }
     }
+    else{
+        $alerta = true;
+        $mensagem = 'Enviado ' . $PverificadorExplode[0];
+        echo "<script> alert('Enviado👉 $PverificadorExplode[0] ' )</script>";
+    }
     
-
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <link rel="shortcut icon" href="../coroa.png" type="image/x-icon">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="./coroa.ico" type="image/x-icon" >
     <link rel="stylesheet" href="PG2-Escritorio.css">
-    <script src="../Importados/sistemaGoogleDocumentos.js" type="module"></script>
-    <script src="../Importados/jquery-3.7.1.min.js"></script>
+    <script src="../Importados/jquery-3.7.1.min.js" defer></script><!-- Não Tirar Biblioteca --> 
     <script src="main.js" type="module" defer></script>
     <title>Escritório</title>
 </head>
 <body>
 <div id="envioP">
     <label class="font_red"> <?php
-     echo $printp;
+     echo $mensagem;
+     mysqli_close($conectar);
     ?></label>
 </div>
 </body>

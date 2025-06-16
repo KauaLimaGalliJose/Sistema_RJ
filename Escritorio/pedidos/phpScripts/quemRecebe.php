@@ -8,7 +8,7 @@
             $data_Digitada = $data;
         }
 
-       $pesquisaDados = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido ,pdf
+       $pesquisaDados = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido , descricaoAlianca, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido ,pdf
        FROM `$tabela`  WHERE `$contadorp` <> 0 
        AND descricaoPedido LIKE '%$pesquisa%'
        AND data_digitada LIKE '$data_Digitada'
@@ -30,14 +30,11 @@
             ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemP['imagem'];?>" alt="Imagem do Pedido"><?php
             ?></div>
             <div class="btPedidos">
-            <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemP['pdf']?>">PDF</a></button>
-            <?php 
-                if($pesquisa == date('Y-m-d')){
-                    ?><button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemP['idpedidos'] ; ?>">Editar</a></button><?php
-                }
-                ?>
-                </div>
-                <?php   
+            <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemP['pdf']?>">PDF</a></button> 
+            <button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemP['idpedidos'] ; ?>">Editar</a></button><?php
+            ?>
+            </div>
+            <?php   
         }
     }
 
@@ -71,15 +68,30 @@
 
             // gravação interna 
             if(!empty($dados['gravacaoInterna'])){
-                $gravacaoInterna = '<span class="font_blu">Gravação:</span>' . $dados['gravacaoInterna'];
+
+                $gravacao = $dados['gravacaoInterna'];
+
+                if (strpos($gravacao, ',') !== false) {
+                    $gravacaoSplit = explode(',', $gravacao);
+
+                    $gravacaoInterna = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>';
+
+                    foreach ($gravacaoSplit as $item) {
+                        $gravacaoInterna .= trim($item) . '<br>'; // trim remove espaços desnecessários
+                    }
+
+                        $gravacaoInterna .= '</div>';
+                    } else {
+                   $gravacaoInterna = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>' . $gravacao . '</div>';
+                }
             }
             else{
                 $gravacaoInterna = '';
             }
             
-            //gravação externa
-            if(!empty($dados['gravacaoExterna'])){
-                $gravacaoExterna = '<span class="font_blue">Gravação Externa:</span>' . $dados['gravacaoExterna'];
+            //descricaoAlianca
+            if(!empty($dados['descricaoAlianca'])){
+                $gravacaoExterna = '<span class="font_blue">Descrição:</span>' . $dados['descricaoAlianca'];
             }
             else{
                 $gravacaoExterna = '';
@@ -104,12 +116,16 @@
 
                 $PedraM = '&#128142;' ;
             }
+               print($dados['descricaoPedido'] . "<br>");
 
-                print($dados['descricaoPedido'] . "<br>");
-                print('<br>Largura:' . $dados['largura']);
-                print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino .  $estoqueF . $PedraF . "<br>"); ?></span>
-                <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM'] . $estoqueM . $PedraM . "<br>"); ?></span>
-                <?php echo $gravacaoInterna . "<br>"?>
+                ?><div class="informacaoPedido"><?php
+                   ?><div class="informacaoSuperior"><?php
+                        print('<br>Largura:' . $dados['largura']);
+                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino . $estoqueF . $PedraF . "<br>"); ?></span>
+                        <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM'] . $estoqueM . $PedraM . "<br>"); ?></span>
+                    </div>
+                        <?php echo $gravacaoInterna . "<br>"?>
+                </div>
                 <?php echo $gravacaoExterna?>
                 </label></div><?php
             

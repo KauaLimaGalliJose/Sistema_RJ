@@ -3,7 +3,6 @@
     ?><div id="banco"><?php include_once('../../../conexao.php'); ?></div><?php
 
     date_default_timezone_set('America/Sao_Paulo'); // Fuso horário de Brasília
-    $data = date('Y-m-d');
 ?>
 
 <?php /////////////////////////////////////////////////////////////////////////////////////
@@ -52,6 +51,7 @@
                 $descricaoAlianca = $linhaDados['descricaoAlianca'];
                 $imagem = $linhaDados['imagem'];
                 $largura = $linhaDados['largura'];
+                $data = $linhaDados['data_digitada'];
 
 
                 if(!empty($linhaDados['gravacaoInterna'])){
@@ -110,7 +110,7 @@
                 $descricaoAlianca = $linhaDadosPg['descricaoAlianca'];
                 $imagem = $linhaDadosPg['imagem'];
                 $largura = $linhaDadosPg['largura'];
-                
+                $data = $linhaDadosPg['data_digitada'];
 
                 if(!empty($linhaDadosPg['gravacaoInterna'])){
                     $gravInterna = $linhaDadosPg['gravacaoInterna'];
@@ -144,6 +144,8 @@
                 }
             }
 
+            
+
         }
         elseif($pSplit[1] === "E"){
 
@@ -164,6 +166,7 @@
                 $descricaoAlianca = $linhaDadosPe['descricaoAlianca'];
                 $imagem = $linhaDadosPe['imagem'];
                 $largura = $linhaDadosPe['largura'];
+                $data = $linhaDadosPe['data_digitada'];
                 
                 if(!empty($linhaDadosPe['gravacaoInterna'])){
                     $gravInterna = $linhaDadosPe['gravacaoInterna'];
@@ -221,7 +224,7 @@
             <div id="cabecalho_cima">
                 <div id="casa">
                     <button type="button" value=""  class="botao" >
-                    <a href="../../../index.html"><img class="itens" src="../../casa.png"></a>
+                    <a href="../../../Escritorio/pedidos/pedidos.php"><img class="itens" src="../../casa.png"></a>
                     </button>
         
                 </div>
@@ -317,7 +320,7 @@
                         <div id="esquerda_input">
                             <div id="dia_horas">
                                 <div id="Div_entrega">
-                                    Entrega:<input id="entrega" name="dataEntrega" type="date">
+                                    Entrega:<input id="entrega" value="<?php echo $data; ?>" name="dataEntrega" type="date">
                                 </div>Largura
                                 <select name="largura" id="horaPedido">
                                     <option id="<?php echo $largura; ?>" class="spanRed" selected ><?php echo $largura ;?></option>

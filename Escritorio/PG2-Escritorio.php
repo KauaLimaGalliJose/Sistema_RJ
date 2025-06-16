@@ -6,8 +6,9 @@
     $data = date('Y-m-d');
 ?>
 <?php /////////////////////////////////////////////////////////////////////////////////////////
-    //Conectar com Banco de Dados para Criar o Pedido PF00 ,PG00 ,PE00  ////  Bom se vc estiver lendo isso eu acho que criei isso para não ter pedido duplicado ou arrumar o contador 
-    //PF                                                                        // mas ná real não sei porque eu fiz isso , não excluir
+    //Conectar com Banco de Dados para Criar o Pedido PF00 ,PG00 ,PE00  ////  Bom se vc estiver lendo isso eu acho que criei isso para arrumar o contador ou não dar erro na hora de criar o pedido 
+    //sendo o primeiro pedido do dia e do banco de dados consequentemente
+    //PF                                                                        // mas ná real não sei porque eu fiz isso , não excluir da mó problema
     $pf00 = "SELECT idpedidos FROM pedidosp WHERE idpedidos LIKE '%PF00-$data%'";
     $conectarpf00 = mysqli_query($conectar, $pf00);
     //PG
@@ -17,8 +18,7 @@
     $pe00 = "SELECT idpedidos FROM pedidospe WHERE idpedidos LIKE '%PE00-$data%'";
     $conectarpe00 = mysqli_query($conectar, $pe00);
 
-    //Criando o PF0
-    
+    //Criando o PF0    
     if(mysqli_num_rows($conectarpf00) == 0 ){
         mysqli_query($conectar, "INSERT INTO pedidosp 
         (contadorpf, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,data_digitada) 
@@ -36,7 +36,7 @@
         (contadorpe, idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,data_digitada) 
         VALUES (0,'PE00-$data','teste', 'teste', 0, 0, 'teste', 'teste','2mm', '', '','../','','','','','$data')");
         }
-        
+    
 ?>
  <?php /////////////////////////////////////////////////////////////////////////////////////
     // Para Enviar Cookies 
@@ -88,10 +88,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="shortcut icon" href="./coroa.ico" type="image/x-icon">
     <link rel="stylesheet" href="PG2-Escritorio.css">
-    <script src="../Importados/jquery-3.7.1.min.js"></script>
+    <script src="../Importados/jquery-3.7.1.min.js" defer></script><!-- Não Tirar Biblioteca --> 
     <script src="main.js" type="module" defer></script>
     <title>Escritório</title>
 </head>
@@ -173,7 +173,8 @@
                     </button>
         
                     <button type="button" title="Abrir Pasta" id="pasta_aberta" value="" class="botao">
-                    <img class="itens" src="pasta-aberta.png">
+                        <a href="./statusPedidos\statusPedidos.php"><img class="itens" src="pasta-aberta.png"></a>
+                    </button>
                     </button>
 
                     <button type="button" id="exportar" value="" class="botao">
@@ -216,7 +217,7 @@
             </div>
             <div id="cabecalho_baixo">
                 <div id="tipo_pedido" >
-                        <input type="radio" onchange="" id="c1" value="Mercado_Livre" name = 'cliente' class="radio"><label for="c1">Mercado Livre</label> 
+                        <input type="radio" onchange="" id="c1" value="Mercado_Livre" name = 'cliente' class="radio" checked><label for="c1">Mercado Livre</label> 
                         <input type="radio" onchange="" id="c2" value="showroom" name = 'cliente' class="radio"><label for="c2">Showroom</label> 
                         <input type="radio" value="Outros"  id="c3" name = 'cliente' class="radio" ><label for="c3">Outros:</label>  
                         <input type="text" id="outros"  name="txtcliente"  placeholder="Cliente...">
@@ -233,16 +234,16 @@
                         Número do Pedido:
                           <select id="n_p" name="numeroPedido" class="pedido" title="Selecione um Pedido" >
                                 <option value='N'  id="Nenhum" >Escolha</option>
-                                <option value='<?php echo $letraPf . $numeroPf; ?>' title="Pedido para Fabricação" id="P1" >
+                                <option value='<?php echo $letraPf . ($numeroPf == 0 ? $numeroPf+1 : $numeroPf); ?>' title="Pedido para Fabricação" id="P1" >
                                     <?php echo  $letraPf . $numeroPfDisplay;?>
                                 </option>
-                           
-                                <option value="<?php echo $letraPg . $numeroPg; ?>" title="Pedido para Gravação" id="PG1" >
+
+                                <option value="<?php echo $letraPg . ($numeroPg == 0 ? $numeroPg+1 : $numeroPg); ?>" title="Pedido para Gravação" id="PG1" >
                                     <?php echo  $letraPg . $numeroPgDisplay;?>
                                 </option>
-                           
-                                <option value="<?php echo $letraPe . $numeroPe; ?>" title="Pedido do Estoque" id="PE1" >
-                                    <?php echo  $letraPe . $numeroPeDisplay;?> 
+
+                                <option value="<?php echo $letraPe . ($numeroPe == 0 ? $numeroPe+1 : $numeroPe); ?>" title="Pedido do Estoque" id="PE1" >
+                                    <?php echo  $letraPe . $numeroPeDisplay;?>
                                 </option>
                         </select>
                         <input type="text" id="nome_m" title="Exemplo 'CONTA 001'" name="nome_m" placeholder="Pedido..." >
@@ -267,17 +268,17 @@
                             <label id="PdfBT" for="inputPDF">
                                 <img class="botaoPDF" id="imagemPdf" src="./pedidos/imagemPedido/pdf.png">
                             </label>
-                            <input id="inputPDF" class="fileBt" name="pdf" accept="application/pdf"  type="file" >
+                            <input id="inputPDF" class="fileBt" src="#" name="pdf" accept="application/pdf"  type="file" >
                             
+                        </div>
+                        <div id="modelo">
+                            <img id="modelo_rainha" src="rj.png.webp" alt="rainha">
+                            <img id="modelo2" src="#" alt="Pré-visualização da Imagem" style="display: none;">
                         </div>
                         <label class="botaoImg">
                         <input type="file" src="#" class="fileBt" name="imagem" id="uploadimg" accept="image/png, image/jpeg, image/jpg">
                             Enviar Imagem
                         </label>
-                        <div id="modelo">
-                        <img id="modelo_rainha" src="rj.png.webp" alt="rainha">
-                        <img id="modelo2" src="#" alt="Pré-visualização da Imagem" style="display: none;">
-                        </div>
                     </div>
                         <div id="esquerda_input">
                             <div id="dia_horas">
@@ -325,3 +326,6 @@
    </main>
 </body>
 </html> 
+<?php
+    mysqli_close($conectar);
+?>

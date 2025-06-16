@@ -6,7 +6,10 @@
 }
 
 body{
-    background-color: azure;
+    background-image: url('./fundo2.jpg');
+    background-repeat: no-repeat; /* impede a repetição */
+    background-position: center;  /* centraliza */
+    background-size: cover;       /* cobre toda a tela */
 }
 
  /*------------Menu------------*/
@@ -46,6 +49,7 @@ header{
     height: 50px;
     margin-left: 19px;
     margin-right: 19px;
+    
 }
 .seta{
     width: 60px;
@@ -75,6 +79,7 @@ header{
     transform: scale(110%);
     background-color: rgb(247, 94, 94);
     border-radius: 10%;
+    cursor: pointer;
 }
 #enviar {
     display: flex;
@@ -205,7 +210,7 @@ header{
 }
 
 #n_p{
-    visibility: hidden;
+    visibility: visible;
     width: 92px;
     height: 37px;
     margin-top: 0.5%;
@@ -214,7 +219,7 @@ header{
     font-weight: 600;
     font-family: cursive;
     text-align: center;
-    border:  solid black 3px;
+    border:  solid rgb(0, 0, 0) 3px;
     border-radius: 2px;
     text-align: justify;
     
@@ -240,7 +245,7 @@ header{
 
 }
 #nome_m{
-    visibility: hidden;
+    visibility: visible;
     width: 190px;
     height: 37px;
     padding-left: 10px;
@@ -339,6 +344,7 @@ margin-left: 10px;
     color: aliceblue;
     transition: 0.3s;
     transform: scale(110%);
+    cursor: pointer;
 }
 
 #modelo{
@@ -404,6 +410,7 @@ margin-left: 10px;
     font-weight: 600;
     font-family: cursive;
     border-radius: 2px;
+    cursor: pointer;
 }
 #Div_entrega{
     display: flex;
@@ -492,7 +499,6 @@ footer {
     height: 100px;
 }
 .botaoPDF{
-    background-color: azure;
     width: 100%;
     border: 0px;
     padding: 2px;
@@ -502,6 +508,7 @@ footer {
     transform: scale(120%);
     border-radius: 10%;
     animation: fly-2 0.6s ease-in-out infinite alternate;
+    cursor: pointer;
 }
 @keyframes fly-2 {
     from {

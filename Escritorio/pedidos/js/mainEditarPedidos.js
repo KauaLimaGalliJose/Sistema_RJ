@@ -3,7 +3,7 @@ import { limpar , selectN } from "../../funcao.js";
 import { mudaPDF } from "./funcao.js";
 import { radioCabecalho, check_unidade, gravacaoExterna, checkboxRodape } from "../../radiosChitobox.js";
 import img_modelo  from "../../imagemInput.js";
-import { dataEntrega} from "../../dataHora.js";
+import { enviandoJson } from "../../enviandoJSON.js";
 import { enviar, naoenviar, verificar } from "./verificarEnviar.js";
 import { getCookie } from "../../cookies.js";
 
@@ -55,8 +55,12 @@ limparBt.addEventListener('click',function(){
 });
 
 enviarBt.addEventListener('click',function(){
+    let dataDigitada = document.getElementById('entrega').value;
+    let dataDigitadaSplit = dataDigitada.split('-');
+
     if(verificar() === true){
         selectN();
+        enviandoJson(dataDigitadaSplit[1],dataDigitadaSplit[2]);
         console.log(document.cookie);
         enviar()
     }
@@ -69,6 +73,5 @@ enviarBt.addEventListener('click',function(){
     window.close();
 });
 
-//Funções para ser iniciadas
-dataEntrega();
-console.log(document.cookie);
+
+

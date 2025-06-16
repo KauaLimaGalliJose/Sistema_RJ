@@ -1,0 +1,594 @@
+*{
+    
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue",
+    Helvetica, Arial, sans-serif, system-ui;
+}
+body{
+    background-color: azure;
+}
+
+/* DESKTOP */
+@media screen and (min-width: 659px) {
+    #cabecalho{
+        position:fixed;
+        left: 0;
+        top:0;
+        width:100%;
+        height: 85px;
+        border: solid black 5px;
+        border-bottom: solid rgb(0, 0, 0) 5px ;
+        background-color: antiquewhite;
+        overflow: auto; /* Garante que o menu não "quebre" */
+        padding-left: 10px;
+        padding-right: 10px;
+        flex-direction: column;
+    }
+    #cabecalho_menu{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+    .botao{
+        background-color: antiquewhite;
+        border: 0px;
+        padding: 2px;
+    }
+    .botao:hover{
+        transition: 0.5s;
+        transform: scale(110%);
+        background-color: rgb(247, 94, 94);
+        border-radius: 10%;
+    }
+    .itens{
+        width: 50px;
+        height: 50px;
+        margin-left: 19px;
+        margin-right: 19px;
+    }
+    .data{
+        margin-left:10px;
+        margin-right:10px;
+        border: solid black 3px;
+        border-radius: 5px;
+        font-size: 150%;
+        font-weight: 600;
+        height: 30px;
+    }
+    #enviar{
+        display: flex; 
+        margin-left: 15px;
+        background-color: blanchedalmond;
+        border: none;
+    }
+    #enviar:hover{
+        background-color: rgb(247, 94, 94);
+        padding: 2px;
+        border-radius: 10px;
+        transition: 0.2s;
+    }
+    h1{
+        font-size: 200%;
+    }
+        /* Botão Cabecalho --------------- */
+    .body {
+  --radius: 8px;
+  --border: 4px;
+  --height: 48px;
+  --speed: 0.25s;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  font-family: "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue",
+    Helvetica, Arial, sans-serif, system-ui;
+}
+
+.tabs {
+  height: var(--height);
+  display: grid;
+  grid-auto-flow: column;
+  background: hsl(0 0% 0%);
+  border-radius: var(--radius);
+  grid-auto-columns: 1fr;
+  position: relative;
+  border: var(--border) solid hsl(0 0% 0%);
+  margin-left: 20px;
+}
+
+.tabs {
+  --ease: linear(
+    0,
+    0.1641 3.52%,
+    0.311 7.18%,
+    0.4413 10.99%,
+    0.5553 14.96%,
+    0.6539 19.12%,
+    0.738 23.5%,
+    0.8086 28.15%,
+    0.8662 33.12%,
+    0.9078 37.92%,
+    0.9405 43.12%,
+    0.965 48.84%,
+    0.9821 55.28%,
+    0.992 61.97%,
+    0.9976 70.09%,
+    1
+  );
+}
+
+.tabs > .input,
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.tabs:has(:checked:nth-of-type(1)) {
+  --active: 0;
+}
+.tabs:has(:checked:nth-of-type(2)) {
+  --active: 1;
+}
+.tabs:has(:checked:nth-of-type(3)) {
+  --active: 2;
+}
+.tabs:has(:checked:nth-of-type(4)) {
+  --active: 3;
+}
+
+.tabs :checked + .label {
+  --highlight: 1;
+}
+
+.tabs:has(.input:nth-of-type(2)) {
+  --count: 2;
+}
+.tabs:has(.input:nth-of-type(3)) {
+  --count: 3;
+}
+.tabs:has(.input:nth-of-type(4)) {
+  --count: 4;
+}
+
+.tabs .label {
+  padding: 0 clamp(50px, 10px + 10px, 20px);
+  cursor: pointer;
+  text-align: center;
+  height: 100%;
+  display: grid;
+  border-radius: calc(var(--radius) - var(--border));
+  place-items: center;
+  color: hsl(0 0% 100% / calc(0.5 + var(--highlight, 0)));
+  transition: background, color;
+  transition-duration: 0.25s;
+  transition-timing-function: var(--ease, ease);
+}
+
+.input:not(:checked) + .label:hover {
+  --highlight: 0.35;
+  background: hsl(0 0% 20%);
+}
+
+.tabs::after {
+  pointer-events: none;
+  content: "";
+  width: calc(100% / var(--count));
+  height: 100%;
+  background: hsl(0 0% 100%);
+  position: absolute;
+  border-radius: calc(var(--radius) - var(--border));
+  mix-blend-mode: difference;
+  translate: calc(var(--active, 0) * 100%) 0;
+  transition: translate, outline-color;
+  transition-duration: var(--speed);
+  transition-timing-function: var(--ease, ease);
+  outline: 2px solid transparent;
+}
+
+.tabs:has(:focus-visible)::after {
+  outline-color: red;
+}
+/* Botão Cabecalho --------------- */
+/* Corpo  --------------- */
+#corpo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 85px;
+    width: 100%;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+#quantidades{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: rgb(186, 224, 224);
+}
+.titulo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: rgb(186, 224, 224);
+    font-size: 180%;
+    font-weight: 700;
+}
+.tituloRed{
+    color: rgb(255, 0, 0);
+    font-size: 100%;
+    font-weight: 700;
+}
+
+#processo{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border: solid black 3px;
+    font-size: 150%;
+    font-weight: 600;
+    width: 100%;
+    height: 100%;
+    
+  }
+  .TextoTitulo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: rgb(186, 224, 224);
+    font-size: 120%;
+    font-weight: 700;
+    height: 10%;
+  }
+/*Torno */
+#torno{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-right: solid black 3px;
+    width: 100%;
+  }
+#polimento{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: solid black 3px;
+    width: 100%;
+  }
+#gravacao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: solid black 3px;
+    width: 100%;
+  }
+#escritorio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: solid black 3px;
+    width: 100%;
+  }
+#pronto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+}
+
+@media screen and (max-width: 659px) {
+    #cabecalho{
+        position:fixed;
+        left: 0;
+        top:0;
+        width:100%;
+        height: 85px;
+        border: solid black 5px;
+        border-bottom: solid rgb(0, 0, 0) 5px ;
+        background-color: antiquewhite;
+        overflow: auto; /* Garante que o menu não "quebre" */
+        padding-left: 10px;
+        padding-right: 10px;
+        flex-direction: column;
+    }
+    #cabecalho_menu{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+    .botao{
+        background-color: antiquewhite;
+        border: 0px;
+        padding: 2px;
+    }
+    .botao:hover{
+        transition: 0.5s;
+        transform: scale(110%);
+        background-color: rgb(247, 94, 94);
+        border-radius: 10%;
+    }
+    .itens{
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+        margin-right: 20px;
+    }
+    .data{
+        display: none;
+        margin-left:5px;
+        margin-right:5px;
+        border: solid black 3px;
+        border-radius: 5px;
+        font-size: 150%;
+        font-weight: 600;
+        height: 30px;
+    }
+    #enviar{
+        display: flex; 
+        margin-left: 15px;
+        background-color: blanchedalmond;
+        border: none;
+    }
+    #enviar:hover{
+        background-color: rgb(247, 94, 94);
+        padding: 2px;
+        border-radius: 10px;
+        transition: 0.2s;
+    }
+    h1{
+        font-size: 140%;
+    }
+    /* Botão Cabecalho --------------- */
+    .body {
+  --radius: 8px;
+  --border: 4px;
+  --height: 48px;
+  --speed: 0.25s;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  font-family: "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue",
+    Helvetica, Arial, sans-serif, system-ui;
+}
+
+.tabs {
+  height: var(--height);
+  display: grid;
+  grid-auto-flow: column;
+  background: hsl(0 0% 0%);
+  border-radius: var(--radius);
+  grid-auto-columns: 1fr;
+  position: relative;
+  border: var(--border) solid hsl(0 0% 0%);
+}
+
+.tabs {
+  --ease: linear(
+    0,
+    0.1641 3.52%,
+    0.311 7.18%,
+    0.4413 10.99%,
+    0.5553 14.96%,
+    0.6539 19.12%,
+    0.738 23.5%,
+    0.8086 28.15%,
+    0.8662 33.12%,
+    0.9078 37.92%,
+    0.9405 43.12%,
+    0.965 48.84%,
+    0.9821 55.28%,
+    0.992 61.97%,
+    0.9976 70.09%,
+    1
+  );
+}
+
+.tabs > .input,
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.tabs:has(:checked:nth-of-type(1)) {
+  --active: 0;
+}
+.tabs:has(:checked:nth-of-type(2)) {
+  --active: 1;
+}
+.tabs:has(:checked:nth-of-type(3)) {
+  --active: 2;
+}
+.tabs:has(:checked:nth-of-type(4)) {
+  --active: 3;
+}
+
+.tabs :checked + .label {
+  --highlight: 1;
+}
+
+.tabs:has(.input:nth-of-type(2)) {
+  --count: 2;
+}
+.tabs:has(.input:nth-of-type(3)) {
+  --count: 3;
+}
+.tabs:has(.input:nth-of-type(4)) {
+  --count: 4;
+}
+
+.tabs .label {
+  padding: 0 clamp(10px, 0px + 0px, 0px);
+  cursor: pointer;
+  text-align: center;
+  height: 100%;
+  display: grid;
+  border-radius: calc(var(--radius) - var(--border));
+  place-items: center;
+  color: hsl(0 0% 100% / calc(0.5 + var(--highlight, 0)));
+  transition: background, color;
+  transition-duration: 0.25s;
+  transition-timing-function: var(--ease, ease);
+}
+
+.input:not(:checked) + .label:hover {
+  --highlight: 0.35;
+  background: hsl(0 0% 20%);
+}
+
+.tabs::after {
+  pointer-events: none;
+  content: "";
+  width: calc(100% / var(--count));
+  height: 100%;
+  background: hsl(0 0% 100%);
+  position: absolute;
+  border-radius: calc(var(--radius) - var(--border));
+  mix-blend-mode: difference;
+  translate: calc(var(--active, 0) * 100%) 0;
+  transition: translate, outline-color;
+  transition-duration: var(--speed);
+  transition-timing-function: var(--ease, ease);
+  outline: 2px solid transparent;
+}
+
+.tabs:has(:focus-visible)::after {
+  outline-color: red;
+}
+/* Botão Cabecalho --------------- */
+/* Corpo  --------------- */
+#corpo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 85px;
+    width: 100%;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+#quantidades{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: rgb(186, 224, 224);
+}
+.titulo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: rgb(186, 224, 224);
+    font-size: 120%;
+    font-weight: 700;
+}
+.tituloRed{
+    color: rgb(255, 0, 0);
+    font-size: 120%;
+    font-weight: 700;
+}
+
+#processo{
+    display: flex;
+    flex-direction: Column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border: solid black 3px;
+    font-size: 100%;
+    font-weight: 600;
+    width: 100%;
+    height: 100%;
+    
+  }
+  .TextoTitulo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 100%;
+    background-color: rgb(186, 224, 224);
+    font-weight: 700;
+  }
+/*Torno */
+#torno{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+#polimento{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+#gravacao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+#escritorio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+#pronto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+}

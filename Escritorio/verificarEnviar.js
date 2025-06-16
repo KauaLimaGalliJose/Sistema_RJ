@@ -141,7 +141,7 @@ export function verificar() {
     else{
         borderBlack('rodape')
     }
-    // --------------------------------------------------------Validação do PDF
+    // --------------------------------------------------------Validação do PDF não verifiva se realmente tem PDF só para o estilo
     if (pdfInput.files.length > 0 || (cliente2.checked || cliente3.checked)) {
         imagemPdf.src = './pedidos/imagemPedido/pdfAzul.png';
         pdfHtml.style.visibility = 'visible';
@@ -151,8 +151,14 @@ export function verificar() {
 
         imagemPdf.src = './pedidos/imagemPedido/pdf.png';
         pdfHtml.style.visibility = 'visible';
-        pdfHtml.innerHTML = 'Adicione o PDF'
-        valido = false
+        pdfHtml.innerHTML = 'Sem PDF'
+        //valido = false; Ative caso precise validar 
+    }
+    // arumando envio da gravação para evitar espaço em branco
+    if(document.getElementById('grav_internaInput').value.trim() === '' ){
+        
+        document.getElementById('grav_internaInput').value = ''
+
     }
     chave = valido;
 
@@ -165,6 +171,9 @@ export function verificar() {
 }
 
 export function enviar(){
+    const agora = new Date();
+    const horario = agora.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); // Exemplo: "14:35"
+
     formulario.addEventListener("submit", function(event) {
         event.preventDefault();
         verificar()
@@ -177,13 +186,9 @@ export function enviar(){
                 method: "POST",
                 body: dadosInputs
             })
-            fetch("./PG2-Escritorio.php", { 
-                method: "POST",
-                body: dadosInputs
-            })
             .then(response => response.text()) 
             .then(data => {
-                console.log("Resposta do servidor: Enviado ");
+                console.log("Resposta do servidor: Enviado " );
                 document.getElementById('btEnviar').disabled = false; // Reativa o botão após a resposta
             })
             .catch(error => console.error("Erro:", error));
@@ -194,6 +199,7 @@ export function enviar(){
         }
         document.getElementById('btEnviar').disabled = false; 
     });
+
 }
 
 export function naoenviar(){

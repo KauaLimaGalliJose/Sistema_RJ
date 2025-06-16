@@ -154,6 +154,7 @@ main{
         } else {
           echo  '&#10060;Ocorreu um erro no upload.'; ?><br><?php
         }
+        mysqli_close($conectar);
 
         ?>
       </div>

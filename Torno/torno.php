@@ -42,24 +42,30 @@
     <?php include_once('./scriptsphp/funcaoTorno.php')?>
 
     <?php 
-    if($_POST){
-       $largura =  $_POST['largura'];
+       $largura =  $_POST['largura']?? '';
        $data =  $_POST['dataInput']?? null;
        $checkbox = $_POST['marcado']?? 'sim';
-    }
-    if($_POST['largura'] == 'Todos'){
+    
+    if($largura == 'Todos'){
         $largura = '%mm';
     }
     ?>
     <div id="phpmae">
         <?php
+        
         if(isset($largura) && isset($data)){
             pedidosPf($conectar,$largura,'pedidosp','contadorpf',$data);
         }
 
         //Se não Pesquisar nada 
-        if(!isset($largura) && !isset($data) || $largura == '%mm' && $data == null){
-            $semPedido =  include_once('../semPedidos/semPedidos.php');
+        if(!isset($largura) || $largura == '' && !isset($data) || $largura == '%mm' && $data == null){
+            $semPedido =  require('../semPedidos/semPedidos.php');
+            echo "<script> document.getElementById('phpmae').style.backgroundColor = 'azure'; 
+                document.getElementById('phpmae').style.background = 'linear-gradient(azure)';
+                document.body.style.background = 'linear-gradient(azure)';
+                document.body.style.background = 'azure';
+                </script>";
+            
         }
         else{
             $semPedido = '';
@@ -69,7 +75,8 @@
 
     </div>
     <div id="pedidonaoEncontrado">
-       <?php echo $semPedido; ?>
+        <?php echo $semPedido; 
+        mysqli_close($conectar);?>
     </div>
 </body>
 </html>

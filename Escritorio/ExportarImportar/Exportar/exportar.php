@@ -32,4 +32,5 @@ if($data_Digitada !== '' ){
 else{
     htmlErro();
 }
+mysqli_close($conectar);
 ?>

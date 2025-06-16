@@ -54,9 +54,9 @@
                 </div>
                 <div id="pedidosDiv">
                     <input class="data" id="dataInput" value="<?php echo $_GET['dataInput'] ?? date('Y-m-d'); ?>" name="dataInput" type="date">
-                    <input class="selecao" id="PF" value="sim" name="pfSelect" type="checkbox" <?php echo checkboxp('pfSelect'); ?>><label for="PF">PF</label>
-                    <input class="selecao" id="PG" value="sim" name="pgSelect" type="checkbox" <?php echo checkboxpg('pgSelect'); ?>><label for="PG">PG</label>
-                    <input class="selecao" id="PE" value="sim" name="peSelect" type="checkbox" <?php echo checkboxpe('peSelect'); ?>><label for="PE">PE</label>
+                    <input class="selecao" id="PF" value="sim" name="pfSelect" type="checkbox" <?php echo checkboxp('pfSelect'); ?>><label class="selecaoLabel" for="PF">PF</label>
+                    <input class="selecao" id="PG" value="sim" name="pgSelect" type="checkbox" <?php echo checkboxpg('pgSelect'); ?>><label class="selecaoLabel" for="PG">PG</label>
+                    <input class="selecao" id="PE" value="sim" name="peSelect" type="checkbox" <?php echo checkboxpe('peSelect'); ?>><label class="selecaoLabel" for="PE">PE</label>
                 </div>
                 <button type="submit" id="enviar">
                     <h1>Pesquisar</h1>
@@ -64,33 +64,10 @@
                 <button type='button' id="imprimir" class="botao">
                     <img class="itens" src="./imagemPedido/impressora-50.png">
                 </button>
-                <button type='button' id="pdfImprimir" class="botao">
-                    <img class="itens" src="./imagemPedido/pdfPreto.png">
-                </button>
         </div>
     </div>
 </form>
 <main id="main">
-    <div id="PdfDivMae">
-        <div id="PdfDiv">
-            <div id="TituloPdf">
-                <label >-- Qual imprimir --</label>
-            </div>
-            <div id="checkboxPdf">
-                <label class="checkboxFont"><input class="selecao" type="checkbox">Todos os PF</label>
-                <label class="checkboxFont"><input class="selecao" type="checkbox">Todos os PG</label>
-                <label class="checkboxFont"><input class="selecao" type="checkbox">Todos os PE</label>
-            </div>
-            <div>
-                <label > Escolha </label> 
-            </div>
-        </div>
-        <div id="PdfDiv2">
-            <button type='button'  id="buttonPdf">
-                <label>OK</label>
-            </button>    
-        </div>
-    </div>
     <div id="phpmae">
         <?php include_once('./phpScripts/separarPedidos.php');?>
         <?php include_once('./phpScripts/dataPesquisa.php');?>
@@ -188,13 +165,20 @@
         //Se não Pesquisar nada 
         if($pesquisa == '' && $quemRecebe == '' && empty($dataInput) && isset($pfSelect) == null && isset($pgSelect) == null && isset($peSelect) == null){
             $semPedido =  include_once('../../semPedidos/semPedidos.php');
+            echo "<script> document.getElementById('phpmae').style.backgroundColor = 'azure'; 
+                document.getElementById('phpmae').style.background = 'linear-gradient(azure)';
+                document.body.style.background = 'linear-gradient(azure)';
+                document.body.style.background = 'azure';
+                </script>";
         }
          
         ?>
         </div>
     </div>
     <div id="pedidonaoEncontrado">
-       <?php echo $semPedido; ?>
+       <?php echo $semPedido; 
+       mysqli_close($conectar);
+       ?>
     </div>
 </main>
 </body>

@@ -1,5 +1,5 @@
 body{
-    background-color: azure;
+    background: azure;
 }
 *{
     padding: 0;
@@ -93,10 +93,14 @@ main{
 .selecao{
     margin-left:10px;
     margin-right:10px;
-    border: solid black 5px;
+    border: solid black 7px;
     border-radius: 5px;
-    height: 20px;
-    width: 20px;
+    height: 27px;
+    width: 27px;
+    
+}
+.selecaoLabel{
+    font-size: 130%;
 }
 .data{
     margin-left:10px;
@@ -120,81 +124,6 @@ main{
     border-radius: 10px;
     transition: 0.2s;
 }
-/*--------------------------------------- Div PDF ----------------------------------------*/
-#PdfDivMae{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;;
-    flex-direction: column;
-    visibility: hidden;
-    position:absolute;
-    
-    z-index: 10;
-    margin-top: 20px;
-    width: 35%;
-    height: 500px;
-}
-#PdfDiv{
-    width: 80%;
-    height: 400px;
-    border: solid   #800020 8px ;
-    border-radius: 20px;
-    background-color: azure ;
-}
-#TituloPdf{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: red;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: 700;
-    font-size: 220%;
-}
-#checkboxPdf{
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 30px;
-    margin-left: 20px;
-
-}
-.checkboxFont{
-    font-size: 180%;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: 500;
-}
-.selecaoPdf{
-    margin-left:10px;
-    margin-right:10px;
-    margin-bottom: 10px;
-    border: solid black 5px;
-    border-radius: 5px;
-    height: 20px;
-    width: 20px;
-}
-#buttonPdf{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 25px;
-    background-color: red;
-    color: rgb(255, 255, 255);
-    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;;
-    font-size: 200%;
-    font-weight: 700;
-    padding-left: 50px;
-    padding-right: 50px;
-    border-radius: 20px;
-    border: rgb(255, 0, 0) solid 5px;
-
-}
-#buttonPdf:hover{
-    transition-duration: 0.1s;
-    background-color: red;
-    color: aliceblue;
-    transform: scale(130%);
-}
 /*--------------------------------------- Pedidos ----------------------------------------*/
 #phpmae{
     display: flex;
@@ -202,6 +131,7 @@ main{
     align-items: flex-start;
     flex-direction: row;
     width: 100%;
+    background: azure;
 }
 #phpDiv{
     display: flex;
@@ -242,6 +172,9 @@ main{
     border-radius: 10px;
     height: 410px;    
     width: 100%;
+    overflow: hidden auto; /* vertical escondida, horizontal automática */
+      white-space: normal; /* Permite quebra de linha normal */
+    word-wrap: break-word; /* Quebra palavras longas se necessário */
 }
 .pedidosImagem{
     display: flex;
@@ -255,6 +188,29 @@ main{
     border-radius: 10px;
     height: 410px;    
     width: 95%;
+}
+
+.informacaoPedido{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+.informacaoSuperior{
+    width: 60%;
+    height: 100%;
+}
+.informacaoInferior{
+    width: 50%;
+    height: 90%;
+    padding: 15px;
+    margin-top: 20px;
+    margin-right: 5%;
+    background-color: rgb(197, 209, 244);
+    border-radius: 15px;
+    border: solid black 5px;
+    overflow: auto;
+    
 }
 
 .Imagem{

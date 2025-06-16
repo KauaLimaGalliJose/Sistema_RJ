@@ -27,6 +27,10 @@ export function voltar(contador_P, contador_Pg, contador_Pe) {
         document.getElementById('PE1').innerHTML = "PE" +  contadordisplayPe;
         document.getElementById('PE1').value ='PE' + contador_Pe;
     }
+    
+    if (contador_P < 0) contador_P = 0;
+    if (contador_Pg < 0) contador_Pg = 0;
+    if (contador_Pe < 0) contador_Pe = 0;
 
     return { contador_P, contador_Pg, contador_Pe };
 }
@@ -44,7 +48,7 @@ export function avancar(contador_P, contador_Pg, contador_Pe) {
         document.getElementById('P1').value ='PF' + contador_P;
 
         //Criando verificação para ver se existe o pedido no Banco
-        CreateCookie('Pfverificador','PF' + contador_P,0.5);
+        CreateCookie('Pfverificador','PF' + contador_P + '-' + document.getElementById('entrega').value ,0.000012);
     }
     if (pg.selected) {
         contador_Pg++;
@@ -52,7 +56,7 @@ export function avancar(contador_P, contador_Pg, contador_Pe) {
         document.getElementById('PG1').innerHTML = "PG" + contadordisplayPg ;
         document.getElementById('PG1').value ='PG' + contador_Pg;
         //PG
-        CreateCookie('Pfverificador','PG' + contador_Pg,0.5);
+        CreateCookie('Pfverificador','PG' + contador_Pg + '-' + document.getElementById('entrega').value ,0.000012);
     }
     if (pe.selected) {
         contador_Pe++;
@@ -60,7 +64,7 @@ export function avancar(contador_P, contador_Pg, contador_Pe) {
         document.getElementById('PE1').innerHTML = "PE" +  contadordisplayPe;
         document.getElementById('PE1').value ='PE' + contador_Pe;
         //PE
-        CreateCookie('Pfverificador','PE' + contador_Pe,0.5);
+        CreateCookie('Pfverificador','PE' + contador_Pe + '-' + document.getElementById('entrega').value ,0.000012);
     }
 
     return { contador_P, contador_Pg, contador_Pe };
@@ -126,5 +130,6 @@ export function recarregarPagina(){
     alert('pedido Enviado')
     
 }
+
 
 export{CreateCookie}

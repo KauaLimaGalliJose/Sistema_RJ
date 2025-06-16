@@ -6,7 +6,7 @@
         date_default_timezone_set('America/Sao_Paulo'); // Fuso horário de Brasília
 
             $pesquisaDados = 
-            "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido
+            "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido , descricaoAlianca, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido
             FROM pedidosp 
             WHERE contadorpf <> 0 
             AND nomePedido LIKE '%$resultado%'
@@ -19,7 +19,7 @@
             
             $pesquisaVerificador = mysqli_query($conectar,$pesquisaDados);
 
-            $pesquisaDadosPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido
+            $pesquisaDadosPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, descricaoAlianca, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido
             FROM pedidospg 
             WHERE contadorpg <> 0 
             AND nomePedido LIKE '%$resultado%'
@@ -32,7 +32,7 @@
 
             $pesquisaVerificadorPg = mysqli_query($conectar,$pesquisaDadosPg);
 
-            $pesquisaDadosPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido
+            $pesquisaDadosPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, descricaoAlianca, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido
             FROM pedidospe
             WHERE contadorpe <> 0 
             AND nomePedido LIKE '%$resultado%'
@@ -72,15 +72,30 @@
     
                     // gravação interna 
                     if(!empty($dados['gravacaoInterna'])){
-                        $gravacaoInterna = '<span class="font_blu">Gravação:</span>' . $dados['gravacaoInterna'];
+
+                    $gravacao = $dados['gravacaoInterna'];
+
+                    if (strpos($gravacao, ',') !== false) {
+                        $gravacaoSplit = explode(',', $gravacao);
+
+                        $gravacaoInterna = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>';
+
+                        foreach ($gravacaoSplit as $item) {
+                            $gravacaoInterna .= trim($item) . '<br>'; // trim remove espaços desnecessários
+                        }
+
+                        $gravacaoInterna .= '</div>';
+                    } else {
+                        $gravacaoInterna = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>' . $gravacao . '</div>';
+                    }
                     }
                     else{
                         $gravacaoInterna = '';
                     }
                     
                     //gravação externa
-                    if(!empty($dados['gravacaoExterna'])){
-                        $gravacaoExterna = '<span class="font_blue">Gravação Externa:</span>' . $dados['gravacaoExterna'];
+                    if(!empty($dados['descricaoAlianca'])){
+                        $gravacaoExterna = '<span class="font_blue">Descrição:</span>' . $dados['descricaoAlianca'];
                     }
                     else{
                         $gravacaoExterna = '';
@@ -106,13 +121,18 @@
                         $PedraM = '&#128142;' ;
                     }
 
-                        print($dados['descricaoPedido'] . "<br>");
-                        print('<br>Largura:' . $dados['largura']);
-                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino .  $estoqueF . $PedraF . "<br>"); ?></span>
-                        <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM'] . $estoqueM . $PedraM . "<br>"); ?></span>
-                        <?php echo $gravacaoInterna . "<br>"?>
-                        <?php echo $gravacaoExterna?>
-                        </label></div><?php
+                    print($dados['descricaoPedido'] . "<br>");
+
+                    ?><div class="informacaoPedido"><?php
+                        ?><div class="informacaoSuperior"><?php
+                            print('<br>Largura:' . $dados['largura']);
+                            print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino . $estoqueF . $PedraF . "<br>"); ?></span>
+                            <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM'] . $estoqueM . $PedraM . "<br>"); ?></span>
+                        </div>
+                            <?php echo $gravacaoInterna . "<br>"?>
+                    </div>
+                    <?php echo $gravacaoExterna?>
+                    </label></div><?php
                 }
     
             //PG ------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -143,15 +163,31 @@
                 }
                 // gravação interna 
                 if(!empty($dadosPg['gravacaoInterna'])){
-                    $gravacaoInterna = '<span class="font_blu">Gravação:</span>' . $dadosPg['gravacaoInterna'];
+
+                    $gravacao = $dadosPg['gravacaoInterna'];
+
+                    if (strpos($gravacao, ',') !== false) {
+                        $gravacaoSplit = explode(',', $gravacao);
+
+                        $gravacaoInterna = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>';
+
+                        foreach ($gravacaoSplit as $item) {
+                            $gravacaoInterna .= trim($item) . '<br>'; // trim remove espaços desnecessários
+                        }
+
+                        $gravacaoInterna .= '</div>';
+                    } 
+                    else {
+                            $gravacaoInterna = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>' . $gravacao . '</div>';
+                    }
                 }
                 else{
                     $gravacaoInterna = '';
                 }
                     
                 //gravação externa
-                if(!empty($dadosPg['gravacaoExterna'])){
-                    $gravacaoExterna = '<span class="font_blue">Gravação Externa:</span>' . $dadosPg['gravacaoExterna'];
+                if(!empty($dadosPg['descricaoAlianca'])){
+                    $gravacaoExterna = '<span class="font_blue">Descrição:</span>' . $dadosPg['descricaoAlianca'];
                 }
                 else{
                     $gravacaoExterna = '';
@@ -178,12 +214,17 @@
                 }
 
                 print($dadosPg['descricaoPedido'] . "<br>");
-                print('<br>Largura:' . $dadosPg['largura']);
-                print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. $estoqueF . $PedraF ."<br>"); ?></span>
-                <?php print('Masculina:');?><span class="font_red"><?php print($dadosPg['numeM']. $estoqueM . $PedraM . "<br>"); ?></span>
-                <?php echo $gravacaoInterna . "<br>"?>
+
+                ?><div class="informacaoPedido"><?php
+                    ?><div class="informacaoSuperior"><?php
+                        print('<br>Largura:' . $dadosPg['largura']);
+                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino . $estoqueF . $PedraF . "<br>"); ?></span>
+                        <?php print('Masculina:');?><span class="font_red"><?php print($dadosPg['numeM'] . $estoqueM . $PedraM . "<br>"); ?></span>
+                    </div>
+                        <?php echo $gravacaoInterna . "<br>"?>
+                </div>
                 <?php echo $gravacaoExterna?>
-                </label></div><?php      
+                   </label></div><?php   
             }
             //PE ------------------------------------------------------------------------------------------------------------------------------------------------------
             while (($dadosPe = mysqli_fetch_assoc($pesquisaVerificadorPe))) {
@@ -212,15 +253,30 @@
                     }
                     // gravação interna 
                     if(!empty($dadosPe['gravacaoInterna'])){
-                        $gravacaoInterna = '<span class="font_blu">Gravação:</span>' . $dadosPe['gravacaoInterna'];
+
+                        $gravacao = $dadosPe['gravacaoInterna'];
+
+                        if (strpos($gravacao, ',') !== false) {
+                            $gravacaoSplit = explode(',', $gravacao);
+
+                            $gravacaoInterna = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>';
+
+                            foreach ($gravacaoSplit as $item) {
+                                $gravacaoInterna .= trim($item) . '<br>'; // trim remove espaços desnecessários
+                            }
+
+                            $gravacaoInterna .= '</div>';
+                        } 
+                        else {
+                                $gravacaoInterna = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>' . $gravacao . '</div>';
+                        }
                     }
                     else{
                         $gravacaoInterna = '';
-                    }
-                        
+                    } 
                     //gravação externa
-                    if(!empty($dadosPe['gravacaoExterna'])){
-                        $gravacaoExterna = '<span class="font_blue">Gravação Externa:</span>' . $dadosPe['gravacaoExterna'];
+                    if(!empty($dadosPe['descricaoAlianca'])){
+                        $gravacaoExterna = '<span class="font_blue">Descrição:</span>' . $dadosPe['descricaoAlianca'];
                     }
                     else{
                         $gravacaoExterna = '';
@@ -246,13 +302,18 @@
                         $PedraM = '&#128142;' ;
                     }
 
-                    print($dadosPe['descricaoPedido'] . "<br>");
-                    print('<br>Largura:' . $dadosPe['largura']);
-                    print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino. $estoqueF . $PedraF . "<br>"); ?></span>
-                    <?php print('Masculina:');?><span class="font_red"><?php print($dadosPe['numeM']. $estoqueM . $PedraM . "<br>"); ?></span>
-                    <?php echo $gravacaoInterna . "<br>"?>
-                    <?php echo $gravacaoExterna?>
-                    </label></div><?php 
+                print($dadosPe['descricaoPedido'] . "<br>");
+
+                ?><div class="informacaoPedido"><?php
+                    ?><div class="informacaoSuperior"><?php
+                        print('<br>Largura:' . $dadosPe['largura']);
+                        print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino . $estoqueF . $PedraF . "<br>"); ?></span>
+                        <?php print('Masculina:');?><span class="font_red"><?php print($dadosPe['numeM'] . $estoqueM . $PedraM . "<br>"); ?></span>
+                    </div>
+                        <?php echo $gravacaoInterna . "<br>"?>
+                </div>
+                <?php echo $gravacaoExterna?>
+                   </label></div><?php  
             }
         }
 ?>
@@ -309,12 +370,8 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagem['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagem['pdf']?>">PDF</a></button>
-                <?php 
-                    if($dataDigitada == $data){
-                        ?><button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagem['idpedidos'] ; ?>">Editar</a></button><?php
-                    }
-                ?>
+                    <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagem['pdf']?>">PDF</a></button>
+                    <button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagem['idpedidos'] ; ?>">Editar</a></button>
                 </div>
                 <?php
             
@@ -326,12 +383,8 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPg['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPg['pdf']?>">PDF</a></button>
-                <?php 
-                    if($dataDigitada == $data){
-                        ?><button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPg['idpedidos'] ; ?>">Editar</a></button><?php
-                    }
-                ?>
+                    <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPg['pdf']?>">PDF</a></button>
+                    <button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPg['idpedidos'] ; ?>">Editar</a></button>
                 </div>
                 <?php
             
@@ -343,12 +396,8 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPe['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPe['pdf']?>">PDF</a></button>
-                <?php 
-                    if($dataDigitada == $data){
-                        ?><button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPe['idpedidos'] ; ?>">Editar</a></button><?php
-                    }
-                ?>
+                    <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPe['pdf']?>">PDF</a></button>
+                    <button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPe['idpedidos'] ; ?>">Editar</a></button>
                 </div>
                 <?php
         }
@@ -377,15 +426,15 @@
             else{
                 // VAriaveis para se concetar com Banco de Dados
                 //PF
-                $pedidosAntigosPf = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidosp WHERE contadorpf <> 0 AND data_digitada = '$resultado' ORDER BY contadorpf ASC";
+                $pedidosAntigosPf = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido , descricaoAlianca, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidosp WHERE contadorpf <> 0 AND data_digitada = '$resultado' ORDER BY contadorpf ASC";
                 $pedidosAntigosDadosPf = mysqli_query($conectar, $pedidosAntigosPf);
 
                 //PG
-                $pedidosAntigosPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospg WHERE contadorpg <> 0 AND data_digitada = '$resultado' ORDER BY contadorpg ASC";
+                $pedidosAntigosPg = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido , descricaoAlianca, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospg WHERE contadorpg <> 0 AND data_digitada = '$resultado' ORDER BY contadorpg ASC";
                 $pedidosAntigosDadosPg = mysqli_query($conectar, $pedidosAntigosPg);
 
                 //PE
-                $pedidosAntigosPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospe WHERE contadorpe <> 0 AND data_digitada = '$resultado' ORDER BY contadorpe ASC";
+                $pedidosAntigosPe = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido , descricaoAlianca, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido FROM pedidospe WHERE contadorpe <> 0 AND data_digitada = '$resultado' ORDER BY contadorpe ASC";
                 $pedidosAntigosDadosPe = mysqli_query($conectar, $pedidosAntigosPe);
 
                 //PF -------------------------------------------------------------------
@@ -418,15 +467,31 @@
                             }
                             // gravação interna 
                             if(!empty($linhapedidosAntigos['gravacaoInterna'])){
-                                $gravacaoInterna = '<span class="font_blu">Gravação:</span>' . $linhapedidosAntigos['gravacaoInterna'];
+
+                                $gravacao = $linhapedidosAntigos['gravacaoInterna'];
+
+                                if (strpos($gravacao, ',') !== false) {
+                                    $gravacaoSplit = explode(',', $gravacao);
+
+                                    $gravacaoInterna = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>';
+
+                                    foreach ($gravacaoSplit as $item) {
+                                        $gravacaoInterna .= trim($item) . '<br>'; // trim remove espaços desnecessários
+                                    }
+
+                                    $gravacaoInterna .= '</div>';
+                                } 
+                                else {
+                                        $gravacaoInterna = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>' . $gravacao . '</div>';
+                                }
                             }
                             else{
                                 $gravacaoInterna = '';
-                            }
+                            } 
                                 
                             //gravação externa
-                            if(!empty($linhapedidosAntigos['gravacaoExterna'])){
-                                $gravacaoExterna = '<span class="font_blue">Gravação Externa:</span>' . $linhapedidosAntigos['gravacaoExterna'];
+                            if(!empty($linhapedidosAntigos['descricaoAlianca'])){
+                                $gravacaoExterna = '<span class="font_blue">Descrição:</span>' . $linhapedidosAntigos['descricaoAlianca'];
                             }
                             else{
                                 $gravacaoExterna = '';
@@ -447,18 +512,23 @@
 
                                 $PedraF = '&#128142;' ;
                             }
-                            if( $linhapedidosAntigos['PedraM'] == true){
+                            if($linhapedidosAntigos['PedraM'] == true){
 
                                 $PedraM = '&#128142;' ;
                             }
 
-                            print($linhapedidosAntigos['descricaoPedido'] . "<br>");
-                            print('<br>Largura:' . $linhapedidosAntigos['largura']);
-                            print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino . $estoqueF . $PedraF ."<br>"); ?></span>
-                            <?php print('Masculina:');?><span class="font_red"><?php print($linhapedidosAntigos['numeM'] . $estoqueM .$PedraM . "<br>"); ?></span>
-                            <?php echo $gravacaoInterna . "<br>"?>
-                            <?php echo $gravacaoExterna?>
-                            </label></div><?php
+                        print($linhapedidosAntigos['descricaoPedido'] . "<br>");
+
+                        ?><div class="informacaoPedido"><?php
+                            ?><div class="informacaoSuperior"><?php
+                                print('<br>Largura:' . $linhapedidosAntigos['largura']);
+                                print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino . $estoqueF . $PedraF . "<br>"); ?></span>
+                                <?php print('Masculina:');?><span class="font_red"><?php print($linhapedidosAntigos['numeM'] . $estoqueM . $PedraM . "<br>"); ?></span>
+                            </div>
+                                <?php echo $gravacaoInterna . "<br>"?>
+                        </div>
+                        <?php echo $gravacaoExterna?>
+                        </label></div><?php
                 }
                 //PG -------------------------------------------------------------------
                 while($linhapedidosAntigosPg = mysqli_fetch_assoc($pedidosAntigosDadosPg)){
@@ -489,15 +559,31 @@
                             }
                             // gravação interna 
                             if(!empty($linhapedidosAntigosPg['gravacaoInterna'])){
-                                $gravacaoInterna = '<span class="font_blu">Gravação:</span>' . $linhapedidosAntigosPg['gravacaoInterna'];
+
+                                $gravacao = $linhapedidosAntigosPg['gravacaoInterna'];
+
+                                if (strpos($gravacao, ',') !== false) {
+                                    $gravacaoSplit = explode(',', $gravacao);
+
+                                    $gravacaoInterna = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>';
+
+                                    foreach ($gravacaoSplit as $item) {
+                                        $gravacaoInterna .= trim($item) . '<br>'; // trim remove espaços desnecessários
+                                    }
+
+                                    $gravacaoInterna .= '</div>';
+                                } 
+                                else {
+                                        $gravacaoInterna = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>' . $gravacao . '</div>';
+                                }
                             }
                             else{
                                 $gravacaoInterna = '';
-                            }
+                            } 
                                 
                             //gravação externa
-                            if(!empty($linhapedidosAntigosPg['gravacaoExterna'])){
-                                $gravacaoExterna = '<span class="font_blue">Gravação Externa:</span>' . $linhapedidosAntigosPg['gravacaoExterna'];
+                            if(!empty($linhapedidosAntigosPg['descricaoAlianca'])){
+                                $gravacaoExterna = '<span class="font_blue">Descrição:</span>' . $linhapedidosAntigosPg['descricaoAlianca'];
                             }
                             else{
                                 $gravacaoExterna = '';
@@ -518,18 +604,23 @@
 
                                 $PedraF = '&#128142;' ;
                             }
-                            if( $linhapedidosAntigosPg['PedraM'] == true){
+                            if($linhapedidosAntigosPg['PedraM'] == true){
 
                                 $PedraM = '&#128142;' ;
                             }
 
-                            print($linhapedidosAntigosPg['descricaoPedido'] . "<br>");
-                            print('<br>Largura:' . $linhapedidosAntigosPg['largura']);
-                            print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino . $estoqueF . $PedraF ."<br>"); ?></span>
-                            <?php print('Masculina:');?><span class="font_red"><?php print($linhapedidosAntigosPg['numeM'] . $estoqueM .$PedraM . "<br>"); ?></span>
-                            <?php echo $gravacaoInterna . "<br>"?>
-                            <?php echo $gravacaoExterna?>
-                            </label></div><?php
+                        print($linhapedidosAntigosPg['descricaoPedido'] . "<br>");
+
+                        ?><div class="informacaoPedido"><?php
+                            ?><div class="informacaoSuperior"><?php
+                                print('<br>Largura:' . $linhapedidosAntigosPg['largura']);
+                                print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino . $estoqueF . $PedraF . "<br>"); ?></span>
+                                <?php print('Masculina:');?><span class="font_red"><?php print($linhapedidosAntigosPg['numeM'] . $estoqueM . $PedraM . "<br>"); ?></span>
+                            </div>
+                                <?php echo $gravacaoInterna . "<br>"?>
+                        </div>
+                        <?php echo $gravacaoExterna?>
+                        </label></div><?php
                 }
                 //PE -------------------------------------------------------------------
                 while($linhapedidosAntigosPg = mysqli_fetch_assoc($pedidosAntigosDadosPe)){
@@ -561,15 +652,31 @@
                             }
                             // gravação interna 
                             if(!empty($linhapedidosAntigosPg['gravacaoInterna'])){
-                                $gravacaoInterna = '<span class="font_blu">Gravação:</span>' . $linhapedidosAntigosPg['gravacaoInterna'];
+
+                                $gravacao = $linhapedidosAntigosPg['gravacaoInterna'];
+
+                                if (strpos($gravacao, ',') !== false) {
+                                    $gravacaoSplit = explode(',', $gravacao);
+
+                                    $gravacaoInterna = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>';
+
+                                    foreach ($gravacaoSplit as $item) {
+                                        $gravacaoInterna .= trim($item) . '<br>'; // trim remove espaços desnecessários
+                                    }
+
+                                    $gravacaoInterna .= '</div>';
+                                } 
+                                else {
+                                        $gravacaoInterna = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>' . $gravacao . '</div>';
+                                }
                             }
                             else{
                                 $gravacaoInterna = '';
-                            }
+                            } 
                                 
                             //gravação externa
-                            if(!empty($linhapedidosAntigosPg['gravacaoExterna'])){
-                                $gravacaoExterna = '<span class="font_blue">Gravação Externa:</span>' . $linhapedidosAntigosPg['gravacaoExterna'];
+                            if(!empty($linhapedidosAntigosPg['descricaoAlianca'])){
+                                $gravacaoExterna = '<span class="font_blue">Descrição:</span>' . $linhapedidosAntigosPg['descricaoAlianca'];
                             }
                             else{
                                 $gravacaoExterna = '';
@@ -595,13 +702,19 @@
                                 $PedraM = '&#128142;' ;
                             }
 
-                            print($linhapedidosAntigosPg['descricaoPedido'] . "<br>");
-                            print('<br>Largura:' . $linhapedidosAntigosPg['largura']);
-                            print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino . $estoqueF . $PedraF ."<br>"); ?></span>
-                            <?php print('Masculina:');?><span class="font_red"><?php print($linhapedidosAntigosPg['numeM'] . $estoqueM .$PedraM . "<br>"); ?></span>
-                            <?php echo $gravacaoInterna . "<br>"?>
-                            <?php echo $gravacaoExterna?>
-                            </label></div><?php
+
+                        print($linhapedidosAntigosPg['descricaoPedido'] . "<br>");
+
+                        ?><div class="informacaoPedido"><?php
+                            ?><div class="informacaoSuperior"><?php
+                                print('<br>Largura:' . $linhapedidosAntigosPg['largura']);
+                                print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino . $estoqueF . $PedraF . "<br>"); ?></span>
+                                <?php print('Masculina:');?><span class="font_red"><?php print($linhapedidosAntigosPg['numeM'] . $estoqueM . $PedraM . "<br>"); ?></span>
+                            </div>
+                                <?php echo $gravacaoInterna . "<br>"?>
+                        </div>
+                        <?php echo $gravacaoExterna?>
+                        </label></div><?php
                 }
             }
         }
@@ -634,12 +747,8 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPf['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPf['pdf']?>">PDF</a></button>
-                <?php 
-                    if($resultado == date('Y-m-d')){
-                        ?><button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPf['idpedidos'] ; ?>">Editar</a></button><?php
-                    }
-                ?>
+                    <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPf['pdf']?>">PDF</a></button>
+                    <button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPf['idpedidos'] ; ?>">Editar</a></button>
                 </div>
                 <?php
             
@@ -653,12 +762,8 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPg['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPg['pdf']?>">PDF</a></button>
-                <?php 
-                    if($resultado == date('Y-m-d')){
-                        ?><button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPg['idpedidos'] ; ?>">Editar</a></button><?php
-                    }
-                ?>
+                    <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPg['pdf']?>">PDF</a></button>
+                    <button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPg['idpedidos'] ; ?>">Editar</a></button>
                 </div>
                 <?php
             
@@ -671,12 +776,8 @@
                 ?><img class = "Imagem" src="<?php echo '../' .$dadosImagemPe['imagem'];?>" alt="Imagem do Pedido"><?php
                 ?></div>
                 <div class="btPedidos">
-                <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPe['pdf']?>">PDF</a></button> 
-                <?php 
-                    if($resultado == date('Y-m-d')){
-                        ?><button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPe['idpedidos'] ; ?>">Editar</a></button><?php
-                    }
-                ?>
+                    <button class = 'Pdf' type="button"><a class="PdfAncora" href="../<?php echo $dadosImagemPe['pdf']?>">PDF</a></button> 
+                    <button class = 'Pdf' id="editar" type="button"><a class="PdfAncora" target="_blank" href="<?php echo './phpScripts/editarPedido.php?idpedidos=' . $dadosImagemPe['idpedidos'] ; ?>">Editar</a></button>
                 </div>
                 <?php
             
