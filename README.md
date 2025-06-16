@@ -1,6 +1,6 @@
 # Sistema Web em Desenvolvimento
 
-⚠️ **Atenção:** Este sistema é uma **versão Beta**, desenvolvida para apresentar o funcionamento apenas na aba do Escritorio.  
+⚠️ **Atenção:** Este sistema é uma **versão Beta**, desenvolvida para apresentar um bom funcionamento porem ,**Pode apresentar erros**.  
 > 📬 Fique à vontade para me chamar no GitHub para dúvidas, sugestões ou contribuições!**
 
 📖**Tutorial – Requisitos e Configuração do Ambiente**
