@@ -6,32 +6,41 @@ body{
     margin: 0;
     box-sizing: border-box;
     list-style: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
+}
+#cabecalho{
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Garante que os itens sejam distribuídos */
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.7);
+    background-color: antiquewhite;
+    overflow-y: hidden; /* Garante que o menu não "quebre" */
+    z-index: 10;
 }
 main{
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-#cabecalho{
-    display: flex;
-    align-items: center; 
-
-    width: 100%;
-    height: 85px;
-    border: solid black 5px;
-    border-bottom: solid rgb(0, 0, 0) 5px ;
-    background-color: antiquewhite;
-    overflow: auto; /* Garante que o menu não "quebre" */
-    padding-left: 10px;
-    padding-right: 10px;
-    flex-direction: column;
-}
 #cabecalho_menu{
     display: flex;
     align-items: center;
+    justify-content: space-between; /* Garante que os itens sejam distribuídos */
     width: 100%;
     height: 100%;
+    
+    padding-left: 15px;
+    padding-right: 20px;
+}
+#part_cabecalho_inputs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
 }
 .botao{
     background-color: antiquewhite;
@@ -85,22 +94,9 @@ main{
     display: flex;
     align-items: center;
     font-style: normal;
-    font-family: cursive;
     font-size: 120%;
     font-weight: 700;
     margin: 15px;
-}
-.selecao{
-    margin-left:10px;
-    margin-right:10px;
-    border: solid black 7px;
-    border-radius: 5px;
-    height: 27px;
-    width: 27px;
-    
-}
-.selecaoLabel{
-    font-size: 130%;
 }
 .data{
     margin-left:10px;
@@ -124,6 +120,76 @@ main{
     border-radius: 10px;
     transition: 0.2s;
 }
+/*--------------------------------------- Checkbooks ----------------------------------------*/
+.estoque_esgotado {
+    --input-focus: #2d8cf0;
+    --input-out-of-focus: #ccc;
+    --bg-color: #fff;
+    --bg-color-alt: #666;
+    --main-color: #323232;
+    position: relative;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-left: 20px;
+    }
+    .estoque_esgotado span{
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        margin-top: 3px;
+        margin-left: 16px;
+        font-size: 150%;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    }
+
+    .estoque_esgotado input {
+    position: absolute;
+    opacity: 0;
+    }
+
+    .checkmark {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    box-shadow: 4px 4px var(--main-color);
+    background-color: var(--input-out-of-focus);
+    transition: all 0.3s;
+    }
+
+    .estoque_esgotado input:checked ~ .checkmark {
+    background-color: var(--input-focus);
+    color: var(--span-focus);
+    }
+
+    .checkmark:after {
+    content: "";
+    width: 7px;
+    height: 15px;
+    position: absolute;
+    top: 2px;
+    left: 8px;
+    display: none;
+    border: solid var(--bg-color);
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+    }
+
+    .estoque_esgotado input:checked ~ .checkmark:after {
+    display: block;
+    }
+
 /*--------------------------------------- Pedidos ----------------------------------------*/
 #phpmae{
     display: flex;
@@ -164,6 +230,7 @@ main{
     align-items: flex-start;
     justify-content:flex-start;
     flex-direction: row;
+    margin-top: 82px;
     margin-bottom: 100px;
     padding-left: 3%;
     font-size: 200%;
@@ -181,6 +248,7 @@ main{
     align-items: center;
     justify-content: space-around;
     flex-direction: row;
+    margin-top: 82px;
     margin-bottom: 10px;
     font-size: 150%;
     background-color: rgb(189, 189, 189);

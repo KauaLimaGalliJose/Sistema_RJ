@@ -1,4 +1,13 @@
 <?php
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
+?>
+<?php
+    include_once '../phpIndex/protege.php';
+    proteger();
+?>
+<?php
     //Variaveis Global
     ?><div id="banco"><?php include_once('../conexao.php'); ?></div><?php
 
@@ -91,7 +100,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="PG2-Escritorio.css">
-    <script src="../Importados/jquery-3.7.1.min.js" defer></script><!-- Não Tirar Biblioteca --> 
+    <script src="../scripts/importadosLocais/jquery-3.7.1.min.js" defer></script><!-- Não Tirar Biblioteca --> 
     <script src="main.js" type="module" defer></script>
     <title>Escritório</title>
 </head>
@@ -151,50 +160,57 @@
         </div>
      </form>
 <!-- -------------------------------------------------------------------------------------------------------------------------- -->
-    <form id="formulario" enctype="multipart/form-data" action="PG2_Escritorio1.php" method="post">
+    <form id="formulario" enctype="multipart/form-data" method="post">
         <div id="cabecalho">
             <div id="cabecalho_cima">
                 <div id="casa">
                     <button title="Voltar Menu" type="button" value=""  class="botao" >
-                    <a href="../menu/index.html"><img class="itens" src="casa.png"></a>
+                    <a href="../menu/index.php"><img class="itens" src="./Escritorio_img/casa.png"></a>
                     </button>
         
                     <button title="Voltar Pedido" type="button" id="seta_esquerda" value="" class="botao" >
-                        <img class="seta" src="angulo-esquerdo.png">
+                        <img class="seta" src="./Escritorio_img/angulo-esquerdo.png">
                     </button>
         
                     <button type="button" title="Avançar Pedido" id="seta_direita" value="" class="botao" >
-                        <img class="seta" src="angulo-direito.png">
+                        <img class="seta" src="./Escritorio_img/angulo-direito.png">
                     </button>
                 </div>
                 <div id="ferramentas">
                     <button type="button" title="Ver Pedidos" id="editar" value="" class="botao">
-                    <a href="pedidos/pedidos.php"><img class="itens" src="editar.png"></a>
-                    </button>
-        
-                    <button type="button" title="Abrir Pasta" id="pasta_aberta" value="" class="botao">
-                        <a href="./statusPedidos\statusPedidos.php"><img class="itens" src="pasta-aberta.png"></a>
-                    </button>
-                    </button>
+                    <a href="pedidos/pedidos.php"><img class="itens" src="./Escritorio_img/editar.png"></a>
+                    <h1 class="tituloCabecalho">Ver Pedidos</h1>
+                </button>
+                
+                <button type="button" title="Abrir Pasta" id="pasta_aberta" value="" class="botao">
+                    <a href="./statusPedidos\statusPedidos.php"><img class="itens" src="./Escritorio_img/pasta-aberta.png"></a>
+                    <h1 class="tituloCabecalho">Status</h1>
+                </button>
+                
+                <button type="button" id="exportar" value="" class="botao">
+                    <img class="itens" title="Exportar Pedidos" src="./Escritorio_img/upload-de-pasta.png">
+                </button>
+                
+                <button type="button" id="importar" value="" class="botao">
+                    <img class="itens" title="Importar Pedidos"  src="./Escritorio_img/download-de-pasta.png">
+                </button>
+                        
+                <button type="button" value="" title="Estoque" class="botao">
+                            <a href="Estoque/Estoque_Pagina_Inicial.html"><img class="itens" src="./Escritorio_img/aliancas-de-casamento.png"></a>
+                            <h1 class="tituloCabecalho">Estoque</h1>
+                </button>
 
-                    <button type="button" id="exportar" value="" class="botao">
-                        <img class="itens" title="Exportar Pedidos" src="upload-de-pasta.png">
-                    </button>
-
-                    <button type="button" id="importar" value="" class="botao">
-                        <img class="itens" title="Importar Pedidos"  src="download-de-pasta.png">
-                    <button>
-
-                    <button type="button" value="" title="Estoque" class="botao">
-                        <a href="Estoque/Estoque_Pagina_Inicial.html"><img class="itens" src="aliancas-de-casamento.png"></a>
-                    </button>
+                <button type="button" value="" title="WhatsApp" class="botao">
+                            <a href="whatsApp/whatsApp.php"><img class="itens" src="./Escritorio_img/whatsapp.png"></a>
+                            <h1 class="tituloCabecalho">Whatsapp</h1>
+                </button>
         
                     <button type="button"  title="Limpar Pedido" id="limpar" value="" class="botao">
-                        <img class="itens" src="lixeira.png">
+                        <img class="itens" src="./Escritorio_img/lixeira.png">
                     </button>
                 </div>
                 <div id="enviar">
-                    <button id="btEnviar" type="submit"  value="enviar" >
+                    <button id="btEnviar" type="button"  value="enviar" >
                             <div class="svg-wrapper-1">
                               <div class="svg-wrapper">
                                 <svg
@@ -217,16 +233,23 @@
             </div>
             <div id="cabecalho_baixo">
                 <div id="tipo_pedido" >
-                        <input type="radio" onchange="" id="c1" value="Mercado_Livre" name = 'cliente' class="radio" checked><label for="c1">Mercado Livre</label> 
-                        <input type="radio" onchange="" id="c2" value="showroom" name = 'cliente' class="radio"><label for="c2">Showroom</label> 
-                        <input type="radio" value="Outros"  id="c3" name = 'cliente' class="radio" ><label for="c3">Outros:</label>  
+                        <input type="radio" onchange="" id="c1" value="Mercado_Livre" name = 'cliente' class="radio2" checked><label class="radio_label" for="c1">Mercado Livre</label> 
+                        <input type="radio" onchange="" id="c2" value="loja" name = 'cliente' class="radio2"><label class="radio_label" for="c2">Loja</label> 
+                        <input type="radio" value="Outros"  id="c3" name = 'cliente' class="radio2" ><label class="radio_label" for="c3">Outros:</label>  
                         <input type="text" id="outros"  name="txtcliente"  placeholder="Cliente...">
                 </div>
             </div>
         </div>
         <div id="conteudo">
             <div id="data">
-             20/05/24
+             Estoque 
+             <select id="estoque" name = 'estoque' > 
+                <option value="Nenhum" id="NenhumEstoque">Nenhum</option>
+                <?php
+                    include_once('./Estoque/phpScripts/puxarDados.php');
+                    titulosDoEstoque($conectar);
+                ?>
+             </select>
             </div>
             <div id="pedido_input">
                 <div id="direita_input">
@@ -272,7 +295,7 @@
                             
                         </div>
                         <div id="modelo">
-                            <img id="modelo_rainha" src="rj.png.webp" alt="rainha">
+                            <img id="modelo_rainha" src="./Escritorio_img/rj.png.webp" alt="rainha">
                             <img id="modelo2" src="#" alt="Pré-visualização da Imagem" style="display: none;">
                         </div>
                         <label class="botaoImg">

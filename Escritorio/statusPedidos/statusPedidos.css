@@ -292,7 +292,6 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-right: solid black 3px;
     width: 100%;
   }
 #pronto{

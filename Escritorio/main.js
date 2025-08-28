@@ -1,11 +1,11 @@
 // imports
-import { voltar, avancar, limpar , atualizarDiv, selectN , mudaPDF } from "./funcao.js";
-import { radioCabecalho, check_unidade, gravacaoExterna, checkboxRodape } from "./radiosChitobox.js";
-import img_modelo  from "./imagemInput.js";
-import { dataCabecalho, dataEntrega} from "./dataHora.js";
-import { enviar, naoenviar, verificar } from "./verificarEnviar.js";
-import { CreateCookie,getCookie } from "./cookies.js";
-import { enviandoJson } from "./enviandoJSON.js";
+import { voltar, avancar, limpar , atualizarDiv, selectN , mudaPDF } from "./js/funcao.js";
+import { radioCabecalho, check_unidade, gravacaoExterna, checkboxRodape } from "./js/radiosChitobox.js";
+import img_modelo  from "./js/imagemInput.js";
+import { dataEntrega} from "./js/dataHora.js";
+import { verificar } from "./js/verificarEnviar.js";
+import { CreateCookie,getCookie } from "./js/cookies.js";
+import { enviandoJson } from "./js/enviandoJSON.js";
 
 //Buttons
 const voltarBt = document.getElementById('seta_esquerda');
@@ -168,33 +168,43 @@ buttonPdfDivImportar.addEventListener('click', function(){
   })
 // ---------------------------------------------------------------------------
 
-enviarBt.addEventListener('click',function(){
+enviarBt.addEventListener('click', async function(){
     let dataDigitada = document.getElementById('entrega').value;
     let dataDigitadaSplit = dataDigitada.split('-');
 
     if(verificar() === true){
+
         selectN();
         enviandoJson(dataDigitadaSplit[1],dataDigitadaSplit[2]);
-        contador =  avancar(contador.contador_P,contador.contador_Pg,contador.contador_Pe);
-        enviar();
-        // Cria o cookie Para fiscalização
-        const agora = new Date();
-        const horario = agora.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); // Exemplo: "14:35"
+       contador =  avancar(contador.contador_P,contador.contador_Pg,contador.contador_Pe);
+        
+        const form = document.getElementById('formulario');
+        const formData = new FormData(form);
 
-        CreateCookie("check_Pedido_" + document.getElementById('n_p').value +"-" + horario,"Torno", 0.4)
+        fetch("./php/PG2_Escritorio1.php", { 
+                method: "POST",
+                body: formData
+        })
+        .then(response => response.text()) 
+        .then(data => {
+            console.log("Resposta do servidor: Enviado " + data);
+
+        })
+        .catch(error => console.error("Erro:", error));
+ 
     }
     else{
-        return naoenviar()
+        console.log("Erro: Formulário inválido, não enviado.");
+        CreateCookie('Pfverificador','Nao_Enviado' ,0.00012);
     }
     document.getElementById("imagemPdf").src = './pedidos/imagemPedido/pdf.png';
     document.getElementById('pdfSalvo').style.visibility = 'hidden' ;
-    atualizarDiv("#envioP", 'divRodapeDinamica.php');
-    console.log(document.cookie);
+    atualizarDiv("#envioP", './php/divRodapeDinamica.php');
+    //console.log(document.cookie);
 });
 
 
 //Funções para ser iniciadas
-dataCabecalho();
 dataEntrega();
 
 
@@ -203,7 +213,9 @@ dataEntrega();
     let link = document.createElement('link');
     link.rel = 'shortcut icon';
     link.type = 'image/x-icon';
-    link.href = 'coroa.ico'; 
+    link.href = './Escritorio_img/coroa.ico'; 
     document.head.appendChild(link);
 })();
 
+
+export {CreateCookie}

@@ -4,7 +4,7 @@ include_once('separador.php');
 function pedidosPf($dataInput) {
 
     
-    $jsonPath = dirname(__DIR__, 3) . '/arquivoJson/pedidos.json';
+    $jsonPath = dirname(__DIR__, 3) . '/arquivoJson/json/pedidos.json';
     $pedidos = [];
         // Array para cookies a serem criados
     $cookiesParaCriar = [];
@@ -62,7 +62,7 @@ function pedidosPf($dataInput) {
 function pedidosPg($dataInput) {
 
             // Lê e decodifica o arquivo JSON
-     $jsonPath = dirname(__DIR__, 3) . '/arquivoJson/pedidosPg.json';
+     $jsonPath = dirname(__DIR__, 3) . '/arquivoJson/json/pedidosPg.json';
     $pedidos = [];
     if (file_exists($jsonPath)) {
         $json = file_get_contents($jsonPath);
@@ -98,26 +98,22 @@ function pedidosPg($dataInput) {
     <?php   
 }
 
-function pedidosPe($nenhumPedido) {
+function pedidosPe($dataInput) {
+    $jsonPath = dirname(__DIR__, 3) . '/arquivoJson/json/pedidosPe.json';
+    $pedidos = [];
+    if (file_exists($jsonPath)) {
+        $json = file_get_contents($jsonPath);
+        $pedidos = json_decode($json, true);
+    }
     ?>  
           <div id='processo'>
-
 
             <div id="escritorio">
               <div class="TextoTitulo">
                 <p>Escritório</p>
               </div>
                 <div>
-                    <?php echo $nenhumPedido ?>
-                </div>
-            </div>
-
-            <div id="pronto">
-                <div class="TextoTitulo">
-                    <p>Pronto</p>
-                </div>
-                <div>
-                    <?php echo $nenhumPedido ?>
+                    <?php escritorio($pedidos,$dataInput);  ?>
                 </div>
             </div>
 
@@ -129,7 +125,7 @@ function pedidosPe($nenhumPedido) {
 function todos($dataInput){
 
     //PF
-    $jsonPath = dirname(__DIR__, 3) . '/arquivoJson/pedidos.json';
+    $jsonPath = dirname(__DIR__, 3) . '/arquivoJson/json/pedidos.json';
     $pedidos = [];
     if (file_exists($jsonPath)) {
         $json = file_get_contents($jsonPath);
@@ -139,15 +135,19 @@ function todos($dataInput){
     $cookiesParaCriar = [];
 
     //PG
-    $jsonPathpg = dirname(__DIR__, 3) . '/arquivoJson/pedidosPg.json';
+    $jsonPathpg = dirname(__DIR__, 3) . '/arquivoJson/json/pedidosPg.json';
     $pedidospg = [];
     if (file_exists($jsonPath)) {
         $json = file_get_contents($jsonPathpg);
         $pedidospg = json_decode($json, true);
     }
-
-    // Array para cookies a serem criados
-    $cookiesParaCriarPG = [];
+    //PE
+    $jsonPathpe = dirname(__DIR__, 3) . '/arquivoJson/json/pedidosPe.json';
+    $pedidospe = [];
+    if (file_exists($jsonPath)) {
+        $json = file_get_contents($jsonPathpe);
+        $pedidospe = json_decode($json, true);
+    }
 
 
     ?>
@@ -158,7 +158,7 @@ function todos($dataInput){
                 <p>Torno</p>
             </div>
             <div>
-                <?php Torno($pedidos, $cookiesParaCriar,$dataInput); ?>
+                <?php Torno($pedidos,$dataInput); ?>
                 <?php  ?>
             </div>
         </div>
@@ -168,7 +168,7 @@ function todos($dataInput){
                 <p>Polimento</p>
             </div>
             <div>
-                <?php Polimento($pedidos, $cookiesParaCriar,$dataInput); ?>
+                <?php Polimento($pedidos,$dataInput); ?>
             </div>
         </div>
 
@@ -177,8 +177,8 @@ function todos($dataInput){
                 <p>Gravação</p>
             </div>
             <div>
-                <?php gravacao($pedidos, $cookiesParaCriar,$dataInput); ?>
-                <?php gravacao($pedidospg, $cookiesParaCriarPG,$dataInput); ?>
+                <?php gravacao($pedidos,$dataInput); ?>
+                <?php gravacaoPg($pedidospg,$dataInput); ?>
             </div>
         </div> 
 
@@ -187,8 +187,9 @@ function todos($dataInput){
                 <p>Escritório</p>
             </div>
             <div>
-                <?php escritorio($pedidos, $cookiesParaCriar,$dataInput);  ?>
-                <?php escritorio($pedidospg, $cookiesParaCriarPG,$dataInput);  ?>
+                <?php escritorio($pedidos,$dataInput);  ?>
+                <?php escritorio($pedidospg,$dataInput);  ?>
+                <?php escritorio($pedidospe,$dataInput);  ?>
             </div>
         </div>
 

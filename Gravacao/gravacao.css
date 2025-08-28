@@ -75,7 +75,7 @@ main{
 
  /* Estilo da barra de rolagem */
  ::-webkit-scrollbar {
-    width: 16px; /* aumenta a largura da barra vertical */
+    width: 50px; /* aumenta a largura da barra vertical */
     height: 50px; /* aumenta a altura da barra horizontal */
   }
    /* Parte do fundo da barra */
@@ -101,13 +101,13 @@ main{
     top:0;
     width:100%;
     height: 85px;
-    border: solid black 5px;
-    border-bottom: solid rgb(0, 0, 0) 5px ;
+    box-shadow: 0px 5px 10px rgba(0,0,0.0,0.7);
     background-color: antiquewhite;
     overflow: auto; /* Garante que o menu não "quebre" */
     padding-left: 10px;
     padding-right: 10px;
     flex-direction: column;
+    z-index: 3;
 }
 #cabecalho_menu{
     display: flex;
@@ -170,10 +170,11 @@ main{
 /*--------------------------------------- Pedidos Carrossel----------------------------------------*/
 #phpmae{
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
     width: 100%;
+    flex-wrap: wrap;
     margin-top: 85px;
 }
 .carrossel{
@@ -210,6 +211,7 @@ main{
     margin-left: 11px;
     width: 170px;
     position: absolute;
+    z-index: 2;
     margin-top: 256px
 }
 .caixaSelecao{
@@ -306,4 +308,44 @@ main{
 }
 #pedidonaoEncontrado{
     font-size: 0%;
+}
+
+@media (max-width: 800px) {
+    #usuarioButao{
+        display: none;
+        align-items: flex-start;
+        justify-content: flex-start;
+        background-color: rgb(109, 232, 226);
+        width: 70%;
+        margin-top: 0%;
+        padding: 10px;
+        height: 40%;
+        border: solid rgb(0, 5, 143) 2px;
+        border-radius: 20px;
+    }
+    #dataInput{
+        width: 140px;
+    }
+     /* Estilo da barra de rolagem */
+ ::-webkit-scrollbar {
+    width: 10px; /* aumenta a largura da barra vertical */
+    height: 10px; /* aumenta a altura da barra horizontal */
+  }
+   /* Parte do fundo da barra */
+   ::-webkit-scrollbar-track {
+    background: #797979;
+  }
+  .carrossel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-right: 1%;
+    border-radius: 20px;
+    border: solid  #800020 9px;
+    width: 350px;
+    height: 80vh;
+}
 }

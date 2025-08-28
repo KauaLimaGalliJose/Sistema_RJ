@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     list-style: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 body{
@@ -13,10 +14,10 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between ; /* Garante que os itens sejam distribuídos */
+    position: fixed;
     width: 100%;
     height: 80px;
-    border: solid black 5px;
-    border-bottom: solid rgb(0, 0, 0) 5px ;
+    box-shadow: 0px 5px 10px rgba(0,0,0.0,0.7);
     background-color: antiquewhite;
     overflow: auto; /* Garante que o menu não "quebre" */
     padding-left: 7px;
@@ -39,73 +40,259 @@ body{
     margin-left: 19px;
     margin-right: 19px;
 }
-#enivar_img{
-    width: 50px;
-    height: 50px;
-}
-#Div_Esquerda{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    font-size: 27px;
-    font-weight: 600;
-    margin: 10px;
-}
-.txtInput{
-    width: 200px;
-    height: 37px;
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: 600;
-    font-family: cursive;
-    padding: 2%;
-    border: solid black 3px;
-}
-.txtDescricao{
-    margin-top: 5px;
-    width: 100%;
-    height: 230px;
-    font-size: 20px;
-    font-weight: 600;
-    font-family: cursive;
-    padding: 0.5%;
-    resize: none;
-    border: solid black 3px;
-}
-form{
+
+#divFormulario{
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
     height: 100%;
     width: 100%;
 }
-#Div_Direita{
+
+#pedido{
     display: flex;
-    align-items: flex-end;
-    margin-left: 20px;
-    margin-top: 40px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: azure;
+    width: 100%;
+    height: 80%
+}
+
+/* Inputs */
+#inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8%;
+}
+.DivInputs{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+}
+.titulosInput{
+    font-size: 30px;
+    font-weight: 600;
     
-
 }
-#modelo_rainha{
+.NomePedido{
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    border: solid black 3px;
+    border-radius: 5px;
+}
+.descricao{
     display: flex;
-}
-#modelo{
-    display: flex;
-    height: 300px;
-    border: solid black 5px;
-    border-radius: 10px;
+    width: 100%;
+    height: 150px;
+    border: solid black 3px;
+    border-radius: 5px;
+    font-size: 120%;
+    resize: none; /* Desabilita o redimensionamento */
+    margin-top: 10px;
+    padding:5px;
 }
 
-#modelo_imagem{
+/* Imagem */
+#imagem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-top: 10%;
+}
+.custum-file-upload {
+  height: 200px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  gap: 20px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border: 5px dashed #000000;
+  background-color: rgb(255, 255, 255);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 48px 35px -48px rgba(0,0,0,0.1);
+}
+
+.custum-file-upload .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; 
+}
+
+.custum-file-upload .icon svg {
+  height: 80px;
+  fill: rgba(75, 85, 99, 1);
+  z-index: 1; 
+}
+
+.custum-file-upload .text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; 
+}
+
+.custum-file-upload .text span {
+  font-weight: 400;
+  color: rgba(75, 85, 99, 1);
+  z-index: 1; 
+}
+
+.custum-file-upload input {
+  display: none;
+  z-index: 1; 
+}
+#preview {
     display: none;
-    border-radius: 10px;
+    height: 200px;
+    width: 300px;
+    object-fit: cover;
+    border: 5px dashed #000000;
+    border-radius: 10px; 
+    background-color: antiquewhite;
+    z-index: 2; 
+}
+#trocarImgDiv{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(219, 113, 99);
+    border-radius: 10px; 
+    margin-top: 10px;
+    width: 150px;
+    height: 30px;
+}
+#trocarImg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* Enviar */
+#Enviar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    width: 100%;
+}
+
+.button {
+  display: inline-block;
+  padding: 18px 84px;
+  background-color: #4e969b;
+  border: 1px solid #237e8a;
+  border-radius: 4px;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  font-size: 19px;
+  cursor: pointer;
+  color: black;
+  z-index: 1;
+}
+
+.button:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #e43b3b;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button:hover {
+  color: #ffffff;
+  border: 1px solid #e43b3b;;
+}
+
+.button:hover:before {
+  top: -35%;
+  background-color: #e43b3b;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.button:hover:after {
+  top: -45%;
+  background-color: #e43b3b;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+/* celular */
+@media (max-width: 768px) {
+
+    #pedido{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: azure;
+        width: 100%;
+        height: 100%;
+        margin-top: 100px;
+}
+    #inputs{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+}
+#imagem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0px;
+    margin-top: 10%;
+}
+
+/* Enviar */
+#Enviar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom:  30px;
+    width: 100%;
 
 }
-#ImagemInput{
-    padding-bottom: 10px;
+
 }

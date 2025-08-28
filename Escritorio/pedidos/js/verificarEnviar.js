@@ -1,5 +1,5 @@
-import { diaMesAno } from "../../dataHora.js";
-import { CreateCookie } from "../../cookies.js";
+import { diaMesAno } from "../../js/dataHora.js";
+import { CreateCookie } from "../../js/cookies.js";
 //Variaveis do P , PG e PE
 const select = document.getElementById('n_p');
 let  select_N = select.options[0];
@@ -140,39 +140,5 @@ export function verificar() {
     }
 }
 
-export function enviar(){
-    formulario.addEventListener("submit", function(event) {
-        event.preventDefault();
-        verificar()
-        
-        if (chave === true) {  
-            document.getElementById('btEnviar').disabled = true;
-            const dadosInputs = new FormData(this);
-
-            fetch("../phpScripts/salvar.php", { 
-                method: "POST",
-                body: dadosInputs
-            })
-            .then(response => response.text()) 
-            .then(data => {
-                console.log("Resposta do servidor: Enviado " );
-                document.getElementById('btEnviar').disabled = false; // Reativa o botão após a resposta
-            })
-            .catch(error => console.error("Erro:", error));
-            document.getElementById('btEnviar').disabled = false;
-        } 
-        else {
-            console.log("Erro: Formulário inválido, não enviado.");
-        }
-        document.getElementById('btEnviar').disabled = false; 
-    });
-}
-
-export function naoenviar(){
-    formulario.addEventListener("submit", function(event) {
-        event.preventDefault(); // Impede o envio do formulário
-    });
-
-}
 
 export {CreateCookie}

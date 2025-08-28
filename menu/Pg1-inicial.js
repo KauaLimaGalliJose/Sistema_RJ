@@ -45,3 +45,13 @@ function tema_2(){
     document.getElementById('header').style.backgroundColor = 'rgb(241, 178, 84)';
     document.getElementById('div_config').style.backgroundColor = 'azure';
 }
+
+
+// Adiciona favicon dinamicamente coroa.ico
+(function() {
+    let link = document.createElement('link');
+    link.rel = 'shortcut icon';
+    link.type = 'image/x-icon';
+    link.href = '../Escritorio/Escritorio_img/coroa.ico'; 
+    document.head.appendChild(link);
+})();

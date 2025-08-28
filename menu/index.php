@@ -1,0 +1,75 @@
+<?php
+    include_once '../phpIndex/protege.php';
+
+    proteger(); // Chama a função para verificar o token antes de carregar a página
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Rainha Joias</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Pg1-inicial.css">
+    <script src="Pg1-inicial.js" defer></script>
+    <link rel="shortcut icon" href="../coroa.png" type="image/x-icon">
+    
+</head>
+<body>
+    <div>
+        <header id="header">
+            <div id="logo" name="logo">
+                <div id="menu_de_cima">
+                        <button id= "botao" title="Configuração" class="config" onclick="abrir()"></button>
+                    <div id="div_config">
+                        <div id="fechar">
+                            <button id="fechar_b" onclick="fechar()"><img class='fechar' src="X.png" alt=""></button>
+                        </div>
+                        <div id="cor_P">Cor da Página</div>
+                        <div id = 'temas'>
+                            <form name="cor" class="div_config">
+                                    <label for="tema_Escuro">
+                                        <input type="radio" name="tema" onchange="tema_1()" id="tema_Escuro" value="t_c" > Tema Escuro
+                                    </label>
+                                    <label for="tema_Claro">
+                                        <input type="radio" name="tema" onchange="tema_2()" id="tema_Claro" value="t_e" checked > Tema Claro
+                                    </label>
+                            </form>
+                        </div>
+                        <div id ="php" >
+                            <a class="botaoconfig" href="conversor/conversor.html">Converter PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Menu">
+                <div id="Escritorio" class="Menu1">
+                    <a class="B_menu" href="../Escritorio/PG2-Escritorio.php">Escritório</a>
+                </div>
+                <div id="Torno" class="Menu1">
+                    <a class="B_menu" id="TornoAncora" href="../Torno/torno.php">Torno/Polimento</a>
+                </div>
+                <div  id="Pedidos" class="Menu1">
+                    <a id="PedidosAncora" class="B_menu" href="../Gravacao/gravacao.php">Pedidos</a>
+                </div>
+                <div  id="Gravacao" class="Menu2">
+                    <a id="GravacaoAncora" class="B_menu" href="../Gravacao/gravacao.php">Gravação</a>
+                </div>
+                </div>
+            </div>
+        </header>
+        <main id="conteudo">
+            <div>
+                <div id="drive_div" >
+                    <a title="Acessar Drive" href="https://drive.google.com/drive/home"><img id="drive" src="Drive.png" alt="Drive"></a>   
+                </div>
+            </div>
+        </main>
+            <div id="relogio">
+                00:00:00        
+            </div> 
+        <footer>
+
+        </footer>
+    </div>
+</body>
+</html>

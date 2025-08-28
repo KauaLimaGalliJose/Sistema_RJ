@@ -1,0 +1,175 @@
+/* -- barra de navegação -- */
+/* width */
+.informacoesDiv::-webkit-scrollbar {
+width: 8px;
+}
+
+/* Track */
+.informacoesDiv::-webkit-scrollbar-track {
+background: #f1f1f1;
+}
+
+/* Handle */
+.informacoesDiv::-webkit-scrollbar-thumb {
+background: #888;
+}
+
+/* Handle on hover */
+.informacoesDiv::-webkit-scrollbar-thumb:hover {
+background: #555;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body{
+    background-color: azure;
+
+}
+#cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between ; /* Garante que os itens sejam distribuídos */
+    width: 100%;
+    height: 80px;
+    box-shadow: 0px 5px 10px rgba(0,0,0.0,0.7);
+    background-color: antiquewhite;
+    overflow: auto; /* Garante que o menu não "quebre" */
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-bottom: 15px;
+}
+.botao{
+    background-color: antiquewhite;
+    border: 0px;
+    padding: 2px;
+}
+.botao:hover{
+    transition: 0.5s;
+    transform: scale(110%);
+    background-color: rgb(247, 94, 94);
+    border-radius: 10%;
+}
+.itens{
+    width: 50px;
+    height: 50px;
+    margin-left: 19px;
+    margin-right: 19px;
+}
+
+/*  ------------------------------------ Estoques -------------------------------------------- */
+#div_estoques{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Permite que os itens se movam para a próxima linha */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+    width: 100%;
+}
+.estoques{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height:200px;
+    margin: 10px;
+    border: rgb(161, 42, 42) 5px solid;
+    border-radius:10px;
+    background-color: rgb(236, 206, 206);
+}
+.Estoque_Divs{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+}
+.imgEstoques{
+  display: flex;
+  width: 100%;
+  height:100%;
+  border-radius: 10px;
+}
+.informacoesDiv{
+    display: flex;
+    align-items:  flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    overflow: auto;
+    width: 100%;
+    height:100%;
+    margin-left: 8px;
+}
+.fontRed{
+    color: rgb(185, 27, 27);
+    flex-direction: row;
+}
+.fontbackground{
+    background-color: cadetblue;
+    flex-direction: row;
+    border-radius: 10px;
+
+    padding: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    word-break: keep-all;
+}
+
+.botaoForm{
+     background-color: azure;
+     border: solid azure 2px;
+}
+.botaoForm:hover{
+    transition: 0.4s;
+    transform: scale(105%);
+    background-color: rgb(247, 94, 94);
+    border-radius: 10px;
+}
+/* ------------------------------------ sem estoque -------------------------------------------- */
+#Sem_estoque{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 500px;
+}
+#Sem_estoque h1{
+    display: flex;
+    align-items: center;
+    justify-content: justify;
+    font-weight: 100;
+    color: rgb(185, 27, 27);
+}
+
+#criarBnt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 50px;
+    background-color: rgb(94, 199, 247);
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 180%;
+    margin-top: 20px;
+}
+#criarBnt:hover{
+    transition: 0.4s;
+    transform: scale(105%);
+    background-color: rgb(161, 42, 42);
+    color: azure;
+}
+/* celular */
+@media (max-width: 768px) {
+
+
+
+}

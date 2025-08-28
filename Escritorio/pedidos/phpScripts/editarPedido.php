@@ -1,4 +1,8 @@
 <?php
+    include_once '../../../phpIndex/protege.php';
+    proteger();
+?>
+<?php
     //Variaveis Global
     ?><div id="banco"><?php include_once('../../../conexao.php'); ?></div><?php
 
@@ -7,41 +11,18 @@
 
 <?php /////////////////////////////////////////////////////////////////////////////////////
     // Para Enviar Cookies 
-    function CokiesP($nome,$numero){
-        setcookie($nome,intval($numero), time() + (365 * 86400 * 1000), "/");
-    }
+    function pedidos($conectar, $p , $nomeTabela){
 
-    if(!empty($_GET['idpedidos'])){
+        global $nomePedido, $numeroF, $numeroM, $pdf, $descricaoPedido, $descricaoAlianca, $imagem, 
+        $largura, $data, $gravInterna, $gravExterna, $gravExternaCheck, $styleGraveExterna, $unidade, 
+        $styleUnidade, $PedraF, $PedraM, $parEstoqueF, $parEstoqueM, $estoquesPersonalizados,$estoqueNenhum,
+        $estoquesPersonalizados_selected, $estoquesPersonalizados_style, $estoqueNenhum_style;
 
-        $p = $_GET['idpedidos'];
-        $pPrint = explode("-", $p);
-        $pSplit = str_split($p,1);
-
-        //Variaveis NULL
-        $mercadoLivre = null;
-        $styleMercadoLivre = null;
-        $unidade = null;
-        $styleUnidade = null;
-        $gravInterna = null;
-        $gravExterna = null;
-        $gravExternaCheck = null;
-        $styleGraveExterna = null;
-        $PedraF = null;
-        $PedraM = null;
-        $parEstoqueF = null;
-        $parEstoqueM = null;
-
-        if($pSplit[1] === "F"){
-            
-            $dados = "SELECT * FROM pedidosp WHERE idpedidos = '$p' ";
-            $dadosConectar = mysqli_query($conectar,$dados);
+        $dados = "SELECT * FROM $nomeTabela WHERE idpedidos = '$p' ";
+        $dadosConectar = mysqli_query($conectar,$dados);
 
             while($linhaDados = mysqli_fetch_assoc($dadosConectar)){
 
-
-                //Variaveis do VALUES
-                $mercadoLivre = 'checked';
-                $styleMercadoLivre = 'style="visibility: visible;"';
 
                 $nomePedido = $linhaDados['nomePedido'];
                 $numeroF = $linhaDados['numF'];
@@ -53,7 +34,7 @@
                 $largura = $linhaDados['largura'];
                 $data = $linhaDados['data_digitada'];
 
-
+                // gravações
                 if(!empty($linhaDados['gravacaoInterna'])){
                     $gravInterna = $linhaDados['gravacaoInterna'];
 
@@ -65,13 +46,13 @@
 
                 }
 
-
+                // Verifica se o pedido é unidade
                 if($numeroF == 40){
                     $unidade = 'checked';
                     $styleUnidade = 'style="visibility: hidden;"';
                 }
 
-
+                //pedras
                 if($linhaDados['PedraF'] == true){
                     $PedraF = 'checked';
                 }
@@ -80,7 +61,7 @@
                     $PedraM = 'checked';
                 }
 
-
+                // Estoques
                 if($linhaDados['parEstoqueF'] == true){
                     $parEstoqueF = 'checked';
                 }
@@ -88,119 +69,77 @@
 
                     $parEstoqueM = 'checked';
                 }
-            }
-
-        }
-        elseif($pSplit[1] === "G"){
-
-            $dadosPg = "SELECT * FROM pedidospg WHERE idpedidos = '$p' ";
-            $dadosConectarPg = mysqli_query($conectar,$dadosPg);
-
-            while($linhaDadosPg = mysqli_fetch_assoc($dadosConectarPg)){
-
-                //Variaveis do VALUES
-                $mercadoLivre = 'checked';
-                $styleMercadoLivre = 'style="visibility: visible;"';
-                
-                $pdf = $linhaDadosPg['pdf'];
-                $nomePedido = $linhaDadosPg['nomePedido'];
-                $numeroF = $linhaDadosPg['numF'];
-                $numeroM = $linhaDadosPg['numeM'];
-                $descricaoPedido = $linhaDadosPg['descricaoPedido'];
-                $descricaoAlianca = $linhaDadosPg['descricaoAlianca'];
-                $imagem = $linhaDadosPg['imagem'];
-                $largura = $linhaDadosPg['largura'];
-                $data = $linhaDadosPg['data_digitada'];
-
-                if(!empty($linhaDadosPg['gravacaoInterna'])){
-                    $gravInterna = $linhaDadosPg['gravacaoInterna'];
-
+                if($linhaDados['estoque'] == NULL || $linhaDados['estoque'] == 'Nenhum'){
+                    
+                    $estoqueNenhum_style = 'style="display: flex;"';
+                    $estoqueNenhum = 'selected';
+                    
+                    $estoquesPersonalizados == null;
+                    $estoquesPersonalizados_selected = '';
+                    $estoquesPersonalizados_style = 'style="display: none;"';
+                    
                 }
-                if(!empty($linhaDadosPg['gravacaoExterna'])){
-                    $gravExterna = $linhaDadosPg['gravacaoExterna'];
-                }
-
-
-                if($numeroF == 40){
-                    $unidade = 'checked';
-                    $styleUnidade = 'style="visibility: hidden;"';
-                }
-
-
-                if($linhaDadosPg['PedraF'] == true){
-                    $PedraF = 'checked';
-                }
-                if($linhaDadosPg['PedraM'] == true){
-                    $PedraM = 'checked';
-                }
-
-                
-                if($linhaDadosPg['parEstoqueF'] == true){
-                    $parEstoqueF = 'checked';
-                }
-                if($linhaDadosPg['parEstoqueM'] == true){
-
-                    $parEstoqueM = 'checked';
+                else{
+                    $estoquesPersonalizados = $linhaDados['estoque'];
+                    $estoquesPersonalizados_selected = 'selected';
+                    $estoquesPersonalizados_style = 'style="display: flex;"';
+                    
+                    $estoqueNenhum = '';
+                    $estoqueNenhum_style = 'style="display: none;"';
                 }
             }
 
-            
+    }
 
-        }
-        elseif($pSplit[1] === "E"){
+    if(!empty($_GET['idpedidos'])){
 
-            $dadosPe = "SELECT * FROM pedidospe WHERE idpedidos = '$p' ";
-            $dadosConectarPe = mysqli_query($conectar,$dadosPe);
+        $p = $_GET['idpedidos'];
+        $pPrint = explode("-", $p);
+        $pSplit = str_split($p,1);
 
-            while($linhaDadosPe = mysqli_fetch_assoc( $dadosConectarPe)){
+        //Variaveis NULL
+        $mercadoLivre = null;
+        $loja = null;
+        $outros = null;
+        $styleMercadoLivre = null;
+        $unidade = null;
+        $styleUnidade = null;
+        $gravInterna = null;
+        $gravExterna = null;
+        $gravExternaCheck = null;
+        $styleGraveExterna = null;
+        $PedraF = null;
+        $PedraM = null;
+        $parEstoqueF = null;
+        $parEstoqueM = null;
+        $estoquesPersonalizados = null;
 
-                //Variaveis do VALUES
-                $mercadoLivre = 'checked';
-                $styleMercadoLivre = 'style="visibility: visible;"';
+        //variaveis hidden
+        $loja_type = 'none';
+        $mercadoLivre_type = 'none';
+        $outros_type = 'none';
 
-                $pdf = $linhaDadosPe['pdf'];
-                $nomePedido = $linhaDadosPe['nomePedido'];
-                $numeroF = $linhaDadosPe['numF'];
-                $numeroM = $linhaDadosPe['numeM'];
-                $descricaoPedido = $linhaDadosPe['descricaoPedido'];
-                $descricaoAlianca = $linhaDadosPe['descricaoAlianca'];
-                $imagem = $linhaDadosPe['imagem'];
-                $largura = $linhaDadosPe['largura'];
-                $data = $linhaDadosPe['data_digitada'];
-                
-                if(!empty($linhaDadosPe['gravacaoInterna'])){
-                    $gravInterna = $linhaDadosPe['gravacaoInterna'];
-                }
-                if(!empty($linhaDadosPe['gravacaoExterna'])){
-                    $gravExterna = $linhaDadosPe['gravacaoExterna'];
-                }
+        if($pSplit[1] === "F" || $pSplit[1] === "G" || $pSplit[1] === "E"){
 
+            //Variaveis do tipo do pedido radio
+            $mercadoLivre = 'checked';
+            $mercadoLivre_type = 'flex';
 
-                if($numeroF == 40){
-                    $unidade = 'checked';
-                    $styleUnidade = 'style="visibility: hidden;"';
-                }
+        
+            if($pSplit[1] === "F"){
 
-
-                if($linhaDadosPe['PedraF'] == true){
-                    $PedraF = 'checked';
-                }
-                if($linhaDadosPe['PedraM'] == true){
-                    $PedraM = 'checked';
-                }
-
-
-                if($linhaDadosPe['parEstoqueF'] == true){
-                    $parEstoqueF = 'checked';
-                }
-                if($linhaDadosPe['parEstoqueM'] == true){
-                    $parEstoqueM = 'checked';
-                }
-
+                pedidos($conectar, $p , 'pedidosp');
             }
+            elseif($pSplit[1] === "G"){
 
+                pedidos($conectar, $p , 'pedidospg');
+            }
+            elseif($pSplit[1] === "E"){
+
+                pedidos($conectar, $p , 'pedidospe');
+                
+            }
         }
-
     }
 
 
@@ -213,32 +152,32 @@
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="../../../coroa.png" type="image/x-icon">
     <link rel="stylesheet" href="../../PG2-Escritorio.css">
-    <script src="../../../Importados/jquery-3.7.1.min.js"></script>
+    <script src="../../../scripts/importadosLocais/jquery-3.7.1.min.js"></script>
     <script src="../js/mainEditarPedidos.js" type="module" defer></script>
     <title>Escritório</title>
 </head>
 <body>
    <main>
-    <form id="formulario"  enctype="multipart/form-data" action="salvar.php" method="post">
+    <form id="formulario"  enctype="multipart/form-data" >
         <div id="cabecalho">
             <div id="cabecalho_cima">
                 <div id="casa">
                     <button type="button" value=""  class="botao" >
-                    <a href="../../../Escritorio/pedidos/pedidos.php"><img class="itens" src="../../casa.png"></a>
+                    <a href="../../../Escritorio/pedidos/pedidos.php"><img class="itens" src="../../Escritorio_img/casa.png"></a>
                     </button>
         
                 </div>
                 <div id="ferramentas">
                     <button type="button" id="editar" value="" class="botao">
-                    <a href="../pedidos.php"><img class="itens" src="../../editar.png"></a>
+                    <a href="../pedidos.php"><img class="itens" src="../../Escritorio_img/editar.png"></a>
                     </button>
         
                     <button type="button" id="limpar" value="" class="botao">
-                        <img class="itens" src="../../lixeira.png">
+                        <img class="itens" src="../../Escritorio_img/lixeira.png">
                     </button>
                 </div>
                 <div id="enviar">
-                    <button id="btEnviar" type="submit"  value="enviar" >
+                    <button id="btEnviar" type="button"  value="enviar" >
                             <div class="svg-wrapper-1">
                               <div class="svg-wrapper">
                                 <svg
@@ -261,16 +200,24 @@
             </div>
             <div id="cabecalho_baixo">
                 <div id="tipo_pedido">
-                        <input type="radio" id="c1" value="Mercado_Livre" name = 'cliente' class="radio" <?php echo $mercadoLivre ?>><label for="c1">Mercado Livre</label> 
-                        <input type="radio" id="c2" value="showroom" name = 'cliente' class="radio"><label for="c2">Showroom</label> 
-                        <input type="radio" value="Outros"  id="c3" name = 'cliente' class="radio" ><label for="c3">Outros:</label>  
+                        <input type="radio" style="display:<?php echo $mercadoLivre_type; ?>" id="c1" value="Mercado_Livre" name = 'cliente' class="radio" <?php echo $mercadoLivre ?>><label for="c1" style="display:<?php echo $mercadoLivre_type; ?> ;">Mercado Livre</label> 
+                        <input type="radio" style="display:<?php echo $loja_type; ?>" id="c2" value="showroom" name = 'cliente' class="radio" <?php echo $loja ?>><label for="c2" style="display:<?php echo $loja_type; ?> ;" >Loja</label> 
+                        <input type="radio" style="display:<?php echo $outros_type; ?>" value="Outros"  id="c3" name = 'cliente' class="radio" <?php echo $outros ?>><label for="c3" style="display:<?php echo $outros_type; ?> ;">Outros:</label>  
                         <input type="text" id="outros"  name="txtcliente"  placeholder="Cliente...">
                 </div>
             </div>
         </div>
         <div id="conteudo">
             <div id="data">
-             Pedido <?php echo $pPrint[0]; ?>
+             Estoque 
+             <select id="estoque" name = 'estoque' > 
+                <option value="Nenhum" id="NenhumEstoque" <?php echo $estoqueNenhum; echo $estoqueNenhum_style; ?>>Nenhum</option>
+                <span class="font_red"><option value="<?php echo $estoquesPersonalizados ?>" <?php echo $estoquesPersonalizados_style; echo $estoquesPersonalizados_selected; ?>><?php echo $estoquesPersonalizados ?></option></span>
+                <?php
+                    include_once('../../Estoque/phpScripts/puxarDados.php');
+                    titulosDoEstoque($conectar);
+                ?>
+             </select>
             </div>
             <div id="pedido_input">
                 <div id="direita_input">
@@ -313,7 +260,7 @@
                             Enviar Imagem
                         </label>
                         <div id="modelo">
-                        <img id="modelo_rainha" src="../../rj.png.webp" alt="rainha" style="display: none;">
+                        <img id="modelo_rainha" src="../../Escritorio_img/rj.png.webp" alt="rainha" style="display: none;">
                         <img id="modelo2" src="../../<?php echo $imagem ; ?>" alt="Falha ao carregar imagem" style="display: block;">
                         </div>
                     </div>
@@ -363,4 +310,4 @@
     </form>
    </main>
 </body>
-</html> 
+</html>

@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     list-style: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 body{
     background-color: azure;
@@ -15,7 +16,7 @@ body{
     width: 100%;
     height: 30%;
     background-color:rgb(241, 178, 84);
-    border-bottom:solid rgb(0, 0, 0) 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.7);
 }
 #logo{
     width: 100%;
@@ -24,8 +25,8 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    border-bottom:solid rgb(0, 0, 0);
     background-color: rgb(250, 207, 143);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 
 }
 #menu_de_cima{
@@ -63,7 +64,15 @@ body{
     justify-content: center;
     height: 30%;
     margin: 10%;
-    font-family: cursive;
+    font-size: 220%;
+    font-weight: 800;
+}
+.Menu2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30%;
+    margin: 0%;
     font-size: 220%;
     font-weight: 800;
 }
@@ -73,9 +82,9 @@ body{
     /*tira o soblinhado da ancora*/
 }
 .B_menu:hover{
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     transition-duration: 0.5s;
-    transform: scale(150%);
+    transform: scale(130%);
 
 }
 .botaoconfig{
@@ -112,6 +121,192 @@ body{
 }
 #relogio{
     display: flex;
+    justify-content: center;
+    padding: 2%;
+    font-size: 1000%;
+    font-weight: 500;
+}
+.ponto{
+    display: flex;
+    text-align: center;
+    font-size: 100%;
+    font-weight: 500;
+    color: rgb(197, 54, 18);
+}
+#PedidosAncora{
+    display: none;
+}
+
+#div_config{
+   
+    flex-direction: column;
+    background-color:azure;
+    width: 400px;
+    height: 500px;
+    display: none;
+    position: absolute;
+    top: 10%;
+    border-radius: 10px;
+    border: solid rgb(197, 54, 18) 3px;
+    padding-top: 1%;
+    
+}
+#fechar{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    
+}
+.fechar{
+    
+    width: 25px;
+    height: 23px;
+    padding-top: 1px;
+    border-radius: 30px;
+}
+#cor_P{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 34px;
+    font-weight: 600;
+
+}
+
+#temas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+
+    
+}
+#tema_Claro{
+    margin-left: 40px;
+}
+#php{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    font-size: 150%;
+    color: black;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+body{
+    background-color: lightblue;
+}
+#header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color:rgb(241, 178, 84);
+}
+#logo{
+    width: 100%;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: rgb(250, 207, 143);
+
+}
+#menu_de_cima{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+#botao{
+    margin: 5px;
+    width: 70px;
+    height: 55px;
+    padding: 10px;
+    background-image: url('Config.png'); /* Caminho da sua imagem */
+    background-color: rgb(250, 207, 143);
+    background-size: 86%; /* Ajusta a imagem para cobrir todo o botão */
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none; /* Remove borda padrão */
+    cursor: pointer; /* Muda o cursor ao passar sobre o botão */
+}
+.config:hover{
+    transition-duration: 0.5s ;
+    transform: scale(130%);
+}
+#Menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#Menu .Menu1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30%;
+    margin: 10%;
+    font-size: 220%;
+    font-weight: 800;
+}
+.B_menu{
+    color: black;
+    text-decoration: none;
+    /*tira o soblinhado da ancora*/
+}
+.B_menu:hover{
+    color: rgb(255, 255, 255);
+    transition-duration: 0.5s;
+    transform: scale(150%);
+
+}
+.botaoconfig{
+    color: black;
+    text-decoration: none;
+    /*tira o soblinhado da ancora*/
+}
+.botaoconfig:hover{
+    color: rgb(147, 33, 33);
+    transition-duration: 0.5s;
+    transform: scale(150%);
+
+}
+
+
+/*Conteudo*/
+#conteudo{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 2%;
+    margin: 0%;
+}
+#drive_div{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+#drive{
+    margin-top: 20%;
+    height: 200px ;
+    width: 250px;
+}
+#relogio{
+    display: none;
     justify-content: center;
     padding: 2%;
     font-size: 1000%;
@@ -181,4 +376,26 @@ body{
     font-size: 150%;
     color: black;
     text-decoration: none;
+}
+#GravacaoAncora{
+    display: none;
+}
+#TornoAncora{
+    display: none;
+}
+#PedidosAncora{
+    display: flex;
+}
+
+}
+@media (max-height: 600px) {
+    #GravacaoAncora{
+    display: none;
+    }
+    #TornoAncora{
+        display: none;
+    }
+    #PedidosAncora{
+        display: flex;
+    }
 }

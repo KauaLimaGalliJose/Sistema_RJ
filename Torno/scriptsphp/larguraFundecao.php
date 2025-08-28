@@ -50,8 +50,8 @@ function largura($larguraAlianca,$conectar,$data){
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../../coroa.png" type="image/x-icon">
-    <link rel="stylesheet" href="larguraTorno.css">
-    <script src="./larguraTorno.js" defer></script>
+    <link rel="stylesheet" href="../css/larguraTorno.css">
+    <script src="/js/larguraTorno.js" defer></script>
     <title>Torno Largura</title>
 </head>
 <body>
@@ -60,7 +60,7 @@ function largura($larguraAlianca,$conectar,$data){
         <div id="cabecalho_menu">
             <div id="casa">
                 <button type="button"  value=""  class="botao" >
-                <a href="../torno.php"><img class="itens" src="../../Escritorio/casa.png"></a>
+                <a href="../torno.php"><img class="itens" src="../../Escritorio/Escritorio_img/casa.png"></a>
                 </button>
             </div>
                 <input class="data" value="<?php echo $_POST['dataInput']?? date('Y-m-d'); ?>" id="dataInput" name="dataInput" type="date">

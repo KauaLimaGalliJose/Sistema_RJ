@@ -25,7 +25,13 @@ buttonImprimir.addEventListener('click',function(){
     //Texto
     document.querySelectorAll('.pedidostexto').forEach(element => {
       element.style.marginBottom = '10px';
+      element.style.marginTop = '0px';
     });
+    //Imagem
+    document.querySelectorAll('.pedidosImagem').forEach(element => {
+      element.style.marginTop = '0px';
+    });
+
 
     ///// -------Antes
     window.print();
@@ -38,6 +44,11 @@ buttonImprimir.addEventListener('click',function(){
     //Texto
     document.querySelectorAll('.pedidostexto').forEach(element => {
       element.style.marginBottom = '100px';
+      element.style.marginTop = '82px';
+    });
+    //Imagem
+    document.querySelectorAll('.pedidosImagem').forEach(element => {
+      element.style.marginTop = '82px';
     });
 })
 // 35 escala
@@ -55,3 +66,14 @@ window.addEventListener('wheel', function(e) {
       behavior: 'auto' 
     });
   }, { passive: false }); // 'passive: false' é necessário para usar e.preventDefault
+
+// Adiciona favicon dinamicamente coroa.ico
+(function() {
+    let link = document.createElement('link');
+    link.rel = 'shortcut icon';
+    link.type = 'image/x-icon';
+    link.href = '../Escritorio_img/coroa.ico'; 
+    document.head.appendChild(link);
+})();
+
+// -----------------------------------------------------------------------------------------------

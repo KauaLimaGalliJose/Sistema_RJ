@@ -1,4 +1,6 @@
 <?php
+include_once '../../phpIndex/protege.php';
+proteger();
 include_once('../../conexao.php');
 include_once('./phpScripts/statusFuncao.php');
 ?>
@@ -20,7 +22,7 @@ include_once('./phpScripts/statusFuncao.php');
             <div id="cabecalho_menu">
                 <div id="casa">
                     <button type="button" value=""  class="botao" >
-                    <a href="../PG2-Escritorio.php"><img class="itens" src="../casa.png"></a>
+                    <a href="../PG2-Escritorio.php"><img class="itens" src="../Escritorio_img/casa.png"></a>
                     </button>
                 </div>
                 <div class="body">
@@ -91,6 +93,7 @@ include_once('./phpScripts/statusFuncao.php');
 
                     statusPedidosTodos($conectar,$dataInput);
                 }
+                mysqli_close($conectar);
         ?>
     </div>
 </body>

@@ -24,11 +24,14 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('formulario').submit();
   });
 
-  // Adiciona favicon dinamicamente coroa.ico
+// Adiciona favicon dinamicamente coroa.ico
 (function() {
     let link = document.createElement('link');
     link.rel = 'shortcut icon';
     link.type = 'image/x-icon';
-    link.href = "../coroa.ico";
+    link.href = '../Escritorio_img/coroa.ico'; 
     document.head.appendChild(link);
 })();
+
+
+

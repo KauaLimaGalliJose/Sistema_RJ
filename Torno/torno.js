@@ -7,16 +7,25 @@ setInterval(function() {
       document.getElementById('formulario').submit();
     };
     location.reload();
-  }, 60000); //60 segundos
+  }, 120000); //120 segundos
 
 // Nova função para enviar dados ao backend
-function enviarParaJson(arquivo, nome, valor, dataAtual) {
-    fetch('../arquivoJson/salvarPedidoTorno.php', {
+function enviarParaJson(arquivo, arquivoPhp, nome, valor , dataAtual) {
+
+    // Hora e minuto
+    const agora = new Date();
+    const hora = agora.getHours();
+    const minutos = agora.getMinutes();
+    const segundos = agora.getSeconds();
+
+    let horaEntrega = `${hora.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+
+    fetch('../arquivoJson/php/' + arquivoPhp, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ arquivo, nome, valor, dataAtual }) // Inclui o nome do arquivo no corpo
+        body: JSON.stringify({ arquivo, nome, valor, dataAtual , horaEntrega }) // Inclui o nome do arquivo no corpo
     })
     .then(response => response.json())
     .then(data => {
@@ -29,7 +38,7 @@ function enviarParaJson(arquivo, nome, valor, dataAtual) {
 
 async function carregarPedidosJson() {
     try {
-        const response = await fetch('../arquivoJson/pegarDadosPedidos.php');
+        const response = await fetch('../arquivoJson/php/pegarDadosPedidos.php');
         const dados = await response.json();
         return dados;
     } catch (error) {
@@ -51,19 +60,19 @@ function salvarEstadoRadio(radio) {
 
         carrossel.style.border = '8px solid blue';
         carrosselSuperior.style.borderBottom = '8px solid blue';
-        enviarParaJson('pedidos.json', radio.classList[1], "escritorio", dataAtual);
+        enviarParaJson('pedidos.json', 'salvarPedidoPolimento.php', radio.classList[1], "escritorio" , dataAtual);
         
     } else if (radio.value === "Polimento") {
 
         carrossel.style.border = '8px solid rgb(40, 170, 0)';
         carrosselSuperior.style.borderBottom = '8px solid rgb(40, 170, 0)';
-        enviarParaJson('pedidos.json', radio.classList[1], "polimento", dataAtual);
+        enviarParaJson('pedidos.json', 'salvarPedidoTorno.php', radio.classList[1], "polimento" , dataAtual);
     }
     else if (radio.value === "torno") {
         
         carrossel.style.border = 'solid #800020 9px';
         carrosselSuperior.style.borderBottom = 'solid #800020 9px';
-        enviarParaJson('pedidos.json', radio.classList[1], "torno", dataAtual);
+        enviarParaJson('pedidos.json', 'salvarPedidoTorno.php', radio.classList[1], "torno" , dataAtual);
     }
 }
 
@@ -92,13 +101,18 @@ window.addEventListener("load", async function() {
                 const carrosselSuperior = radio.closest('.carrosselSuperior');
 
                 console.log(radio.value.toLowerCase())
-                if (pedido.estado.toLowerCase() === "polimento") {
+                if ( pedido.estado.toLowerCase() === "polimento") {
+
                     if (carrossel) carrossel.style.border = '8px solid rgb(40, 170, 0)';
                     if (carrosselSuperior) carrosselSuperior.style.borderBottom = '8px solid rgb(40, 170, 0)';
-                } else if (pedido.estado.toLowerCase() === "torno") {
+
+                } else if ( pedido.estado.toLowerCase() === "torno" ) {
+
                     if (carrossel) carrossel.style.border = 'solid #800020 9px';
                     if (carrosselSuperior) carrosselSuperior.style.borderBottom = 'solid #800020 9px';
-                } else if (pedido.estado.toLowerCase() === "escritorio") {
+
+                } else if ( pedido.estado.toLowerCase() === "escritorio" ) {
+
                     if (carrossel) carrossel.style.border = '8px solid blue';
                     if (carrosselSuperior) carrosselSuperior.style.borderBottom = '8px solid blue';
                 }

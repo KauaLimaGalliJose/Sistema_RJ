@@ -345,7 +345,38 @@ setInterval(function () {
       transform: rotateX(0deg);
     }
   }
-
+  @media (max-width: 800px) {
+    #monkey_404 {
+      display: flex;
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+        margin-top: 50%;
+        left: 0;
+        top: 0;
+    }
+    #semPedidos{
+        display: flex;
+        font-size: 2rem; /* Ajusta o tamanho da fonte para telas menores */
+        top: 35%;
+    }
+  }
+  @media (max-height: 800px) {
+    #monkey_404 {
+      display: flex;
+        width: 100%;
+        height: 70%;
+        margin-left: 0;
+        margin-top: 15%;
+        left: 0;
+        top: 0;
+    }
+    #semPedidos{
+        display: flex;
+        font-size: 2rem; /* Ajusta o tamanho da fonte para telas menores */
+        top: 65%;
+    }
+  }
     </style>
 </head>
 <body>

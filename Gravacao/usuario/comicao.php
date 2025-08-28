@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../../coroa.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../Escritorio/Escritorio_img/coroa.ico" type="image/x-icon">
     <title>Quantidade Gravação</title>
 </head>
 <style>
@@ -153,7 +153,7 @@
         <div id="cabecalho_menu">
             <div id="casa">
                 <button type="button" value=""  class="botao" >
-                <a href="../gravacao.php"><img class="itens" src="../../Escritorio/casa.png"></a>
+                <a href="../gravacao.php"><img class="itens" src="../../Escritorio/Escritorio_img/casa.png"></a>
                 </button>
             </div>
             

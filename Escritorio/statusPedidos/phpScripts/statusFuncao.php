@@ -4,12 +4,11 @@ function statusPedidos($conectar, $tabela, $contador,$dataInput){
 
     //Variavel -----------------------------------------------
     date_default_timezone_set('America/Sao_Paulo'); // Fuso horário de Brasília
-    $data = date('Y-m-d');
 
     //Consulta ao banco de dados -----------------------------------------------
 
     $dados = "SELECT COUNT(*) FROM `$tabela` WHERE `$contador` <> 0
-    AND data_digitada = '$data'
+    AND data_digitada = '$dataInput'
     ORDER BY `$contador` ASC";
 
     $resultado = mysqli_query($conectar, $dados);
@@ -17,7 +16,7 @@ function statusPedidos($conectar, $tabela, $contador,$dataInput){
     $quantidade = $linha[0];
 
     if($quantidade == 0){
-        $quantidade = '0';
+        $quantidade = 'Nenhum pedido';
     }
     // Exibe a quantidade de pedidos
 ?>
@@ -41,19 +40,17 @@ function statusPedidosTodos($conectar,$dataInput){
 
     //Variavel -----------------------------------------------
     date_default_timezone_set('America/Sao_Paulo'); // Fuso horário de Brasília
-    $data = date('Y-m-d');
-    $nenhumPedido = '';
 
     $dados = "SELECT COUNT(*) FROM `pedidosp` WHERE `contadorpf` <> 0
-    AND data_digitada = '$data'
+    AND data_digitada = '$dataInput'
     ORDER BY `contadorpf` ASC";
 
     $dados2 = "SELECT COUNT(*) FROM `pedidospg` WHERE `contadorpg` <> 0
-    AND data_digitada = '$data'
+    AND data_digitada = '$dataInput'
     ORDER BY `contadorpg` ASC";
 
     $dados3 = "SELECT COUNT(*) FROM `pedidospe` WHERE `contadorpe` <> 0
-    AND data_digitada = '$data'
+    AND data_digitada = '$dataInput'
     ORDER BY `contadorpe` ASC";
 
     $resultado = mysqli_query($conectar, $dados);
@@ -68,7 +65,6 @@ function statusPedidosTodos($conectar,$dataInput){
 
     if($quantidade == 0){
         $quantidade = 'Nenhum pedido';
-        $nenhumPedido = 'Nenhum pedido encontrado para o dia de hoje.';
     }
 
 ?> 

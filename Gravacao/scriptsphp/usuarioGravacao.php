@@ -1,3 +1,8 @@
+<?php
+    include_once '../../phpIndex/protege.php';
+    proteger();
+?>
+
 <?php 
 //Funções 
 function largura($larguraAlianca,$conectar,$data){

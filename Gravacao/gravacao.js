@@ -8,12 +8,21 @@ setInterval(function() {
 
 // Função para enviar dados para um arquivo JSON
 function enviarParaJson(arquivo, nome, gravacao) {
-    fetch('../arquivoJson/salvarPedidoGravacao.php', {
+
+    // Hora e minuto
+    const agora = new Date();
+    const hora = agora.getHours();
+    const minutos = agora.getMinutes();
+    const segundos = agora.getSeconds();
+
+    let horaEntrega = `${hora.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+
+    fetch('../arquivoJson/php/salvarPedidoGravacao.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ arquivo, nome, gravacao }) // Inclui o nome do arquivo no corpo
+        body: JSON.stringify({ arquivo, nome, gravacao, horaEntrega }) // Inclui o nome do arquivo no corpo
     })
     .then(response => response.json())
     .then(data => {
@@ -88,6 +97,10 @@ function salvarEstadoCheckbox(checkbox) {
             enviarParaJson('pedidosPg.json', checkbox.id, '');
             console.log(checkbox.id)
         }
+        else if(selectPedido.options[0].value == "PE"){
+            enviarParaJson('pedidosPe.json', checkbox.id, '');
+            console.log(checkbox.id)
+        }        
 
     } else {
         carrossel.style.border = '';
@@ -109,6 +122,11 @@ function salvarEstadoCheckbox(checkbox) {
             enviarParaJson('pedidosPg.json', checkbox.id, 'sim');
             console.log(checkbox.id)
         }
+        else if(selectPedido.options[0].value == "PE"){
+            enviarParaJson('pedidosPe.json', checkbox.id, '');
+            console.log(checkbox.id)
+        }     
+        
     }
     console.log('Valor do cookie Gravacao: ' + gravacaoCookie);
 }

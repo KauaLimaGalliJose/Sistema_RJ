@@ -1,8 +1,13 @@
+<?php
+    include_once '../phpIndex/protege.php';
+    proteger();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="../coroa.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../Escritorio/Escritorio_img/coroa.ico" type="image/x-icon">
     <link rel="stylesheet" href="gravacao.css">
     <script src="./gravacao.js"  defer></script>
     <title>Gravação</title>
@@ -27,17 +32,16 @@
         <div id="cabecalho_menu">
             <div id="casa">
                 <button type="button" value=""  class="botao" >
-                <a href="../menu/index.html"><img class="itens" src="../Escritorio/casa.png"></a>
+                <a href="../menu/index.php"><img class="itens" src="../Escritorio/Escritorio_img/casa.png"></a>
                 </button>
             </div>
-                <select name="pedidos" id="larguraSelect">
+                <select name="pedidos" id="larguraSelect" oninput="this.form.submit()">
                         <option class="fontRed" value="<?php echo $_POST['pedidos']?? 'pedidos';?>" selected><?php echo $_POST['pedidos']?? 'pedidos';?></option>
                         <option value="PF">PF</option>
                         <option value="PG">PG</option>
                         <option value="PE">PE</option>
                 </select>
-                <input class="data" id="dataInput" value="<?php echo $_POST['dataInput']?? date('Y-m-d');?>" name="dataInput" type="date">
-                <button type="submit" id="enviar"><h1>Pesquisar</h1></button>
+                <input class="data" id="dataInput" value="<?php echo $_POST['dataInput']?? date('Y-m-d');?>" oninput="this.form.submit()" name="dataInput" type="date">
 
                 <button  type="button" value="" id="usuarioButao" onclick ="return usuario()" class="botao">
                     <img class="itens" src="./imagemGravacao/homem-usuario.png">
