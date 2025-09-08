@@ -4,7 +4,7 @@ date_default_timezone_set('America/Sao_Paulo');
 
 function Token(){
     // Token correto
-    $senha = 3567;
+    $senha = 0000; //colocar uma senha ou algum numero de sua preferencia 
     $data = date('H:i:s'); // Horas, minutos e segundos atuais
     $dataAtual = date('Y-m-d'); // Data atual no formato Y-m-d
 
@@ -25,7 +25,7 @@ function Token(){
 
 function envia_Token() {
     // Verifica se o token foi enviado via POST
-    $senha = 3567;
+    $senha = 0000; //colocar uma senha ou algum numero de sua preferencia 
     $data = date('H:i:s'); // Horas, minutos e segundos atuais
     $dataAtual = date('Y-m-d'); // Data atual no formato Y-m-d
 
@@ -53,7 +53,7 @@ function verifica_Token($codigo) {
     $horaAtual = $codigoSplit[1];
     $data = $codigoSplit[2]; 
 
-    $senha = 3567;
+    $senha = 0000; //colocar uma senha ou algum numero de sua preferencia 
     $dataSplit = explode(':', $data);
     $dataAtualSplit = explode('-', $horaAtual);
 

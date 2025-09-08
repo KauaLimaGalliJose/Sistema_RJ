@@ -98,7 +98,6 @@ CREATE TABLE `estoque_esgotado` (
   `33` int(4) NOT NULL,
   `34` int(4) NOT NULL,
   `35` int(4) NOT NULL,
-  `data_digitada` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 --
 -- Estrutura para tabela `pedidos`

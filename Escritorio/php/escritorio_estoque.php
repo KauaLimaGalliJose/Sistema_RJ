@@ -24,7 +24,7 @@ function tirar_do_estoque($n,$estoquePersonalizado,$conectar) {
                 $peso =  $linha['peso'];
                 $descricao = $linha['descricaoEstoque'];
 
-                criarAtualizar_pedido_estoque($n,$estoquePersonalizado,"estoque_esgotado",$imagem,$peso,$descricao,$conectar);
+                criarAtualizar_pedido_estoque($n,$estoquePersonalizado,"estoque_esgotado",$conectar);
         }
         else{
             // Subtrai 1 
