@@ -17,7 +17,7 @@
 
   **1º Passo** – Obter o Banco de Dados Atual
   
-  **2º Passo** – Acesse a pasta: `Sistema_RJ/imagem/`
+  **2º Passo** – Acesse a pasta: `Sistema_RJ/arquivos_Sistema/banco_dados`
   
   **3º Passo** – localize o arquivo do banco de dados "Atual".
 
@@ -50,6 +50,15 @@
  - **PE (Pedidos em Estoque)**  
    Pedidos que já estão prontos e disponíveis no estoque.
 
+- **Outros (caso tenha clientes de fora) e Loja (caso tenha alguma loja fisica pode usar)**  
+    Serve para outros clientes usar ou manter uma organização diferente
+
+ - **Criação de controle e gerenciamento de estoques**  
+   Podem ser usados para guardar estoques , ou vincular pedidos ao estoque
+
+    - **E tem mais**  
+   Tendo varias outras funções , esse seria o basico do sistema , mas existe varias outras funçoes além dessa.
+    Esse é um dos jeitos de usar o sistema , mas fica a sua escolha usar do jeito que preferir
  ---
 
 ## 💡 Observações
