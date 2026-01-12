@@ -1,143 +1,123 @@
 {
-    "PF1-18\/08": {
-        "estado": "torno",
+    "PF1-01\/01": {
+        "estado": "escritorio",
+        "data": "2026-01-02",
+        "horaEntrega_Polimento": "21:55:28",
+        "horaEntrega_Torno": "",
+        "gravacao": "sim",
+        "horaEntrega_Gravacao": "21:55:28"
+    },
+    "PF1-02\/01": {
+        "estado": "escritorio",
         "conta": "teste",
-        "gravacao": "sim",
-        "data": "2025-08-18",
-        "horaEntrega_Escritorio": "09:53:43"
+        "gravacao": "",
+        "data": "2026-01-02",
+        "horaEntrega_Escritorio": "21:54:34",
+        "horaEntrega_Polimento": "21:55:28",
+        "horaEntrega_Torno": "",
+        "horaEntrega_Gravacao": "21:55:28"
     },
-    "PF1-19\/08": {
+    "PF1-23\/12": {
+        "estado": "escritorio",
+        "data": "2026-01-03",
+        "horaEntrega_Polimento": "09:16:48",
+        "horaEntrega_Torno": "",
+        "gravacao": "sim",
+        "horaEntrega_Gravacao": "09:16:48"
+    },
+    "PF1-26\/12": {
+        "estado": "escritorio",
+        "data": "2026-01-03",
+        "horaEntrega_Polimento": "09:16:48",
+        "horaEntrega_Torno": "",
+        "gravacao": "sim",
+        "horaEntrega_Gravacao": "09:16:48"
+    },
+    "PF1-03\/01": {
+        "estado": "escritorio",
         "conta": "teste",
         "gravacao": "",
-        "data": "2025-08-20",
-        "horaEntrega_Escritorio": "09:07:43",
-        "estado": "torno",
-        "horaEntrega_Polimento": "10:35:42",
-        "horaEntrega_Torno": "10:35:51"
+        "data": "2026-01-03",
+        "horaEntrega_Escritorio": "18:05:25",
+        "horaEntrega_Polimento": "18:26:32",
+        "horaEntrega_Torno": "",
+        "horaEntrega_Gravacao": "18:11:50",
+        "Feminina": "Pendente"
     },
-    "PF1-20\/08": {
-        "estado": "torno",
-        "conta": "teste1",
-        "gravacao": "",
-        "data": "2025-08-20",
-        "horaEntrega_Escritorio": "11:25:43"
+    "PF2-03\/01": {
+        "estado": "escritorio",
+        "conta": "fgdfgdgfdgdfgdfgfgdg",
+        "gravacao": "sim",
+        "data": "2026-01-03",
+        "horaEntrega_Escritorio": "09:54:56",
+        "horaEntrega_Polimento": "11:56:03",
+        "horaEntrega_Torno": "",
+        "horaEntrega_Gravacao": "11:56:03"
     },
-    "PF1-21\/08": {
-        "estado": "torno",
+    "PF3-03\/01": {
+        "estado": "escritorio",
         "conta": "teste",
-        "gravacao": "sim",
-        "data": "2025-08-21",
-        "horaEntrega_Escritorio": "10:55:26"
-    },
-    "PF1-22\/08": {
-        "estado": "torno",
-        "conta": "CONTA 15",
         "gravacao": "",
-        "data": "2025-08-22",
-        "horaEntrega_Escritorio": "22:28:30"
+        "data": "2026-01-03",
+        "horaEntrega_Escritorio": "11:42:58",
+        "horaEntrega_Polimento": "11:56:04",
+        "horaEntrega_Torno": "",
+        "horaEntrega_Gravacao": "11:56:04"
     },
-    "PF2-22\/08": {
+    "PF4-03\/01": {
         "estado": "torno",
-        "conta": "fasdasd",
-        "gravacao": "sim",
-        "data": "2025-08-22",
-        "horaEntrega_Escritorio": "22:11:36"
-    },
-    "PF2-26\/08": {
-        "estado": "torno",
-        "conta": "sdgsdg",
+        "conta": "fgdfgdgfdgdfgdfgfgdg",
         "gravacao": "",
-        "data": "2025-08-26",
-        "horaEntrega_Escritorio": "12:14:14"
+        "data": "2026-01-03",
+        "horaEntrega_Escritorio": "09:40:30"
     },
-    "PF1-26\/08": {
-        "conta": "erwerw",
-        "gravacao": "sim",
-        "data": "2025-08-26",
-        "horaEntrega_Escritorio": "12:15:10"
+    "PF1-04\/01": {
+        "conta": "teste",
+        "gravacao": "",
+        "data": "2026-01-04",
+        "horaEntrega_Escritorio": "18:28:16",
+        "estado": "escritorio",
+        "horaEntrega_Polimento": "16:33:08",
+        "horaEntrega_Torno": "",
+        "Feminina": "Pendente",
+        "Masculina": "Pendente",
+        "horaEntrega_Gravacao": "16:32:52"
     },
-    "PF1-27\/08": {
+    "PF1-05\/01": {
+        "conta": "",
+        "gravacao": "",
+        "data": "2026-01-05",
+        "horaEntrega_Escritorio": "11:41:26",
+        "estado": "torno"
+    },
+    "PF1-07\/01": {
+        "estado": "escritorio",
+        "conta": "CONTA 124",
+        "gravacao": "",
+        "data": "2026-01-07",
+        "horaEntrega_Escritorio": "22:03:26",
+        "Feminina": "Pendente",
+        "Masculina": "Pendente",
+        "horaEntrega_Polimento": "22:27:20",
+        "horaEntrega_Torno": "",
+        "horaEntrega_Gravacao": "22:27:20"
+    },
+    "PF2-07\/01": {
+        "estado": "escritorio",
+        "conta": "CONTA 124",
+        "gravacao": "",
+        "data": "2026-01-07",
+        "horaEntrega_Escritorio": "20:59:52",
+        "Masculina": "Pendente",
+        "horaEntrega_Polimento": "22:27:19",
+        "horaEntrega_Torno": "",
+        "horaEntrega_Gravacao": "22:27:19"
+    },
+    "PF1-08\/01": {
         "estado": "torno",
-        "conta": "1010",
-        "gravacao": "sim",
-        "data": "2025-08-27",
-        "horaEntrega_Escritorio": "09:50:33"
-    },
-    "PF2-27\/08": {
-        "estado": "torno",
-        "conta": "1010",
-        "gravacao": "sim",
-        "data": "2025-08-27",
-        "horaEntrega_Escritorio": "09:26:14"
-    },
-    "PF3-27\/08": {
-        "estado": "torno",
-        "conta": "11010",
-        "gravacao": "sim",
-        "data": "2025-08-27",
-        "horaEntrega_Escritorio": "09:45:45"
-    },
-    "PF4-27\/08": {
-        "estado": "torno",
-        "conta": "11010",
-        "gravacao": "sim",
-        "data": "2025-08-27",
-        "horaEntrega_Escritorio": "09:48:01"
-    },
-    "PF5-27\/08": {
-        "estado": "torno",
-        "conta": "11010",
-        "gravacao": "sim",
-        "data": "2025-08-27",
-        "horaEntrega_Escritorio": "09:48:41"
-    },
-    "PF6-27\/08": {
-        "estado": "torno",
-        "conta": "11010",
-        "gravacao": "sim",
-        "data": "2025-08-27",
-        "horaEntrega_Escritorio": "09:48:49"
-    },
-    "PF7-27\/08": {
-        "estado": "torno",
-        "conta": "11010",
-        "gravacao": "sim",
-        "data": "2025-08-27",
-        "horaEntrega_Escritorio": "09:48:59"
-    },
-    "PF8-27\/08": {
-        "estado": "torno",
-        "conta": "11010",
-        "gravacao": "sim",
-        "data": "2025-08-27",
-        "horaEntrega_Escritorio": "09:49:18"
-    },
-    "PF9-27\/08": {
-        "estado": "torno",
-        "conta": "11010",
-        "gravacao": "sim",
-        "data": "2025-08-27",
-        "horaEntrega_Escritorio": "10:04:54"
-    },
-    "PF10-27\/08": {
-        "estado": "torno",
-        "conta": "11010",
-        "gravacao": "sim",
-        "data": "2025-08-27",
-        "horaEntrega_Escritorio": "10:14:55"
-    },
-    "PF1-28\/08": {
-        "estado": "torno",
-        "conta": "DJYTJ",
-        "gravacao": "sim",
-        "data": "2025-08-28",
-        "horaEntrega_Escritorio": "10:02:48"
-    },
-    "PF2-28\/08": {
-        "estado": "torno",
-        "conta": "DJYTJ",
-        "gravacao": "sim",
-        "data": "2025-08-28",
-        "horaEntrega_Escritorio": "10:02:29"
+        "conta": "CONTA 124",
+        "gravacao": "",
+        "data": "2026-01-08",
+        "horaEntrega_Escritorio": "19:58:31"
     }
 }

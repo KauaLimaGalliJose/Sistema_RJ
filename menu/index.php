@@ -1,8 +1,4 @@
-<?php
-    include_once '../phpIndex/protege.php';
 
-    proteger(); // Chama a função para verificar o token antes de carregar a página
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -22,7 +18,7 @@
                         <button id= "botao" title="Configuração" class="config" onclick="abrir()"></button>
                     <div id="div_config">
                         <div id="fechar">
-                            <button id="fechar_b" onclick="fechar()"><img class='fechar' src="X.png" alt=""></button>
+                            <button id="fechar_b" onclick="fechar()"><img class='fechar' src="./img_menu/X.png" alt=""></button>
                         </div>
                         <div id="cor_P">Cor da Página</div>
                         <div id = 'temas'>
@@ -38,6 +34,12 @@
                         <div id ="php" >
                             <a class="botaoconfig" href="conversor/conversor.html">Converter PDF</a>
                         </div>
+                        <div class="div_deslogar"> 
+                        <button id="btnDeslogar" onclick="deslogar()">
+                            &lArr; 
+                            <span>Desconectar</span>
+                        </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -45,22 +47,19 @@
                 <div id="Escritorio" class="Menu1">
                     <a class="B_menu" href="../Escritorio/PG2-Escritorio.php">Escritório</a>
                 </div>
-                <div id="Torno" class="Menu1">
-                    <a class="B_menu" id="TornoAncora" href="../Torno/torno.php">Torno/Polimento</a>
-                </div>
-                <div  id="Pedidos" class="Menu1">
-                    <a id="PedidosAncora" class="B_menu" href="../Gravacao/gravacao.php">Pedidos</a>
-                </div>
-                <div  id="Gravacao" class="Menu2">
-                    <a id="GravacaoAncora" class="B_menu" href="../Gravacao/gravacao.php">Gravação</a>
-                </div>
                 </div>
             </div>
         </header>
         <main id="conteudo">
-            <div>
-                <div id="drive_div" >
-                    <a title="Acessar Drive" href="https://drive.google.com/drive/home"><img id="drive" src="Drive.png" alt="Drive"></a>   
+            <div id = "ferramentas">
+                <div class="ferramenta" >
+                    <a title="Acessar Drive" href="https://drive.google.com/drive/home"><img class="ferramenta_img" src="./img_menu/ferramentas_img/Drive.png" alt="Drive"></a>   
+                    <label><h1>Drive</h1></label>
+                </div>
+
+                <div class="ferramenta" >
+                    <a title="Acessar estatistica" href="../ferramentas_menu/graficos/php/protege_dash.php"><img class="ferramenta_img" src="./img_menu/ferramentas_img/growth.png" alt="3D"></a>   
+                    <label><h1>Graficos</h1></label>
                 </div>
             </div>
         </main>

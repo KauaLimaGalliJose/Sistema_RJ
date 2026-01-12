@@ -62,7 +62,7 @@ function pedidosPf($dataInput) {
 function pedidosPg($dataInput) {
 
             // Lê e decodifica o arquivo JSON
-     $jsonPath = dirname(__DIR__, 3) . '/arquivoJson/json/pedidosPg.json';
+     $jsonPath = dirname(__DIR__, 3) . '/arquivoJson/json/pedidosjsonpg.json';
     $pedidos = [];
     if (file_exists($jsonPath)) {
         $json = file_get_contents($jsonPath);
@@ -73,8 +73,8 @@ function pedidosPg($dataInput) {
     $cookiesParaCriar = [];
 
     ?>  
-          <div id='processo'>
-
+        <div id='processo'>
+            
             <div id="gravacao">
                 <div class="TextoTitulo">
                     <p>Gravação</p>
@@ -93,7 +93,6 @@ function pedidosPg($dataInput) {
                 </div>
             </div>
 
-          </div>
         </div>
     <?php   
 }
@@ -105,21 +104,33 @@ function pedidosPe($dataInput) {
         $json = file_get_contents($jsonPath);
         $pedidos = json_decode($json, true);
     }
-    ?>  
-          <div id='processo'>
+    
+    // Array para cookies a serem criados
+    $cookiesParaCriar = [];
+    ?>
+    <div id='processo'>
 
-            <div id="escritorio">
-              <div class="TextoTitulo">
-                <p>Escritório</p>
-              </div>
-                <div>
-                    <?php escritorio($pedidos,$dataInput);  ?>
-                </div>
+        <div id="gravacao">
+            <div class="TextoTitulo">
+                <p>Gravação</p>
             </div>
+            <div>
+                <?php gravacao($pedidos, $cookiesParaCriar,$dataInput); ?>
+            </div>
+        </div> 
 
-          </div>
+        <div id="escritorio">
+            <div class="TextoTitulo">
+                <p>Escritório</p>
+            </div>
+            <div>
+                <?php escritorio($pedidos, $cookiesParaCriar,$dataInput);  ?>
+            </div>
         </div>
-    <?php   
+
+    </div>
+    </div>
+    <?php    
 }
 
 function todos($dataInput){
@@ -135,14 +146,14 @@ function todos($dataInput){
     $cookiesParaCriar = [];
 
     //PG
-    $jsonPathpg = dirname(__DIR__, 3) . '/arquivoJson/json/pedidosPg.json';
+    $jsonPathpg = dirname(__DIR__, 3) . '/arquivoJson/json/pedidosjsonpg.json';
     $pedidospg = [];
     if (file_exists($jsonPath)) {
         $json = file_get_contents($jsonPathpg);
         $pedidospg = json_decode($json, true);
     }
     //PE
-    $jsonPathpe = dirname(__DIR__, 3) . '/arquivoJson/json/pedidosPe.json';
+    $jsonPathpe = dirname(__DIR__, 3) . '/arquivoJson/json/pedidosjsonpe.json';
     $pedidospe = [];
     if (file_exists($jsonPath)) {
         $json = file_get_contents($jsonPathpe);
@@ -159,6 +170,8 @@ function todos($dataInput){
             </div>
             <div>
                 <?php Torno($pedidos,$dataInput); ?>
+                <?php Torno($pedidospg,$dataInput); ?>
+                <?php Torno($pedidospe,$dataInput); ?>
                 <?php  ?>
             </div>
         </div>
@@ -169,6 +182,8 @@ function todos($dataInput){
             </div>
             <div>
                 <?php Polimento($pedidos,$dataInput); ?>
+                <?php Polimento($pedidospg,$dataInput); ?>
+                <?php Polimento($pedidospe,$dataInput); ?>
             </div>
         </div>
 

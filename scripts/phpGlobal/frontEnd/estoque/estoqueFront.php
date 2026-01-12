@@ -102,7 +102,7 @@ function mosrtrar_estoque_semBotao($linha,$nomeTabela, $arquivoBD , $caminhoimag
             <div class="carrossel_div">
                 <img class="carrosselImg" src="<?php echo $caminhoimagem . $linha['imagem']; ?>" alt="ERRO">
                 <div id="pedido">
-                    <label class="fontPedido"  title="desmarcar" value="torno" class="desmarcar"  type="radio" ><?php echo $linha['nome'] ?></label>
+                    <label class="fontPedidoEstoque"  title="desmarcar" value="torno" class="desmarcar"  type="radio" ><?php echo $linha['nome'] ?></label>
                 </div>
             </div>
             <div class="carrossel_div">
@@ -143,7 +143,15 @@ function mosrtrar_estoque_semBotao($linha,$nomeTabela, $arquivoBD , $caminhoimag
 function escolher_estoque($conectar, $estoque_nome , $caminhoArquivo){
 
     //variaveis
-    $estoque_nome_semEspaco = str_replace(' ', '_', $estoque_nome);
+    if($estoque_nome != null){
+
+        $estoque_nome_semEspaco = str_replace(' ', '_', $estoque_nome);
+    }
+    else{
+
+        $estoque_nome_semEspaco = '';
+    }
+
     $estoque_esgotado_checkbox = $_GET['estoque_esgotado'];
 
     $sql = "SELECT nome FROM estoque_esgotado "; 
@@ -163,16 +171,17 @@ function escolher_estoque($conectar, $estoque_nome , $caminhoArquivo){
 
                     ?><div class = "opcoes">
 
-                        <input name = 'radioName' value="<?php echo $consut['nome']; ?>" type="radio" id="<?php echo  $nome_sem_espaco; ?>" class="estoque_Bnt_radio" onclick="this.form.submit(); " >
-                        
-                        <label class="estoque_Bnt" id="<?php echo 'lab_' . $nome_sem_espaco; ?>" for="<?php echo $nome_sem_espaco; ?>" >
+                        <input name = 'radioName' value="<?php echo $consut['nome']; ?>" type="radio" id="<?php echo 'input' .  $nome_sem_espaco ?>" class="estoque_Bnt_radio" onchange="enviarForm(); this.form.submit()" >
+                       
+                        <label class="estoque_Bnt" id="<?php echo 'lab_' . $nome_sem_espaco; ?>" for="<?php  echo 'input' .  $nome_sem_espaco  ?>" >
                             <?php echo $consut['nome']; ?>
                         </label >
+                        
                     </div><?php
                     }
                     ?>    
 
-        <input name = 'radioName' type="radio" value="<?php echo $estoque_nome_semEspaco; ?>" id="<?php echo "id_" . $estoque_nome_semEspaco; ?>" class=" estoque_Bnt_radio iniciar-selecionado" >
+        <input name = 'radioName' type="radio" value="<?php echo  $consut['nome'] ?? ''; ?>" id="<?php echo "id_" . 'input' . $estoque_nome_semEspaco; ?>" class=" estoque_Bnt_radio iniciar-selecionado" selected>
         </form>
     </div>
 
@@ -182,7 +191,15 @@ function escolher_estoque($conectar, $estoque_nome , $caminhoArquivo){
 function escolher_estoque_post($conectar, $estoque_nome , $caminhoArquivo){
 
     //variaveis
-    $estoque_nome_semEspaco = str_replace(' ', '_', $estoque_nome);
+    if($estoque_nome != null){
+
+        $estoque_nome_semEspaco = str_replace(' ', '_', $estoque_nome);
+    }
+    else{
+
+        $estoque_nome_semEspaco = '';
+    }
+
     $estoque_esgotado_checkbox = $_POST['estoque_esgotado'];
 
     $sql = "SELECT nome FROM estoque_esgotado "; 
@@ -202,16 +219,16 @@ function escolher_estoque_post($conectar, $estoque_nome , $caminhoArquivo){
 
                     ?><div class = "opcoes">
 
-                        <input name = 'radioName' value="<?php echo $consut['nome']; ?>" type="radio" id="<?php echo  $nome_sem_espaco; ?>" class="estoque_Bnt_radio" onclick="this.form.submit(); " >
-                        
-                        <label class="estoque_Bnt" id="<?php echo 'lab_' . $nome_sem_espaco; ?>" for="<?php echo $nome_sem_espaco; ?>" >
+                        <input name = 'radioName' value="<?php echo $consut['nome']; ?>" type="radio" id="<?php echo 'input' .  $nome_sem_espaco ?>" class="estoque_Bnt_radio" onclick="this.form.submit(); " >
+                       
+                        <label class="estoque_Bnt" id="<?php echo 'lab_' . $nome_sem_espaco; ?>" for="<?php  echo 'input' .  $nome_sem_espaco  ?>" >
                             <?php echo $consut['nome']; ?>
                         </label >
                     </div><?php
-                    }
+                }
                     ?>    
 
-        <input name = 'radioName' type="radio" value="<?php echo $estoque_nome_semEspaco; ?>" id="<?php echo "id_" . $estoque_nome_semEspaco; ?>" class=" estoque_Bnt_radio iniciar-selecionado" >
+        <input name = 'radioName' type="radio" value="<?php echo  $consut['nome'] ?? ''; ?>" id="<?php echo "id_" . $estoque_nome_semEspaco; ?>" class=" estoque_Bnt_radio iniciar-selecionado" >
         </form>
     </div>
 
@@ -228,8 +245,7 @@ function estoques($conectar,$nome ,$arquivoBD, $caminhoimagem ){
                 FROM estoque_esgotado WHERE nome LIKE '$nome' ORDER BY maior_valor DESC"; // Consulta para obter os dados do estoque
         
         $consulta = $conectar->query($sql);
-
-        if($consulta->num_rows > 0){
+        if($consulta->num_rows > 0 ){
             
             
             echo  '<div class ="Estoques_Torno_Polimento">';
@@ -242,8 +258,17 @@ function estoques($conectar,$nome ,$arquivoBD, $caminhoimagem ){
             echo '</div>';// Fim da div Estoques_Torno_Polimento'
             
         }
+        elseif($nome == null){
+
+            echo  '<div class ="Estoques_Torno_Polimento">';
+
+            print('<h1 class="semEstoque">Escolha o Estoque !!</h1>');
+
+            echo '</div>';// Fim da div Estoques_Torno_Polimento'
+        }
         else{
-             echo "<div class='semEstoque'><h1>Sem Estoque, Crie um</h1></div>";   
+             echo "<div class='semEstoque'><h1>Sem Estoque, Crie um </h1></div>";   
+                    
         } 
 }
 
@@ -273,5 +298,6 @@ function estoques_semBotao($conectar,$nome ,$arquivoBD, $caminhoimagem ){
         }
         else{
              echo "<div class='semEstoque'><h1>Sem Estoque, Crie um</h1></div>";   
+             
         } 
 }

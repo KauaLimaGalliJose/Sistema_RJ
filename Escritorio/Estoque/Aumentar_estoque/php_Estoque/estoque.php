@@ -11,8 +11,6 @@
 <body>
     <?php
         include_once('../../../../conexao.php');
-        include_once '../../../../phpIndex/protege.php';
-        proteger();
 
         //variaveis
         $nome = $_GET["nome"];   

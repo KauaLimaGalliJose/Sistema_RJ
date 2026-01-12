@@ -10,5 +10,12 @@ if (file_exists($arquivo)) {
 }
 }
 
+header('Content-Type: application/json');
+
+// Recebe os dados enviados via POST (JSON)
+$input = file_get_contents('php://input');
+$data = json_decode($input, true);
+
+$pedidos = $data['pedido'];
 // Chama a função para garantir saída JSON
-pegarDadosPedidos('pedidos');
+pegarDadosPedidos($pedidos);

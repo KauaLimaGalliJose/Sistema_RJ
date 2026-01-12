@@ -12,7 +12,7 @@
 
                     $pedidoId = $nome;
                     $pedidoSafe = htmlspecialchars($pedidoId);
-                    $tornoSaida = $valor['horaEntrega_Escritorio'];
+                    $tornoSaida = $valor['horaEntrega_Escritorio']  ?? '';
                     
                     // Pedidos
                     echo "<p title='" . htmlspecialchars($cookieValue ?? '') . "'>" . $pedidoSafe . '_' . $valor['conta'];
@@ -74,7 +74,7 @@
                 if ($valor['estado'] == 'escritorio' && $valor['gravacao'] == '' && ($valor['data'] === date("Y-m-d") || $valor['data'] == $dataInput )) {
                     $pedidoId = $nome;
                     $pedidoSafe = htmlspecialchars($pedidoId);
-                    $escritorioSaida = $valor['horaEntrega_Gravacao'] ?? $valor['horaEntrega_Polimento'] ?? $valor['horaEntrega_Escritorio'];
+                    $escritorioSaida = $valor['horaEntrega_Gravacao'] ?? $valor['horaEntrega_Polimento'] ?? $valor['horaEntrega_Escritorio'] ?? '';
                     
                     // Pedidos
                     echo "<p title='" . htmlspecialchars($cookieValue ?? '') . "'>" . $pedidoSafe . '_' . $valor['conta'];
@@ -89,7 +89,7 @@
     }
 
 
-        //Gravacao
+    //Gravacao
     function gravacaoPg($pedidos, $dataInput) {
 
         if (is_array($pedidos)) {
@@ -97,7 +97,7 @@
                 if ($valor['estado'] == 'escritorio' && $valor['gravacao'] == 'sim' && ($valor['data'] === date("Y-m-d") || $valor['data'] == $dataInput )) {
                     $pedidoId = $nome;
                     $pedidoSafe = htmlspecialchars($pedidoId);
-                    $gravacaoSaida = $valor['horaEntrega_Escritorio'];
+                    $gravacaoSaida = $valor['horaEntrega_Escritorio']  ?? '';
                     
                     // Pedidos
                     echo "<p title='" . htmlspecialchars($cookieValue ?? '') . "'>" . $pedidoSafe . '_' . $valor['conta'];

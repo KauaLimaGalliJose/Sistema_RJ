@@ -2,6 +2,7 @@
 // Imports
 include_once('../../../conexao.php');
 include_once('./funcaoExportar.php');
+//htmlErro();
 
 //Variaveis
 $PF = isset($_POST['PF']) ? $_POST['PF']: NULL;
@@ -24,13 +25,14 @@ if($data_Digitada !== '' ){
         
         zipar($data_Digitada,$PF,$PG,$PE,$conectar);
         
+        
     }
     else{
         htmlErro();
     }
 }
 else{
-    htmlErro();
+    
 }
 mysqli_close($conectar);
 ?>

@@ -1,24 +1,20 @@
  <?php
- 
-// função sendo utilizada no 'Torno\torno.php' 
-function menu_($checked){   
-    
-?>
-   
-    <!DOCTYPE html>
-    <label class="menu" for="burger">
-    <input type="checkbox" value="checked" name="menu_cabecalho"  id="burger" <?php echo $checked ?>>
-    <span></span>
-    <span></span>
-    <span></span>
-    </label>
+// função sendo utilizada no 'SistemaPrivado\Torno\torno.php' 
+// função sendo utilizada no 'SistemaPrivado\Escritorio\pedidos\pedidos.php' 
+function menu_($caminho){
 
+    
+?>  
+    <!DOCTYPE html>
+    <link rel="stylesheet" href=" <?php echo $caminho . 'scripts/cssGlobal/cabecalho/menu/menu_conteiner.css'?>">
+    <link rel="stylesheet" href=" <?php echo $caminho . 'scripts/cssGlobal/fonts/fonts.css' ?>">
+    <link rel="stylesheet" href=" <?php echo $caminho . 'scripts/cssGlobal/fonts/fonts.css' ?>">
+    <script src= <?php echo $caminho . 'scripts/jsGlobal/menu/menu.js' ?>  defer></script>
     <style>
         .menu {
         position: relative;
         width: 40px;
         height: 30px;
-        background: transparent;
         cursor: pointer;
         display: block;
         margin-right: 20px;
@@ -75,4 +71,13 @@ function menu_($checked){
         left: 5px;
         }
     </style>
-<?php } ?>
+        <label class="menu" for="burger">
+            <input type="checkbox" value="checked" name="menu_cabecalho"  id="burger" onclick="abrir_Menu()" >
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+<?php
+
+} ?>
+

@@ -71,8 +71,8 @@ function htmlErro(){
         </div>
         <div id="dadosPost">
             
-            <?php // Ative Caso Precise!!
-             //var_dump($_POST); 
+            <?php // Ative Caso Precise!! para mostrar o post
+             // var_dump($_POST); 
              ?>
              
         </div>
@@ -116,7 +116,7 @@ function criarCsv($conectar, $data_Digitada, $tabela , $contador){
 
 function zipar($data_Digitada,$pf,$pg,$pe,$conectar){
 
-    $titulo = './zipTemporarios/Pedidos-'. $data_Digitada .'.zip';
+    $titulo = './zipTemporarios/Pedidos_'. $data_Digitada .'.zip';
     $zip = new ZipArchive;
 
     $zip->open($titulo, ZipArchive::CREATE);
@@ -142,7 +142,7 @@ function zipar($data_Digitada,$pf,$pg,$pe,$conectar){
             $img = $dados['imagem'];
             $zip->addFile('../../' . $img ,'imagensPF/' . basename($img));
             
-            $pdf = $dados['pdf'];
+            $pdf = $dados['pdf'] ?? '../arquivos_Sistema/PDFs/semEtiqueta.pdf';
             $zip->addFile('../../' . $pdf ,'pdfs-PF/' . basename($pdf)); //esse basename serve para não deixar ir todo o caminho mais sim apenas o nome do arquivo , Não tira se não , não pega!!
         }
         
@@ -166,7 +166,7 @@ function zipar($data_Digitada,$pf,$pg,$pe,$conectar){
             $img = $dados['imagem'];
             $zip->addFile('../../' . $img ,'imagensPG/' . basename($img));
 
-            $pdf = $dados['pdf'];
+            $pdf = $dados['pdf'] ?? '../arquivos_Sistema/PDFs/semEtiqueta.pdf';
             $zip->addFile('../../' . $pdf ,'pdfs-PG/' .  basename($pdf));   
         }
     }
@@ -189,7 +189,7 @@ function zipar($data_Digitada,$pf,$pg,$pe,$conectar){
             $img = $dados['imagem'];
             $zip->addFile('../../' . $img ,'imagensPE/' .basename($img));
 
-            $pdf = $dados['pdf'];
+            $pdf = $dados['pdf'] ?? '../arquivos_Sistema/PDFs/semEtiqueta.pdf';
             $zip->addFile('../../' . $pdf ,'pdfs-PE/' . basename($pdf));
         }
         
@@ -199,10 +199,10 @@ function zipar($data_Digitada,$pf,$pg,$pe,$conectar){
     $zip->close();
 
     //Baixando Zip ---------------------------------------------------------------------
-    $arquivo = './zipTemporarios/Pedidos-'. $data_Digitada .'.zip';
+    $arquivo = './zipTemporarios/Pedidos_'. $data_Digitada .'.zip';
     if (file_exists($arquivo)) {
         header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename="' . basename($arquivo) . '"');
+        header('Content-Disposition: attachment; filename="' . basename($arquivo) );
         header('Content-Length: ' . filesize($arquivo));
         flush(); // limpa o buffer
         readfile($arquivo); // envia o conteúdo do arquivo
@@ -220,5 +220,9 @@ function zipar($data_Digitada,$pf,$pg,$pe,$conectar){
         unlink($arquivo);
         exit;
     } 
+    else{
+        
+        htmlErro();
+    }
     
 }

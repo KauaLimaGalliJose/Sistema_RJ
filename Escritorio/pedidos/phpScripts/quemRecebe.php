@@ -8,7 +8,7 @@
             $data_Digitada = $data;
         }
 
-       $pesquisaDados = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido , descricaoAlianca, idpedidos, numF, numeM, largura, gravacaoInterna, gravacaoExterna, nomePedido ,pdf
+       $pesquisaDados = "SELECT RIGHT(idpedidos,5) AS idpedido, imagem, PedraF, PedraM, parEstoqueF, parEstoqueM, descricaoPedido , descricaoAlianca, idpedidos, numF, numeM, largura, gravacaoInternaM , gravacaoInternaF, peso, nomePedido ,pdf
        FROM `$tabela`  WHERE `$contadorp` <> 0 
        AND descricaoPedido LIKE '%$pesquisa%'
        AND data_digitada LIKE '$data_Digitada'
@@ -67,26 +67,15 @@
             }
 
             // gravação interna 
-            if(!empty($dados['gravacaoInterna'])){
+            if(!empty($dados['gravacaoInternaM']) || !empty($dados['gravacaoInternaF'])){
 
-                $gravacao = $dados['gravacaoInterna'];
+                $gravacao = 'M :' . $dados['gravacaoInternaM'] ?? '' . '<br>' . 'F :' . $dados['gravacaoInternaF'] ?? '';
 
-                if (strpos($gravacao, ',') !== false) {
-                    $gravacaoSplit = explode(',', $gravacao);
+                $gravacaoInternaT = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>' . $gravacao . '</div>';
 
-                    $gravacaoInterna = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>';
-
-                    foreach ($gravacaoSplit as $item) {
-                        $gravacaoInterna .= trim($item) . '<br>'; // trim remove espaços desnecessários
-                    }
-
-                        $gravacaoInterna .= '</div>';
-                    } else {
-                   $gravacaoInterna = '<div class="informacaoInferior"><span class="font_blu">Gravação --------</span><br>' . $gravacao . '</div>';
-                }
             }
             else{
-                $gravacaoInterna = '';
+                $gravacaoInternaT = '';
             }
             
             //descricaoAlianca
@@ -124,7 +113,7 @@
                         print('<br> Feminina:');?><span class="font_red"><?php print($numeroFeminino . $estoqueF . $PedraF . "<br>"); ?></span>
                         <?php print('Masculina:');?><span class="font_red"><?php print($dados['numeM'] . $estoqueM . $PedraM . "<br>"); ?></span>
                     </div>
-                        <?php echo $gravacaoInterna . "<br>"?>
+                        <?php echo $gravacaoInternaT . "<br>"?>
                 </div>
                 <?php echo $gravacaoExterna?>
                 </label></div><?php

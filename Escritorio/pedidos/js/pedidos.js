@@ -6,7 +6,7 @@ setInterval(function() {
       document.getElementById('formulario').submit();
     };
     location.reload();
-  }, 40000); //40 segundos
+  }, 3000000); //40 segundos
   
 
 //Buttons 
@@ -55,17 +55,53 @@ buttonImprimir.addEventListener('click',function(){
   
 // Parte do Scroll---------------------------------------------------------------------------------
 
+let scrollTarget = window.scrollY;
+let isScrolling = false;
+let manualScrollTimeout = null;
+let isUserScrollingManually = false;
+
 window.addEventListener('wheel', function(e) {
-    e.preventDefault(); // Impede o scroll padrão do navegador
+  e.preventDefault();
 
-    const scrollAmount = 500; // define a "passada"
-    const direction = e.deltaY > 0 ? 1 : -1;
+  const delta = e.deltaY;
+  scrollTarget += delta;
 
-    window.scrollBy({
-      top: scrollAmount * direction,
-      behavior: 'auto' 
-    });
-  }, { passive: false }); // 'passive: false' é necessário para usar e.preventDefault
+  if (!isScrolling && !isUserScrollingManually) {
+    smoothScroll();
+  }
+}, { passive: false });
+
+window.addEventListener('scroll', function () {
+  // Detecção de scroll manual (ex: arraste da barra)
+  if (!isScrolling) {
+    isUserScrollingManually = true;
+    scrollTarget = window.scrollY;
+
+    // Aguarda um tempo sem scroll para assumir que parou
+    clearTimeout(manualScrollTimeout);
+    manualScrollTimeout = setTimeout(() => {
+      isUserScrollingManually = false;
+    }, 150); // 150ms sem scroll = parou
+  }
+});
+
+function smoothScroll() {
+  isScrolling = true;
+
+  const currentY = window.scrollY;
+  const distance = scrollTarget - currentY;
+  const step = distance * 0.13;
+
+  if (Math.abs(step) > 0.5) {
+    window.scrollTo(0, currentY + step);
+    requestAnimationFrame(smoothScroll);
+  } else {
+    isScrolling = false;
+  }
+}
+
+
+// Fim do Scroll------------------------------------------------------------------------------------
 
 // Adiciona favicon dinamicamente coroa.ico
 (function() {

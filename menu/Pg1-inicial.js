@@ -46,6 +46,12 @@ function tema_2(){
     document.getElementById('div_config').style.backgroundColor = 'azure';
 }
 
+function deslogar(){
+
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+    window.location.reload();
+}
 
 // Adiciona favicon dinamicamente coroa.ico
 (function() {
@@ -55,3 +61,4 @@ function tema_2(){
     link.href = '../Escritorio/Escritorio_img/coroa.ico'; 
     document.head.appendChild(link);
 })();
+

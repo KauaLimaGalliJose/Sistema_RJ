@@ -75,6 +75,17 @@ main{
   flex-direction: column;
   width: 100%;
   height: 100%;
+  margin-top: 80px;
+  background-color: azure ;
+  font-size: 300%;
+}
+#mensagemErro{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
   background-color: azure ;
   font-size: 300%;
 }
@@ -90,7 +101,7 @@ main{
 
 }
 .pedidos{
-  height: 100%;
+  height: auto;
   width: 33%;
   font-size: 70%;
   font-weight: 700;
@@ -102,11 +113,14 @@ main{
   border-radius: 30px;
   background-color: rgb(157, 188, 228);
 }
+.fontRed{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: red;
+}
 </style>
 <body>
 <?php
-    include_once '../../../phpIndex/protege.php';
-    proteger();
+
 ?>
 <div id="cabecalho">
         <div id="cabecalho_menu">
@@ -156,7 +170,37 @@ main{
           ?></div><?php
 
         } else {
-          echo  '&#10060;Ocorreu um erro no upload.'; ?><br><?php
+          echo  '&#10060;Ocorreu um erro no upload.'?><br><?php
+
+            if (isset($_FILES['dadosImport'])) {
+                switch ($_FILES['dadosImport']['error']) {
+                    case UPLOAD_ERR_INI_SIZE:
+                        echo '❗ O arquivo excede o tamanho máximo permitido pelo servidor.</br><span class = "fontRed">&#128161Dica</span> (Tente aumentar a tolerância do sistema para receber arquivos maiores)';
+                        break;
+                    case UPLOAD_ERR_FORM_SIZE:
+                        echo '❗ O arquivo excede o tamanho máximo permitido pelo formulário HTML (MAX_FILE_SIZE).';
+                        break;
+                    case UPLOAD_ERR_PARTIAL:
+                        echo '❗ O upload foi feito apenas parcialmente.';
+                        break;
+                    case UPLOAD_ERR_NO_FILE:
+                        echo '❗ Nenhum arquivo foi enviado.';
+                        break;
+                    case UPLOAD_ERR_NO_TMP_DIR:
+                        echo '❗ A pasta temporária do servidor está ausente.';
+                        break;
+                    case UPLOAD_ERR_CANT_WRITE:
+                        echo '❗ Falha ao gravar o arquivo no disco.';
+                        break;
+                    case UPLOAD_ERR_EXTENSION:
+                        echo '❗ O upload foi interrompido por uma extensão do PHP.';
+                        break;
+                    default:
+                        echo '❗ Erro desconhecido no upload.';
+                }
+            } else {
+                echo '❗ Nenhum dado de upload foi recebido.';
+            }
         }
         mysqli_close($conectar);
 

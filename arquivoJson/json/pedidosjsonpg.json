@@ -1,0 +1,243 @@
+{
+    "PG1-23\/12": {
+        "estado": "torno",
+        "conta": "teste",
+        "gravacao": "",
+        "data": "2025-12-23",
+        "horaEntrega_Escritorio": "08:27:41"
+    },
+    "PG1-24\/12": {
+        "estado": "torno",
+        "conta": "110",
+        "gravacao": "",
+        "data": "2025-12-24",
+        "horaEntrega_Escritorio": "10:27:31"
+    },
+    "PG2-24\/12": {
+        "estado": "torno",
+        "conta": "110",
+        "gravacao": "",
+        "data": "2025-12-24",
+        "horaEntrega_Escritorio": "10:28:05"
+    },
+    "PG1-25\/12": {
+        "estado": "torno",
+        "conta": "teste",
+        "gravacao": "",
+        "data": "2025-12-25",
+        "horaEntrega_Escritorio": "21:45:03"
+    },
+    "PG1-26\/12": {
+        "estado": "torno",
+        "conta": "101010",
+        "gravacao": "",
+        "data": "2025-12-26",
+        "horaEntrega_Escritorio": "23:58:06"
+    },
+    "PG2-26\/12": {
+        "estado": "torno",
+        "conta": "101010",
+        "gravacao": "",
+        "data": "2025-12-26",
+        "horaEntrega_Escritorio": "23:57:49"
+    },
+    "PG1-27\/12": {
+        "estado": "escritorio",
+        "conta": "Flex=teste",
+        "gravacao": "",
+        "data": "2025-12-27",
+        "horaEntrega_Escritorio": "16:48:29",
+        "horaEntrega_Polimento": "19:08:01",
+        "horaEntrega_Torno": "",
+        "horaEntrega_Gravacao": "19:08:01"
+    },
+    "PG2-27\/12": {
+        "estado": "torno",
+        "conta": "101010",
+        "gravacao": "",
+        "data": "2025-12-27",
+        "horaEntrega_Escritorio": "01:04:39"
+    },
+    "PG1-28\/12": {
+        "estado": "torno",
+        "conta": "teste",
+        "gravacao": "",
+        "data": "2025-12-28",
+        "horaEntrega_Escritorio": "22:11:07"
+    },
+    "PG1-29\/12": {
+        "estado": "torno",
+        "conta": "4rghfdh",
+        "gravacao": "",
+        "data": "2025-12-29",
+        "horaEntrega_Escritorio": "20:41:40"
+    },
+    "PG1-01\/01": {
+        "estado": "polimento",
+        "conta": "CONTA 15",
+        "gravacao": "",
+        "data": "2026-01-02",
+        "horaEntrega_Escritorio": "17:44:58",
+        "horaEntrega_Polimento": "20:39:03",
+        "horaEntrega_Torno": "",
+        "horaEntrega_Gravacao": "20:39:03"
+    },
+    "PG1-05\/01": {
+        "conta": "TESTE3",
+        "gravacao": "",
+        "data": "2026-01-05",
+        "horaEntrega_Escritorio": "14:30:21"
+    },
+    "PG1-02\/01": {
+        "conta": "TESTE3",
+        "gravacao": "",
+        "data": "2026-01-02",
+        "horaEntrega_Escritorio": "14:39:17"
+    },
+    "PG2-01\/01": {
+        "estado": "escritorio",
+        "conta": "CONTA 15",
+        "gravacao": "sim",
+        "data": "2026-01-02",
+        "horaEntrega_Escritorio": "17:45:09",
+        "horaEntrega_Polimento": "20:29:38",
+        "horaEntrega_Torno": "",
+        "horaEntrega_Gravacao": "20:29:38"
+    },
+    "PG3-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "15:46:47"
+    },
+    "PG4-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "15:48:19"
+    },
+    "PG5-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "16:57:40"
+    },
+    "PG6-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "17:00:46"
+    },
+    "PG7-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "17:02:23"
+    },
+    "PG8-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "17:03:00"
+    },
+    "PG9-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "17:03:54"
+    },
+    "PG10-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "17:05:13"
+    },
+    "PG11-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "17:08:25"
+    },
+    "PG12-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "17:20:42"
+    },
+    "PG13-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "17:21:18"
+    },
+    "PG14-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "17:21:49"
+    },
+    "PG15-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "17:22:16"
+    },
+    "PG16-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "17:40:18"
+    },
+    "PG17-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "17:40:35"
+    },
+    "PG18-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "17:40:44"
+    },
+    "PG19-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "17:41:18"
+    },
+    "PG20-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "17:43:22"
+    },
+    "PG1-03\/01": {
+        "estado": "escritorio",
+        "conta": "teste",
+        "gravacao": "",
+        "data": "2026-01-03",
+        "horaEntrega_Escritorio": "18:05:35",
+        "horaEntrega_Polimento": "18:41:49",
+        "horaEntrega_Torno": "",
+        "horaEntrega_Gravacao": "18:41:49"
+    }
+}

@@ -1,10 +1,9 @@
 <?php 
-    include_once '../../../../phpIndex/protege.php';
-    proteger();
+
 
 include_once('../../../../conexao.php');
-include_once('../../../../scripts/phpGlobal/backEnd/estoqueFunction.php');
-include_once('../../../../scripts/phpGlobal/backEnd/pedidosFunction.php');
+include_once('../../../../scripts/phpGlobal/backEnd/estoque/estoqueFunction.php');
+include_once('../../../../scripts/phpGlobal/backEnd/estoque/pedidosFunction.php');
 
 // Variáveis
 $nome        = $_POST['nome'];
@@ -17,7 +16,7 @@ $imagem = null; // default
 
 // Gera nome do arquivo
 $nomeArquivo = "estoque_" . preg_replace('/[^a-zA-Z0-9_-]/', '', $nome) . '.png';
-$caminhoImagem = "/imagem/imagens_Estoque/" . $nomeArquivo;
+$caminhoImagem = "/arquivos_Sistema/imagens_Estoque/" . $nomeArquivo;
 
 // Verifica se veio upload
 if (isset($_FILES['Imagem_Esoque']) && $_FILES['Imagem_Esoque']['error'] === UPLOAD_ERR_OK) {

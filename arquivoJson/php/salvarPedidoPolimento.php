@@ -5,21 +5,23 @@ header('Content-Type: application/json');
 $input = file_get_contents('php://input');
 $data = json_decode($input, true);
 
-if (
-    !$data ||
-    !isset($data['nome']) ||
-    !isset($data['valor']) ||
-    !isset($data['arquivo']) ||
-    !isset($data['dataAtual']) ||
-    !isset($data['horaEntrega']) ||
-    !preg_match('/^[a-zA-Z0-9_\-]+\.json$/', $data['arquivo']) // Validação simples do nome do arquivo
-) {
+// Validação mínima (nome + arquivo são obrigatórios)
+if (!$data || !isset($data['nome']) || !isset($data['arquivo'])) {
     echo json_encode(['success' => false, 'message' => 'Dados inválidos']);
     exit;
 }
 
-// Caminho do arquivo JSON (garante que só salve na pasta atual)
-$arquivo = __DIR__ . '/../json/' . $data['arquivo'];
+// Garante extensão .json no final
+$arquivoNome = $data['arquivo'];
+if (!str_ends_with($arquivoNome, '.json')) {
+    $arquivoNome .= '.json';
+}
+
+// Normaliza pra minúsculo (evita erro de maiúscula/minúscula no Linux)
+//$arquivoNome = strtolower($arquivoNome);
+
+// Caminho do arquivo JSON
+$arquivo = __DIR__ . '/../json/' . $arquivoNome;
 
 // Lê os dados existentes
 $pedidos = [];
@@ -33,18 +35,23 @@ if (file_exists($arquivo)) {
 if (!isset($pedidos[$data['nome']])) {
     $pedidos[$data['nome']] = [];
 }
+
 if (isset($data['valor'])) {
     $pedidos[$data['nome']]['estado'] = $data['valor'];
 }
 if (isset($data['dataAtual'])) {
     $pedidos[$data['nome']]['data'] = $data['dataAtual'];
 }
-
-$pedidos[$data['nome']]['horaEntrega_Polimento'] = $data['horaEntrega'];
-
+if (isset($data['horaEntrega'])) {
+    $pedidos[$data['nome']]['horaEntrega_Polimento'] = $data['horaEntrega'];
+}
+$pedidos[$data['nome']]['horaEntrega_Torno'] = $data['horaEntrega_Torno'] ?? '';
 
 // Salva de volta no arquivo
-file_put_contents($arquivo, json_encode($pedidos, JSON_PRETTY_PRINT));
+if (file_put_contents($arquivo, json_encode($pedidos, JSON_PRETTY_PRINT)) === false) {
+    echo json_encode(['success' => false, 'message' => 'Erro ao salvar arquivo']);
+    exit;
+}
 
 // Resposta de sucesso
 echo json_encode(['success' => true, 'data' => $pedidos]);

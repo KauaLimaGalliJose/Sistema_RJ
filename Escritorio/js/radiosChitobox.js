@@ -7,25 +7,25 @@ const cliente3 = document.getElementById('c3');
 export function radioCabecalho(){
 
     if(cliente1.checked){
-        document.getElementById('nome_p').style.visibility = 'hidden';
-        document.getElementById('outros').style.visibility = 'hidden';
-        document.getElementById('n_p').style.visibility = 'visible';
-        document.getElementById('nome_m').style.visibility = 'visible';
+        document.getElementById('nome_p').style.display = 'none';
+        document.getElementById('outros').style.display = 'none';
+        document.getElementById('n_p').style.display = 'flex';
+        document.getElementById('nome_m').style.display = 'flex';
         document.getElementById('outros').value = null;
     
     }
     if(cliente2.checked){
-        document.getElementById('outros').style.visibility = 'hidden';
-        document.getElementById('nome_p').style.visibility = 'visible';
-        document.getElementById('n_p').style.visibility = 'hidden';
-        document.getElementById('nome_m').style.visibility = 'hidden';
+        document.getElementById('outros').style.display = 'none';
+        document.getElementById('nome_p').style.display = 'flex';
+        document.getElementById('n_p').style.display = 'none';
+        document.getElementById('nome_m').style.display = 'none';
         document.getElementById('outros').value = null;
     }
     if(cliente3.checked){
-        document.getElementById('outros').style.visibility = 'visible';
-        document.getElementById('nome_p').style.visibility = 'visible';
-        document.getElementById('n_p').style.visibility = 'hidden';
-        document.getElementById('nome_m').style.visibility = 'hidden';
+        document.getElementById('outros').style.display = 'flex';
+        document.getElementById('nome_p').style.display = 'flex';
+        document.getElementById('n_p').style.display = 'none';
+        document.getElementById('nome_m').style.display = 'none';
     }
 }
 
@@ -44,17 +44,26 @@ export function check_unidade(){
     }
 }
 
-export function gravacaoExterna(){
+export function aguardar_grav(){
     //Variaveis
     const gravacaoCheckbox = document.getElementById('gravacao_externa')
-    const gravacaoInput = document.getElementById('grav_externaInput')
+
+    const gravInternaM = document.getElementById('gravInternaM')
+    const gravInternaF = document.getElementById('gravInternaF')
 
     if(gravacaoCheckbox.checked){
-        gravacaoInput.style.visibility = "visible"
+        
+        gravInternaM.value = 'Confirmar_Gravação';
+        gravInternaF.value = 'Confirmar_Gravação';
+        gravInternaM.disabled = true;
+        gravInternaF.disabled = true;
     }
     else{
-        gravacaoInput.style.visibility = "hidden"
-        gravacaoInput.value = null;
+        
+        gravInternaM.disabled = false;
+        gravInternaF.disabled = false;
+        gravInternaM.value = '';
+        gravInternaF.value = '';
     }
 }
 

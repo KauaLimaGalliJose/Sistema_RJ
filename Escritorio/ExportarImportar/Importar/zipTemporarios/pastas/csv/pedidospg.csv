@@ -1,0 +1,268 @@
+contadorpg,idpedidos,cliente,nomePedido,numF,numeM,descricaoPedido,descricaoAlianca,largura,gravacaoInternaM,gravacaoInternaF,peso,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM,pdf,data_digitada,estoque
+1,PG1-2025-11-12,Mercado_Livre,"CONTA 1-001",17,16,"Dados do envio
+Envio normal
+Rua Capitão Miranda 475
+Capitão Lanches Referencia: Lanchonete Capitão Lanches - CEP 62370000 - Centro, São Benedito, Ceará
+Quem recebe: Andressa de Brito Medeiros","Anel nº17
+Nº17  Andressa 
+Nº16   Kauany ",3mm,"Kauany "," Andressa ",,../arquivos_Sistema/imagens_Estoque/estoque_Jade.png,,,true,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Jade
+2,PG2-2025-11-12,Mercado_Livre,"CONTA 1-002",14,17,"Dados do envio
+Envio normal
+Rua Mucio Auto Alencar 89
+1002A - CEP 29090780 - Jardim Camburi, Vitória, Espírito Santo
+Quem recebe: Leonardo Saueressig Souza","Anel nº14
+Feminina nº14  LEONARDO
+Masculina nº17  BRENDA",3mm," Brenda",Leonardo,,../arquivos_Sistema/imagens_Estoque/estoque_Jade.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Jade
+3,PG3-2025-11-12,Mercado_Livre,"CONTA 1-003",17,22,"Dados do envio
+Envio normal
+Rua Antônio Ruiz 443
+Casa Referencia: Próxima a uma valeta grande - CEP 19905104 - Vila Santa Maria, Ourinhos, São Paulo
+Quem recebe: Guilherme Rodrigues","Anel nº17
+Feminina nº17 Guilherme 08/06/2025 
+Masculina nº22 Iasmin 08/06/2025 ",3mm," Iasmin 08/06/2025","Guilherme 08/06/2025 ",,../arquivos_Sistema/imagem_pedidos/PG3-2025-11-12.png,,,,,../arquivos_Sistema/PDFs/PG3-2025-11-12.pdf,2025-11-12,Jade
+4,PG4-2025-11-12,Mercado_Livre,"CONTA 1-04",17,24,"Dados do envio
+Envio normal
+Rua Gonçalves Dias 1338
+Hotel estribar - CEP 65520000 - centro, Brejo, Maranhão
+Quem recebe: Givago Nunes Viegas Sousa","Anel nº17
+Feminina nº17 Givago 
+Masculina nº24  Luane",3mm," Luane","Givago ",,../arquivos_Sistema/imagem_pedidos/PG4-2025-11-12.png,,,,,../arquivos_Sistema/PDFs/PG4-2025-11-12.pdf,2025-11-12,Jade
+5,PG5-2025-11-12,Mercado_Livre,"CONTA 1-005",16,21,"Dados do envio
+Envio normal
+Manoel beto leal 150
+Casa - CEP 84945000 - Vila nova, Salto do Itararé, Paraná
+Quem recebe: Luana paula","Anel nº16
+ nº16 Raimilly  20/09/25
+ nº21 Luana  20/09/25",3mm,"Luana  20/09/25","Raimilly  20/09/25",,../arquivos_Sistema/imagem_pedidos/PG5-2025-11-12.png,,,,,../arquivos_Sistema/PDFs/PG5-2025-11-12.pdf,2025-11-12,Jade
+6,PG6-2025-11-12,Mercado_Livre,"CONTA 1-006",13,23,"Dados do envio
+Envio normal
+Felipe Almeida SN
+Casa Referencia: Atrás do colégio Estadual José Ferreira de Oliveira - CEP 48740000 - Salgadália, Salgadália, Bahia
+Quem recebe: Henrique Tenucci","Anel nº13
+Feminina nº13 Henrique 23/01/22
+Masculina nº23 Ranny 23/01/22",3mm,"Ranny 23/01/22","Henrique 23/01/22",,../arquivos_Sistema/imagem_pedidos/PG6-2025-11-12.png,,,,,../arquivos_Sistema/PDFs/PG6-2025-11-12.pdf,2025-11-12,Jade
+7,PG7-2025-11-12,Mercado_Livre,"CONTA 1-007",16,17,"Dados do envio
+Envio normal
+Rua Nova Rainha 1
+Quadra-03 Bloco-05 - CEP 44790000 - Maria Joana, Campo Formoso (Presidente Dutra), Bahia
+Quem recebe: Welisson silva dos santos","Anel nº16
+Feminina nº16  Welisson  24/10/2025 
+Masculina nº17  Natasha  24/10/2025 ",3mm,"Natasha  24/10/2025 ","Welisson  24/10/2025 ",,../arquivos_Sistema/imagem_pedidos/PG7-2025-11-12.png,,,,,../arquivos_Sistema/PDFs/PG7-2025-11-12.pdf,2025-11-12,Jade
+8,PG8-2025-11-12,Mercado_Livre,"CONTA 1-008",14,21,"Dados do envio
+Envio normal
+Rua da Prainha 660
+Após tiro de guerra Referencia: Casa fica em frente ao terceiro quebra molas da rua Casa com uma rampa bem alta - CEP 65725000 - São Benedito, Pedreiras, Maranhão
+Quem recebe: Victor Sousa Correia","Anel nº14
+Feminina nº14 Rodrigo
+Masculina nº21  Thaylla ",3mm,"Thaylla ",Rodrigo,,../arquivos_Sistema/imagem_pedidos/PG8-2025-11-12.png,,,,,../arquivos_Sistema/PDFs/PG8-2025-11-12.pdf,2025-11-12,Jade
+9,PG9-2025-11-12,Mercado_Livre,"CONTA 1-009",16,25,"Dados do envio
+Envio normal
+Rua Eurípedes da Cruz 92
+CEP 38052018 - Jardim Marajó, Uberaba, Minas Gerais
+Quem recebe: Gabriel Cruz Barbosa","Anel nº16
+Feminina nº16 Gabriel Cruz  08/08/2025
+Masculina nº25  Ana Beatriz  08/08/2025",3mm," Ana Beatriz  08/08/2025","Gabriel Cruz  08/08/2025",,../arquivos_Sistema/imagem_pedidos/PG9-2025-11-12.png,,,,,../arquivos_Sistema/PDFs/PG9-2025-11-12.pdf,2025-11-12,Jade
+10,PG10-2025-11-12,Mercado_Livre,"CONTA 1-010 FLEX",19,20,"Dados do envio
+Envio prioritario
+Rua Itamonte 742
+742 - CEP 02220001 - Vila Medeiros, São Paulo, São Paulo
+Quem recebe: yago Romero Da Costa silva","Anel nº19 PEDRA AZUL CLARO
+Fem nº19 PEDRA AZUL CLARO Yago
+Masc nº20 Samantha ",3mm,"Samantha ",Yago,,../arquivos_Sistema/imagem_pedidos/PG10-2025-11-12.png,,,1,,../arquivos_Sistema/PDFs/PG10-2025-11-12.pdf,2025-11-12,Jade
+11,PG11-2025-11-12,Mercado_Livre,"CONTA 1-011",15,22,"Dados do envio
+Envio normal
+Rua de Santana 130
+CEP 65685000 - centro, Buriti Bravo, Maranhão
+Quem recebe: Matheus Menezes Pessoa","Anel nº15
+Feminina nº15  Matheus 1 Coríntios 13:4-7 
+Masculina nº22  Yasmim 1 Coríntios 13:4-7 ",3mm," Yasmim 1 Coríntios 13:4-7 "," Matheus 1 Coríntios 13:4-7 ",,../arquivos_Sistema/imagem_pedidos/PG11-2025-11-12.png,,,,,../arquivos_Sistema/PDFs/PG11-2025-11-12.pdf,2025-11-12,Jade
+12,PG12-2025-11-12,Mercado_Livre,"CONTA 1-012",18,25,"Dados do envio
+Envio normal
+Rua Major Cristino Ribeiro dos Santos 500
+CEP 14500226 - Largo do Rosário, Ituverava, São Paulo
+Quem recebe: Wesley alves","Anel nº18
+Feminina nº18    23/09 Wesley
+Masculina nº25   23/09 Stephanie ",3mm," 23/09 Stephanie "," 23/09 Wesley",,../arquivos_Sistema/imagens_Estoque/estoque_Jade.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Jade
+13,PG13-2025-11-12,Mercado_Livre,"CONTA 1-013",19,20,"Dados do envio
+Envio normal
+Rua Voluntário Benedito Sérgio 418
+CEP 12050470 - Chácara do Visconde, Taubaté, São Paulo
+Quem recebe: Pizzaria vila velha","Anel nº19
+Nº19 Lineker
+Nº20 João ",3mm,"João "," Lineker",,../arquivos_Sistema/imagens_Estoque/estoque_Jade.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Jade
+14,PG14-2025-11-12,Mercado_Livre,"CONTA 1-014",12,21,"Dados do envio
+Envio normal
+Rua São Pedro 12345
+casa - CEP 47610000 - bairro da alegria, Sítio do Mato, Bahia
+Quem recebe: uilian pereira dos Santos","Anel nº12
+Feminina nº12 William
+Masculina nº21 Dudinha",3mm,Dudinha,William,,../arquivos_Sistema/imagens_Estoque/estoque_Jade.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Jade
+15,PG15-2025-11-12,Mercado_Livre,"CONTA 1-015",15,35,"Dados do envio
+Envio normal
+Rua31 640
+Energisa - CEP 78635000 - Centro, Água Boa, Mato Grosso
+Quem recebe: Emanoel Sousa dos Santos","Anel nº15
+Feminina nº15 Fladilon  18/10/25
+Masculina nº35 Emilly  18/10/25",3mm,"Emilly  18/10/25","Fladilon  18/10/25",,../arquivos_Sistema/imagens_Estoque/estoque_Jade.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Jade
+16,PG16-2025-11-12,Mercado_Livre,"CONTA 1-016",40,21,"Dados do envio
+Envio prioritario
+Residencial Canadá 8
+Quadra B Casa 08 Referencia: Prox FAETE - CEP 64057280 - Vale Quem Tem, Teresina, Piauí
+Quem recebe: Willian Pontes","Nº21  Willian 15/11/2025",3mm,"Willian 15/11/2025",,,../arquivos_Sistema/imagem_pedidos/PG16-2025-11-12.png,,,,,../arquivos_Sistema/PDFs/PG16-2025-11-12.pdf,2025-11-12,Jade
+17,PG17-2025-11-12,Mercado_Livre,"CONTA 1-023",18,18,"Dados do envio
+Envio normal
+Travessa Amazonas 14
+Casa Referencia: Ao lado do sacolão Marques - CEP 47644076 - Planalto, Santa Maria da Vitória, Bahia
+Quem recebe: Rodrigo Silva Oliveira Batista","Anel nº17  PEDRA AZUL
+FEMININA Nº18  PEDRA AZUL Rodrigo 30/12/2025
+MASCULINA Nº18 Ana Claudia 30/12/2025",3mm,"Ana Claudia 30/12/2025","Rodrigo 30/12/2025",,../arquivos_Sistema/imagem_pedidos/PG17-2025-11-12.png,,,true,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Jade
+18,PG18-2025-11-12,Mercado_Livre,"VAGNER 001",15,30,"Dados do envio
+Envio prioritario
+Avenida das Palmeiras 20
+Cond. Rio Jangada Referencia: Condominio Rio Jangada, casa 217 - CEP 78075903 - Jardim Imperial, Cuiabá, Mato Grosso
+Quem recebe: Wellinghton Fernando Armoa Pimenta","Anel nº15
+Nº15 W.Y 05/01/2024
+Nº30 W.Y 05/01/2024",4mm,"W.Y 05/01/2024","W.Y 05/01/2024",,../arquivos_Sistema/imagem_pedidos/PG18-2025-11-12.png,,,1,,../arquivos_Sistema/PDFs/PG18-2025-11-12.pdf,2025-11-12,Chanfrada
+19,PG19-2025-11-12,Mercado_Livre,"VAGNER 004",18,20,"Dados do envio
+Envio normal
+João José Bezerra SN
+Referencia: mesma rua da metalúrgica braço forte - CEP 47220000 - bairro João José Bezerra, Campo Alegre de Lourdes, Bahia
+Quem recebe: Cleilton Rodrigues dos Santos","Anel nº18
+Feminina nº18  CLEILTON 
+Masculina nº20  ISABELA ",3mm,"Isabela "," Cleilton ",,../arquivos_Sistema/imagens_Estoque/estoque_Chanfrada.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Chanfrada
+20,PG20-2025-11-12,Mercado_Livre,"VAGNER 005",16,15,"Dados do envio
+Envio normal
+Alameda Terrazul 645
+CEP 13216774 - Terras de São Carlos, Jundiaí, São Paulo
+Quem recebe: Emerson Freire","Anel nº16
+Feminina nº16   Renan
+Masculina nº15  Giulia",3mm,Giulia,Renan,,../arquivos_Sistema/imagens_Estoque/estoque_Chanfrada.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Chanfrada
+21,PG21-2025-11-12,Mercado_Livre,"Nova 002",18,16,"
+Dados do envio
+Envio expresso
+Rua Adelino Saraiva 500
+Fundos Referencia: Casa verde ao fundo do terreno com portão branco - CEP 18120488 - Jardim Três Lagoinhas, Mairinque, São Paulo
+Quem recebe: Kevin Marcos Nagamatsu Saraiva Moraes","Anel 18
+Fem 18 Kevin 08/09/2025
+Masc 16 Julyena 08/09/2025",3mm,"Julyena 08/09/2025"," Kevin 08/09/2025",,../arquivos_Sistema/imagem_pedidos/PG21-2025-11-12.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Chanfrada
+22,PG22-2025-11-12,Mercado_Livre,"Nova 003",14,25,"
+Dados do envio
+Retiro em Mercado Envios
+RUA BOTOCUDOS 300
+CEP 17600030 - Centro, Tupã, São Paulo
+Quem retira: Guilherme Bosso","Anel 14
+Fem 14 Guilherme 21/12/2025
+Masc 25 Júlia 21/12/2025",3mm,"Júlia 21/12/2025","Guilherme 21/12/2025",,../arquivos_Sistema/imagem_pedidos/PG22-2025-11-12.png,,,true,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Chanfrada
+23,PG23-2025-11-12,Mercado_Livre,"VAGNER 006",18,30,"Dados do envio
+Envio normal
+Rua Ismenia Campos 45
+Referencia: Na rua ao lado da padaria Moura - CEP 28360000 - Novo, Bom Jesus do Itabapoana, Rio de Janeiro
+Quem recebe: Luiz Felipe Jacomini de Almeida","Anel nº18
+Feminina nº18  Luiz Felipe   18/10/2023
+Masculina nº30 Marcely  18/10/2023",3mm,"Marcely  18/10/2023","Luiz Felipe   18/10/2023",,../arquivos_Sistema/imagens_Estoque/estoque_Chanfrada.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Chanfrada
+24,PG24-2025-11-12,Mercado_Livre,"VAGNER 009",19,19,"Dados do envio
+Envio normal
+BR-482 SN
+Prédio Referencia: Oficina de moto no segundo acesso a rive ao lado do chalé - CEP 29520000 - Rive, Rive, Espírito Santo
+Quem recebe: Mateus moreno","Anel nº19
+Nº19 Mateus ❤
+Nº19 Rayane ❤
+",3mm,"Rayane ❤","Mateus ❤",,../arquivos_Sistema/imagem_pedidos/PG24-2025-11-12.png,,,,,../arquivos_Sistema/PDFs/PG24-2025-11-12.pdf,2025-11-12,Chanfrada
+25,PG25-2025-11-12,Mercado_Livre,"VAGNER 011",16,21,"Dados do envio
+Envio prioritario
+Rua Catarino José dos Santos 17
+Casa Referencia: Casa de Silva Das Virgens Cardoso. - CEP 48445000 - Centro, Heliópolis, Bahia
+Quem recebe: Victor Cavalcante","Anel nº16
+Feminina nº16 Eduardo Andrade 25/10/2025
+Masculina nº21 Êmyle Santos 25/10/2025",3mm,"Êmyle Santos 25/10/2025"," Eduardo Andrade 25/10/2025",,../arquivos_Sistema/imagem_pedidos/PG25-2025-11-12.png,,,,,../arquivos_Sistema/PDFs/PG25-2025-11-12.pdf,2025-11-12,Chanfrada
+26,PG26-2025-11-12,Mercado_Livre,"VAGNER 013",16,19,"Dados do envio
+Envio expresso
+Rua Pery Guarany Blackman 304
+304 - CEP 13309580 - Parque Industrial, Itu, São Paulo
+Quem recebe: Kauã Marqui","Anel nº16
+Nº16 Kauã 18/05/2025
+Nº18,5 Isabella 18/05/2025",3mm," Isabella 18/05/2025","Kauã 18/05/2025",,../arquivos_Sistema/imagens_Estoque/estoque_Chanfrada.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Chanfrada
+27,PG27-2025-11-12,Mercado_Livre,"VAGNER 014",19,27,"Dados do envio
+Envio normal
+João androaldo de Barros 40
+CEP 86930000 - Outro, São João do Ivaí, Paraná
+Quem recebe: Daniel Feitosa Eduardo","Anel nº19
+Feminina nº19
+Masculina nº27",3mm,Confirmar_Gravação,Confirmar_Gravação,,../arquivos_Sistema/imagens_Estoque/estoque_Chanfrada.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Chanfrada
+28,PG28-2025-11-12,Mercado_Livre,"VAGNER 015",19,29,"Dados do envio
+Envio prioritario
+Bairro Sol Nascente Rua Gonçalves Dias 39
+CEP 38760000 - Centro, Serra do Salitre, Minas Gerais
+Quem recebe: Sara Ketlen","Anel nº19
+Feminina nº19 Vitor 
+Masculina nº29 Emilly ",3mm,"Emilly ","Vitor ",,../arquivos_Sistema/imagens_Estoque/estoque_Chanfrada.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Chanfrada
+29,PG29-2025-11-12,Mercado_Livre,"VAGNER 016",10,18,"Dados do envio
+Envio prioritario
+Rua Maria Aparecida 41
+Rua da quadra - CEP 39874000 - Bom Jesus da Vitória, Santa Helena de Minas, Minas Gerais
+Quem recebe: Vítor Emanuel Pereira De Souza","Anel nº10
+Feminina nº10  Vitor 
+Masculina nº18 Ysis ",3mm,"Ysis ","Vitor ",,../arquivos_Sistema/imagens_Estoque/estoque_Chanfrada.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Chanfrada
+30,PG30-2025-11-12,Mercado_Livre,"LU 007",22,18,"Dados do envio
+Envio expresso
+Rua Luzia Gonzales Coda 120
+CEP 14890348 - Conjunto Habitacional Margarida Raymundo Berchieri, Jaboticabal, São Paulo
+Quem recebe: Luís Paulo","Anel 22
+Fem 22 Luís 01/01/24
+Masc 18 Camily 01/01/24",3mm,"Camily 01/01/24","Luís 01/01/24",,../arquivos_Sistema/imagens_Estoque/estoque_Jade.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Jade
+31,PG31-2025-11-12,Mercado_Livre,"VAGNER 020",15,17,"Dados do envio
+Envio normal
+Avenida José Amâncio de Souza 397
+casa de esquina Referencia: Casa de esquina, cor chocolate varanda com grade, ou deixar no mercado central - CEP 79710000 - Vila Rica, Vicentina, Mato Grosso do Sul
+Quem recebe: Maria Celia Pereira de Medeiros","Anel nº15
+Feminina nº15 Kauã 03/09/2024
+Masculina nº17 Maria 03/09/2024",3mm,"Maria 03/09/2024","Kauã 03/09/2024",,../arquivos_Sistema/imagens_Estoque/estoque_Chanfrada.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Chanfrada
+32,PG32-2025-11-12,Mercado_Livre,"VAGNER 021",14,16,"Dados do envio
+Retiro em Mercado Envios
+RUA RAUL DE LEONI 14
+CEP 29165300 - Parque Residencial Laranjeiras, Serra, Espírito Santo
+Quem retira: Estevão Guimarães","Anel nº14
+Nº14 E❤️M
+Nº16 E❤️M",3mm,E❤️M,E❤️M,,../arquivos_Sistema/imagens_Estoque/estoque_Chanfrada.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Chanfrada
+33,PG33-2025-11-12,Mercado_Livre,"VAGNER 022",24,19,"Dados do envio
+Envio normal
+Quadra SQN 105 Bloco A 506
+CEP 70734010 - Asa Norte, Brasília, Distrito Federal
+Quem recebe: Tainá de Sousa Oliveira","Anel nº24
+Feminina nº24 Colossenses 3:14 ♡
+Masculina nº19 Colossenses 3:14 ♡",3mm,"Colossenses 3:14 ♡","Colossenses 3:14 ♡",,../arquivos_Sistema/imagens_Estoque/estoque_Chanfrada.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Chanfrada
+34,PG34-2025-11-12,Mercado_Livre,"VAGNER 023",16,22,"Dados do envio
+Envio prioritario
+Rua Seis de Fevereiro 539
+Casa De joelma Referencia: Promixo Ao Antigo Bar Do Baleado - CEP 57442000 - Centro, Olho d'Água das Flores, Alagoas
+Quem recebe: Rafael Apolinario Da Silva","Anel nº16
+Feminina nº16  R e G 15/11/2025
+Masculina nº22 R e G 15/11/2025",3mm,"R e G 15/11/2025","R e G 15/11/2025",,../arquivos_Sistema/imagens_Estoque/estoque_Chanfrada.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Chanfrada
+35,PG35-2025-11-12,Mercado_Livre,"VAGNER 025",16,19,"Dados do envio
+Envio prioritario
+Rua José Ribamar Rodrigues 703
+CEP 64260000 - Flor dos Campos, Piripiri, Piauí
+Quem recebe: Julia Maria Santos Soares","Anel nº16
+Feminina nº16  1 Coríntios 13:4-7
+Masculina nº19 1 Coríntios 13:4-7",3mm,"1 Coríntios 13:4-7","1 Coríntios 13:4-7",,../arquivos_Sistema/imagens_Estoque/estoque_Chanfrada.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Chanfrada
+36,PG36-2025-11-12,Mercado_Livre,"VAGNER 026",10,19,"Dados do envio
+Envio expresso
+Rua Romeu Fornazari 120
+Bl A ap 202 - CEP 13455721 - Jardim Dona Regina, Santa Bárbara D'Oeste, São Paulo
+Quem recebe: João cezarete","Anel nº19
+FEMININA Nº19
+MASCULINA Nº10",3mm,Confirmar_Gravação,Confirmar_Gravação,,../arquivos_Sistema/imagens_Estoque/estoque_Chanfrada.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Chanfrada
+37,PG37-2025-11-12,Mercado_Livre,"VAGNER 027",14,17,"Dados do envio
+Envio normal
+Rua rio tefe 1188
+CEP 65950000 - Trizidela, Barra do Corda, Maranhão
+Quem recebe: João Gabriel de Oliveira Galvão","Anel nº14
+Feminina nº14 João 21/06
+Masculina nº17 Evillen 21/06",3mm,"Evillen 21/06","João 21/06",,../arquivos_Sistema/imagens_Estoque/estoque_Chanfrada.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-11-12,Chanfrada
+38,PG38-2025-11-12,Mercado_Livre,"VAGNER 030",17,19,"Dados do envio
+Envio prioritario
+Rua Marrocos 165
+segunda casa da esquina - CEP 94135130 - Bom Sucesso, Gravataí, Rio Grande do Sul
+Quem recebe: fabiane dos santos botelho","Anel nº17
+Feminina nº17 Keko 
+Masculina nº19 Keka",3mm,Keka,"Keko ",,../arquivos_Sistema/imagem_pedidos/PG38-2025-11-12.png,,,,,../arquivos_Sistema/PDFs/PG38-2025-11-12.pdf,2025-11-12,Jade

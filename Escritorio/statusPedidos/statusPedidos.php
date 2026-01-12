@@ -1,6 +1,5 @@
 <?php
-include_once '../../phpIndex/protege.php';
-proteger();
+
 include_once('../../conexao.php');
 include_once('./phpScripts/statusFuncao.php');
 ?>

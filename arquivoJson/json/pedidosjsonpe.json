@@ -1,0 +1,82 @@
+{
+    "PE1-25\/12": {
+        "estado": "torno",
+        "conta": "teste",
+        "gravacao": "",
+        "data": "2025-12-25",
+        "horaEntrega_Escritorio": "21:45:29"
+    },
+    "PE1-26\/12": {
+        "estado": "torno",
+        "conta": "teste",
+        "gravacao": "",
+        "data": "2025-12-26",
+        "horaEntrega_Escritorio": "10:48:13"
+    },
+    "PE2-26\/12": {
+        "estado": "torno",
+        "conta": "teste",
+        "gravacao": "",
+        "data": "2025-12-26",
+        "horaEntrega_Escritorio": "10:48:23"
+    },
+    "PE1-27\/12": {
+        "estado": "torno",
+        "conta": "101010",
+        "gravacao": "",
+        "data": "2025-12-27",
+        "horaEntrega_Escritorio": "01:04:00"
+    },
+    "PE1-28\/12": {
+        "estado": "torno",
+        "conta": "teste",
+        "gravacao": "",
+        "data": "2025-12-28",
+        "horaEntrega_Escritorio": "22:10:45"
+    },
+    "PE1-29\/12": {
+        "estado": "torno",
+        "conta": "4rghfdh",
+        "gravacao": "",
+        "data": "2025-12-29",
+        "horaEntrega_Escritorio": "20:41:47"
+    },
+    "PE2-29\/12": {
+        "estado": "torno",
+        "conta": "4rghfdh",
+        "gravacao": "",
+        "data": "2025-12-29",
+        "horaEntrega_Escritorio": "21:11:15"
+    },
+    "PE1-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE5",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "15:40:08"
+    },
+    "PE2-01\/01": {
+        "estado": "torno",
+        "conta": "TESTE",
+        "gravacao": "",
+        "data": "2026-01-01",
+        "horaEntrega_Escritorio": "15:04:21"
+    },
+    "PE1-03\/01": {
+        "estado": "escritorio",
+        "conta": "teste",
+        "gravacao": "sim",
+        "data": "2026-01-03",
+        "horaEntrega_Escritorio": "18:05:45",
+        "horaEntrega_Polimento": "18:42:01",
+        "horaEntrega_Torno": "",
+        "horaEntrega_Gravacao": "18:42:01"
+    },
+    "PE2-03\/01": {
+        "estado": "torno",
+        "conta": "teste",
+        "gravacao": "",
+        "data": "2026-01-03",
+        "horaEntrega_Escritorio": "22:36:07"
+    }
+}

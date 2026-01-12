@@ -3,14 +3,79 @@
 // Usado no PG2_Escritorio.php 
 function titulosDoEstoque($conectar){
     
-    $estoqueTitulo = "SELECT nome FROM estoque";
-    $conectarEstoque = mysqli_query($conectar, $estoqueTitulo);
+   $estoqueTituloGe = $_GET['estoque'] ?? null;
+
+    if( $estoqueTituloGe != null ){
+
+        $nomeEstoque = $_GET['estoque'];
+
+        echo "<option class='font_blu' id = '$nomeEstoque' value='$nomeEstoque' selected>$nomeEstoque</option>";
+
+        $estoqueTitulo = "SELECT nome FROM estoque WHERE nome <> '$nomeEstoque'";
+        $conectarEstoque = mysqli_query($conectar, $estoqueTitulo);
+    }
+    else{
+    
+        $estoqueTitulo = "SELECT nome FROM estoque";
+        $conectarEstoque = mysqli_query($conectar, $estoqueTitulo);
+    }
     
     while ($linha = mysqli_fetch_assoc($conectarEstoque)) {
 
-        $nome = $linha['nome'];
-        echo "<option id = '$nome' value='$nome'>$nome</option>";
+        $nome = $linha['nome'] ;
+        echo "<option  id = '$nome' value='$nome'>$nome</option>";
+
     }
+}
+
+function titulosDoEstoqueImg($conectar, $nome , $caminho) {
+    // Prepara a query para evitar SQL Injection
+    $stmt = $conectar->prepare("SELECT imagem FROM estoque WHERE nome = ?");
+    
+    if (!$stmt) {
+        // Se falhar em preparar, exibe erro
+        echo "Erro ao preparar statement: " . $conectar->error;
+        return;
+    }
+
+    $stmt->bind_param("s", $nome);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+
+    if ( $linha = $resultado->fetch_assoc() ) {
+
+        echo $caminho . $linha['imagem'];
+        
+    } else {
+        echo "Imagem não encontrada.";
+    }
+
+    $stmt->close();
+}
+
+function titulosDoEstoqueCaminho($conectar, $nome) {
+    // Prepara a query para evitar SQL Injection
+    $stmt = $conectar->prepare("SELECT imagem FROM estoque WHERE nome = ?");
+    
+    if (!$stmt) {
+        // Se falhar em preparar, exibe erro
+        echo "Erro ao preparar statement: " . $conectar->error;
+        return;
+    }
+
+    $stmt->bind_param("s", $nome);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+
+    if ( $linha = $resultado->fetch_assoc() ) {
+
+        echo 'value="..' . $linha['imagem'] . '" name = "estoqueImg" ';
+        
+    } else {
+        echo "Imagem não encontrada.";
+    }
+
+    $stmt->close();
 }
 
 // Usado na pagina ver_estoque.php
@@ -53,3 +118,28 @@ function verEstoque($conectar){
         echo "</form>";
     }
 }
+// Pegar peso do estoque
+function PesoDoEstoque($conectar, $nome) {
+
+    $stmt = $conectar->prepare("SELECT peso FROM estoque WHERE nome = ?");
+    if (!$stmt) {
+        return null; // não devolve HTML dentro do input
+    }
+
+    $stmt->bind_param("s", $nome);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+
+    if ($linha = $resultado->fetch_assoc()) {
+
+        $peso = $linha['peso']*2; // peso do par
+
+        $pesoFormatado = number_format($peso, 2, ',', ''); // Formata com vírgula
+
+
+        return $pesoFormatado;   // AGORA RETORNA
+    }
+
+    return null; // não achou nada
+}
+?>

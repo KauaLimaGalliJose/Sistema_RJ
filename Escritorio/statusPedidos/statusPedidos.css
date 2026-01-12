@@ -75,7 +75,7 @@ body{
         font-size: 200%;
     }
         /* Botão Cabecalho --------------- */
-    .body {
+.body {
   --radius: 8px;
   --border: 4px;
   --height: 48px;
@@ -368,7 +368,7 @@ body{
         font-size: 140%;
     }
     /* Botão Cabecalho --------------- */
-    .body {
+.body {
   --radius: 8px;
   --border: 4px;
   --height: 48px;

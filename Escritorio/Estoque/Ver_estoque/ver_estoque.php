@@ -9,21 +9,16 @@
     <title>Estoque</title>
 </head>
 <body>
-    <?php
-        include_once '../../../phpIndex/protege.php';
-        proteger();
-    ?>
-    <div id="cabecalho">
-            <div id="casa">
-                <button type="button" id="seta_esquerda" value="" class="botao" >
-                    <a href="../Estoque_Pagina_Inicial.html"><img class="itens" src="Imagens_ver_Estoque/angulo-esquerdo.png"></a>
-                </button>
 
-                <button type="button" value="" class="botao" >
-                    <a href="../../PG2-Escritorio.php"><img class="itens" src="Imagens_ver_Estoque/casa.png"></a>
-                </button>
-            </div>      
-    </div>
+      <?php
+        include_once('../../../scripts/phpGlobal/frontEnd/cabecalho/cabecalho.php');
+
+        $parametros = [];
+        $parametros['caminho_Casa'] = 'btn' . '-+-' . '../../PG2-Escritorio.php' . '-+-' . '../../../scripts/imagem_global/cabecalho_img/casa.png';
+        $parametros['caminho_Seta'] = 'btn' . '-+-' . '../Estoque_Pagina_Inicial.php' . '-+-' . '../../../scripts/imagem_global/cabecalho_img/angulo-esquerdo.png';
+        
+        cabecalho($parametros);
+      ?>
     <div id = "div_estoques">
         <?php
             include_once('../../../conexao.php');

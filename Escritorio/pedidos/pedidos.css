@@ -1,7 +1,8 @@
-body{
+body {
     background: azure;
 }
-*{
+
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -9,57 +10,68 @@ body{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
-#cabecalho{
+
+#cabecalho {
     display: flex;
     align-items: center;
-    justify-content: center; /* Garante que os itens sejam distribuídos */
+    justify-content: center;
+    /* Garante que os itens sejam distribuídos */
     position: fixed;
     width: 100%;
     height: 80px;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.7);
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
     background-color: antiquewhite;
-    overflow-y: hidden; /* Garante que o menu não "quebre" */
+    overflow-y: hidden;
+    /* Garante que o menu não "quebre" */
     z-index: 10;
 }
-main{
+
+main {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-#cabecalho_menu{
+
+#cabecalho_menu {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Garante que os itens sejam distribuídos */
+    justify-content: space-between;
+    /* Garante que os itens sejam distribuídos */
     width: 100%;
     height: 100%;
-    
+
     padding-left: 15px;
     padding-right: 20px;
 }
-#part_cabecalho_inputs{
+
+#part_cabecalho_inputs {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
 }
-.botao{
+
+.botao {
     background-color: antiquewhite;
     border: 0px;
     padding: 2px;
 }
-.botao:hover{
+
+.botao:hover {
     transition: 0.5s;
     transform: scale(110%);
     background-color: rgb(247, 94, 94);
     border-radius: 10%;
 }
-.itens{
+
+.itens {
     width: 50px;
     height: 50px;
     margin-left: 19px;
     margin-right: 19px;
 }
-#larguraSelect{
+
+#larguraSelect {
 
     border: solid black 3px;
     border-radius: 5px;
@@ -69,11 +81,13 @@ main{
     font-size: 120%;
     font-weight: 700;
 }
-#pesquisa{
+
+#pesquisa {
     display: flex;
     margin-left: 35px;
 }
-#pesquisaInput{
+
+#pesquisaInput {
     border: solid black 3px;
     border-radius: 5px;
     width: 150px;
@@ -81,7 +95,8 @@ main{
     font-size: 120%;
     font-weight: 700;
 }
-#quemRecebeInput{
+
+#quemRecebeInput {
     border: solid black 3px;
     border-radius: 5px;
     width: 150px;
@@ -90,7 +105,8 @@ main{
     font-size: 120%;
     font-weight: 700;
 }
-#pedidosDiv{
+
+#pedidosDiv {
     display: flex;
     align-items: center;
     font-style: normal;
@@ -98,28 +114,32 @@ main{
     font-weight: 700;
     margin: 15px;
 }
-.data{
-    margin-left:10px;
-    margin-right:10px;
+
+.data {
+    margin-left: 10px;
+    margin-right: 10px;
     border: solid black 3px;
     border-radius: 5px;
     font-size: 120%;
     height: 30px;
 }
-#enviar{
-    display: flex; 
+
+#enviar {
+    display: flex;
     margin-left: 15px;
     font-style: normal;
     font-family: cursive;
     background-color: blanchedalmond;
     border: none;
 }
-#enviar:hover{
+
+#enviar:hover {
     background-color: rgb(247, 94, 94);
     padding: 2px;
     border-radius: 10px;
     transition: 0.2s;
 }
+
 /*--------------------------------------- Checkbooks ----------------------------------------*/
 .estoque_esgotado {
     --input-focus: #2d8cf0;
@@ -136,26 +156,27 @@ main{
     flex-direction: row;
     flex-wrap: nowrap;
     margin-left: 20px;
-    }
-    .estoque_esgotado span{
+}
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        white-space: nowrap;
-        margin-top: 3px;
-        margin-left: 16px;
-        font-size: 150%;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.estoque_esgotado span {
 
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    margin-top: 3px;
+    margin-left: 16px;
+    font-size: 150%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
-    .estoque_esgotado input {
+}
+
+.estoque_esgotado input {
     position: absolute;
     opacity: 0;
-    }
+}
 
-    .checkmark {
+.checkmark {
     width: 30px;
     height: 30px;
     position: relative;
@@ -166,14 +187,14 @@ main{
     box-shadow: 4px 4px var(--main-color);
     background-color: var(--input-out-of-focus);
     transition: all 0.3s;
-    }
+}
 
-    .estoque_esgotado input:checked ~ .checkmark {
+.estoque_esgotado input:checked~.checkmark {
     background-color: var(--input-focus);
     color: var(--span-focus);
-    }
+}
 
-    .checkmark:after {
+.checkmark:after {
     content: "";
     width: 7px;
     height: 15px;
@@ -184,14 +205,14 @@ main{
     border: solid var(--bg-color);
     border-width: 0 2.5px 2.5px 0;
     transform: rotate(45deg);
-    }
+}
 
-    .estoque_esgotado input:checked ~ .checkmark:after {
+.estoque_esgotado input:checked~.checkmark:after {
     display: block;
-    }
+}
 
 /*--------------------------------------- Pedidos ----------------------------------------*/
-#phpmae{
+#phpmae {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -199,7 +220,8 @@ main{
     width: 100%;
     background: azure;
 }
-#phpDiv{
+
+#phpDiv {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -208,7 +230,8 @@ main{
     font-size: 90%;
     padding-top: 2%;
 }
-#php2{
+
+#php2 {
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -217,18 +240,20 @@ main{
     width: 40%;
     font-size: 90%;
     padding-top: 2%;
-    
+
 }
-#DivPedido{
+
+#DivPedido {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-.pedidostexto{
+
+.pedidostexto {
     display: flex;
     align-items: flex-start;
-    justify-content:flex-start;
+    justify-content: flex-start;
     flex-direction: row;
     margin-top: 82px;
     margin-bottom: 100px;
@@ -237,13 +262,17 @@ main{
     background-color: rgb(189, 189, 189);
     border: solid black 5px;
     border-radius: 10px;
-    height: 410px;    
+    height: 410px;
     width: 100%;
-    overflow: hidden auto; /* vertical escondida, horizontal automática */
-      white-space: normal; /* Permite quebra de linha normal */
-    word-wrap: break-word; /* Quebra palavras longas se necessário */
+    overflow: hidden auto;
+    /* vertical escondida, horizontal automática */
+    white-space: normal;
+    /* Permite quebra de linha normal */
+    word-wrap: break-word;
+    /* Quebra palavras longas se necessário */
 }
-.pedidosImagem{
+
+.pedidosImagem {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -254,21 +283,23 @@ main{
     background-color: rgb(189, 189, 189);
     border: solid black 5px;
     border-radius: 10px;
-    height: 410px;    
+    height: 410px;
     width: 95%;
 }
 
-.informacaoPedido{
+.informacaoPedido {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
 }
-.informacaoSuperior{
+
+.informacaoSuperior {
     width: 60%;
     height: 100%;
 }
-.informacaoInferior{
+
+.informacaoInferior {
     width: 50%;
     height: 90%;
     padding: 15px;
@@ -278,49 +309,57 @@ main{
     border-radius: 15px;
     border: solid black 5px;
     overflow: auto;
-    
+
 }
 
-.Imagem{
+.Imagem {
     height: 400px;
     width: 100%;
     border-radius: 10px;
 }
-#formlario{
+
+#formlario {
     display: flex;
     flex-direction: row;
 }
-.titulo_red{
+
+.titulo_red {
     color: red;
     font-size: 250%;
     font-weight: 700;
 }
-.font_red{
-    color:#800020;
-    font-size: 120%;
-    font-weight: 700;
-}
-.font_blu{
+
+.font_red {
     color: #800020;
     font-size: 120%;
     font-weight: 700;
 }
-.font_blue{
+
+.font_blu {
+    color: #800020;
+    font-size: 120%;
+    font-weight: 700;
+}
+
+.font_blue {
     color: rgb(27, 68, 132);
     font-size: 120%;
     font-weight: 700;
 }
-.titulo_black{
+
+.titulo_black {
     color: rgb(0, 0, 0);
     font-size: 250%;
     font-weight: 700;
 }
-.titulo_pedido{
+
+.titulo_pedido {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.Pdf{
+
+.Pdf {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -331,52 +370,61 @@ main{
     border: solid black 2px;
     color: black;
     border-radius: 10px;
-    height: 30px; 
-    width: 35%;   
+    height: 30px;
+    width: 35%;
 }
-.Pdf:hover{
+
+.Pdf:hover {
     transition: 0.3s;
     background-color: rgb(255, 0, 0);
     color: aliceblue;
-    
+
 }
-.PdfAncora{
+
+.PdfAncora {
     color: black;
     padding: 35%;
 }
-.PdfAncora:hover{
+
+.PdfAncora:hover {
     transition: 0.3s;
     color: rgb(255, 255, 255);
 }
-#imprimir{
-    display: flex; 
+
+#imprimir {
+    display: flex;
     align-items: center;
     margin-left: 50px;
 }
-#pdfImprimir{
-    display: flex; 
+
+#pdfImprimir {
+    display: flex;
     align-items: center;
     margin-left: 50px;
 }
-#bancoDeDados{
+
+#bancoDeDados {
     display: none;
 }
-.btPedidos{
+
+.btPedidos {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     width: 95%
 }
-.font_estoque{   
+
+.font_estoque {
     font-size: 100%;
-    color: 	#FFB627;
+    color: #FFB627;
     padding-right: 10px;
     margin-left: 10px;
     border-radius: 30px;
     font-weight: 800;
     background-color: rgb(0, 109, 119);
 }
-#pedidonaoEncontrado{
+
+#pedidonaoEncontrado {
     font-size: 0%;
 }

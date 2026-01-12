@@ -61,4 +61,3 @@
         echo "torno " ;   
 
 mysqli_close($conectar);
-echo "chegou aaaeeee";

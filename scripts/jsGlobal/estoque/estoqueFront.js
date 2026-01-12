@@ -1,40 +1,41 @@
+
 // função para voltar o valor de um elemento
-function voltar(id,idinput) {
+function voltar(id, idinput) {
     let elemento = document.getElementById(id);
     let valorAtual = parseInt(elemento.innerHTML);
 
     let input = document.getElementById(idinput);
 
-    
-    if(valorAtual == 0){
+
+    if (valorAtual == 0) {
 
         valorAtual = 0
-        valorInput = 'negativo'; 
-        
+        valorInput = 'negativo';
+
         elemento.innerHTML = valorAtual;
         console.log(`Novo valor: ${valorAtual}`);
     }
-    else if(valorAtual < 0){
+    else if (valorAtual < 0) {
 
-        valorInput = 'negativo'; 
+        valorInput = 'negativo';
 
-        valorAtual++; 
+        valorAtual++;
         elemento.innerHTML = valorAtual;
         input.value = valorInput; // atualiza o valor do input
     }
-    else{
+    else {
         valorAtual--; // subtrai 1
         valorInput = 'negativo'; // subtrai 1 ao valor do input
-        
+
         elemento.innerHTML = valorAtual;
         input.value = valorInput; // atualiza o valor do input
         console.log(`Novo valor: ${valorInput}`);
     }
-    
+
 }
 
 // função para avançar o valor de um elemento
-function avancar(id,idinput) {
+function avancar(id, idinput) {
     let elemento = document.getElementById(id);
 
     let valorAtual = document.getElementById(id).innerHTML;
@@ -81,21 +82,22 @@ function atualizarInputs() {
 
 
 
+
 // Seleciona o radio que está marcado
-document.addEventListener('DOMContentLoaded', function() {
-    
+document.addEventListener('DOMContentLoaded', function () {
+
     // Obtém o valor do radio selecionado
     let id = document.querySelector('.iniciar-selecionado').id;
     let radioSplit = id.split('_').slice(1).join('_');
     let radioSelecionado = document.getElementById(radioSplit);
-    
+
     //variavel para o elemento que será exibido let Estoques_Torno_Polimento_Sem_estoque = document.querySelector('.Estoques_Torno_Polimento_Sem_estoque');
     let Estoques_Torno_Polimento_Sem_estoque = document.getElementById('Estoques_Torno_Polimento_Sem_estoque');
     let Estoques_Torno_Polimento = document.querySelector('.semEstoque');
-    
-    if(id === "id_" ) {
+
+    if (id === "id_") {
         console.error(`Radio com id ${id} não encontrado.`);
-        
+
         Estoques_Torno_Polimento.style.display = 'none'; // Esconde o elemento
         Estoques_Torno_Polimento_Sem_estoque.style.display = 'flex'; // Esconde o elemento 
         return;
@@ -105,45 +107,52 @@ document.addEventListener('DOMContentLoaded', function() {
         Estoques_Torno_Polimento_Sem_estoque.style.display = 'none'; // Esconde o elemento
 
         let valor = radioSelecionado.value.replaceAll(' ', '_'); // troca espaços por _
-        const idFinal = document.getElementById(valor);
+        const idFinal = 'input' + document.getElementById(valor).value.replaceAll(' ', '_');
 
-        const labelRelacionado = document.querySelector(`label[for="${idFinal.id}"]`);
+        console.log(idFinal);
 
-        console.log(`Valor selecionado: ${valor}`);
-        
-        idFinal.checked = true; // Marca o radio selecionado
-        
+        const labelRelacionado = document.querySelector(`label[for="${idFinal}"]`);
+
+        //console.log(`Valor selecionado: ${valor}`);
+        idRadioFinal = document.getElementById(idFinal);
+
+        idRadioFinal.checked = true; // Marca o radio selecionado
+
         if (labelRelacionado) {
             labelRelacionado.classList.add('radio-selecionado'); // Adiciona a classe 'radio-selecionado' ao label relacionado
         }
     }
 });
 
-// Função para enviar o formulário
-function enviar_form(formId, $arquivoBD) {
-    
-    const form = document.getElementById(formId);
-    const formData = new FormData(form);
-    
-    for (let pair of formData.entries()) {
-    console.log(pair[0]+ ': ' + pair[1]);
-}
+//envia via ajax o pedido para o php
+function enviarForm() {
+    const formulario = document.getElementById('formulario');
+    const formData = new FormData(formulario);
 
-fetch($arquivoBD, {
+    fetch('./phpScripts/estoque_esgotado.php', {
         method: 'POST',
         body: formData
     })
-    .then(response => response.text())
-    .then(data => {
-        
+        .then(response => response.text())
+        .catch(error => {
+            console.error('Erro:', error);
+        });
+}
 
-        console.log('Resposta do servidor:', data);
-        
+function enviar_form(form, caminho) {
+
+    const formulario = document.getElementById(form);
+    const formData = new FormData(formulario);
+
+    fetch(caminho, {
+
+        method: 'POST',
+        body: formData
     })
-    .catch(error => {
-        alert('Erro ao enviar o formulário:', error);
-    });
-
+        .then(response => response.text())
+        .catch(error => {
+            console.error('Erro:', error);
+        });
 }
 
 // funçoes que iniciam com a pagina 

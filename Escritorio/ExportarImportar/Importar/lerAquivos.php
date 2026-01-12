@@ -24,7 +24,7 @@ function ler_Salvar($tabela,$imagem,$pdfs,$conectar){
             // $linha é um array com os dados da linha do CSV
             
             //VARIAVEL PARA DATA PARA CONSULTA NO BANCO DE DADOS
-            $datacsv = $linha[17];
+            $datacsv = $linha[18];
             $contador++;
 
             $result = $conectar->query(
@@ -55,8 +55,8 @@ function ler_Salvar($tabela,$imagem,$pdfs,$conectar){
 
             // Salva os Pedidos no Banco ------------------------
             mysqli_query($conectar, "INSERT IGNORE INTO `$tabela`
-            (`$cabecalho[0]`,`$cabecalho[1]`,`$cabecalho[2]`, `$cabecalho[3]`, `$cabecalho[4]`, `$cabecalho[5]`, `$cabecalho[6]`, `$cabecalho[7]`,`$cabecalho[8]`, `$cabecalho[9]`, `$cabecalho[10]`,`$cabecalho[11]`,`$cabecalho[12]`,`$cabecalho[13]`,`$cabecalho[14]`,`$cabecalho[15]`, `$cabecalho[16]`,`$cabecalho[17]`) 
-            VALUES ('$linha[0]','$linha[1]','$linha[2]', '$linha[3]', '$linha[4]', '$linha[5]', '$linha[6]', '$linha[7]','$linha[8]', '$linha[9]', '$linha[10]','$linha[11]' , '$linha[12]' ,'$linha[13]', '$linha[14]' , '$linha[15]' , '$linha[16]' , '$datacsv' )");
+            (`$cabecalho[0]`,`$cabecalho[1]`,`$cabecalho[2]`, `$cabecalho[3]`, `$cabecalho[4]`, `$cabecalho[5]`, `$cabecalho[6]`, `$cabecalho[7]`,`$cabecalho[8]`, `$cabecalho[9]`, `$cabecalho[10]`,`$cabecalho[11]`,`$cabecalho[12]`,`$cabecalho[13]`,`$cabecalho[14]`,`$cabecalho[15]`, `$cabecalho[16]`,`$cabecalho[17]`,`$cabecalho[18]`) 
+            VALUES ('$linha[0]','$linha[1]','$linha[2]', '$linha[3]', '$linha[4]', '$linha[5]', '$linha[6]', '$linha[7]','$linha[8]', '$linha[9]', '$linha[10]','$linha[11]' , '$linha[12]' ,'$linha[13]', '$linha[14]' , '$linha[15]' , '$linha[16]' , '$linha[17]', '$linha[18]' )");
             
             //Verifica os Duplicados -------------------------------
             if ($result->num_rows !== 0) {
@@ -86,13 +86,13 @@ function ler_Salvar($tabela,$imagem,$pdfs,$conectar){
         }
         //Imagens ------------------------------------------------------
         $origem = './zipTemporarios/pastas/' . $imagem . '/' ;
-        $destino = '../../../imagem/';
+        $destino = '../../../arquivos_Sistema/imagem_pedidos/';
 
         moverArquivos($origem, $destino);
 
         //PDFs ------------------------------------------------------
         $origemPdf = './zipTemporarios/pastas/' . $pdfs . '/' ;
-        $destinoPdf = '../../pedidos/PDF/';
+        $destinoPdf = '../../../arquivos_Sistema/PDFs/';
 
         moverArquivos($origemPdf, $destinoPdf);
             

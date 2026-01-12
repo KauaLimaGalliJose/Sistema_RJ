@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,17 +10,15 @@
     <title>Criar</title>
 </head>
 <body>
-    <div id="cabecalho">
-            <div id="casa">
-                <button type="button" id="seta_esquerda" value="" class="botao" >
-                    <a href="../Estoque_Pagina_Inicial.html"><img class="itens" src="Imagens_criar_Estoque/angulo-esquerdo.png"></a>
-                </button>
+      <?php
+        include_once('../../../scripts/phpGlobal/frontEnd/cabecalho/cabecalho.php');
 
-                <button type="button" value="" class="botao" >
-                    <a href="../../PG2-Escritorio.php"><img class="itens" src="Imagens_criar_Estoque/casa.png"></a>
-                </button>
-            </div>      
-    </div>
+        $parametros = [];
+        $parametros['caminho_Casa'] = 'btn' . '-+-' . '../../PG2-Escritorio.php' . '-+-' . '../../../scripts/imagem_global/cabecalho_img/casa.png';
+        $parametros['caminho_Seta'] = 'btn' . '-+-' . '../Estoque_Pagina_Inicial.php' . '-+-' . '../../../scripts/imagem_global/cabecalho_img/angulo-esquerdo.png';
+        
+        cabecalho($parametros);
+      ?>
         <form id = "formulario" action="CriarEstoque.php" method="post" enctype="multipart/form-data">
             <div id="divFormulario">
                 <div id="pedido">
@@ -60,10 +59,6 @@
 </body>
 </html>
 
-<?php
-    include_once '../../../phpIndex/protege.php';
-    proteger();
-?>
 
 <?php
 //Bibliotecas
@@ -105,9 +100,9 @@ if($_POST){
     //imagem 
     if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === 0) {
         $nomeArquivo = "estoque_" . preg_replace('/[^a-zA-Z0-9_-]/', '', $nome) . '.png';
-        $caminhoImagem = "/imagem/imagens_Estoque/" . $nomeArquivo;
+        $caminhoImagem = "/arquivos_Sistema/imagens_Estoque/" . $nomeArquivo;
 
-        if($nome == '/imagem/imagens_Estoque/estoque_Nenhum.png' || $nome == 'nenhum'){
+        if($nome == '/arquivos_Sistema/imagens_Estoque/estoque_Nenhum.png' || $nome == 'nenhum'){
 
         echo "<script>alert('Tente outro nome')</script>";
         return; 

@@ -33,3 +33,9 @@ export function deleteAllCookies() {
         document.cookie = `${name}=;expires=${new Date(0).toUTCString()};path=/;domain=${location.hostname}`;
     });
 }
+
+export function cookieExiste(nome) {
+  return document.cookie
+    .split("; ")
+    .some(cookie => cookie.startsWith(nome + "="));
+}

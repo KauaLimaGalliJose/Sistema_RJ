@@ -11,7 +11,7 @@ function enviarParaJson(arquivo, nome, valor) {
 
     let horaEntrega = `${hora.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
 
-     if(document.getElementById('grav_internaInput').value.trim() !== '' ){
+    if( document.getElementById('gravInternaM').value.trim() !== '' || document.getElementById('gravInternaF').value.trim() !== ''){
         
         var gravacao = 'sim'
 
@@ -49,10 +49,10 @@ export function enviandoJson(dataDigitadaSplit1,dataDigitadaSplit2) {
         enviarParaJson('pedidos.json', select.options[select.selectedIndex].text + '-' + dataDigitadaSplit2 + '/' + dataDigitadaSplit1, "Indefinido");
     }
     else if(letras == "PG"){
-        enviarParaJson('pedidosPg.json', select.options[select.selectedIndex].text + '-' + dataDigitadaSplit2 + '/' + dataDigitadaSplit1, "Indefinido");
+        enviarParaJson('pedidosjsonpg.json', select.options[select.selectedIndex].text + '-' + dataDigitadaSplit2 + '/' + dataDigitadaSplit1, "Indefinido");
     }
     else if(letras == "PE"){
-        enviarParaJson('pedidosPe.json', select.options[select.selectedIndex].text + '-' + dataDigitadaSplit2 + '/' + dataDigitadaSplit1, "Indefinido");
+        enviarParaJson('pedidosjsonpe.json', select.options[select.selectedIndex].text + '-' + dataDigitadaSplit2 + '/' + dataDigitadaSplit1, "Indefinido");
     }
 
 }

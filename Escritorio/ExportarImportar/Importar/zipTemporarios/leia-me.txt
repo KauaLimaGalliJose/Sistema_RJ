@@ -1,4 +1,4 @@
 Anotações
  $dadosg = mysqli_query($conectar, "INSERT INTO pedidospg
-    (contadorpg,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, gravacaoExterna,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM, pdf,data_digitada) 
+    (contadorpg,idpedidos, cliente, nomePedido, numF, numeM, descricaoPedido, descricaoAlianca,largura, gravacaoInterna, peso,imagem,parEstoqueF,parEstoqueM,PedraF,PedraM, pdf,data_digitada) 
     VALUES ('$idPg','$idPedidos','$cliente', '$nomePedido', '$f', '$m', '$descricao_Pedido', '$descricaoAlianca','$largura', '$gravacao_inter', '$gravacao_exter','$imagem' , '$estoqueFeminina' ,'$estoqueMasculina', '$comPedra' , '$semPedra' , '$pdf' , '$dataEntrega' )");

@@ -234,7 +234,7 @@ function limpar(){
     document.getElementById('numeracao_f').value = '';
     document.getElementById('descricao_P').value = '';
     document.getElementById('entrega').value = '';
-    document.getElementById('grav_externaInput').value = '';
+    document.getElementById('peso').value = '';
     document.getElementById('descricao_A').value = '';
     document.getElementById('grav_m').value = '';
     document.getElementById("outros").value = '';

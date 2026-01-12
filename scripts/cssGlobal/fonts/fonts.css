@@ -1,0 +1,51 @@
+.font_global_titulo_vinho {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 250%;
+    color: brown;
+    font-weight: 700;
+}
+
+.font_global_Subtitulo_vinho{
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 150%;
+    color: brown;
+    font-weight: 700;
+}
+
+.font_global_Subtitulo_azure{
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 150%;
+    color: azure;
+    font-weight: 700;
+}
+
+.font_global_Subtitulo_black{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 150%;
+    color: black;
+    font-weight: 700;
+}
+/* Font margins */
+
+.font_margin_10px{
+    margin-top: 10px;
+}
+
+.font_margin_20px{
+    margin-top: 20px;
+}
+
+/* Font position */
+.font_position_center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.font_position_flex_start{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}

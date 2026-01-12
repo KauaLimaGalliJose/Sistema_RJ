@@ -97,9 +97,8 @@
         font-weight: 550;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
-    .fontPedido{
-        color: #000000;
-        background-color: rgb(127, 231, 231);
+    .fontPedidoEstoque{
+        color: #ffffff;
         padding-left: 8px;
         padding-right: 8px;
         border-radius: 30px;
@@ -442,10 +441,9 @@
         color: #ffffff;
         font-weight: 600;
         font-size: 150%;
-        width: 15%;
         background-color: rgb(226, 177, 84);
-        margin-right: 10%;
-        margin-left: 10%;
+        margin-bottom: 1%;
+        margin-left: 8%;
     }
     .numero{
         display: flex;

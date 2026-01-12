@@ -10,9 +10,6 @@
 </head>
 <body>
     <?php
-        include_once('../../../../conexao.php');
-        include_once '../../../../phpIndex/protege.php';
-        proteger();
 
         //variaveis
         $nome = $_GET["nome"];   
@@ -50,7 +47,7 @@
                 <button type='button'  id="buttonPdf" onclick="voltarEditar()" class="buttonPdf">
                     <label class="labelBtn">Voltar</label>
                 </button>
-                <button type='button' onclick="submitForm('editar' , 'estoque_editar.php'); voltarpagina('../ver_estoque.php')" class="buttonPdf">
+                <button type='button' onclick="submitForm('editar' , 'estoque_editar.php'); voltarEditar()" class="buttonPdf">
                     <label class="labelBtn" >Salvar</label>
                 </button>    
             </div>

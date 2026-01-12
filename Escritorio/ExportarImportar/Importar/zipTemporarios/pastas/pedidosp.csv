@@ -1,0 +1,2 @@
+0,idpedidos,cliente,nomePedido,numF,numeM,descricaoPedido,descricaoAlianca,largura,gravacaoInternaM,gravacaoInternaF,peso,imagem,PedraF,PedraM,parEstoqueF,parEstoqueM,pdf,data_digitada,estoque
+2,PF2-2025-10-05,Mercado_Livre,teste,11,10,1010,101010,3mm,1010,101010,,../arquivos_Sistema/imagem_pedidos/PF1-2025-10-05.png,,,,,../arquivos_Sistema/PDFs/semEtiqueta.pdf,2025-10-05,

@@ -1,6 +1,4 @@
 <?php 
-    include_once '../../../../phpIndex/protege.php';
-    proteger();
 
 include_once('../../../../conexao.php');
 

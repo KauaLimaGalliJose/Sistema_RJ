@@ -1,0 +1,180 @@
+@media (min-width: 456px) {
+
+  #div_menu_conteiner {
+  position: fixed;
+  top: 0;
+  right: -50%;
+  /* começa escondido */
+  width: 417.594px;
+  height: 100vh;
+  background: white;
+  z-index: 9;
+  overflow: auto;
+  }
+  /* quando ativo */
+  #div_menu_conteiner.ativo {
+    transition: right 0.4s ease;
+    box-shadow: -3px 0 6px rgba(0, 0, 0, 0.3);
+    right: 0;
+  }
+  
+  /* quando ativo */
+  #div_menu_conteiner.ativo_localstage {
+    box-shadow: -3px 0 6px rgba(0, 0, 0, 0.3);
+    right: 0;
+  }
+  
+  #div_menu_conteiner_itens {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 12dvb;
+    /* espaço para o menu */
+  }
+  
+}
+
+
+/* organizar pedidos */
+#grade {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  margin-bottom: 20px;
+  margin-top: 20px;
+
+  width: 100%;
+  height: 100%;
+}
+
+.divs_padrao_row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  /* espaço entre os botões */
+  gap: 10px;
+  /* espaço entre os botões */
+
+  width: 100%;
+}
+
+.divs_padrao_colun {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 10px;
+  /* espaço entre os botões */
+  gap: 10px;
+  /* espaço entre os botões */
+}
+
+/* botões padrão */
+.btn_Padrao {
+  background-color: rgb(255, 255, 255);
+  border: none;
+  padding: 15px;
+  margin: 5px;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+}
+
+.btn_Padrao:hover {
+  background-color: rgb(247, 94, 94);
+  border-radius: 10%;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+#filtro_numero {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  width: 30%;
+}
+
+#filtro_pedidos{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40%;
+}
+
+#filtro_estoque {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40%;
+}
+
+.checkMenuFlex {
+
+  width: 30px;
+  height: 30px;
+
+}
+
+/* estilos pedidos labels_radio */
+.bnt_estiloPedidos {
+  width: 90px;
+  height: 90px;
+}
+
+.img_estiloPedidos {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.invisivel {
+  display: none;
+}
+
+/* Para Celulares */
+@media (max-width: 456px) {
+
+  #div_menu_conteiner {
+    position: fixed;
+    top: 0;
+    right: -100%;          /* totalmente fora da tela */
+    width: 100vw;          /* ocupa a tela toda */
+    height: 100vh;
+    background: white;
+    z-index: 9;
+    overflow-y: auto;
+    transition: right 0.4s ease;
+  }
+
+  /* quando ativo */
+  #div_menu_conteiner.ativo,
+  #div_menu_conteiner.ativo_localstage {
+    right: 0;
+    box-shadow: none;      /* opcional no mobile */
+  }
+
+  #div_menu_conteiner_itens {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 12vh;      /* mais previsível que dvb */
+  }
+
+}
+

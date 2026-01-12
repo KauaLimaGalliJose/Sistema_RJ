@@ -1,9 +1,8 @@
 <?php 
-    include_once '../../../../phpIndex/protege.php';
-    proteger();
+
 
 include_once('../../../../conexao.php');
-include_once('../../../../scripts/phpGlobal/backEnd/estoqueFunction.php');
+include_once('../../../../scripts/phpGlobal/backEnd/estoque/estoqueFunction.php');
 
 function chave_estrangeira($nome, $conectar, $tabelas){
 

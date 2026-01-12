@@ -1,10 +1,11 @@
 <?php
-include_once(__DIR__ . '/../../scripts/phpGlobal/backEnd/estoqueFunction.php');
+include_once(__DIR__ . '/../../scripts/phpGlobal/backEnd/estoque/estoqueFunction.php');
 
 
 function tirar_do_estoque($n,$estoquePersonalizado,$conectar) {
-    // aqui caso não lembrrar ele verifica se o estoque está zerado ele cria ou atualiza a tabela estoque_esgotado se não estiver zerado ele só da baixa mesmo 
+    
 
+    // aqui caso não lembrrar ele verifica se o estoque está zerado ele cria ou atualiza a tabela estoque_esgotado se não estiver zerado ele só da baixa mesmo 
     if($n == 40 || $n == '40' || $estoquePersonalizado == null || $n > 35 ){
 
         return;
@@ -24,7 +25,7 @@ function tirar_do_estoque($n,$estoquePersonalizado,$conectar) {
                 $peso =  $linha['peso'];
                 $descricao = $linha['descricaoEstoque'];
 
-                criarAtualizar_pedido_estoque($n,$estoquePersonalizado,"estoque_esgotado",$conectar);
+                criarAtualizar_pedido_estoque($n,$estoquePersonalizado,"estoque_esgotado",$imagem,$peso,$descricao,$conectar);
         }
         else{
             // Subtrai 1 
@@ -104,7 +105,8 @@ function repor_estoque_antigo($conectar, $pedido_Tabela, $nome_pedido, $numero,$
     }
     if($estoque_Pedido == null ){
 
-        if($numero == 40 || $numero == '40'){
+        if($numero == 40 || $numero == '40' || $estoquePersonalizado == 'Nenhum' || $estoquePersonalizado == ''){
+
 
             return;
         }
@@ -121,6 +123,24 @@ function repor_estoque_antigo($conectar, $pedido_Tabela, $nome_pedido, $numero,$
         }
         return;
     }
+    else{
+
+        // Caso escolha nenhum estoque 
+        if($estoquePersonalizado == 'Nenhum'){
+
+            $verificar_estoque_esgotado = verifica_estoque_esgotado($numero,$estoque_Pedido,'estoque_esgotado',$conectar);
+
+            if($verificar_estoque_esgotado == true){
+
+                repor_estoque($numero,$estoque_Pedido,'estoque',$conectar);
+            }
+            else{
+                tira_estoque($numero,$estoque_Pedido,'estoque_esgotado' ,$conectar);
+            }
+    
+        }
+        return;
+    }
     // vê se é so um pé de coencidencia é o numero 40
     if($numero == 40 || $numero == '40' || $numeracao_Antiga == 40 || $numeracao_Antiga == '40'){
 
@@ -130,7 +150,7 @@ function repor_estoque_antigo($conectar, $pedido_Tabela, $nome_pedido, $numero,$
         }
         elseif($numeracao_Antiga != $numero ){
 
-            if($numero == 40 || $numero == '40'){
+            if($numero == 40 || $numero == '40' && $numeracao_Antiga <= 35 || $numeracao_Antiga <= '35'){
 
                 //Numeração antiga -----------------------------------------------------------------------------------
                 $verificar = verifica_estoque_esgotado($numeracao_Antiga,$estoque_Pedido,'estoque_esgotado',$conectar);
@@ -160,6 +180,24 @@ function repor_estoque_antigo($conectar, $pedido_Tabela, $nome_pedido, $numero,$
             return;
         }
         elseif($numeracao_Antiga != $numero){
+
+            if($numeracao_Antiga > 35){
+                
+                //Numeraçao nova -----------------------------------------------------------------------------------
+                $verificar1 = verifica_estoque_esgotado($numero,$estoquePersonalizado,'estoque',$conectar);
+                if($verificar1 == true){
+
+                    tirar_do_estoque($numero,$estoquePersonalizado,$conectar);
+                }
+                elseif($verificar1 == false){
+
+                    tira_estoque($numero,$estoquePersonalizado,'estoque' ,$conectar);
+                    repor_estoque($numero,$estoquePersonalizado,'reabastecer_estoque' ,$conectar);
+            
+                }
+
+                return;
+            }
 
 
             //Numeraçao nova -----------------------------------------------------------------------------------
