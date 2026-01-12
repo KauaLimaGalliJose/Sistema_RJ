@@ -66,5 +66,16 @@
 - Certifique-se de que os serviços do servidor estão ativos antes de acessar o sistema.
 - O sistema pode ser acessado via navegador após configurar o ambiente corretamente.
 
+## ⚙️ Configurações Sistema
+
+  - **Usuarios e Senhas**  
+   Graficos (dashboard):
+      Usuario: admin 
+      Senha:0000
+      Para configurar usuario e senha abra o arquivo : `Sistema_RJ/ferramentas_menu/graficos/php/protege_dash.php`
+
+  - **Configurar Conexão do Banco**  
+  Para configurar abra o arquivo : `Sistema_RJ/conexao.php`
+
 - ## Desenvolvedor
 - -Kauã Lima 
