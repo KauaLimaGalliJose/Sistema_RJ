@@ -71,7 +71,7 @@
   - **Usuarios e Senhas**  
    Graficos (dashboard):
      - Usuario: admin 
-     - Senha:0000
+     - Senha: 0000
      - Para configurar usuario e senha abra o arquivo : `Sistema_RJ/ferramentas_menu/graficos/php/protege_dash.php`
 
   - **Configurar Conexão do Banco**  
